@@ -7,7 +7,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "parents",
-    "path": "folders/Sprites/parents.yy",
+    "path": "folders/Objects/parents.yy",
   },
   "parentObjectId": null,
   "persistent": false,

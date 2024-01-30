@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "shd_switch_white",
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "Shaders",
+    "path": "folders/Shaders.yy",
   },
   "type": 1,
 }

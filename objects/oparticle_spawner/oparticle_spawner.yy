@@ -9,8 +9,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "old",
-    "path": "folders/Sprites/old.yy",
+    "name": "meta",
+    "path": "folders/Objects/meta.yy",
   },
   "parentObjectId": null,
   "persistent": false,

@@ -6,8 +6,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "level_design",
+    "path": "folders/Objects/level_design.yy",
   },
   "parentObjectId": null,
   "persistent": false,
