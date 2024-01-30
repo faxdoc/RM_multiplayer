@@ -48,6 +48,19 @@ draw_circle_colour(x-draw_xscale*2,y-30, 9, intcol_,intcol_, true );
 draw_circle_colour(x-draw_xscale*2,y-30, 9.5, intcol_,intcol_, true );
 draw_circle_colour(x-draw_xscale*2,y-30, 10, intcol_,intcol_, true );
 
+
+shader_set(shd_palette);
+	shader_set_uniform_f( main_shader_pal_index_pointer, player_id );
+	texture_set_stage( shader_get_sampler_index(shd_palette, "palette" ), sprite_get_texture(spalette_player_1,0) );
+if ( palette_init ) {	
+	var palette_sprite = spalette_player_1; var uvs = sprite_get_uvs(spalette_player_1,0);
+	shader_set_uniform_f(	    main_shader_col_num_pointer,   sprite_get_height(palette_sprite)  );
+	shader_set_uniform_f(	    main_shader_pal_num_pointer,   sprite_get_width(palette_sprite) );
+	shader_set_uniform_f_array( main_shader_uvs_pointer,	   [uvs[0],uvs[1],uvs[2]-uvs[0],uvs[3]-uvs[1]]  );
+}
+
+shader_reset();
+
 #endregion
 
 #region Fern Mode
@@ -68,7 +81,7 @@ switch( draw_type ) {
 		var recoil_x = LDX( recoil, var_dir ) * draw_xscale * 0.6;
 		var recoil_y = LDY( recoil, var_dir ) * 0.6;
 		
-		shader_set( player_palette );
+		shader_set( shd_palette );
 		if ( knife_state == 0 ) {
 			scr_player_draw_guns_inner( var_dir, recoil_x, bwave, y_off-bly_, recoil_y );
 		} else {
@@ -80,7 +93,7 @@ switch( draw_type ) {
 		bwave = round( wave( bmax, bmin, bdur, 0.87 ) );
 		var xx = var_dir > 0 ? var_dir / 25 : -var_dir / 80;
 		draw_sprite_ext( splayer_jacket_back, 0, x+1*draw_xscale-xx*draw_xscale,yl_-8+y_off*.4+bwave,draw_xscale,1,0,image_blend,draw_alpha);
-		shader_reset();
+		
 		
 		//legs
 		if ( on_ground ) {
@@ -94,7 +107,7 @@ switch( draw_type ) {
 		}
 
 		//body
-		shader_set(player_palette);
+		
 		bwave = round(wave(bmax,bmin,bdur,.88));
 		var ind = var_dir >= 0 ? var_dir/90 * 13.9 : 0;
 		var ex = (var_dir < -30) ? -var_dir/80 * draw_xscale : 0;
@@ -149,7 +162,7 @@ switch( draw_type ) {
 			hair_y = head_y +	vsp * 0.1;
 		}
 		if ( switching_weapon ) {
-			shader_set( player_palette );
+			shader_set( shd_palette );
 			draw_sprite_ext( splayer_hand_switch_wep, switch_timer/3,x-5*draw_xscale, yl_-24+bwave+y_off, draw_xscale, 1, 0, image_blend, draw_alpha );
 			shader_reset();
 		} else {

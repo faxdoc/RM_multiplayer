@@ -9,24 +9,20 @@ if ( instance_position(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),id) ) {
 }	
 
 if ( mouse_check_button_pressed(mb_left) ) {
+	
 	if ( instance_position(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),id) ) {
+		//randomize();
+		var rl_ = [rtest,rtower,rflat,rplatform,rceiling,ropen];
+
+		var rm__ = rl_[ floor(mouse_x + omultiplayer_control_old.intimer ) mod ( array_length(rl_)-1 )];
 		switch(image_index) {
-			case 0: rollback_create_game( 2, true  ); rollback_use_random_input(false); omultiplayer_control_old.game_has_started = true; with ( obutton ) IDD(); break;
-			case 1: rollback_create_game( 2, false ); omultiplayer_control_old.game_has_started = true; with ( obutton ) IDD(); break;
-			case 2: rollback_create_game( 3, false ); omultiplayer_control_old.game_has_started = true; with ( obutton ) IDD(); break;
-			case 3: rollback_create_game( 4, false ); omultiplayer_control_old.game_has_started = true; with ( obutton ) IDD(); break;
+			case 0: rollback_create_game( 4, true  ); omultiplayer_control_old.game_has_started = true; with ( obutton ) IDD(); room_goto(rm__); rollback_use_random_input(false); break;
+			case 1: rollback_create_game( 2, false ); omultiplayer_control_old.game_has_started = true; with ( obutton ) IDD(); room_goto(rm__); break;
+			case 2: rollback_create_game( 3, false ); omultiplayer_control_old.game_has_started = true; with ( obutton ) IDD(); room_goto(rm__); break;
+			case 3: rollback_create_game( 4, false ); omultiplayer_control_old.game_has_started = true; with ( obutton ) IDD(); room_goto(rm__); break;
 			//case 4: rollback_create_game( 4, false );  break;
 		}
 	}
-
 }
-
-
-
-
-
-
-
-
 
 

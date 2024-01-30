@@ -7,7 +7,7 @@ if ( !game_has_started ) {
 		
 		ICD(GW/2,GH*0.9,0,obutton).image_index = 0;
 	}
-	//rollback_create_game( 4, true );
+	
 	shader_set(shd_max_a);
 	draw_surface( application_surface, 0, 0 );
 	shader_reset();

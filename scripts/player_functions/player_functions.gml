@@ -711,7 +711,7 @@ function scr_player_draw_guns(var_dir,bdur,bmax,bmin,y_off) {
 
 			recoil_x *= 0.9;
 			recoil_y *= 0.9;
-			shader_set( player_palette );
+			shader_set( shd_palette );
 			draw_sprite_ext( splayer_hand_outer, 2, x-5*draw_xscale						 -recoil_x*.8,y-24+bwave+y_off-recoil_y*.8, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 1, x-5*draw_xscale-(var_dir/40)*draw_xscale-recoil_x*.6,y-24+bwave+y_off-recoil_y*.6, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 0, x-5*draw_xscale-(var_dir/30)*draw_xscale-recoil_x*.25,y-23+y_off+bwave-recoil_y*.25, draw_xscale, 1,   aidir*draw_xscale*1.2, image_blend, draw_alpha );
@@ -739,7 +739,7 @@ function scr_player_draw_guns(var_dir,bdur,bmax,bmin,y_off) {
 
 			recoil_x *= 0.9;
 			recoil_y *= 0.9;
-			shader_set( player_palette );
+			shader_set( shd_palette );
 			draw_sprite_ext( splayer_hand_outer, 2, x-5*draw_xscale						 -recoil_x*.8,y-24+bwave+y_off-recoil_y*.8, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 1, x-5*draw_xscale-(var_dir/40)*draw_xscale-recoil_x*.6,y-24+bwave+y_off-recoil_y*.6, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 0, x-5*draw_xscale-(var_dir/30)*draw_xscale-recoil_x*.25,y-23+y_off+bwave-recoil_y*.25, draw_xscale, 1,   aidir*draw_xscale*1.2, image_blend, draw_alpha );
@@ -761,7 +761,7 @@ function scr_player_draw_guns(var_dir,bdur,bmax,bmin,y_off) {
 
 			recoil_x *= 0.9;
 			recoil_y *= 0.9;
-			shader_set( player_palette );
+			shader_set( shd_palette );
 			draw_sprite_ext( splayer_hand_outer, 2, x-5*draw_xscale						 -recoil_x*.8,y-24+bwave+y_off-recoil_y*.8, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 1, x-5*draw_xscale-(var_dir/40)*draw_xscale-recoil_x*.6,y-24+bwave+y_off-recoil_y*.6, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 0, x-5*draw_xscale-(var_dir/30)*draw_xscale-recoil_x*.25,y-23+y_off+bwave-recoil_y*.25, draw_xscale, 1,   aidir*draw_xscale*1.2, image_blend, draw_alpha );
@@ -786,7 +786,7 @@ function scr_player_draw_guns(var_dir,bdur,bmax,bmin,y_off) {
 
 			recoil_x *= 0.9;
 			recoil_y *= 0.9;
-			shader_set( player_palette );
+			shader_set( shd_palette );
 			draw_sprite_ext( splayer_hand_outer, 2, x-5*draw_xscale						 -recoil_x*.8,y-24+bwave+y_off-recoil_y*.8, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 1, x-5*draw_xscale-(var_dir/40)*draw_xscale-recoil_x*.6,y-24+bwave+y_off-recoil_y*.6, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 0, x-5*draw_xscale-(var_dir/30)*draw_xscale-recoil_x*.25,y-23+y_off+bwave-recoil_y*.25, draw_xscale, 1,   aidir*draw_xscale*1.2, image_blend, draw_alpha );
@@ -805,7 +805,7 @@ function scr_player_draw_guns(var_dir,bdur,bmax,bmin,y_off) {
 		
 			recoil_x *= 0.9;
 			recoil_y *= 0.9;
-			shader_set( player_palette );
+			shader_set( shd_palette );
 			draw_sprite_ext( splayer_hand_outer_pistol,2,x-5*draw_xscale-(var_dir/80)						    -recoil_x*.8, y-24+bwave+y_off-recoil_y*.8, draw_xscale, 1,  aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer_pistol,1,x-5*draw_xscale-(var_dir/34)*draw_xscale-recoil_x*.6, y-24+bwave+y_off-recoil_y*.6, draw_xscale, 1,  aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer_pistol,0,x-5*draw_xscale-(var_dir/30)*draw_xscale-recoil_x*.25,y-23+bwave+y_off-recoil_y*.25, draw_xscale, 1, aidir*draw_xscale, image_blend, draw_alpha );
@@ -854,7 +854,7 @@ function scr_player_draw_guns(var_dir,bdur,bmax,bmin,y_off) {
 			
 			recoil_x *= 0.9;
 			recoil_y *= 0.9;
-			shader_set( player_palette );
+			shader_set( shd_palette );
 			draw_sprite_ext( splayer_hand_outer, 2, x-5*draw_xscale						 -recoil_x*.8,y-24+bwave+y_off-recoil_y*.8, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 1, x-5*draw_xscale-(var_dir/40)*draw_xscale-recoil_x*.6,y-24+bwave+y_off-recoil_y*.6, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 0, x-5*draw_xscale-(var_dir/30)*draw_xscale-recoil_x*.25,y-23+y_off+bwave-recoil_y*.25, draw_xscale, 1,   aidir*draw_xscale*1.2, image_blend, draw_alpha );

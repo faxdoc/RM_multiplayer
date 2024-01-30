@@ -118,5 +118,7 @@ switch( meta_state ) {
 if ( flash_alpha > 0 ) {
 	flash_alpha -= 0.04;
 }
-
+if ( palette_init ) {
+	palette_init--;
+}
 #endregion

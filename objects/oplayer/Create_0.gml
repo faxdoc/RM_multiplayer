@@ -321,65 +321,48 @@ hit_timer = 0;
 player_colour = c_aqua;
 player_palette = spalette_player_1;
 
-if ( player_id == 0 ) {
-	x = room_width * 0.45;
-	y = room_height/1.6;
-	player_colour = c_aqua;
-	player_palette = spalette_player_1;
 
-} else if ( player_id == 1 )  {
-	x = room_width * 0.5;
-	y = room_height/1.6;
-	player_colour = c_red;
-	player_palette = spalette_player_2;
-} else  if ( player_id == 2 )  {
-	x = room_width * 0.65;
-	y = room_height/1.6;
-	player_colour = c_lime;
-	player_palette = spalette_player_3;
-} else {
-	player_colour = c_white;
-	x = room_width * 0.6;
-	y = room_height/1.6;
-	player_palette = spalette_player_4;
+if ( instance_exists(oplayer) ) {
+	switch(player_id) {
+		default: player_colour = c_aqua;  player_palette = spalette_player_1; x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,   0) ); y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom,0.5) );  break;
+		case 1:  player_colour = c_red;   player_palette = spalette_player_1; x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,   1) ); y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom,0.5) );  break;
+		case 2:  player_colour = c_lime;  player_palette = spalette_player_1; x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,0.33) ); y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom,0.5) );  break;
+		case 3:  player_colour = c_white; player_palette = spalette_player_1; x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,0.66) ); y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom,0.5) );  break;
+	}
 }
 
 view_enabled = true;
 view_set_visible(0,true);
 if ( player_local ) {
-	//camera_set_view_target( view_camera[ 0 ], id );
-	camera_set_view_pos( view_camera[ 0 ], floor(x-GW), floor(y-GH) );
+	camera_set_view_pos(  view_camera[ 0 ], floor( x-GW ), floor( y-GH ) );
 	camera_set_view_size( view_camera[ 0 ], GW, GH );
 }
+palette_init = 3;
 camera_x = x;
 camera_y = y;
 camera_spd = 0.053;
 camera_clamp_pos = true;
 
 meta_state = -1;
-
-
 hp = 150;
 hp_max = 150;
 lives_left = 4;
 
-//if ( !instance_exists( oparticle_spawner ) ) {
-//	MAKES(oparticle_spawner);
-//}
 
 if ( !instance_exists( orandom ) )  {
 	MAKES(orandom);
 }
 
+#region shader
 
 main_shader = shd_palette;
-main_shader_col_num_pointer   = shader_get_uniform(main_shader,       "col_num"     );
-main_shader_pal_num_pointer   = shader_get_uniform(main_shader,       "pal_num"     );
-main_shader_pal_index_pointer = shader_get_uniform(main_shader,       "pal_index"   );
-main_shader_palette_pointer	  = shader_get_sampler_index(main_shader, "palette"     );
-main_shader_uvs_pointer		  = shader_get_uniform(main_shader,       "palette_uvs" );
+main_shader_col_num_pointer   = shader_get_uniform(shd_palette,       "col_num"     );
+main_shader_pal_num_pointer   = shader_get_uniform(shd_palette,       "pal_num"     );
+main_shader_pal_index_pointer = shader_get_uniform(shd_palette,       "pal_index"   );
+main_shader_palette_pointer	  = shader_get_sampler_index(shd_palette, "palette"     );
+main_shader_uvs_pointer		  = shader_get_uniform(shd_palette,       "palette_uvs" );
 
-shader_set(main_shader);
+shader_set(shd_palette);
 	var palette_sprite = player_palette;
 	palette_texture = sprite_get_texture(palette_sprite,0);
 	var uvs = sprite_get_uvs(palette_sprite,0);
@@ -393,7 +376,8 @@ shader_reset();
 		
 		
 function start_palette() {
-	shader_set(main_shader);
+	shader_set(shd_palette);
 	texture_set_stage( main_shader_palette_pointer, palette_texture );
 }
 
+#endregion
