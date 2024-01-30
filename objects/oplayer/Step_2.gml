@@ -78,10 +78,7 @@ switch(meta_state) {
 			meta_state = 1;
 			state = e_player.normal;
 			INVIS = 60;
-			//show_message("a");
 		}
-		
-		//show_debug_message("bbb");
 	break;
 	case 1:
 		#region main

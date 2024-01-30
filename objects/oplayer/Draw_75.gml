@@ -6,10 +6,6 @@ if ( player_local ) {
 	shader_set(shd_max_a);
 	draw_surface_part(application_surface,frac(camera_x),frac(camera_y),GW*2,GH*2,round(screen_shake_x)-xoffset_, round(screen_shake_y)-yoffset_);
 	shader_reset();
-	
-	//draw_text( GW*0.26 + ( i*(GW*0.33)),-1+ GH*0.8+16, "HP: "   + string(	hp) );
-	//draw_text( GW*0.26 + ( i*(GW*0.33)),-1+ GH*0.8+32, "LIVES:" + string(lives_left) );
-		
 	var ii = 0,c = -1;
 	var yl_ = GH*0.92;
 	var i = 0; with ( oplayer ) {
@@ -53,10 +49,6 @@ if ( player_local ) {
 			draw_rectangle( xx-vll_*32, yy, xx+vll_*32, yy+16, false );
 			DSC( c_white );
 			
-			//if ( intro_timer++ > 120 ) {
-			//	meta_state = 1;
-			//	intro_timer = 30;
-			//}
 			DSC(c_darkest);
 			DSA( 0.9- (intro_timer/30) );
 			draw_rectangle(0,0,room_width,room_height,false);
@@ -67,7 +59,6 @@ if ( player_local ) {
 			if ( intro_timer > 0 ) {
 				var sz_ = max(2,( (intro_timer*intro_timer)/140));
 				draw_sprite_ext(sstart,1,GW/2,GH/2,sz_,sz_,0, c_orange, 1 );
-				//intro_timer--;
 			}
 			
 			
@@ -228,7 +219,7 @@ if ( player_local ) {
 	}
 			
 	var cursor_col = c_white;
-	if (  ( can_hook_delay || hook_air_cancel ) ) {// && (odark_orb.state == e_orb.active || odark_orb.state == e_orb.returning) {
+	if (  ( can_hook_delay || hook_air_cancel ) ) {
 		cursor_col = merge_color( c_dkgray, c_orange, 0.5 );
 	}
 	draw_sprite_ext( scursor, 1, device_mouse_x_to_gui(0),  device_mouse_y_to_gui(0), 1, 1, 0, cursor_col, 1 );

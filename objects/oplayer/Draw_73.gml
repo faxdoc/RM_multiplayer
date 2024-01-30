@@ -8,7 +8,7 @@ if ( jump_charge_buffer > 0 ) {
 
 if ( player_local ) {
 	var cursor_col = c_white;
-	if (  ( can_hook_delay || hook_air_cancel ) ) {// && (odark_orb.state == e_orb.active || odark_orb.state == e_orb.returning) {
+	if (  ( can_hook_delay || hook_air_cancel ) ) {
 		cursor_col = merge_color( c_dkgray, c_orange, 0.5 );
 	}
 	if ( RELOAD[ current_weapon ] >  0 ) {
@@ -26,8 +26,7 @@ if ( player_local ) {
 			var col = c_white;
 			draw_line_width_color(MX-10-CAMX-xoffset_,MY+12-CAMY-yoffset_,MX-10+pw-CAMX-xoffset_,MY+12-CAMY-yoffset_,5, col, col );
 		} else {
-			//DSA(choose_fixed(.8,.9,1)*clamp(pw/7,.7,1));
-			var col = c_dkgray;//current_time mod 50 > 25 ? c_white : c_darkest;
+			var col = c_dkgray;
 			draw_line_width_color(MX-pw-CAMX-xoffset_-1,MY+12-CAMY-yoffset_+1,MX+pw-CAMX-xoffset_-1,MY+12-CAMY-yoffset_+1,4, col, col );
 			var col = c_white;
 			draw_line_width_color(MX-pw-CAMX-xoffset_,MY+12-CAMY-yoffset_,MX+pw-CAMX-xoffset_,MY+12-CAMY-yoffset_,4, col, col );
