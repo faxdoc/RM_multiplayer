@@ -1,0 +1,15 @@
+image_index = random_fixed(image_index);
+image_speed = 0;
+duration = 40+random_fixed(60);
+base_a = (.2+random_fixed(.1))*.9;
+up_spd = (.2+random_fixed(.1))*.5;
+depth = -15;
+image_angle = random_range_fixed(-6,6);
+image_xscale = .5+random_fixed(.45);
+image_yscale = .5+random_fixed(.45);
+//image_blend = choose_fixed(c_ltgray,c_gray,c_gray,c_ltgray);
+image_blend = choose_fixed(c_white,c_white,c_white,c_ltgray);
+spin_spd = random_range_fixed(-1,1)*.5;
+image_alpha = 0;
+x += random_range_fixed(-2,2);
+y += random_range_fixed(-2,2);
