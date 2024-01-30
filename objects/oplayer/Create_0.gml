@@ -317,23 +317,31 @@ hit_freeze = 0;
 bounce_cooldown = 0;
 do_collision = true;
 hit_timer = 0;
+
 player_colour = c_aqua;
+player_palette = spalette_player_1;
+
 if ( player_id == 0 ) {
 	x = room_width * 0.45;
 	y = room_height/1.6;
 	player_colour = c_aqua;
+	player_palette = spalette_player_1;
+
 } else if ( player_id == 1 )  {
 	x = room_width * 0.5;
 	y = room_height/1.6;
 	player_colour = c_red;
+	player_palette = spalette_player_2;
 } else  if ( player_id == 2 )  {
 	x = room_width * 0.65;
 	y = room_height/1.6;
 	player_colour = c_lime;
+	player_palette = spalette_player_3;
 } else {
 	player_colour = c_white;
 	x = room_width * 0.6;
 	y = room_height/1.6;
+	player_palette = spalette_player_4;
 }
 
 view_enabled = true;
@@ -372,8 +380,8 @@ main_shader_palette_pointer	  = shader_get_sampler_index(main_shader, "palette" 
 main_shader_uvs_pointer		  = shader_get_uniform(main_shader,       "palette_uvs" );
 
 shader_set(main_shader);
-	var palette_sprite = splayer_palette;
-	g.palette_texture = sprite_get_texture(palette_sprite,0);
+	var palette_sprite = player_palette;
+	palette_texture = sprite_get_texture(palette_sprite,0);
 	var uvs = sprite_get_uvs(palette_sprite,0);
 	shader_set_uniform_f(	    main_shader_col_num_pointer,   sprite_get_height(palette_sprite)  );
 	shader_set_uniform_f(	    main_shader_pal_num_pointer,   sprite_get_width(palette_sprite) );
