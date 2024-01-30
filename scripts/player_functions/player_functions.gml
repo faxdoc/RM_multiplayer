@@ -688,9 +688,6 @@ function player_platform_col(vv,jump_press) {
 #macro fog_black	gpu_set_fog( true,  c_black , -1, 0 );
 #macro fog_custom	gpu_set_fog( true,  fog_color , -1, 0 );
 
-
-
-
 function scr_player_draw_guns(var_dir,bdur,bmax,bmin,y_off) {
 	var aidir = var_dir div 2 * 2;
 	var bwave;
@@ -714,9 +711,11 @@ function scr_player_draw_guns(var_dir,bdur,bmax,bmin,y_off) {
 
 			recoil_x *= 0.9;
 			recoil_y *= 0.9;
+			shader_set( player_palette );
 			draw_sprite_ext( splayer_hand_outer, 2, x-5*draw_xscale						 -recoil_x*.8,y-24+bwave+y_off-recoil_y*.8, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 1, x-5*draw_xscale-(var_dir/40)*draw_xscale-recoil_x*.6,y-24+bwave+y_off-recoil_y*.6, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 0, x-5*draw_xscale-(var_dir/30)*draw_xscale-recoil_x*.25,y-23+y_off+bwave-recoil_y*.25, draw_xscale, 1,   aidir*draw_xscale*1.2, image_blend, draw_alpha );
+			shader_reset();
 			
 		break;
 		#endregion
@@ -734,26 +733,18 @@ function scr_player_draw_guns(var_dir,bdur,bmax,bmin,y_off) {
 				var xx_ = x			  +LDX(gun_len*0.5,var_dir)*draw_xscale;
 				var yy_ = y-gun_height+LDY(gun_len*0.5,var_dir);
 			}
-			
-			//if ( knife_state == 0 ) {
-			//	if ( _rl > 0 && gun_fully_charged ) {
-			//		draw_sprite_ext( splayer_gun_pistol_reload,  min((_rl) div 6.5,6),x-4*draw_xscale-recoil_x,y-24+bwave+y_off-recoil_y, draw_xscale, 1, var_dir*draw_xscale, image_blend, draw_alpha );
-			//	} else {
-			//		draw_sprite_ext( splayer_gun_pistol,  0,x-4*draw_xscale-recoil_x,y-24+bwave+y_off-recoil_y, draw_xscale, 1, var_dir*draw_xscale, image_blend, draw_alpha );
-			//	}
-			//} else {
-			//	draw_sprite_ext( splayer_gun_pistol,  1,x-4*draw_xscale-recoil_x,y-24+bwave+y_off-recoil_y, draw_xscale, 1, var_dir*draw_xscale, image_blend, draw_alpha );
-			//}
-			
 			draw_sprite_ext( splayer_gun_pistol,  1,x-4*draw_xscale-recoil_x,y-24+bwave+y_off-recoil_y, draw_xscale, 1, var_dir*draw_xscale, image_blend, draw_alpha );
 			
 			bwave = round(wave(bmax,bmin,bdur,.9));
 
 			recoil_x *= 0.9;
 			recoil_y *= 0.9;
+			shader_set( player_palette );
 			draw_sprite_ext( splayer_hand_outer, 2, x-5*draw_xscale						 -recoil_x*.8,y-24+bwave+y_off-recoil_y*.8, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 1, x-5*draw_xscale-(var_dir/40)*draw_xscale-recoil_x*.6,y-24+bwave+y_off-recoil_y*.6, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 0, x-5*draw_xscale-(var_dir/30)*draw_xscale-recoil_x*.25,y-23+y_off+bwave-recoil_y*.25, draw_xscale, 1,   aidir*draw_xscale*1.2, image_blend, draw_alpha );
+			shader_reset();
+			
 		break;
 		#endregion
 		
@@ -770,9 +761,12 @@ function scr_player_draw_guns(var_dir,bdur,bmax,bmin,y_off) {
 
 			recoil_x *= 0.9;
 			recoil_y *= 0.9;
+			shader_set( player_palette );
 			draw_sprite_ext( splayer_hand_outer, 2, x-5*draw_xscale						 -recoil_x*.8,y-24+bwave+y_off-recoil_y*.8, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 1, x-5*draw_xscale-(var_dir/40)*draw_xscale-recoil_x*.6,y-24+bwave+y_off-recoil_y*.6, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 0, x-5*draw_xscale-(var_dir/30)*draw_xscale-recoil_x*.25,y-23+y_off+bwave-recoil_y*.25, draw_xscale, 1,   aidir*draw_xscale*1.2, image_blend, draw_alpha );
+			shader_reset();
+			
 		break;
 		
 		#endregion
@@ -792,9 +786,11 @@ function scr_player_draw_guns(var_dir,bdur,bmax,bmin,y_off) {
 
 			recoil_x *= 0.9;
 			recoil_y *= 0.9;
+			shader_set( player_palette );
 			draw_sprite_ext( splayer_hand_outer, 2, x-5*draw_xscale						 -recoil_x*.8,y-24+bwave+y_off-recoil_y*.8, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 1, x-5*draw_xscale-(var_dir/40)*draw_xscale-recoil_x*.6,y-24+bwave+y_off-recoil_y*.6, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 0, x-5*draw_xscale-(var_dir/30)*draw_xscale-recoil_x*.25,y-23+y_off+bwave-recoil_y*.25, draw_xscale, 1,   aidir*draw_xscale*1.2, image_blend, draw_alpha );
+			shader_reset();
 		break;
 		#endregion
 		
@@ -804,19 +800,17 @@ function scr_player_draw_guns(var_dir,bdur,bmax,bmin,y_off) {
 			var recoil_y = LDY(recoil,var_dir);
   
 			bwave = round(wave(bmax,bmin,bdur,.88));
-			//shader_set(shader);
-			//shader_set_uniform_f_array(shader_pointer,col_to_array(gun_col,1));
-			//var wep = WEP_DATA[current_weapon];
 			draw_sprite_ext( splayer_gun_small,  min(recoil*2,4),x-5*draw_xscale-recoil_x-(var_dir/80),y-24+bwave+y_off-recoil_y, draw_xscale, 1, aidir*draw_xscale, image_blend, draw_alpha );
 			shader_reset();
-			//start_palette();
 		
 			recoil_x *= 0.9;
 			recoil_y *= 0.9;
-				
+			shader_set( player_palette );
 			draw_sprite_ext( splayer_hand_outer_pistol,2,x-5*draw_xscale-(var_dir/80)						    -recoil_x*.8, y-24+bwave+y_off-recoil_y*.8, draw_xscale, 1,  aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer_pistol,1,x-5*draw_xscale-(var_dir/34)*draw_xscale-recoil_x*.6, y-24+bwave+y_off-recoil_y*.6, draw_xscale, 1,  aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer_pistol,0,x-5*draw_xscale-(var_dir/30)*draw_xscale-recoil_x*.25,y-23+bwave+y_off-recoil_y*.25, draw_xscale, 1, aidir*draw_xscale, image_blend, draw_alpha );
+			shader_reset();
+			
 		break;
 		#endregion
 		
@@ -826,22 +820,13 @@ function scr_player_draw_guns(var_dir,bdur,bmax,bmin,y_off) {
 			var recoil_y = LDY(recoil,var_dir);
 			
 			bwave = round( wave( bmax, bmin, bdur, 0.88 ));
-			//shader_set( shader );
-			//shader_set_uniform_f_array( shader_pointer, col_to_array( gun_col, 1 ) );
 			var wep = WEP_DATA[ current_weapon ];
 			var reload_ = RELOAD[ current_weapon ];
 			var rl_ = reload_ == 0 ? draw_alpha : draw_alpha-( reload_ / 40 ) + 0.5;
 			
 			if ( floor( reload_ ) == 25 ) {
-				
 				var xx_ = x			  +LDX(gun_len*0.1,var_dir)*draw_xscale;
 				var yy_ = y-gun_height+LDY(gun_len*0.1,var_dir);
-				//var b = ICD( xx_, yy_, depth, oblood );
-				//b.vsp = -3-random_fixed( 4 );
-				//b.hsp *= 0.5;
-				//b.sprite_index = sammo_alt;
-				//audio_play_sound_pitch( snd_reload_0, 0.85, RR( 0.96, 1.1 )*0.96, -1 );
-				//audio_play_sound_pitch( snd_reload_1, 0.85, RR( 0.96, 1.1 ),	  -1 );
 				
 			}
 			
@@ -860,22 +845,20 @@ function scr_player_draw_guns(var_dir,bdur,bmax,bmin,y_off) {
 				var lv_ = gun_fully_charged ? 0.7 : 1;
 				draw_sprite_ext(splayer_gun_sniper_charge,  0,x-4*draw_xscale-recoil_x,y-24+bwave+y_off-recoil_y, draw_xscale, 1, var_dir*draw_xscale, image_blend, draw_alpha );
 				draw_sprite_ext(splayer_gun_sniper_charge,  1,x-4*draw_xscale-recoil_x,y-24+bwave+y_off-recoil_y, draw_xscale, 1, var_dir*draw_xscale, image_blend, draw_alpha );
-				//blend_add;
 				draw_sprite_ext(splayer_gun_sniper_charge,  1,x-4*draw_xscale-recoil_x,y-24+bwave+y_off-recoil_y, draw_xscale, 1, var_dir*draw_xscale, image_blend, (gun_charge/120)*lv_ );
-				//blend_normal;
 			}
-			//+(current_time/dv_ mod 3.9 )
-			//+(current_time/dv_ mod 3.9 )
-			shader_reset();
-			//start_palette();
+			//shader_reset();
+			
 		
 			bwave = round( wave( bmax, bmin, bdur, 0.9 ) );
 			
 			recoil_x *= 0.9;
 			recoil_y *= 0.9;
+			shader_set( player_palette );
 			draw_sprite_ext( splayer_hand_outer, 2, x-5*draw_xscale						 -recoil_x*.8,y-24+bwave+y_off-recoil_y*.8, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 1, x-5*draw_xscale-(var_dir/40)*draw_xscale-recoil_x*.6,y-24+bwave+y_off-recoil_y*.6, draw_xscale, 1,     aidir*draw_xscale, image_blend, draw_alpha );
 			draw_sprite_ext( splayer_hand_outer, 0, x-5*draw_xscale-(var_dir/30)*draw_xscale-recoil_x*.25,y-23+y_off+bwave-recoil_y*.25, draw_xscale, 1,   aidir*draw_xscale*1.2, image_blend, draw_alpha );
+			shader_reset();
 		break;
 		#endregion
 		
