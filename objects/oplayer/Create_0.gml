@@ -362,3 +362,30 @@ lives_left = 4;
 if ( !instance_exists( orandom ) )  {
 	MAKES(orandom);
 }
+
+
+main_shader = shd_palette;
+main_shader_col_num_pointer   = shader_get_uniform(main_shader,       "col_num"     );
+main_shader_pal_num_pointer   = shader_get_uniform(main_shader,       "pal_num"     );
+main_shader_pal_index_pointer = shader_get_uniform(main_shader,       "pal_index"   );
+main_shader_palette_pointer	  = shader_get_sampler_index(main_shader, "palette"     );
+main_shader_uvs_pointer		  = shader_get_uniform(main_shader,       "palette_uvs" );
+
+shader_set(main_shader);
+	var palette_sprite = splayer_palette;
+	g.palette_texture = sprite_get_texture(palette_sprite,0);
+	var uvs = sprite_get_uvs(palette_sprite,0);
+	shader_set_uniform_f(	    main_shader_col_num_pointer,   sprite_get_height(palette_sprite)  );
+	shader_set_uniform_f(	    main_shader_pal_num_pointer,   sprite_get_width(palette_sprite) );
+	shader_set_uniform_f(	    main_shader_pal_index_pointer, 1 );
+	shader_set_uniform_f_array( main_shader_uvs_pointer,	   [uvs[0],uvs[1],uvs[2]-uvs[0],uvs[3]-uvs[1]]  );
+	
+	texture_set_stage( main_shader_palette_pointer, palette_texture );
+shader_reset();
+		
+		
+function start_palette() {
+	shader_set(main_shader);
+	texture_set_stage( main_shader_palette_pointer, palette_texture );
+}
+
