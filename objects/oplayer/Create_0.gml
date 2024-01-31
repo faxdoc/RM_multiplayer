@@ -4,6 +4,10 @@ can_input			= true;
 on_ground = false;
 jump_charge = 0;
 spawn_timer = 0;
+follow_other_player_cooldown = 60;
+
+get_back_life_cooldown = 0;
+get_back_life_cooldown_cap = 600;
 
 show_hp_timer = 0;
 gun_charging = false;
@@ -349,6 +353,7 @@ if ( !global.inital_select ) {
 hp = 150;
 hp_max = 150;
 lives_left = 4;
+
 
 #region shader
 

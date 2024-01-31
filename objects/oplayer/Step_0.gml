@@ -5,6 +5,14 @@ if (!random_inited ) {
 	if ( !instance_exists(orandom) ) {
 	 MAKES(orandom);
 	}
+	switch(instance_number(oplayer)) {
+	default: lives_left = 3; break;
+		case 3: lives_left = 2; break;
+		case 4: lives_left = 2; break;
+		
+	}
+
+
 	//if ( room == rinit ) {
 	//	room_goto(rtest);
 	//} else {
@@ -70,39 +78,78 @@ MY = _input.my;
 
 
 #region camera
-var sn_ = ( current_weapon == e_gun.sniper && gun_charge > 0 );
-mouse_bias =  sn_ ? 0.35 : 0.18;
-var mb_ = mouse_bias*1.3;
 
-var ld__ = player_id;
-var alt_t = undefined;
-with ( oplayer ) {
-	if ( player_id != ld__ && meta_state == 1 ) {
-		alt_t = id;
-	}
+switch(meta_state) {
+	case -7:
+	
+		if ( follow_other_player_cooldown ) {
+			follow_other_player_cooldown--;
+		} else {
+			var ld__ = player_id;
+			var alt_t = undefined;
+			with ( oplayer ) {
+				if ( player_id != ld__ && lives_left > 0 ) {
+					alt_t = id;
+				}
+			}
+			if ( alt_t != undefined ) {
+				var cx_ = alt_t.x;
+				var cy_ = alt_t.y;
+				camera_x = lerp( camera_x, cx_-GW/2, 0.11 );
+				camera_y = lerp( camera_y, cy_-GH/2, 0.11 );
+
+				if ( camera_clamp_pos ) {
+					camera_x = clamp( camera_x, 0, room_width -GW );
+					camera_y = clamp( camera_y, 0, room_height-GH );
+				}
+
+				if ( player_local ) {
+					camera_set_view_pos( view_camera[ 0 ], floor( camera_x ), floor( camera_y ) );
+				}
+		
+			}
+		}
+		//if ( get_back_life_cooldown++ > get_back_life_cooldown_cap ) {
+		//	get_back_life_cooldown_cap += 600;
+		//	get_back_life_cooldown = 0;
+		//}
+		
+	break;
+	default:
+		var sn_ = ( current_weapon == e_gun.sniper && gun_charge > 0 );
+		mouse_bias =  sn_ ? 0.35 : 0.18;
+		var mb_ = mouse_bias*1.3;
+
+		var ld__ = player_id;
+		var alt_t = undefined;
+		with ( oplayer ) {
+			if ( player_id != ld__ && meta_state == 1 ) {
+				alt_t = id;
+			}
+		}
+
+		if ( alt_t != undefined ) {
+			var cx_ = lerp(x,alt_t.x,0.03);
+			var cy_ = lerp(y,alt_t.y,0.03);
+		} else {
+			var cx_ = x;
+			var cy_ = y;
+		}
+
+
+		camera_x = lerp( camera_x, round( lerp( cx_,    MX, mb_ ) -(GW/2) ), 0.08 );
+		camera_y = lerp( camera_y, round( lerp( cy_-32, MY, mb_ ) -(GH/2) ), 0.08 );
+
+		if ( camera_clamp_pos ) {
+			camera_x = clamp( camera_x, 0, room_width -GW );
+			camera_y = clamp( camera_y, 0, room_height-GH );
+		}
+
+		if ( player_local ) {
+			camera_set_view_pos( view_camera[ 0 ], floor( camera_x ), floor( camera_y ) );
+		}
+	break;
 }
-
-if ( alt_t != undefined ) {
-	var cx_ = lerp(x,alt_t.x,0.03);
-	var cy_ = lerp(y,alt_t.y,0.03);
-} else {
-	var cx_ = x;
-	var cy_ = y;
-}
-
-
-camera_x = lerp( camera_x, round( lerp( cx_,    MX, mb_ ) -(GW/2) ), 0.08 );
-camera_y = lerp( camera_y, round( lerp( cy_-32, MY, mb_ ) -(GH/2) ), 0.08 );
-
-if ( camera_clamp_pos ) {
-	camera_x = clamp( camera_x, 0, room_width -GW );
-	camera_y = clamp( camera_y, 0, room_height-GH );
-}
-
-if ( player_local ) {
-	camera_set_view_pos( view_camera[ 0 ], floor( camera_x ), floor( camera_y ) );
-}
-
 #endregion
 
 #region meta state

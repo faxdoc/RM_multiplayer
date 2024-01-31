@@ -266,10 +266,10 @@ switch(current_weapon) {
 
 			var t = ICD( xx, yy, -1, ogrenade );
 			t.bounce = .9;
-			t.hsp = LDX(7+gun_charge/5,drr) * 0.82;
-			t.vsp = LDY(7+gun_charge/5,drr) * 0.82;
+			t.hsp = LDX(7+gun_charge/5,drr) * 0.82 * 0.94;
+			t.vsp = LDY(7+gun_charge/5,drr) * 0.82 * 0.94;
 			t.grav = 0;
-			t.duration *= 0.96;
+			t.duration *= 1;//0.96*1.05;
 			t.explode_on_ground = true;
 			t.explotion_size = 1;
 			t.explode_on_contact = true;

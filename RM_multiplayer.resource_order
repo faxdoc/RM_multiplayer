@@ -12,7 +12,6 @@
     {"name":"Rooms","order":7,"path":"folders/Rooms.yy",},
     {"name":"Shaders","order":5,"path":"folders/Shaders.yy",},
     {"name":"Sounds","order":4,"path":"folders/Sounds.yy",},
-    {"name":"sound","order":1,"path":"folders/Sounds/sound.yy",},
     {"name":"gameplay","order":1,"path":"folders/Sounds/sound/gameplay.yy",},
     {"name":"movement","order":2,"path":"folders/Sounds/sound/gameplay/movement.yy",},
     {"name":"player","order":1,"path":"folders/Sounds/sound/gameplay/player.yy",},
@@ -52,6 +51,7 @@
     {"name":"Particle Systems","order":6,"path":"folders/unused/Particle Systems.yy",},
     {"name":"Sequences","order":2,"path":"folders/unused/Sequences.yy",},
     {"name":"Timelines","order":1,"path":"folders/unused/Timelines.yy",},
+    {"name":"music","order":1,"path":"folders/Sounds/music.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"sdot_wave","order":13,"path":"sprites/sdot_wave/sdot_wave.yy",},
@@ -111,6 +111,7 @@
     {"name":"oblood","order":2,"path":"objects/oblood/oblood.yy",},
     {"name":"scr_init","order":3,"path":"scripts/scr_init/scr_init.yy",},
     {"name":"splayer_legs_run","order":1,"path":"sprites/splayer_legs_run/splayer_legs_run.yy",},
+    {"name":"snd_music_gameplay","order":1,"path":"sounds/snd_music_gameplay/snd_music_gameplay.yy",},
     {"name":"sgun_blink","order":6,"path":"sprites/sgun_blink/sgun_blink.yy",},
     {"name":"sprojectile_old","order":5,"path":"sprites/sprojectile_old/sprojectile_old.yy",},
     {"name":"overlet_object","order":4,"path":"objects/overlet_object/overlet_object.yy",},
