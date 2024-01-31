@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_init",
+  "name": "player_main_behaviour",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
