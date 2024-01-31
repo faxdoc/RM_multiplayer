@@ -12,7 +12,13 @@ switch( meta_state ) {
 				st_++;
 			}
 		}
-		if ( st_ <= 1 ) meta_state = e_meta_state.round_end;
+		if ( st_ <= 1 ) {
+			meta_state = e_meta_state.round_end;
+			if ( audio_is_playing( global.music ) ) {
+				audio_sound_gain( global.music, 0, 0 );
+			}
+		}
+		
 	break;
 	case e_meta_state.level_select:
 	case e_meta_state.round_end:
@@ -52,20 +58,27 @@ switch(meta_state) {
 			meta_state = e_meta_state.main;
 			state = e_player.normal;
 			INVIS = 60;
+			if ( !audio_is_playing( global.music ) ) {
+				global.music = audio_play_sound( snd_music_gameplay, 0, true );
+				audio_sound_gain( global.music, 0, 0 );
+				audio_sound_gain( global.music, 0.7, 1200 );	
+			}
 		}
+		
 	break;
 	case e_meta_state.respawn:
 		hp = hp_max;
 		INVIS = 30; 
 		if ( spawn_timer++ > 30 ) {
 			spawn_timer = 0;
-			meta_state = e_meta_state.main;
-			state = e_player.normal;
-			INVIS = 60;
+			meta_state	= e_meta_state.main;
+			state		= e_player.normal;
+			INVIS		= 60;
 		}
 		damage_taken = 0;
 		pre_hp = hp;
 		draw_alpha = 1;
+		
 	break;
 	#region main
 	case e_meta_state.main:
@@ -96,7 +109,9 @@ switch(meta_state) {
 			shoot_delay = 0;
 			
 		}
+		
 		INVIS = 60;
+		
 		if ( spawn_timer++ > 90 ) {
 			hsp = 0;
 			vsp = 0;

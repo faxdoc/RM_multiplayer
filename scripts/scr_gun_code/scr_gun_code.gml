@@ -42,13 +42,13 @@ var i = 0; repeat(weapon_number) {
 
 if ( CLIP[cg] != 99 ) {
 	if( CLIP[cg] == 0 ){
-		//if( K1P ) audio_play_sound_pitch( snd_shoot_no_bullets, RR(.8,1),RR(.95,1.1),-1);
+		if( K1P ) audio_play_sound_pitch( snd_shoot_no_bullets, RR(.8,1),RR(.95,1.1),-1);
 		k1_ = false;
 		k1p_ = false;
 	}
 } else { 
 	if ( RELOAD[cg] > 0 ) {
-		//if k1p_ audio_play_sound_pitch( snd_shoot_no_bullets, RR(.8,1),RR(.95,1.1),-1);
+		if k1p_ audio_play_sound_pitch( snd_shoot_no_bullets, RR(.8,1),RR(.95,1.1),-1);
 		k1_  = false;
 		k1p_ = false;
 	}
@@ -86,8 +86,8 @@ switch(current_weapon) {
 				scr_set_size(b,.9);
 				bullet_effects_general(sammo);
 				effect_general(.7,4,2);
-				//audio_play_sound_pitch(snd_railgun_shooting,.8,.9+random_fixed(.1),1);
-				//audio_play_sound_pitch(snd_shoot_1,.25,.95+random_fixed(.1),1);
+				audio_play_sound_pitch(snd_railgun_shooting,.8,.9+random_fixed(.1),1);
+				audio_play_sound_pitch(snd_shoot_1,.25,.95+random_fixed(.1),1);
 				CLIP[cg]--;
 				RELOAD[cg] = 76;
 				shoot_delay = 15;
@@ -107,7 +107,7 @@ switch(current_weapon) {
 		if( RELOAD[cg] <= 0 ) CLIP[cg] = 2;
 		
 		if( CLIP[cg] == 0 ){
-			//if k1p_ audio_play_sound_pitch( snd_shoot_no_bullets, RR(.8,1),RR(.95,1.1),-1);
+			if k1p_ audio_play_sound_pitch( snd_shoot_no_bullets, RR(.8,1),RR(.95,1.1),-1);
 			exit;
 		}
 			if ( k1p_ ) {
@@ -130,14 +130,14 @@ switch(current_weapon) {
 						}
 					}
 				}
-				repeat(2) {
-					//audio_play_sound_pitch( snd_railgun_shooting, 0.8, 0.95 + random_fixed( 0.1 ), 1 );
-					//audio_play_sound_pitch( snd_shoot_1, 0.25, 0.85+random_fixed( 0.1 ), 1 );
-				}
+				//repeat(2) {
+					audio_play_sound_pitch( snd_railgun_shooting, 0.8, 0.95 + random_fixed( 0.1 ), 1 );
+					audio_play_sound_pitch( snd_shoot_1, 0.25, 0.85+random_fixed( 0.1 ), 1 );
+				//}
 				gun_fully_charged = true;
 				gun_charge = 20;
 				if ( charge_sound != -1 ) {
-					//audio_stop_sound(charge_sound);
+					audio_stop_sound(charge_sound);
 					charge_sound = -1;
 				}
 				gun_len = 28;
@@ -173,7 +173,7 @@ switch(current_weapon) {
 		var charge_cap = 24;
 		if( RELOAD[cg] <= 0 )CLIP[cg] = max_ammo;
 		if( CLIP[cg] == 0 ) {
-			//if( k1p_ )audio_play_sound_pitch( snd_shoot_no_bullets, RR(.8,1),RR(.95,1.1),-1);
+			if( k1p_ )audio_play_sound_pitch( snd_shoot_no_bullets, RR(.8,1),RR(.95,1.1),-1);
 			shoot_delay = 0;
 			gun_charge = 0;
 			exit;
@@ -181,9 +181,9 @@ switch(current_weapon) {
 		//LOG_NUMBER("fully_charged: ", gun_fully_charged );
 		gun_len = 30;		
 		if( K1 ) {
-			//if( gun_charge == 0 ){
-			//	charge_sound = audio_play_sound_pitch(snd_railgun_charge,.75,.85,0);
-			//}
+			if( gun_charge == 0 ){
+				audio_play_sound_pitch(snd_railgun_charge,.75,.85,0);
+			}
 			shoot_delay = 6;
 			gun_charge++;
 			if( gen_col(x,y+1) ) hsp *= 0.92;
@@ -203,8 +203,10 @@ switch(current_weapon) {
 				audio_stop_sound(charge_sound);
 				charge_sound = -1;
 			}
-			//repeat( 2 ) audio_play_sound_pitch(snd_shoot_0,0.55,0.95+random_fixed(.1),1);
-			//audio_play_sound_pitch( snd_railgun_charge_done, 1, .9, 0 );
+			//repeat( 2 ) 
+			audio_play_sound_pitch(snd_shoot_0,0.55,0.95+random_fixed(.1),1);
+			//
+			audio_play_sound_pitch( snd_railgun_charge_done, 1, .9, 0 );
 			y -= 20;
 			repeat( 5 ) MAKES( ospark_alt );
 			y += 20;
@@ -214,11 +216,11 @@ switch(current_weapon) {
 		
 		if ( gun_charge mod 5 == 0 ) {
 			if ( gun_fully_charged ) {
-				//audio_play_sound_pitch( snd_shoot_1, 0.85, 1.15 + random_fixed( 0.1 ),1);
-				//audio_play_sound_pitch( snd_shoot_2, 0.75, 1.35 + random_fixed( 0.1 ),1);
+				audio_play_sound_pitch( snd_shoot_1, 0.85, 1.15 + random_fixed( 0.1 ),1);
+				audio_play_sound_pitch( snd_shoot_2, 0.75, 1.35 + random_fixed( 0.1 ),1);
 			} else {
-				//audio_play_sound_pitch( snd_shoot_1, 0.75, 1.00 + random_fixed( 0.1 ),1);
-				//audio_play_sound_pitch( snd_shoot_2, 0.65, 1.15 + random_fixed( 0.1 ),1);
+				audio_play_sound_pitch( snd_shoot_1, 0.75, 1.00 + random_fixed( 0.1 ),1);
+				audio_play_sound_pitch( snd_shoot_2, 0.65, 1.15 + random_fixed( 0.1 ),1);
 			}
 			//gun_general(4,60,9);
 			var b = bullet_general( (gun_fully_charged ? 7 : 4)*0.35,30, gun_fully_charged ? sbullet_bolt_white : sbullet_bolt,0);
@@ -252,7 +254,7 @@ switch(current_weapon) {
 		if( RELOAD[cg] <= 0 )CLIP[cg] = 1;
 		
 		if( CLIP[cg] == 0 ){
-			//if k1p_ audio_play_sound_pitch( snd_shoot_no_bullets, RR(.8,1),RR(.95,1.1),-1);
+			if k1p_ audio_play_sound_pitch( snd_shoot_no_bullets, RR(.8,1),RR(.95,1.1),-1);
 			exit;
 		}
 		
@@ -283,9 +285,8 @@ switch(current_weapon) {
 			t.parent = id;
 			
 				
-			//audio_play_sound_pitch(snd_railgun_shooting,.8,.85+random_fixed(.1),1);
-			//audio_play_sound_pitch(snd_railgun_shooting,.8,.85+random_fixed(.1),1);
-			//audio_play_sound_pitch(snd_shoot_1,.25,.75+random_fixed(.1),1);
+			audio_play_sound_pitch(snd_railgun_shooting,0.8,.85+random_fixed(.1),1);
+			audio_play_sound_pitch(snd_shoot_1,0.25,0.75+random_fixed(.1),1);
 						
 			CLIP[cg]--;
 			RELOAD[cg] = 105;
@@ -308,8 +309,8 @@ switch(current_weapon) {
 			gun_charge += 1.15;
 			gun_charge = min(gun_charge,max_charge);
 			if ( gun_charge == max_charge && pre_charge != max_charge ) {
-				//audio_play_sound_pitch( snd_reload_1,			0.9, 0.85, 0 );
-				//audio_play_sound_pitch( snd_railgun_charge_done,  1, 0.9,  0 );
+				audio_play_sound_pitch( snd_reload_1,			0.9, 0.85, 0 );
+				audio_play_sound_pitch( snd_railgun_charge_done,  1, 0.9,  0 );
 				gun_fully_charged = true;
 				if ( charge_sound != -1 ) {
 					audio_stop_sound(charge_sound);
@@ -366,8 +367,8 @@ switch(current_weapon) {
 				bullet_effects_general(undefined);
 				gun_charge = -1;
 				RELOAD[cg] = 125;
-				//audio_play_sound_pitch(snd_shoot_0,0.95, 1.05+random_fixed(.1), 1 );
-				//audio_play_sound_pitch(snd_shoot_2, 0.4,  .95+random_fixed(.1), 1 );
+				audio_play_sound_pitch(snd_shoot_0,0.95, 1.05+random_fixed(.1), 1 );
+				audio_play_sound_pitch(snd_shoot_2, 0.4,  .95+random_fixed(.1), 1 );
 				if ( charge_sound != -1 ) {
 					audio_stop_sound(charge_sound);
 					charge_sound = -1;
@@ -439,9 +440,9 @@ switch(current_weapon) {
 				
 			bullet_effects_general( sammo_small );
 				
-			//audio_play_sound_pitch( snd_railgun_shooting, 0.8, 0.85 + random_fixed(0.1), 1 );
-			//audio_play_sound_pitch( snd_railgun_shooting, 0.8, 0.85 + random_fixed(0.1), 1 );
-			//audio_play_sound_pitch( snd_shoot_1, 0.25, 0.75 + random_fixed( 0.1 ), 1 );
+			audio_play_sound_pitch( snd_railgun_shooting, 0.8, 0.85 + random_fixed(0.1), 1 );
+			audio_play_sound_pitch( snd_railgun_shooting, 0.8, 0.85 + random_fixed(0.1), 1 );
+			audio_play_sound_pitch( snd_shoot_1, 0.25, 0.75 + random_fixed( 0.1 ), 1 );
 						
 			CLIP[cg]--;
 			effect_general(3,12,6);

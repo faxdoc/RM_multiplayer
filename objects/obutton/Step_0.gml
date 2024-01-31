@@ -15,7 +15,7 @@ if ( mouse_check_button_pressed(mb_left) ) {
 		//var rl_ = [rtest,rtower,rflat,rplatform,rceiling,ropen];
 
 		//var rm__ = rl_[ floor(mouse_x + omultiplayer_control_old.intimer ) mod ( array_length(rl_)-1 )];
-		if audio_is_playing(global.music) audio_stop_sound(global.music);
+		//if audio_is_playing(global.music) audio_stop_sound(global.music);
 		omultiplayer_manager.game_has_started = true; 
 		
 		switch(image_index) {

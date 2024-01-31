@@ -33,8 +33,8 @@ if ( flash ) gpu_set_fog( true, flash_col, -1, 0 );
 #region info render
 
 var intcol_ =  merge_colour(c_ltgray, player_colour, 0.5 );
-var fx_ = floor(x);
-var fy_ = floor(y);
+var fx_ = floor( x );
+var fy_ = floor( y );
 if (!grenade_cooldown && knife_state == 0 ) {
 	draw_sprite_ext( splayer_grenade_silhouete, 0, fx_+12, fy_-48, 1, 1, 0, intcol_, 1 );
 }

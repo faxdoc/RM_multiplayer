@@ -382,25 +382,23 @@ function start_palette() {
 	shader_set(shd_palette);
 	texture_set_stage( main_shader_palette_pointer, palette_texture );
 }
-
-
 first_looser = undefined;
 random_inited = false;
 
 #endregion
 
 switch(player_id) {
-	default: 
+	default:
 		player_colour = c_aqua;   
 		x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,   0) ); 
 		y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom, 0.5) );  
 	break;
-	case 1:  
+	case 1: 
 		player_colour = c_red;    
 		x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,   1) ); 
 		y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom,0.5) );  
 	break;
-	case 2:  
+	case 2: 
 		player_colour = c_lime;   
 		x = floor( lerp( ospawn_box.bbox_left,ospawn_box.bbox_right,0.33 ) ); 
 		y = floor( lerp( ospawn_box.bbox_top, ospawn_box.bbox_bottom,0.5 ) );  
@@ -431,3 +429,10 @@ enum e_meta_state {
 	level_select = 6,
 	
 }
+
+#region sound init
+charge_sound = -1;
+
+
+#endregion
+

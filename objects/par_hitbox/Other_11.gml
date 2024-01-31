@@ -15,7 +15,7 @@ if (bounces && move_type = e_movetype.hvsp) {
 		angle_spin += random_range_fixed(-2,2);
 		repeat(3) ICD(x,y,0,ospark_alt);
 		if (play_sound_cooldown <= 0) {
-			//audio_play_sound_pitch_falloff( choose_fixed(snd_grenade_bounce,snd_grenade_bounce_alt), RR( .7, .9 )*.6, RR(.95,1.05), 0 );
+			audio_play_sound_pitch_falloff( choose_fixed(snd_grenade_bounce,snd_grenade_bounce_alt), RR( .7, .9 )*.6, RR(.95,1.05), 0 );
 			play_sound_cooldown = 15;
 		}
 		if ( bounces_left > 0 ) {
@@ -35,7 +35,7 @@ if (bounces && move_type = e_movetype.hvsp) {
 		angle_spin += random_range_fixed(-2,2);
 		repeat(3) ICD(x,y,0,ospark_alt);
 		if (play_sound_cooldown <= 0) {
-			//audio_play_sound_pitch_falloff( choose_fixed(snd_grenade_bounce,snd_grenade_bounce_alt), RR( .7, .9 )*.6, RR(.95,1.05), 0 );
+			audio_play_sound_pitch_falloff( choose_fixed(snd_grenade_bounce,snd_grenade_bounce_alt), RR( .7, .9 )*.6, RR(.95,1.05), 0 );
 			play_sound_cooldown = 15;
 		}
 		if ( bounces_left > 0 ) {
@@ -112,7 +112,7 @@ if( do_hit ){
 				image_blend = parent.player_colour;
 			}
 				
-			//audio_play_sound_pitch_falloff(snd_shoot_bullet_alt,.5+random_fixed(.1),.9+random_fixed(.1),0);
+			audio_play_sound_pitch_falloff(snd_shoot_bullet_alt,.5+random_fixed(.1),.9+random_fixed(.1),0);
 		}
 			
 	} else {
@@ -120,7 +120,7 @@ if( do_hit ){
 		destroy_function();
 		IDD();
 		step_number = 0;
-		//audio_play_sound_pitch_falloff(snd_shoot_bullet_alt,.5+random_fixed(.1),.9+random_fixed(.1),0);
+		audio_play_sound_pitch_falloff(snd_shoot_bullet_alt,.5+random_fixed(.1),.9+random_fixed(.1),0);
 	}
 }
 

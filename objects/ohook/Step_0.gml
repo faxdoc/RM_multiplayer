@@ -46,7 +46,7 @@ if (state == 0) {
 			//repeat(5) {
 			//	ICD(xprevious,yprevious,0,ospark_alt).col = c_orange;
 			//}
-			//audio_play_sound_pitch_falloff(snd_blob_hit_wall, .6, .1+random_fixed(.05), 0 );
+			audio_play_sound_pitch_falloff(snd_blob_hit_wall, .6, .1+random_fixed(.05), 0 );
 		} else {
 			general_wall_col();
 		}
@@ -63,6 +63,8 @@ if (state == 0) {
 	
 	if ( place_meeting(x,y,oplayer) ) {
 		//show_message("a");
+		audio_play_sound_pitch_falloff(snd_blob_hit_wall, .6, .2+random_fixed(.05), 0 );
+		
 		var t = instance_place(x,y,oplayer);
 		if ( !t.INVIS && t != parent ) {
 			update_wire_pos();
@@ -103,7 +105,7 @@ if (state == 0) {
 		v2.oldy -= parent.vsp;
 		
 	}
-		//	audio_play_sound_pitch_falloff(snd_blob_hit_wall, .6, .2+random_fixed(.05), 0 );
+		//	
 		//	with oplayer {
 		//		if hook_sound != -1 {
 		//			audio_stop_sound(hook_sound);
@@ -118,32 +120,6 @@ if (state == 0) {
 	
 	#endregion
 	
-	#region spin grid
-	//if ( state == 0 && place_meeting(x,y,ospin_grid) || alt_spin ) {
-	//	var t = instance_nearest(x,y,ospin_grid);
-	//	x = t.x;
-	//	y = t.y;
-	//	update_wire_pos();
-	//	rail_dir = t.image_angle+90;
-	//	hooking_type = 2;
-	//	state = 1;
-	//	var vl = wire.vertex;
-	//	var n = wire.number-1;
-	//	var v1 = vl[0];
-	//	var v2 = vl[n];
-	//	wire.line_len = ( point_distance(x,y,oplayer.x,oplayer.y-24) / (1+n) )*.8;
-		
-	//	v2.oldx -= oplayer.hsp;
-	//	v2.oldy -= oplayer.vsp;
-	//	audio_play_sound_pitch_falloff(snd_blob_hit_wall, .6, .2+random_fixed(.05), 0 );
-	//	with oplayer {
-	//		if hook_sound != -1 {
-	//			audio_stop_sound(hook_sound);
-	//			hook_sound = -1;
-	//		}
-	//	}
-	//}
-	#endregion 
 	
 	#region hook dragger
 	if ( state == 0 && place_meeting(x,y,ohook_dragger_still) ) {
@@ -161,7 +137,7 @@ if (state == 0) {
 		
 		v2.oldx -= parent.hsp;
 		v2.oldy -= parent.vsp;
-		//audio_play_sound_pitch_falloff(snd_blob_hit_wall, .6, .2+random_fixed(.05), 0 );
+		audio_play_sound_pitch_falloff(snd_blob_hit_wall, .6, .2+random_fixed(.05), 0 );
 		with ( parent ) {
 			if hook_sound != -1 {
 				audio_stop_sound(hook_sound);
@@ -190,7 +166,7 @@ if (state == 0) {
 	#region hook object
 	if ( hooking_type == 1 ) {
 		if( !instance_exists( hook_object ) ) {
-			//detach_sound();
+			detach_sound();
 			if ( instance_exists( wire ) ) {
 				IDD(wire);
 			}
@@ -208,50 +184,6 @@ if (state == 0) {
 			//	hook_object.bounce_cooldown = 30;
 			//}
 			
-			//if ( hooking_enemy && give_mana && mana_given_timer < 76 ) {
-				
-			//	if ( mana_given_timer++ == 70 && !mana_given && hook_object.mana_given == false ) {
-			//		mana_given = true;
-			//		audio_play_sound_pitch_falloff( snd_cute_highpitch, 1.2, 1.3, 0 );
-			//		repeat(9) {
-			//			with( MAKES(omp_particle)) {
-			//				start_delay *= .5;
-			//				value = 1;
-			//			}
-			//		}
-					
-			//		hook_object.mana_given = true;
-			//		wire.start_col         = c_yellow;//merge_color( c_yellow, merge_color(c_darkest,c_black,.4), RR( .2, .7 ) );
-			//		wire.end_col           = c_yellow;
-			//		SHAKE += 2;
-			//		scr_hitlag( 90 );
-			//		repeat( RR( 3, 5 ) ) {
-			//			var dr = random_fixed(360);
-			//			var len = irandom_fixed(3);
-			//			var eff = ICD(x+LDX(len,dr),y-21+LDY(len,dr),2,osmoke_fx);
-			//			eff.dir = dr;
-			//			eff.image_index = 0;
-			//			eff.image_blend = choose_fixed(c_aqua,c_blue);
-			//			eff.spd *= .5;
-			//			eff.duration *= .5; 
-			//			eff.size *= .5;
-			//		}
-			//		if( !hook_object.invis ){
-			//			var val_ = min( 45, hook_object.hp*.2 );
-			//			hook_object.hp -= val_;
-			//			with( hook_object )event_perform(ev_other,ev_user0);
-			//		}
-			//	} else if ( mana_given_timer == 75 ) {
-			//		wire.start_col = c_orange;
-			//		wire.end_col = merge_color(c_darkest,c_black,.4);
-					
-			//	} else if ( mana_given_timer < 70 && hook_object.mana_given == false ) {
-			//		wire.start_col = merge_color( c_fuchsia, merge_color(c_darkest,c_purple,.8), RR( .1, .5 ) );
-			//		wire.end_col   = merge_color( c_fuchsia, merge_color(c_darkest,c_purple,.4), RR( .5,  1 ) );
-			//	}
-				
-			//}
-
 			var vl = wire.vertex;
 			var vert = vl[0];
 			

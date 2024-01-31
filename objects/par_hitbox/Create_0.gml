@@ -193,8 +193,8 @@ destroy_function = function() {
 				parent.vsp *= 0.25;
 				parent.vsp = -4;
 			}
-			//audio_play_sound_pitch_falloff(choose_fixed(snd_explotion_1,snd_explotion_2),.4,.6+random_fixed(.25),4);
-			//audio_play_sound_pitch_falloff(choose_fixed(snd_explotion_1,snd_explotion_2),.4,.5+random_fixed(.15),4);
+			audio_play_sound_pitch_falloff(choose_fixed(snd_explotion_1,snd_explotion_2),.4,.6+random_fixed(.25),4);
+			audio_play_sound_pitch_falloff(choose_fixed(snd_explotion_1,snd_explotion_2),.4,.5+random_fixed(.15),4);
 		
 			var n = 4+irandom_fixed(3);
 			var r = 20;
@@ -238,7 +238,7 @@ destroy_function = function() {
 		
 			//SHAKE+=4;
 		
-			//	audio_play_sound_pitch_falloff(snd_explotion_0,.5,.6+random_fixed(.25),4);
+			audio_play_sound_pitch_falloff(snd_explotion_0,0.5,0.6+random_fixed(.25),4);
 			//} else {
 			//	//var bcl = TRINK[13] ? c_olive : c_white;
 			//	var do_blend =  TRINK[13];

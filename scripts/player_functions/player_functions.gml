@@ -173,7 +173,7 @@ function player_throw_grenade() {
 		if ( knife_timer == 6 ) {
 	
 			#region Fern grenade
-			//audio_play_sound_pitch(snd_throw_grenade, RR(.9,1)*0.8, RR(.95,1.1), 0 );
+			audio_play_sound_pitch(snd_throw_grenade, RR(.9,1)*0.8, RR(.95,1.1), 0 );
 			var dmg_mult = 1;
 			
 			blink_state = 2;
@@ -240,7 +240,7 @@ function player_charge_jump() {
 		jump_charge = min(jump_charge_max,jump_charge+jump_charge_spd);
 		if( jump_charge == jump_charge_spd) {
 			//if( audio_is_playing(snd_charging_jump_new) )audio_stop_sound(snd_charging_jump_new);
-			//audio_play_sound_pitch(snd_charging_jump_new,RR(.8,.9), 1,0);
+			audio_play_sound_pitch(snd_charging_jump_new,RR(.8,.9), 1,0);
 		}
 		if (jump_charge != jump_charge_max) {
 			if ( jump_charge > 4 ) {
@@ -277,17 +277,17 @@ function player_jump() {
 	if ( jump_charge_buffer == 0 ) {
 		vsp = -jump_pwr*lerp( WORLD_GRAV, 1, .3 );
 		land_y = 0;
-		//audio_play_sound_pitch(snd_jump,.65,RR(.95,1.05),0);
+		audio_play_sound_pitch(snd_jump,.65,RR(.95,1.05),0);
 	} else {
-		vsp = -( jump_pwr + 3 ) * lerp( WORLD_GRAV, 1, 0.3 );
+		vsp = -( jump_pwr + 3 );
 		land_y = 0;
 		play_walk_sound( 1.2, 0.9 );
 		
 		//repeat(14)ICD( x, y, -1,  osmoke_fx );
 		//repeat(4) ICD( x, y, -1, ospark_alt );
 		//repeat(2) ICD( x, y, -1,     osmoke );
-		//SHAKE++;
-		//audio_play_sound_pitch(snd_charged_jump,.75,RR(.9,1.1),0);
+		SHAKE++;
+		audio_play_sound_pitch(snd_charged_jump,0.75,RR(.9,1.1),0);
 	}
 	
 	jump_buffer = 0;
@@ -310,12 +310,9 @@ function play_walk_sound(vol_,pt_) {
 }
 
 function audio_play_sound_pitch_falloff(sound,volume,pitch,priority,falloff_ = 300 ) {
-	
-	if !instance_exists(oplayer) exit;	
-	
-	var falloff_volume = 0.3;//clamp( 1.4-(point_distance(x,y,oplayer.x,oplayer.y)/falloff_), 0, 1 );
-	//var peak_vol = audio_sound_get_gain(sound) * volume * BASE_SOUND * falloff_volume;// * VOLUME_DATA[? sound];
-	var peak_vol = audio_sound_get_gain(sound) * volume * falloff_volume;// * VOLUME_DATA[? sound];
+	if !instance_exists(oplayer) exit;
+	//var falloff_volume = 0.3;
+	var peak_vol = audio_sound_get_gain(sound) * volume * 0.3;
 		
 	var snd = audio_play_sound( sound, priority, false );
 	audio_sound_gain( snd, peak_vol, 0 );
@@ -422,7 +419,7 @@ function player_land_on_ground() {
 	//fall on ground sound
 	if ( gen_col( x, y + 2 + vsp ) && !gen_col( x, y + 2 ) && vsp > 0 ) {
 		//play_walk_sound( 1.2, 0.8 );
-		//audio_play_sound_pitch( snd_land, RR( 0.9, 1 ), RR( 0.9, 1.1 ), 0 );
+		audio_play_sound_pitch( snd_land, RR( 0.9, 1 ), RR( 0.9, 1.1 ), 0 );
 		////ICD( x, y,   0, odistortion_ball_fall );
 		
 		////ICD( x, y+4, 0, osmoke_ball );
@@ -562,7 +559,7 @@ function player_ledge_detect(hh,jump_hold) {
 					IDD(ohook);
 				}
 				draw_xscale = hh;
-				//audio_play_sound_pitch(snd_ledge_grab, .85, RR(.9,1.1)+.05, 0);
+				audio_play_sound_pitch(snd_ledge_grab, 0.85, RR(.9,1.1)+.05, 0);
 			//otherwise if speed is high drop input
 			} else if ( vsp <= -4 && state == e_player.normal ) {
 				if ( substate == 1 ) {
@@ -579,7 +576,7 @@ function player_ledge_detect(hh,jump_hold) {
 				can_hook_delay = 0;
 				state = e_player.ledge;
 				do_wings = false;
-				//audio_play_sound_pitch(snd_ledge_grab, .8, RR(.9,1.1), 0);
+				audio_play_sound_pitch(snd_ledge_grab, .8, RR(.9,1.1), 0);
 				var dl_ = id;
 				with ( ohook ) {
 					if ( parent == dl_ ) IDD();
@@ -679,7 +676,7 @@ function player_platform_col(vv,jump_press) {
 		jump_buffer = 0;
 		y++;
 		vsp += 1.8;
-		//audio_play_sound_pitch( snd_fall_trough_platforms, 1, RR(.95,1.1), 0 );
+		audio_play_sound_pitch( snd_fall_trough_platforms, 1, RR(.95,1.1), 0 );
 	}
 	mask_index = crouching ? splayer_mask_crouch : splayer_mask;
 }

@@ -85,8 +85,8 @@ destroy_function = function() {
 			}
 		}
 	}
-	if ( do_explotion_sound ) {
-		//audio_play_sound_pitch_falloff( snd_explotion_1, 0.3, RR( 1.7, 2 ), 0 );
-	}
+	//if ( do_explotion_sound ) {
+		audio_play_sound_pitch_falloff( snd_explotion_1, 0.6, RR( 1.7, 2 ), 0 );
+	//}
 }
 
