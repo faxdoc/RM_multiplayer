@@ -35,7 +35,7 @@ var k1p_	= shoot_press_buffer > 0;
 
 //var pre_reload = RELOAD[cg];
 var i = 0; repeat(weapon_number) {
-	if (RELOAD[i] > 0 )RELOAD[i] = max(0,RELOAD[i]-1.25);
+	if (RELOAD[i] > 0 )RELOAD[i] = max(0,RELOAD[i]-1.5);
 	i++;
 }
 //if( cg == e_gun.shotgun && pre_reload > 0 && RELOAD[cg] <= 0 )audio_play_sound_pitch( snd_shotgun_reload, .35, RR(.95,1.2), -1 );
@@ -234,7 +234,7 @@ switch(current_weapon) {
 			bullet_effects_general( sammo_red );
 			effect_general( 0.6, 3, 4 );
 			if ( CLIP[cg] == max_ammo ) {
-				RELOAD[cg] = 1200;
+				RELOAD[cg] = 1000;
 			}
 			CLIP[cg]--;
 		}

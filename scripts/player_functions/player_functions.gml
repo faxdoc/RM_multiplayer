@@ -188,7 +188,13 @@ function player_throw_grenade() {
 			
 			t.bounces = true;
 			t.grav = 0.21;
-			t.sprite_index = player_id == 0 ? splayer_grenade_blue : splayer_grenade_red;
+			switch(player_id) {
+				case 0: t.sprite_index = splayer_grenade_blue; break;
+				case 1: t.sprite_index = splayer_grenade_red; break;
+				case 2: t.sprite_index = splayer_grenade_green; break;
+				case 3: t.sprite_index = splayer_grenade_white; break;
+			}
+			//t.sprite_index = player_id == 0 ? splayer_grenade_blue : splayer_grenade_red;
 			t.duration = 62;
 			t.angle_spin = ( 2 + random_fixed( 4 ) ) * choose_fixed( -1, 1 );
 			t.draw_angle = random_fixed( 360 );

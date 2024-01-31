@@ -123,7 +123,7 @@ switch( draw_type ) {
 		var xx = var_dir > 0 ? var_dir/40 : var_dir/80;
 		draw_sprite_ext( splayer_hoodie,0,x-8*draw_xscale-xx*1.5*draw_xscale,yl_-22+y_off*1.4+bwave,draw_xscale,1,0,image_blend,draw_alpha);
 		draw_sprite_ext( splayer_jacket_front, 0,x+1*draw_xscale-xx*draw_xscale,yl_-8+y_off+bwave,draw_xscale,1,0,image_blend,draw_alpha);
-		shader_reset();
+		
 		
 		//head
 		bwave = round(wave(bmax,bmin,bdur,.92));
@@ -233,6 +233,7 @@ switch( draw_type ) {
 		
 		var hair_x = head_x;
 		var hair_y = head_y;
+		shader_set( shd_palette );
 		draw_sprite_ext(
 			sprite_index,
 			image_index,
@@ -242,8 +243,10 @@ switch( draw_type ) {
 			image_yscale,
 			draw_angle,
 			image_blend,
-			image_alpha
+			draw_alpha
 		);
+		shader_reset();
+		
 	break;
 	#endregion
 	

@@ -173,7 +173,7 @@ switch(meta_state) {
 					dash_dir = point_direction(0,0,hh,vv);
 					if hh == 0 && vv == 0 dash_dir = -1;
 					state = e_player.parry;
-					INVIS = 14;
+					INVIS = 20;
 					effect_create_depth(  40, ef_flare, x, y-22, 0, merge_colour(c_aqua,c_dkgray,0.8) );
 					
 				}
@@ -204,7 +204,7 @@ switch(meta_state) {
 					dash_dir = point_direction(0,0,hh,vv);
 					if hh == 0 && vv == 0 dash_dir = -1;
 					state = e_player.parry;
-					INVIS = 14;
+					INVIS = 20;
 					effect_create_depth(  40, ef_flare, x, y-22, 0, merge_colour(c_aqua,c_dkgray,0.8) );
 				}
 				var lddd_ = id;
@@ -215,15 +215,6 @@ switch(meta_state) {
 						}	
 					}
 				}
-				
-				//if ( ( !alt_col && !gen_col(x,y+1) && KPDOWN == 1 &&  vsp < 3.8 ) ) {
-				//	vsp = 3.8;hsp += .1*hh;
-				//	repeat(3) {
-				//		var spd = 3+random_fixed(1); var dir = random_fixed(360);
-				//		fx = create_fx( x + LDX(6*1.5,dir) + hsp, y + LDY(6*1.5,dir) + vsp -24, sdot_wave, .3+random_fixed(.4), 0, -110 );
-				//		fx.image_blend =  c_aqua; fx.hsp =  LDX(spd,dir); fx.vsp = LDY(spd,dir); fx.frc = .9;
-				//	}
-				//}
 							
 			break;
 			#endregion
@@ -258,7 +249,6 @@ switch(meta_state) {
 				}
 				sprite_index = splayer_hit;
 				draw_type = e_draw_type.animation;
-				//player_unactive_general(alt_col);
 		
 				if ( hit_freeze <= 0 ) {
 					var hh = KRIGHT-KLEFT;
@@ -291,12 +281,17 @@ switch(meta_state) {
 				}
 				show_debug_message(hit_freeze);
 			break;
+			#endregion
+			#region parry
 			case e_player.parry:
 				if (hit_timer == 0 && dash_dir != -1 ) {
 					hsp = LDX( 5, dash_dir );
 					vsp = LDY( 5, dash_dir );
-					can_dash = false;
+					
 				}
+				can_dash = false;
+				sprite_index = splayer_dodge;
+				draw_type = e_draw_type.animation;
 				
 				if ( dash_dir == -1 ) {
 					vsp += grav;
@@ -308,7 +303,7 @@ switch(meta_state) {
 					}
 					
 				} else {
-					if ( hit_timer++ > 8 || gen_col(x,y+1) || alt_col ) {
+					if ( hit_timer++ > 10 || gen_col(x,y+1) || alt_col ) {
 						state = e_player.normal;
 						skip_draw = false;
 						
@@ -503,11 +498,14 @@ switch(meta_state) {
 	//}
 	
 	if ( state == e_player.parry ) { 
-		blend = merge_color(c_aqua,c_ltgray,0.7);
-		blend_timer = 4;
-	} //else {
+		blend = merge_color(c_aqua,c_white,0.7);
+		blend_timer = 3;
+	}
+	
+	//else {
 		//blend = merge_color(c_white,c_red,wave(.1,.95,.3,0));
 	//}
+	
 	if ( blend != c_white ) {
 		if( !blend_timer-- ) blend = c_white;
 	}
