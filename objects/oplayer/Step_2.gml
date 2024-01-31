@@ -252,15 +252,15 @@ switch(meta_state) {
 						var di_dir = point_direction(0,0,hh,vv);
 						hsp *= 0.98;
 						//vsp *= 0.99;
-						hsp += LDX(0.15,di_dir);
-						vsp += LDY(0.15,di_dir);
+						hsp += LDX( 0.13, di_dir );
+						vsp += LDY( 0.13, di_dir );
 					}
 				
 					if( bounce_cooldown ) bounce_cooldown--;
 					if( bounce_cooldown && ( vsp > 3 ) &&  ( gen_col( x, y + 1 + vsp ) || alt_col ) ) {
 						var i = 16;
 						while ( i-- && !gen_col( x, y+1 ) ) y++;
-						vsp = -vsp*.7;
+						vsp = -vsp*0.7;
 						hsp *= frc;
 						hsp *= frc;
 					}
@@ -296,13 +296,19 @@ switch(meta_state) {
 					if ( hit_timer++ > 8 || gen_col(x,y+1) || alt_col ) {
 						state = e_player.normal;
 						skip_draw = false;
-						INVIS = 0;
+						
+						if ( !gen_col(x,y+1) && !alt_col ) {
+							INVIS = 6;
+						} else {
+							INVIS = 0;
+						}
+						
 						hit_timer = 0;
-						hsp *= 0.8;
+						hsp *= 0.85;
 						if  ( vsp < 0 ) {
 							vsp *= 0.3;
 						} else {
-							vsp *= 0.7;
+							vsp *= 0.8;
 						}
 					}
 				}
@@ -360,7 +366,7 @@ switch(meta_state) {
 		var y_ = y-22;
 		var tx_ = room_width /2;
 		var ty_ = room_height/3;
-		if place_meeting(x,y,odelete_box) {
+		if ( place_meeting( x, y, odelete_box ) ) {
 			repeat(32) {
 				random_fixed(1);
 				if ( random_fixed(1) < 0.8 ) {

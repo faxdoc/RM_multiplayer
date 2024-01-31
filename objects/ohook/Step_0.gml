@@ -57,8 +57,8 @@ if (state == 0) {
 	
 	#region enemy collision
 	//var pre_scale = image_xscale;
-	image_xscale = 4.2;
-	image_yscale = 4.2;
+	image_xscale = 4.5;
+	image_yscale = 4.5;
 	// player_exists &&  place_meeting(x,y,par_enemy) &&
 	
 	if ( place_meeting(x,y,oplayer) ) {

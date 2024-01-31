@@ -118,14 +118,12 @@ repeat(step_number) {
 		
 		t.state = e_player.hit;
 		t.hp -= dmg;
-		t.hit_timer = floor(dmg*8*stun_mult);
+		t.hit_timer = floor(dmg*7.5*stun_mult);
 		t.hit_freeze = max(4,dmg/3);
 		t.bounce_cooldown = 30;
 		
 		t.can_hook_delay = false;
 		t.hook_air_cancel = false;
-		
-		
 		
 		parent.can_hook_delay = false;
 		parent.hook_air_cancel = false;
