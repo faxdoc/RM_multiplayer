@@ -30,5 +30,5 @@
     "path": "sprites/srespawn_box/srespawn_box.yy",
   },
   "spriteMaskId": null,
-  "visible": true,
+  "visible": false,
 }

@@ -1,4 +1,5 @@
 event_inherited();
+can_input			= true;
 #macro WORLD_GRAV 1
 on_ground = false;
 jump_charge = 0;
@@ -321,36 +322,16 @@ hit_timer = 0;
 player_colour = c_aqua;
 player_palette = spalette_player_1;
 
- x = floor( lerp( ospawn_box.bbox_left,ospawn_box.bbox_right,   0) ); 
- y = floor( lerp( ospawn_box.bbox_top,ospawn_box.bbox_bottom, 0.5) );
+ //x = floor( lerp( ospawn_box.bbox_left,ospawn_box.bbox_right,   0) ); 
+ //y = floor( lerp( ospawn_box.bbox_top,ospawn_box.bbox_bottom, 0.5) );
  
-switch(player_id) {
-	default: player_colour = c_aqua;   
-		x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,   0) ); 
-		y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom, 0.5) );  
-	break;
-	case 1:  
-		player_colour = c_red;    
-		x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,   1) ); 
-		y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom,0.5) );  
-	break;
-	case 2:  
-		player_colour = c_lime;   
-		x = floor( lerp( ospawn_box.bbox_left,ospawn_box.bbox_right,0.33 ) ); 
-		y = floor( lerp( ospawn_box.bbox_top, ospawn_box.bbox_bottom,0.5 ) );  
-	break;
-	case 3:
-		player_colour = c_white;  
-		x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,0.66) );
-		y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom, 0.5) );  
-	break;
-}
 
 //player_colour = c_aqua;  player_palette = spalette_player_1; x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,   0) ); y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom,0.5) ); // break;
 
-view_enabled = true;
-view_set_visible(0,true);
+
 if ( player_local ) {
+	view_enabled = true;
+	view_set_visible(0,true);
 	camera_set_view_pos(  view_camera[ 0 ], floor( x-GW ), floor( y-GH ) );
 	camera_set_view_size( view_camera[ 0 ], GW, GH );
 }
@@ -397,3 +378,5 @@ first_looser = undefined;
 random_inited = false;
 
 #endregion
+
+

@@ -1,4 +1,4 @@
-if intimer > 10 {
+if ( intimer > 10 ) {
 	if ( !game_has_started ) {
 		if ( !instance_exists(obutton) ) {
 		
@@ -24,10 +24,6 @@ if intimer > 10 {
 		draw_sprite_ext( scursor, 0, device_mouse_x_to_gui(0),  device_mouse_y_to_gui(0), 2, 2, 0, c_white, 1 );
 	
 	}
-} else if ( intimer == 9 ) {
-	var rl_ = [rtest,rtower,rflat,rplatform,rceiling,ropen];
-	var rm__ = rl_[ floor(mouse_x ) mod ( array_length(rl_)-1 ) ];
-	room_goto(rm__);
 }
 
 

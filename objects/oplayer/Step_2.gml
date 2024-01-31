@@ -579,7 +579,7 @@ switch(meta_state) {
 
 #region draw variables
 
-var hh = ( can_input && state == e_player.normal) ? KRIGHT-KLEFT : 0;
+var hh = ( state == e_player.normal) ? KRIGHT-KLEFT : 0;
 var bwave, bmax =-1, bmin = 0, bdur = 4;
 
 if ( shoot_delay ) {

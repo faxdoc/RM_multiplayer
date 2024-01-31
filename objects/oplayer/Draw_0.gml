@@ -1,5 +1,5 @@
-var hh = ( can_input ) ? KRIGHT-KLEFT : 0;
-var vv = ( can_input ) ? KDOWN-KUP : 0;
+var hh =  KRIGHT-KLEFT;
+var vv =  KDOWN-KUP;
 var bwave, bmax =-1, bmin = 0, bdur = 4;
 
 #region general effects

@@ -5,7 +5,7 @@ function scr_init(){
 	surface_resize( application_surface, GW, GH );
 	application_surface_draw_enable( false );
 	draw_set_font( fnt_default );
-	room_goto( rmenu );
+	//room_goto( rmenu );
 	
 }
 
