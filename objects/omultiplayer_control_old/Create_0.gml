@@ -32,3 +32,9 @@ if ( !rollback_join_game() ) {
 	game_has_started = true;
 }
 intimer = 0;
+window_set_cursor( cr_none );
+
+window_set_size( GW * 2, GH * 2 );
+surface_resize( application_surface, GW, GH );
+application_surface_draw_enable( false );
+draw_set_font( fnt_default );

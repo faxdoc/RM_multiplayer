@@ -379,4 +379,26 @@ random_inited = false;
 
 #endregion
 
-
+switch(player_id) {
+	default: 
+		player_colour = c_aqua;   
+		x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,   0) ); 
+		y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom, 0.5) );  
+	break;
+	case 1:  
+		player_colour = c_red;    
+		x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,   1) ); 
+		y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom,0.5) );  
+	break;
+	case 2:  
+		player_colour = c_lime;   
+		x = floor( lerp( ospawn_box.bbox_left,ospawn_box.bbox_right,0.33 ) ); 
+		y = floor( lerp( ospawn_box.bbox_top, ospawn_box.bbox_bottom,0.5 ) );  
+	break;
+	case 3:
+		player_colour = c_white;  
+		x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,0.66) );
+		y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom, 0.5) );  
+	break;
+}
+priority_select_timer = 300;

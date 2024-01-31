@@ -39,6 +39,25 @@ if ( player_local ) {
 			DSC(c_white);
 			DSA(1);
 			
+			if ( first_looser != undefined && first_looser.priority_select_timer > 0 ) {
+				with ( first_looser ) {
+					var _c_ = player_colour;
+					draw_set_halign(fa_center);
+					draw_text_transformed_color( GW*0.5, floor(GH*0.38), "Player " + string(player_id) + " choosing stage", 2, 2, 0, _c_, _c_, _c_, _c_, 1 );
+					draw_set_halign(fa_left);
+					var mdx_ = GW*0.5, mdy_ = GH*0.5;
+					var ww_ = priority_select_timer;
+					DSC(_c_);
+					draw_rectangle( mdx_-ww_, mdy_-12, mdx_+ww_, mdy_+12, false );
+					DSC(c_white);
+				}
+			} else {
+				var _c_ = player_colour;
+				draw_set_halign(fa_center);
+				draw_text_transformed_color( GW*0.5, floor(GH*0.38), "Anyone can choose stage", 2, 2, 0, _c_, _c_, _c_, _c_, 1 );
+				draw_set_halign(fa_left);
+			}
+			
 			if ( instance_exists(obutton_levels) ) {
 				with ( obutton_levels ) draw_self();
 			}

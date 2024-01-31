@@ -57,8 +57,8 @@ if (state == 0) {
 	
 	#region enemy collision
 	//var pre_scale = image_xscale;
-	image_xscale = 2.2;
-	image_yscale = 2.2;
+	image_xscale = 4.2;
+	image_yscale = 4.2;
 	// player_exists &&  place_meeting(x,y,par_enemy) &&
 	
 	if ( place_meeting(x,y,oplayer) ) {
@@ -268,7 +268,7 @@ if (state == 0) {
 				vert.xx -= offx;
 				vert.yy -= offy;
 				var dr_ = point_direction(parent.x,parent.y,hook_object.x, hook_object.y );
-				var ds_ = ( max(0,point_distance( parent.x,parent.y,hook_object.x, hook_object.y )-30) / (pulled ? 50 : 80) ) / 3;
+				var ds_ = ( max(0,point_distance( parent.x,parent.y,hook_object.x, hook_object.y )-20) / (pulled ? 50 : 80) ) / 1.7;
 				hook_object.hsp -= LDX(ds_,dr_);
 				hook_object.vsp -= LDY(ds_,dr_);
 				hook_object.bounce_cooldown = 30;

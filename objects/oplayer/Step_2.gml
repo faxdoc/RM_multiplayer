@@ -555,9 +555,7 @@ switch(meta_state) {
 		
 	break;
 	case 2:
-		if ( spawn_timer++ > 90 ) {
-			spawn_timer = 0;
-			meta_state = 0;
+		if ( spawn_timer == 0 ) {
 			if ( instance_exists(orespawn_box) ) {
 				x = orespawn_box.x;
 				y = orespawn_box.y;
@@ -565,6 +563,11 @@ switch(meta_state) {
 				x = room_width  / 2;
 				y = room_height / 2;
 			}
+		}
+		if ( spawn_timer++ > 90 ) {
+			spawn_timer = 0;
+			meta_state = 0;
+			
 			INVIS = 60; 
 			self_draw = true;
 		}
