@@ -8,17 +8,9 @@ if (!random_inited ) {
 	switch(instance_number(oplayer)) {
 	default: lives_left = 3; break;
 		case 3: lives_left = 2; break;
-		case 4: lives_left = 2; break;
-		
+		case 4: lives_left = 2; break;	
 	}
-
-
-	//if ( room == rinit ) {
-	//	room_goto(rtest);
-	//} else {
-		
-	//}
-
+	
 }
 
 KUP		= _input.KUP;	
@@ -80,7 +72,7 @@ MY = _input.my;
 #region camera
 
 switch(meta_state) {
-	case -7:
+	case e_meta_state.dead:
 	
 		if ( follow_other_player_cooldown ) {
 			follow_other_player_cooldown--;
@@ -109,11 +101,6 @@ switch(meta_state) {
 		
 			}
 		}
-		//if ( get_back_life_cooldown++ > get_back_life_cooldown_cap ) {
-		//	get_back_life_cooldown_cap += 600;
-		//	get_back_life_cooldown = 0;
-		//}
-		
 	break;
 	default:
 		var sn_ = ( current_weapon == e_gun.sniper && gun_charge > 0 );
@@ -123,7 +110,7 @@ switch(meta_state) {
 		var ld__ = player_id;
 		var alt_t = undefined;
 		with ( oplayer ) {
-			if ( player_id != ld__ && meta_state == 1 ) {
+			if ( player_id != ld__ && meta_state == e_meta_state.main ) {
 				alt_t = id;
 			}
 		}
@@ -150,34 +137,12 @@ switch(meta_state) {
 		}
 	break;
 }
-#endregion
 
-#region meta state
-switch( meta_state ) {
-	case -1:
-		intro_timer += 1;
-		if ( intro_timer > 110 ) {
-			intro_timer = 20;
-			spawn_timer = 0;
-			meta_state = 1;
-			state = e_player.normal;
-			INVIS = 60;
-		}
-		
-	break;
-	case 1:
-		if ( intro_timer > 0 ) {
-			intro_timer--;
-		}
-	break;
-	case 0:
-		
-	break;
-}
 if ( flash_alpha > 0 ) {
 	flash_alpha -= 0.04;
 }
 if ( palette_init ) {
 	palette_init--;
 }
+
 #endregion

@@ -41,25 +41,32 @@ touching_platform = alt_col;
 
 #endregion
 
-if ( first_looser == undefined && lives_left <= 0 ) {
-	var ld_ = id;
-	with ( oplayer ) {
-		first_looser = ld_;
-	}
-}
-var st_ = 0;
-with ( oplayer ) {
-	if ( lives_left > 0 ) {
-		st_++;
-	}
-}
-if ( st_ <= 1 && meta_state < 5 ) {
-	meta_state = 5;
-	//final_timer = 0;
+switch( meta_state ) {
+	default:
+		if ( first_looser == undefined && lives_left <= 0 ) {
+			var ld_ = id;
+			with ( oplayer ) {
+				first_looser = ld_;
+			}
+		}
+		var st_ = 0;
+		with ( oplayer ) {
+			if ( lives_left > 0 ) {
+				st_++;
+			}
+		}
+		if ( st_ <= 1 ) {// && meta_state < 5 
+			meta_state = e_meta_state.round_end;
+		}
+	break;
+	case e_meta_state.level_select:
+	case e_meta_state.round_end:
+	
+	break;
 }
 
 switch(meta_state) {
-	case 6:
+	case e_meta_state.level_select:
 		if ( !instance_exists(obutton_levels) ) {
 			var d_ = 1/10;
 			var i = 0;
@@ -75,9 +82,9 @@ switch(meta_state) {
 			
 		}
 	break;
-	case 5:
+	case e_meta_state.round_end:
 		if ( final_timer++ > 300 ) {
-			meta_state = 6;
+			meta_state = e_meta_state.level_select;
 			final_timer = 0;
 			global.display_room_name = "";
 			//event_perform( ev_create, 0 );
@@ -92,28 +99,38 @@ switch(meta_state) {
 			IDD(ohook);
 		}
 	break;
-	case -1:
+	case e_meta_state.round_start:
 		hp = hp_max;
 		INVIS = 30; 
-		
-	break;
-	case 0:
-		hp = hp_max;
-		INVIS = 30; 
-		if ( spawn_timer++ > 40 ) {
+		intro_timer += 0.75;
+		if ( intro_timer > 105 ) {
+			intro_timer = 20;
 			spawn_timer = 0;
-			meta_state = 1;
+			meta_state = e_meta_state.main;
+			state = e_player.normal;
+			INVIS = 60;
+		}
+	break;
+	case e_meta_state.respawn:
+		hp = hp_max;
+		INVIS = 30; 
+		if ( spawn_timer++ > 30 ) {
+			spawn_timer = 0;
+			meta_state = e_meta_state.main;
 			state = e_player.normal;
 			INVIS = 60;
 		}
 		damage_taken = 0;
 		pre_hp = hp;
-			
+		draw_alpha = 1;
 	break;
-	case 1:
+	#region main
+	case e_meta_state.main:
+		if ( intro_timer > 0 ) {
+			intro_timer--;
+		}
 	
-	
-		#region main
+	#region main
 		switch( state ) {
 			#region hook
 			case e_player.hook:
@@ -377,7 +394,7 @@ switch(meta_state) {
 		}
 	}
 	
-	
+
 	#region delete hp
 	if ( place_meeting(x,y,odelete_box) || hp <= 0 || ( state == e_player.hit && place_meeting(x,y,odelete_box_stun) ) ) {
 		with ICD(x, bbox_top-26, 0, otext_up ) {
@@ -426,13 +443,13 @@ switch(meta_state) {
 		self_draw = false;
 		lives_left--;
 		
-		meta_state = 2;
+		meta_state = e_meta_state.dying;
 		
 		if ( lives_left <= 0 ) {
-			meta_state = -7;
+			meta_state = e_meta_state.dead;
 		}
-		INVIS = 120;
-		//visible = false;
+		INVIS = 120;//visible = false;
+		
 		x = lerp(x,room_width/2,0.05);
 		y = lerp(y,room_height/2,0.1);
 		var num = 1+irandom_fixed(2);
@@ -442,10 +459,6 @@ switch(meta_state) {
 		}
 		var n = 4+irandom_fixed(3);
 		var r = 20;
-		
-		
-		
-		
 		
 		repeat(n) {
 			var xx = x+random_range_fixed( -r, r );
@@ -464,8 +477,7 @@ switch(meta_state) {
 		}
 	#endregion
 	
-	
-	if ( meta_state != 1 || state != e_player.hit ) {
+	if ( meta_state != e_meta_state.main || state != e_player.hit ) {
 		hit_freeze = 0;
 	}
 
@@ -485,27 +497,15 @@ switch(meta_state) {
 	if ( hit_freeze <= 0 ) {
 		collision_function();
 	}
-	//x = clamp( x, -32, room_width  + 32 );
-	//y = clamp( y, -64, room_height + 64 );
-
+	
 	#endregion
 
 
 	#region blend fxs
-	//if ( ( get_heal_alert_margin() || TRINK[ e_trinket.glass_fae ] ) && TRINK[ e_trinket.low_hp_damage ] ) {
-	//	blend_timer = 2;
-	//	blend = merge_color(c_white,c_red,wave(.1,.95,.3,0));
-	//}
-	
 	if ( state == e_player.parry ) { 
 		blend = merge_color(c_aqua,c_white,0.7);
 		blend_timer = 3;
 	}
-	
-	//else {
-		//blend = merge_color(c_white,c_red,wave(.1,.95,.3,0));
-	//}
-	
 	if ( blend != c_white ) {
 		if( !blend_timer-- ) blend = c_white;
 	}
@@ -514,28 +514,21 @@ switch(meta_state) {
 	#endregion
 
 	#region general player functions
-
-	//regulate gun vars
-	player_gun_general();
-	//visuals for player charging hook
-	player_hook_visuals();
-	//juice for player landing
-	player_land_on_ground();
-
+	player_gun_general(); //regulate gun vars
+	player_land_on_ground(); //juice for player landing
 	#endregion
 
 	#region extra input movement general
 	if ( input_skip							) input_skip--;
 	if ( ledge_detect_cooldown				) ledge_detect_cooldown--;
 	if ( close_bullet_sound_played_cooldown ) close_bullet_sound_played_cooldown--;
-
-	#endregion
-
 	if ( jump_charge_buffer > 0 ) {
 		var cl = choose_fixed(c_orange,c_yellow);
 		var llh = jump_charge_buffer/10;
 		draw_line_width_color( x-18*draw_xscale, y-llh-16, x-18*draw_xscale, y+llh-16, 3, cl, cl );
 	}
+	
+	#endregion
 
 	#region weapon select
 	var wep_select_input_hold  = false;
@@ -583,11 +576,15 @@ switch(meta_state) {
 		#endregion		
 	}
 	#endregion
-
-
-		
+	
+	if ( INVIS ) INVIS--;
+	draw_alpha = !( INVIS mod 4 > 1 );
+	
 	break;
-	case 2:
+	#endregion
+	
+	#region respawn
+	case e_meta_state.dying:
 		if ( spawn_timer == 0 ) {
 			if ( instance_exists(orespawn_box) ) {
 				x = orespawn_box.x;
@@ -597,18 +594,20 @@ switch(meta_state) {
 				y = room_height / 2;
 			}
 		}
+		INVIS = 60;
 		if ( spawn_timer++ > 90 ) {
+			hsp = 0;
+			vsp = 0;
 			spawn_timer = 0;
-			meta_state = 0;
+			meta_state = e_meta_state.respawn;
 			
 			INVIS = 60; 
 			self_draw = true;
 		}
 		
 	break;
-	case 3:
-		
-	break;
+	#endregion
+	
 }
 
 
@@ -736,7 +735,7 @@ if ( on_ground ) {
 	body_y = 0;
 }
 
-if ( meta_state != 1 ) {
+if ( meta_state != e_meta_state.main ) {
 	var lddd_ = id;
 	if ( instance_exists( ohook ) ) {
 		with ( ohook ) {
@@ -750,9 +749,6 @@ if ( meta_state != 1 ) {
 legs_running_index = legs_index;
 
 #endregion
-
-if ( INVIS ) INVIS--;
-
 
 if ( SHAKE > 0.05 ) {
 	SHAKE *= 0.85;
@@ -769,5 +765,5 @@ if ( show_hp_timer > 0 ) {
 		show_hp_timer = 0;
 	}
 }
-draw_alpha = !( INVIS mod 4 > 1 );
+
 	

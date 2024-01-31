@@ -32,7 +32,7 @@ if ( player_local ) {
 		
 	}
 	switch( meta_state ) {
-		case 6:
+		case e_meta_state.level_select:
 			DSC(c_darkest);
 			DSA( 0.9 );
 			draw_rectangle(0,0,room_width,room_height,false);
@@ -75,7 +75,7 @@ if ( player_local ) {
 			}
 			
 		break;
-		case -1:
+		case e_meta_state.round_start:
 			draw_sprite_ext(sstart,0,GW/2,GH/2, 2, 2, 0, merge_color( c_gray, c_orange, 0.5 + ( intro_timer / 240 ) ), 1 );
 			var vll_ = (120-intro_timer)/60;
 			
@@ -98,7 +98,7 @@ if ( player_local ) {
 			DSC(c_white);
 			DSA(1);
 		break;
-		case 1:
+		case e_meta_state.main:
 			if ( intro_timer > 0 ) {
 				var sz_ = max(2,( (intro_timer*intro_timer)/140));
 				draw_sprite_ext(sstart,1,GW/2,GH/2,sz_,sz_,0, c_orange, 1 );
@@ -107,7 +107,7 @@ if ( player_local ) {
 			
 		break;
 		
-		case 5:
+		case e_meta_state.round_end:
 			DSC(c_darkest);
 			DSA( min(0.8, ( final_timer/100 ) - 0.7 ) );
 			draw_rectangle(0,0,room_width,room_height,false);
@@ -121,7 +121,9 @@ if ( player_local ) {
 		break;
 	}
 	
-	if ( show_hp_timer > 0 && (meta_state == 0 || meta_state == 1 || meta_state == 2 ) ) {
+	
+	#region display stats mid-round
+	if ( show_hp_timer > 0 && (meta_state == e_meta_state.main || meta_state == e_meta_state.respawn || meta_state == e_meta_state.dying ) ) {
 		var yy = GH*0.5;
 		
 		if ( show_hp_timer > 90 ) {
@@ -130,136 +132,66 @@ if ( player_local ) {
 			DSA( min(0.7,show_hp_timer/30) );
 		}
 		var pl_alt = instance_number(oplayer) < 3;
-		if ( pl_alt ) {
-			DSC(c_black);
-			draw_rectangle(-1,yy-16,GW+1,yy+16,false);
-			DSA(1);
-		} else {
-			yy -= 32;
-			DSC(c_black);
-			draw_rectangle(-1,yy-16,GW+1,yy+16,false);
-			yy += 64;
-			draw_rectangle(-1,yy-16,GW+1,yy+16,false);
-			DSA(1);
-			yy -= 64;
-		}
-		
-		
 		draw_set_halign(fa_center);
 		var lc_;
-		if ( show_hp_timer > 10 && show_hp_timer < 90 ) {
-			if ( pl_alt ) {
-				#region 1v1
-				//if ( show_hp_timer > 90 ) {
-				//	DSA( max(0.7, 1- ( show_hp_timer-90 ) / 10 ) );
-				//} else {
-				//	DSA( min(0.7,show_hp_timer/30) );
-				//}
-		
-				var i = 0; with ( oplayer ) {
-					c = merge_colour(c_ltgray,  player_colour, 0.5 );
+		if ( show_hp_timer > 10 && show_hp_timer < 90 && pl_alt ) {
+			DSC(c_black);
+			draw_rectangle(-1,yy-16,GW+1,yy+16,false);
+			DSA(1);
+					
+			#region 1v1
+			var i = 0; with ( oplayer ) {
+				c = merge_colour(c_ltgray,  player_colour, 0.5 );
 				
-					if    ( meta_state != 1 && show_hp_timer < 35 ) c = merge_color( c, c_ltgray, round( (show_hp_timer/8) mod 1 ) );
-					lc_ = ( meta_state != 1 && show_hp_timer < 35 ) ? lives_left+1 : lives_left;
+				if    ( meta_state != e_meta_state.main && show_hp_timer < 35 ) c = merge_color( c, c_ltgray, round( (show_hp_timer/8) mod 1 ) );
+				lc_ = ( meta_state != e_meta_state.main && show_hp_timer < 35 ) ? lives_left+1 : lives_left;
 				
 				
-					if ( lc_ > 1 ) {
+				if ( lc_ > 1 ) {
+					DSC(c_black);
+					draw_text_transformed( GW*0.44 + ( i*(GW*0.1)), yy-29,  lc_, 4, 4, 0 );
+					DSC( c );
+					draw_text_transformed( GW*0.44 + ( i*(GW*0.1)), yy-29,  lc_, 4, 4, 0 );
+					
+					if ( i == 0 ) {
+						ii = 0; repeat(lc_) {
+							draw_sprite_ext(shp_icon,0, ( GW*0.36 + ( i*(GW*0.33)) )-(ii++*18)+8, yy, 1, 1, 0, c, 1  );
+						}
+					}else {
+						ii = 0; repeat(lc_) {
+							draw_sprite_ext(shp_icon,0, ( GW*0.26 + ( i*(GW*0.33)) )+(ii++*18)+8, yy, 1, 1, 0, c, 1  );
+						}
+					}
+					i++;
+				} else {
+					if ( lives_left > 0 ) {
+					c = merge_colour(c_ltgray, player_colour, ( show_hp_timer/5 ) mod 1  );
+						
 						DSC(c_black);
 						draw_text_transformed( GW*0.44 + ( i*(GW*0.1)), yy-29,  lc_, 4, 4, 0 );
 						DSC( c );
 						draw_text_transformed( GW*0.44 + ( i*(GW*0.1)), yy-29,  lc_, 4, 4, 0 );
 					
 						if ( i == 0 ) {
-							ii = 0; repeat(lc_) {
-								draw_sprite_ext(shp_icon,0, ( GW*0.36 + ( i*(GW*0.33)) )-(ii++*18)+8, yy, 1, 1, 0, c, 1  );
-							}
-						}else {
-							ii = 0; repeat(lc_) {
-								draw_sprite_ext(shp_icon,0, ( GW*0.26 + ( i*(GW*0.33)) )+(ii++*18)+8, yy, 1, 1, 0, c, 1  );
-							}
+							draw_sprite_ext(shp_icon,0, ( GW*0.36 + ( i*(GW*0.33)) )+8, yy, 2, 2, 0, c, 1  );
+						} else {
+							draw_sprite_ext(shp_icon,0, ( GW*0.26 + ( i*(GW*0.33)) )+8, yy, 2, 2, 0, c, 1  );	
 						}
-						i++;
-					} else {
-						if ( lives_left > 0 ) {
-						c = merge_colour(c_ltgray, player_colour, ( show_hp_timer/5 ) mod 1  );
-						
-							DSC(c_black);
-							draw_text_transformed( GW*0.44 + ( i*(GW*0.1)), yy-29,  lc_, 4, 4, 0 );
-							DSC( c );
-							draw_text_transformed( GW*0.44 + ( i*(GW*0.1)), yy-29,  lc_, 4, 4, 0 );
-					
-							if ( i == 0 ) {
-								draw_sprite_ext(shp_icon,0, ( GW*0.36 + ( i*(GW*0.33)) )+8, yy, 2, 2, 0, c, 1  );
-							} else {
-								draw_sprite_ext(shp_icon,0, ( GW*0.26 + ( i*(GW*0.33)) )+8, yy, 2, 2, 0, c, 1  );	
-							}
-						}
-						i++;
 					}
+					i++;
 				}
-				#endregion
-			} else {
-				#region 3-4 players
-				
-				
-				//var i = 0, nll = 0; with ( oplayer ) {
-				//	if ( nll == 2 ) yy += 64;
-				//	c = merge_colour(c_ltgray,  player_colour, 0.5 );
-				
-				//	if    ( meta_state != 1 && show_hp_timer < 35 ) c = merge_color( c, c_ltgray, round( (show_hp_timer/8) mod 1 ) );
-				//	lc_ = ( meta_state != 1 && show_hp_timer < 35 ) ? lives_left+1 : lives_left;
-					
-				
-				//	if ( lc_ > 1 ) {
-				//		DSC(c_black);
-				//		draw_text_transformed( GW*0.44 + ( i*(GW*0.1)), yy-29,  lc_, 4, 4, 0 );
-				//		DSC( c );
-				//		draw_text_transformed( GW*0.44 + ( i*(GW*0.1)), yy-29,  lc_, 4, 4, 0 );
-					
-				//		if ( i == 0 ) {
-				//			ii = 0; repeat(lc_) {
-				//				draw_sprite_ext(shp_icon,0, ( GW*0.36 + ( i*(GW*0.33)) )-(ii++*18)+8, yy, 1, 1, 0, c, 1  );
-				//			}
-				//		}else {
-				//			ii = 0; repeat(lc_) {
-				//				draw_sprite_ext(shp_icon,0, ( GW*0.26 + ( i*(GW*0.33)) )+(ii++*18)+8, yy, 1, 1, 0, c, 1  );
-				//			}
-				//		}
-				//		i++;
-				//		i = i mod 2;
-						
-				//	} else {
-						
-				//		if ( lives_left > 0 ) {
-				//			c = merge_colour(c_ltgray, player_colour, ( show_hp_timer/5 ) mod 1  );
-					
-				//			DSC(c_black);
-				//			draw_text_transformed( GW*0.44 + ( i*(GW*0.1)), yy-29,  lc_, 4, 4, 0 );
-				//			DSC( c );
-				//			draw_text_transformed( GW*0.44 + ( i*(GW*0.1)), yy-29,  lc_, 4, 4, 0 );
-					
-				//			if ( i == 0 ) {
-				//				draw_sprite_ext(shp_icon,0, ( GW*0.36 + ( i*(GW*0.33)) )+8, yy, 2, 2, 0, c, 1  );
-				//			} else {
-				//				draw_sprite_ext(shp_icon,0, ( GW*0.26 + ( i*(GW*0.33)) )+8, yy, 2, 2, 0, c, 1  );	
-				//			}
-				//		}
-				//		i++;
-				//		i = i mod 2;
-						
-				//	}
-				//	nll++;
-				//}
-				#endregion
 			}
-			
-			
-			
+			#endregion
 		}
+				
 		DSA(1);
 		draw_set_halign(fa_left);
 		DSC(c_white);
 	}
+	
+	#endregion
+			
+			
 			
 	var cursor_col = c_white;
 	if (  ( can_hook_delay || hook_air_cancel ) ) {

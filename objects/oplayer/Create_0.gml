@@ -346,9 +346,9 @@ camera_spd = 0.053;
 camera_clamp_pos = true;
 
 if ( !global.inital_select ) {
-	meta_state = 6;
+	meta_state = e_meta_state.level_select;
 } else {
-	meta_state = -1;
+	meta_state = e_meta_state.round_start;
 }
 hp = 150;
 hp_max = 150;
@@ -414,3 +414,20 @@ switch(player_id) {
 priority_select_timer = 600;
 pre_hp = hp;
 damage_taken = 0;
+
+
+enum e_meta_state {
+	
+	round_start = -1,
+	round_end = 5,
+	spawning_in,
+	
+	main = 1,
+	respawn,
+	
+	dead = -7,
+	dying,
+	
+	level_select = 6,
+	
+}

@@ -376,45 +376,45 @@ function player_gun_general() {
 
 function player_hook_visuals() {
 	if( hook_charges > 0 ) {
-	var size = random_fixed( 10 );
-	var bll =  merge_color( c_darkest, c_black, 0.4 );
-	repeat( hook_charges ) {
-		if ( 0.005 > random_fixed( 1 ) ) {
-			var dir = random_fixed( 360 );
-			ICD( x + LDX(size,dir) + hsp, y + LDY(size,dir) + vsp-24, 1, odrop );
-		}
-		if ( random_fixed( 1 ) > 0.96 ) {
-			var dir = random_fixed(360);
-			fx = create_fx( x + LDX(size*1.5,dir) + hsp, y + LDY(size*1.5,dir) + vsp -24, sdot_wave, .3+random_fixed(.4), 0, 1 );
-			fx.image_blend = bll;
-		}
-	}
-	if ( hook_charges >=  1 ) {
-		if( hook_fx++ mod 120 == 0 ){
-			blend = c_ltgray;
-			blend_timer = 3;
-		}
-		if( !wave_done ){
-			wave_done = true;
-			//SHAKE += 2;
-			blend = c_dkgray;
-			blend_timer = 3;
-			var size = 6;
-			var spd;
-			repeat(7) {
-				spd = 3+random_fixed(1);
+		var size = random_fixed( 10 );
+		var bll =  merge_color( c_darkest, c_black, 0.4 );
+		repeat( hook_charges ) {
+			if ( 0.005 > random_fixed( 1 ) ) {
+				var dir = random_fixed( 360 );
+				ICD( x + LDX(size,dir) + hsp, y + LDY(size,dir) + vsp-24, 1, odrop );
+			}
+			if ( random_fixed( 1 ) > 0.96 ) {
 				var dir = random_fixed(360);
-				fx = create_fx( x + LDX(size*1.5,dir) + hsp, y + LDY(size*1.5,dir) + vsp -24, sdot_wave, .3+random_fixed(.4), 0, -110 );
-				fx.image_blend = merge_color(bll,c_orange,.3+random_fixed(.5));
-				fx.hsp =  LDX(spd,dir);
-				fx.vsp = LDY(spd,dir);
-				fx.frc = .9;
+				fx = create_fx( x + LDX(size*1.5,dir) + hsp, y + LDY(size*1.5,dir) + vsp -24, sdot_wave, .3+random_fixed(.4), 0, 1 );
+				fx.image_blend = bll;
 			}
 		}
+		if ( hook_charges >=  1 ) {
+			if( hook_fx++ mod 120 == 0 ){
+				blend = c_ltgray;
+				blend_timer = 3;
+			}
+			if( !wave_done ){
+				wave_done = true;
+				//SHAKE += 2;
+				blend = c_dkgray;
+				blend_timer = 3;
+				var size = 6;
+				var spd;
+				repeat(7) {
+					spd = 3+random_fixed(1);
+					var dir = random_fixed(360);
+					fx = create_fx( x + LDX(size*1.5,dir) + hsp, y + LDY(size*1.5,dir) + vsp -24, sdot_wave, .3+random_fixed(.4), 0, -110 );
+					fx.image_blend = merge_color(bll,c_orange,.3+random_fixed(.5));
+					fx.hsp =  LDX(spd,dir);
+					fx.vsp = LDY(spd,dir);
+					fx.frc = .9;
+				}
+			}
+		}
+	} else {
+		wave_done = false;
 	}
-} else {
-	wave_done = false;
-}
 }
 
 

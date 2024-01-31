@@ -44,10 +44,11 @@ global.display_room_name	= "";
 global.inital_select		= false;
 global.training_mode		= false;
 global.music = -1;
-//if ( !audio_is_playing( global.music ) ) {
-//	global.music = audio_play_sound(snd_music_menu_loop,0,true);
-//	audio_sound_gain( global.music, 0, 0 );
-//	audio_sound_gain( global.music, 0.7, 600 );
-//}
+
+if ( !audio_is_playing( global.music ) ) {
+	global.music = audio_play_sound( snd_music_menu_loop, 0, true );
+	audio_sound_gain( global.music, 0, 0 );
+	audio_sound_gain( global.music, 0.7, 1600 );
+}
 
 
