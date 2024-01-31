@@ -58,6 +58,15 @@ if ( player_local ) {
 				draw_set_halign(fa_left);
 			}
 			
+			if ( global.display_room_name != "" ) {
+				var c = c_ltgray;
+				var xx_ = GW*0.5;
+				var yy_ = GH*0.9;
+				draw_set_halign(fa_center);
+				draw_text_transformed_color( xx_, yy_, global.display_room_name, 2, 2, 0, c,c,c,c, 1 );
+				draw_set_halign(fa_left);
+			}
+		
 			if ( instance_exists(obutton_levels) ) {
 				with ( obutton_levels ) draw_self();
 			}

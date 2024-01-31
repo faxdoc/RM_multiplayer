@@ -341,7 +341,11 @@ camera_y = y;
 camera_spd = 0.053;
 camera_clamp_pos = true;
 
-meta_state = -1;
+if ( !global.inital_select ) {
+	meta_state = 6;
+} else {
+	meta_state = -1;
+}
 hp = 150;
 hp_max = 150;
 lives_left = 4;

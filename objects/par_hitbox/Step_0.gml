@@ -114,6 +114,7 @@ repeat(step_number) {
 		
 		} else {
 			t.hit_freeze = floor( max(4,dmg/8) );
+			damage_mult *= 0.8;
 		}
 		t.can_dash = true;
 		

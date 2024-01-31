@@ -18,6 +18,7 @@ enflamed = false;
 alt_movement = false;
 alt_init = false;
 player_exists = true;
+//can_hitfreeze_cooldown = 0;
 
 collision_init();
 gen_col = PLA;

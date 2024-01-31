@@ -33,7 +33,7 @@ image_index = 3;
 state = 0;
 dir   = 0;
 
-cycles =16;
+cycles =10;
 timer = 41;//
 spd =  3.5;////
 if ( maya_mode ) {

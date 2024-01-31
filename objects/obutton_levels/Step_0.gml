@@ -2,7 +2,7 @@ var controller = undefined;
 with ( oplayer ) {
 	if ( first_looser == id ) {
 		if ( priority_select_timer > 0 ) {
-			priority_select_timer -= 1/6;
+			priority_select_timer -= 1/9;
 			controller = id;
 		}
 	}
@@ -19,8 +19,8 @@ if ( controller != undefined ) {
 		image_xscale = lerp(image_xscale, 1, 0.2 );
 		image_yscale = lerp(image_yscale, 1, 0.2 );
 	} else {
-		image_xscale = lerp(image_xscale,0.8, 0.2 );
-		image_yscale = lerp(image_yscale,0.8, 0.2 );
+		image_xscale = lerp(image_xscale,0.7, 0.2 );
+		image_yscale = lerp(image_yscale,0.7, 0.2 );
 		image_blend = c_gray;
 	}
 
@@ -28,7 +28,7 @@ if ( controller != undefined ) {
 	
 		if ( instance_position(mx_,my_,id) ) {
 			//randomize();
-			var rl_ = [rtest,rtower,rceiling,rflat,rplatform,ropen];
+			var rl_ = [rtest,rtower,rceiling,rflat,rplatform,ropen,rbridge,rempty,rcity];
 
 			var rm__ = rl_[ image_index ];
 			switch(image_index) {
@@ -53,11 +53,11 @@ if ( controller != undefined ) {
 	
 				if ( instance_position(mx_,my_,id) ) {
 					//randomize();
-					var rl_ = [rtest,rtower,rceiling,rflat,rplatform,ropen];
+					var rl_ = [rtest,rtower,rceiling,rflat,rplatform,ropen,rbridge,rempty,rcity];
 
 					var rm__ = rl_[ image_index ];
 					switch(image_index) {
-						default: room_goto(rm__); break;
+						default: room_goto(rm__); global.inital_select = true; break;
 					}
 				}
 			}
@@ -70,9 +70,25 @@ if ( controller != undefined ) {
 		image_blend = c_white;
 		image_xscale = lerp(image_xscale, 1, 0.2 );
 		image_yscale = lerp(image_yscale, 1, 0.2 );
+		var st_ = "";
+		switch(image_index) {
+			case 0: st_ = "Arena";				break;
+			case 1: st_ = "Twr";				break;
+			case 2: st_ = "Ceiling";			break;
+			case 3: st_ = "Inital Sendoff";		break;
+			case 4: st_ = "Friendship Area";	break;
+			case 5: st_ = "Floating islands";	break;
+			case 6: st_ = "Dilapidated Bridge"; break;
+			case 7: st_ = "City ruins";			break;
+		}
+		
+		if ( st_ != "" ) {
+			global.display_room_name = st_;
+		}
+		
 	} else {
-		image_xscale = lerp(image_xscale,0.8, 0.2 );
-		image_yscale = lerp(image_yscale,0.8, 0.2 );
+		image_xscale = lerp(image_xscale,0.7, 0.2 );
+		image_yscale = lerp(image_yscale,0.7, 0.2 );
 		image_blend = c_gray;
 	}
 			

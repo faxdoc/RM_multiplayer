@@ -60,7 +60,7 @@ if ( st_ <= 1 && meta_state < 5 ) {
 switch(meta_state) {
 	case 6:
 		if ( !instance_exists(obutton_levels) ) {
-			var d_ = 1/7;
+			var d_ = 1/10;
 			var i = 0;
 			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 0;
 			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 1;
@@ -68,6 +68,9 @@ switch(meta_state) {
 			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 3;
 			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 4;
 			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 5;
+			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 6;
+			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 7;
+			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 8;
 			
 		}
 	break;
@@ -75,6 +78,7 @@ switch(meta_state) {
 		if ( final_timer++ > 300 ) {
 			meta_state = 6;
 			final_timer = 0;
+			global.display_room_name = "";
 			//event_perform( ev_create, 0 );
 		}
 		if instance_exists(overlet_object) {

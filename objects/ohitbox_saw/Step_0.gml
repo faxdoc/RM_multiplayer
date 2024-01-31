@@ -17,45 +17,17 @@ switch(move_state) {
 		
 		silhouette_draw = true;
 		
-		//if ( place_meeting( x, y, ohook ) ) {
-		//	var dpr_ = get_angle_at_player();
-			
-		//	var ds_ = point_distance( x, y, oplayer.x, player_mid_y );
-			
-		//	var nx_ = oplayer.x    - LDX( 16, dpr_ );
-		//	var ny_ = player_mid_y - LDY( 16, dpr_ );
-		//	var nm_ = ds_ div 32;
-		//	var i = 0; repeat( nm_ ) {
-		//		var xx_ = lerp(x, nx_, i / nm_ );
-		//		var yy_ = lerp(y, ny_, i / nm_ );
-				
-		//		var fx_ = create_fx( xx_, yy_, sprite_index, 2, image_angle, depth + 1 );
-		//		fx_.image_blend = silhouette_blend;
-		//		fx_.image_xscale = image_xscale;
-		//		fx_.image_yscale = image_yscale;
-		//		fx_.type = e_fx.fade;
-		//		fx_.timer = .75;
-		
-		//		i++;
-		//	}
-		//	x = nx_;
-		//	y = ny_;
-			
-		//	vsp = -2.5;
-		//	hsp =  sign(LDX(1,dpr_))*.7;
-		//	angle_spin = 3;
-		//	if( bounces_left <= 0 )bounces_left++;
-			
-		//}//show_message("aaa");
 		
 		if( place_meeting( x, y, par_hitbox ) ) {
 			
-			//if ( !is_undefined( hit_list ) && ds_exists(hit_list,ds_type_map ) ) {
+			
 				var t_ = instance_place( x, y, par_hitbox );
-				//if ( !ds_map_exists(hit_list,t_) ) {
 					//audio_play_sound_pitch_falloff( snd_maya_hit_saw, RR( 0.8, 0.9 ), RR( 0.95, 1.1 ), -10 );//RR(1.5,1.7)
 					//hit_list[? t_] = 1;
-					can_push_cooldown = 3;	
+					if ( can_push_cooldown <= 0 ) {
+						can_push_cooldown = 20;
+						hit_freeze = max(hit_freeze,2);
+					}
 					if ( t_.sprite_index == splayer_grenade ) {
 						enflamed = clamp( enflamed + 0.3, 1, 2 );
 						SHAKE++;
@@ -70,24 +42,16 @@ switch(move_state) {
 						vsp = lerp( vsp, LDY( 6, t_.dir ), 0.4 );
 						x += RR(-2,2);
 						y += RR(-2,2);
-				
-					//}
 				} 
-			//}
 		}
 		if ( PLC( x, y, ogrenade ) ) {
-			//var t_ = instance_place( x, y, ogrenade );
-			//if ( !ds_map_exists(hit_list,t_) ) {
-			//	//audio_play_sound_pitch_falloff( snd_maya_hit_saw, RR( 0.8, 0.9 ), RR( 0.95, 1.1 ), -10 );//RR(1.5,1.7)
-			//	hit_list[? t_] = 1;
-				can_push_cooldown = 3;	
-				vsp -= 3.5;
-			//}k
+			can_push_cooldown = 3;	
+			vsp -= 3.5;
 		}
 		
 		if ( can_push_cooldown ) {
 			can_push_cooldown--;
-			hit_freeze = max(hit_freeze,2);
+			
 		}
 		if ( multihits_left < 12 ) {
 			multihits_left = 12;

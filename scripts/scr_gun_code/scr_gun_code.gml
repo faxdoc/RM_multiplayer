@@ -346,8 +346,8 @@ switch(current_weapon) {
 				gun_len = 50;
 				effect_general(3,12,6);
 				gun_general(50,90,2);
-				var cmult = gun_fully_charged ? 1.15 : 0.85;
-				var b = bullet_general(gun_charge*0.92*cmult,49,bullet_sprites[0],0,, 0.96 );
+				var cmult = gun_fully_charged ? 1.1 : 0.85;
+				var b = bullet_general(gun_charge*0.85*cmult,49,bullet_sprites[0],0,, 0.96 );
 				b.duration		= 30;
 				b.image_xscale  = ( gun_charge + 15 ) / 12 * cmult;
 				b.image_yscale  = ( gun_charge + 15 ) / 90 * cmult;
