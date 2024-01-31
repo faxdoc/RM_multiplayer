@@ -50,3 +50,5 @@ base_yscale = image_yscale;
 base_blend = image_blend;
 base_dmg = dmg;
 
+damage_mult = 2;
+

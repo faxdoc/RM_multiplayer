@@ -63,7 +63,7 @@ destroy_function = function() {
 	t.do_draw = false;
 	t.parent = parent;
 	t.stun_mult = 0.4;
-	
+	t.damage_mult = 0.85;
 
 	if ( parent && instance_exists(parent) ) {
 		if ( instance_exists(parent) && push_player && point_distance( x, y, parent.x , parent.y-22 ) < 82 ) {

@@ -11,6 +11,7 @@ do_hitscan_check = false;
 has_been_knocked = false;
 draw_x_offset = 0;
 draw_y_offset = 0;
+damage_mult = 1;
 
 delete_on_wall_col = true;
 move_type = e_movetype.vector;
@@ -160,7 +161,7 @@ destroy_function = function() {
 				if( spark_col != -1 )t.col = spark_col;
 			}
 		
-			if ( point_distance(x,y,parent.x,parent.y) < 45 ) {
+			if ( point_distance(x,y,parent.x,parent.y) < 35 ) {
 				if ( parent.state != e_player.hit ) {
 					effect_create_depth(  -40, ef_ring, t.x, t.y-22, 0, merge_colour(c_red,c_ltgray,0.6) );
 					parent.hit_freeze = floor(max(8,dmg/5 ) );

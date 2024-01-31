@@ -1,6 +1,6 @@
 if ( alt_init ) {
 	spd *= 0.8;
-	duration *= 1.25;
+	duration *= 1.2;
 	alt_init = false;
 }
 #region hitfreeze
@@ -104,7 +104,7 @@ repeat(step_number) {
 		
 		if ( t.state != e_player.hit ) {
 			effect_create_depth(  -40, ef_ring, t.x, t.y-22, 0, merge_colour(c_red,c_ltgray,0.6) );
-			t.hit_freeze = floor(max(8,dmg/5 ) );
+			t.hit_freeze = floor(max(8,dmg/7 ) );
 			
 			t.screen_flash_col	= c_gray;
 			t.flash_alpha		= 0.07;
@@ -113,11 +113,12 @@ repeat(step_number) {
 			parent.flash_alpha		= 0.07;
 		
 		} else {
-			t.hit_freeze = floor( max(4,dmg/6) );
+			t.hit_freeze = floor( max(4,dmg/8) );
 		}
+		t.can_dash = true;
 		
 		t.state = e_player.hit;
-		t.hp -= dmg;
+		t.hp -= dmg*damage_mult;
 		t.hit_timer = floor(dmg*7.5*stun_mult);
 		t.hit_freeze = max(4,dmg/3);
 		t.bounce_cooldown = 30;

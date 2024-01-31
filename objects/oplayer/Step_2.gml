@@ -101,8 +101,13 @@ switch(meta_state) {
 			state = e_player.normal;
 			INVIS = 60;
 		}
+		damage_taken = 0;
+		pre_hp = hp;
+			
 	break;
 	case 1:
+	
+	
 		#region main
 		switch( state ) {
 			#region hook
@@ -229,6 +234,11 @@ switch(meta_state) {
 					if gen_col(x,y+3) {
 						INVIS = 20;
 					}
+					with ICD(x, bbox_top-26, 0, otext_up ) {
+						type = 1;
+						str = "-"+add0_float( floor(other.damage_taken),2);
+					}
+			
 				}
 				if ( hit_timer mod 4 == 0 ) {
 					effect_create_depth( depth-3 + (hit_timer mod 7), ef_smoke, x, y-22, 0, merge_colour(c_white,c_ltgray,random_range_fixed(0.5,1)) );
@@ -252,8 +262,8 @@ switch(meta_state) {
 						var di_dir = point_direction(0,0,hh,vv);
 						hsp *= 0.98;
 						//vsp *= 0.99;
-						hsp += LDX( 0.13, di_dir );
-						vsp += LDY( 0.13, di_dir );
+						hsp += LDX( 0.12, di_dir );
+						vsp += LDY( 0.12, di_dir );
 					}
 				
 					if( bounce_cooldown ) bounce_cooldown--;
@@ -298,7 +308,7 @@ switch(meta_state) {
 						skip_draw = false;
 						
 						if ( !gen_col(x,y+1) && !alt_col ) {
-							INVIS = 6;
+							INVIS = 3;
 						} else {
 							INVIS = 0;
 						}
@@ -357,6 +367,16 @@ switch(meta_state) {
 	
 		}
 		#endregion
+	
+	if ( state != e_player.hit ) {
+		damage_taken = 0;
+	} else {
+		if ( pre_hp != hp ) {
+			damage_taken += pre_hp-hp;
+			pre_hp = hp;
+		}
+	}
+	
 	
 	#region delete hp
 	if ( place_meeting(x,y,odelete_box) || hp <= 0 ) {

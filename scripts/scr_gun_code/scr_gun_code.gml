@@ -35,7 +35,7 @@ var k1p_	= shoot_press_buffer > 0;
 
 //var pre_reload = RELOAD[cg];
 var i = 0; repeat(weapon_number) {
-	if (RELOAD[i] > 0 )RELOAD[i] = max(0,RELOAD[i]-2);
+	if (RELOAD[i] > 0 )RELOAD[i] = max(0,RELOAD[i]-1.25);
 	i++;
 }
 //if( cg == e_gun.shotgun && pre_reload > 0 && RELOAD[cg] <= 0 )audio_play_sound_pitch( snd_shotgun_reload, .35, RR(.95,1.2), -1 );
@@ -81,7 +81,7 @@ switch(current_weapon) {
 		if ( gun_charge > 0 ) {
 			if( round(gun_charge) mod 4 == 1 ){
 				gun_general(10,60,9);
-				var b = bullet_general(4.9,18.5,bullet_sprites[0],0);
+				var b = bullet_general(4.9,18,bullet_sprites[0],0);
 				b.duration *= 1.2;
 				scr_set_size(b,.9);
 				bullet_effects_general(sammo);
@@ -143,7 +143,7 @@ switch(current_weapon) {
 				gun_len = 28;
 				var i = 0;
 				repeat(4) {
-					var b = bullet_general( 4, 30 + random_fixed( 20 ), !gun_fully_charged ? bullet_sprites[0] : bullet_sprites[2], 6 );
+					var b = bullet_general( 4, 50, !gun_fully_charged ? bullet_sprites[0] : bullet_sprites[2], 6 );
 					b.frc = 0.8;
 					b.duration = 15 + ( i++ / 1.5 );
 					b.spd *=       0.30;
@@ -266,8 +266,8 @@ switch(current_weapon) {
 
 			var t = ICD( xx, yy, -1, ogrenade );
 			t.bounce = .9;
-			t.hsp = LDX(7+gun_charge/5,drr)*0.93;
-			t.vsp = LDY(7+gun_charge/5,drr)*0.93;
+			t.hsp = LDX(7+gun_charge/5,drr) * 0.82;
+			t.vsp = LDY(7+gun_charge/5,drr) * 0.82;
 			t.grav = 0;
 			t.duration *= 0.96;
 			t.explode_on_ground = true;
@@ -374,7 +374,7 @@ switch(current_weapon) {
 				}
 				
 			}
-			
+			RELOAD[current_weapon] = 125;
 		} else {
 			//var needed_ = sniper_cost;
 			//if ( !k1_ && !SHOOT_BUFFER ) exit; 
@@ -393,6 +393,7 @@ switch(current_weapon) {
 				gun_charge = 1;
 				gun_fully_charged = false;
 				shoot_delay = 0;
+				RELOAD[current_weapon] = 125;
 			}
 			
 			//MP -= needed_;
@@ -543,6 +544,7 @@ function bullet_general(dmg,spd,sprite, unacc, obj_ = par_hitbox, cb_mult_ = 1, 
 			t.stun_mult = 1.2;
 			t.spd *= 1.4;
 			t.duration *= 0.93;
+			t.damage_mult = 1.4;
 		break;
 		case e_gun.sniper:
 			t.knockback = dmg * 0.05;

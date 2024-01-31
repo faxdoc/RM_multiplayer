@@ -402,3 +402,5 @@ switch(player_id) {
 	break;
 }
 priority_select_timer = 300;
+pre_hp = hp;
+damage_taken = 0;
