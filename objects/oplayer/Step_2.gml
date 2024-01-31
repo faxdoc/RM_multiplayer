@@ -379,7 +379,7 @@ switch(meta_state) {
 	
 	
 	#region delete hp
-	if ( place_meeting(x,y,odelete_box) || hp <= 0 ) {
+	if ( place_meeting(x,y,odelete_box) || hp <= 0 || ( state == e_player.hit && place_meeting(x,y,odelete_box_stun) ) ) {
 		with ICD(x, bbox_top-26, 0, otext_up ) {
 			type = 1;
 			str = "-"+add0_float( floor(other.damage_taken),2);
@@ -390,7 +390,7 @@ switch(meta_state) {
 		var y_ = y-22;
 		var tx_ = room_width /2;
 		var ty_ = room_height/3;
-		if ( place_meeting( x, y, odelete_box ) ) {
+		if ( place_meeting( x, y, odelete_box ) || ( state == e_player.hit && place_meeting(x,y,odelete_box_stun) ) ) {
 			repeat(32) {
 				random_fixed(1);
 				if ( random_fixed(1) < 0.8 ) {

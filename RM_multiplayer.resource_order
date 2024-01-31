@@ -12,6 +12,7 @@
     {"name":"Rooms","order":7,"path":"folders/Rooms.yy",},
     {"name":"Shaders","order":5,"path":"folders/Shaders.yy",},
     {"name":"Sounds","order":4,"path":"folders/Sounds.yy",},
+    {"name":"music","order":1,"path":"folders/Sounds/music.yy",},
     {"name":"gameplay","order":1,"path":"folders/Sounds/sound/gameplay.yy",},
     {"name":"movement","order":2,"path":"folders/Sounds/sound/gameplay/movement.yy",},
     {"name":"player","order":1,"path":"folders/Sounds/sound/gameplay/player.yy",},
@@ -51,7 +52,6 @@
     {"name":"Particle Systems","order":6,"path":"folders/unused/Particle Systems.yy",},
     {"name":"Sequences","order":2,"path":"folders/unused/Sequences.yy",},
     {"name":"Timelines","order":1,"path":"folders/unused/Timelines.yy",},
-    {"name":"music","order":1,"path":"folders/Sounds/music.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"sdot_wave","order":13,"path":"sprites/sdot_wave/sdot_wave.yy",},
