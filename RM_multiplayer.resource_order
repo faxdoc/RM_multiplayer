@@ -130,7 +130,7 @@
     {"name":"ohook_dragger_still","order":1,"path":"objects/ohook_dragger_still/ohook_dragger_still.yy",},
     {"name":"splayer_hoodie","order":3,"path":"sprites/splayer_hoodie/splayer_hoodie.yy",},
     {"name":"par_basic","order":1,"path":"objects/par_basic/par_basic.yy",},
-    {"name":"orespawn_box","order":8,"path":"objects/orespawn_box/orespawn_box.yy",},
+    {"name":"orespawn_box","order":4,"path":"objects/orespawn_box/orespawn_box.yy",},
     {"name":"shd_palette","order":4,"path":"shaders/shd_palette/shd_palette.yy",},
     {"name":"spalette_player_3","order":2,"path":"sprites/spalette_player_3/spalette_player_3.yy",},
     {"name":"splayer_idle","order":1,"path":"sprites/splayer_idle/splayer_idle.yy",},
