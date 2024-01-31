@@ -445,8 +445,8 @@ switch(current_weapon) {
 						
 			CLIP[cg]--;
 			effect_general(3,12,6);
-			gun_general(300,90,2);
-			RELOAD[cg] = 420;
+			//gun_general(220,90,2);
+			RELOAD[cg] = 320;
 			shoot_delay = 30;
 				
 		}

@@ -6,6 +6,7 @@ if ( grenade_cooldown ) grenade_cooldown--;
 
 #region input
 
+if ( global.training_mode ) lives_left = 4;
 //jump buffer
 if( jump_press )jump_buffer = 12;
 if (y > room_height) jump_buffer = 0;
@@ -384,6 +385,10 @@ switch(meta_state) {
 	
 	#region delete hp
 	if ( place_meeting(x,y,odelete_box) || hp <= 0 ) {
+		with ICD(x, bbox_top-26, 0, otext_up ) {
+			type = 1;
+			str = "-"+add0_float( floor(other.damage_taken),2);
+		}
 		var plc_ = player_colour;
 		if plc_ == c_red plc_ = c_orange;
 		var x_ = x;
