@@ -32,6 +32,18 @@ if ( player_local ) {
 		
 	}
 	switch( meta_state ) {
+		case 6:
+			DSC(c_darkest);
+			DSA( 0.8 );
+			draw_rectangle(0,0,room_width,room_height,false);
+			DSC(c_white);
+			DSA(1);
+			
+			if ( instance_exists(obutton_levels) ) {
+				with ( obutton_levels ) draw_self();
+			}
+			
+		break;
 		case -1:
 			draw_sprite_ext(sstart,0,GW/2,GH/2, 2, 2, 0, merge_color( c_gray, c_orange, 0.5 + ( intro_timer / 240 ) ), 1 );
 			var vll_ = (120-intro_timer)/60;

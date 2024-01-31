@@ -40,20 +40,42 @@ touching_platform = alt_col;
 
 #endregion
 
+if ( first_looser == undefined && lives_left <= 0 ) {
+	var ld_ = id;
+	with ( oplayer ) {
+		first_looser = ld_;
+	}
+}
 var st_ = 0;
 with ( oplayer ) {
 	if ( lives_left > 0 ) {
 		st_++;
 	}
 }
-if ( st_ <= 1 && meta_state != 5 ) {
+if ( st_ <= 1 && meta_state < 5 ) {
 	meta_state = 5;
+	//final_timer = 0;
 }
 
 switch(meta_state) {
+	case 6:
+		if ( !instance_exists(obutton_levels) ) {
+			var d_ = 1/7;
+			var i = 0;
+			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 0;
+			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 1;
+			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 2;
+			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 3;
+			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 4;
+			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 5;
+			
+		}
+	break;
 	case 5:
-		if ( final_timer++ > 400 ) {
-			event_perform(ev_create,0);
+		if ( final_timer++ > 300 ) {
+			meta_state = 6;
+			final_timer = 0;
+			//event_perform( ev_create, 0 );
 		}
 		if instance_exists(overlet_object) {
 			IDD(overlet_object);
@@ -376,8 +398,8 @@ switch(meta_state) {
 		
 		meta_state = 2;
 		
-		if lives_left <= 0 {
-			meta_state = 6;
+		if ( lives_left <= 0 ) {
+			meta_state = -7;
 		}
 		INVIS = 120;
 		//visible = false;
@@ -536,9 +558,14 @@ switch(meta_state) {
 		if ( spawn_timer++ > 90 ) {
 			spawn_timer = 0;
 			meta_state = 0;
-			x = room_width  / 2;
-			y = room_height / 2;
-			INVIS = 30; 
+			if ( instance_exists(orespawn_box) ) {
+				x = orespawn_box.x;
+				y = orespawn_box.y;
+			} else {
+				x = room_width  / 2;
+				y = room_height / 2;
+			}
+			INVIS = 60; 
 			self_draw = true;
 		}
 		

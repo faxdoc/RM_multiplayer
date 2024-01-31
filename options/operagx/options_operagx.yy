@@ -17,11 +17,11 @@
   "option_operagx_mod_team_id": "",
   "option_operagx_mod_team_name": "",
   "option_operagx_mod_version": "1.0.0.0",
-  "option_operagx_next_version": "1.0.0.19",
+  "option_operagx_next_version": "1.0.0.25",
   "option_operagx_publicShareUrl": "",
   "option_operagx_scale": 0,
   "option_operagx_team_id": "a3d96707-4bbe-4209-8329-9baebb245971",
   "option_operagx_team_name": "faxdoc studio",
   "option_operagx_texture_page": "2048x2048",
-  "option_operagx_version": "1.0.0.18",
+  "option_operagx_version": "1.0.0.24",
 }

@@ -24,7 +24,7 @@ skip_redo		= true;
 pre_hook_state	= e_player.normal;
 move_hooked 	= false;
 mask_index		= splayer_mask;
-alarm[0]		= 4;
+//alarm[0]		= 4;
 
 TAP_JUMP = false;
 jump_buffer = 0;
@@ -61,8 +61,6 @@ circle_juice		= [ 0, 0, 0, 0, 0, 0 ];
 touching_platform	= false;
 boost_respawn		= false;
 final_timer = 0;
-
-
 #region movement variables
 
 //Backup
@@ -70,7 +68,9 @@ base_walk_spd	= 0.385;
 base_jump_pwr	= 4.68;
 walk_spd		= base_walk_spd;
 jump_pwr		= base_jump_pwr;
-grav			*= 1.2;
+//grav			*= 1.2;
+grav = 0.17*1.2;
+
 jump_delay		= 0;
 
 jump_charge_spd = 1;
@@ -321,15 +321,32 @@ hit_timer = 0;
 player_colour = c_aqua;
 player_palette = spalette_player_1;
 
-
-if ( instance_exists(oplayer) ) {
-	switch(player_id) {
-		default: player_colour = c_aqua;  player_palette = spalette_player_1; x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,   0) ); y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom,0.5) );  break;
-		case 1:  player_colour = c_red;   player_palette = spalette_player_1; x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,   1) ); y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom,0.5) );  break;
-		case 2:  player_colour = c_lime;  player_palette = spalette_player_1; x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,0.33) ); y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom,0.5) );  break;
-		case 3:  player_colour = c_white; player_palette = spalette_player_1; x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,0.66) ); y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom,0.5) );  break;
-	}
+ x = floor( lerp( ospawn_box.bbox_left,ospawn_box.bbox_right,   0) ); 
+ y = floor( lerp( ospawn_box.bbox_top,ospawn_box.bbox_bottom, 0.5) );
+ 
+switch(player_id) {
+	default: player_colour = c_aqua;   
+		x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,   0) ); 
+		y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom, 0.5) );  
+	break;
+	case 1:  
+		player_colour = c_red;    
+		x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,   1) ); 
+		y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom,0.5) );  
+	break;
+	case 2:  
+		player_colour = c_lime;   
+		x = floor( lerp( ospawn_box.bbox_left,ospawn_box.bbox_right,0.33 ) ); 
+		y = floor( lerp( ospawn_box.bbox_top, ospawn_box.bbox_bottom,0.5 ) );  
+	break;
+	case 3:
+		player_colour = c_white;  
+		x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,0.66) );
+		y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom, 0.5) );  
+	break;
 }
+
+//player_colour = c_aqua;  player_palette = spalette_player_1; x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,   0) ); y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom,0.5) ); // break;
 
 view_enabled = true;
 view_set_visible(0,true);
@@ -347,11 +364,6 @@ meta_state = -1;
 hp = 150;
 hp_max = 150;
 lives_left = 4;
-
-
-if ( !instance_exists( orandom ) )  {
-	MAKES(orandom);
-}
 
 #region shader
 
@@ -379,5 +391,9 @@ function start_palette() {
 	shader_set(shd_palette);
 	texture_set_stage( main_shader_palette_pointer, palette_texture );
 }
+
+
+first_looser = undefined;
+random_inited = false;
 
 #endregion

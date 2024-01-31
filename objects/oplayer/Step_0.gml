@@ -1,5 +1,12 @@
 var _input = rollback_get_input();
 
+if (!random_inited ) {
+	random_inited = true;
+	if ( !instance_exists(orandom) ) {
+	 MAKES(orandom);
+	}
+}
+
 KUP		= _input.KUP;	
 KDOWN	= _input.KDOWN;	
 KLEFT	= _input.KLEFT;	
@@ -102,7 +109,6 @@ switch( meta_state ) {
 			meta_state = 1;
 			state = e_player.normal;
 			INVIS = 60;
-			
 		}
 		
 	break;
