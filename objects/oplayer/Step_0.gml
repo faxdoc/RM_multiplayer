@@ -3,12 +3,12 @@ var _input = rollback_get_input();
 if (!random_inited ) {
 	random_inited = true;
 	if ( !instance_exists(orandom) ) {
-	 MAKES(orandom);
+		MAKES(orandom);
 	}
 	switch(instance_number(oplayer)) {
-	default: lives_left = 3; break;
-		case 3: lives_left = 2; break;
-		case 4: lives_left = 2; break;	
+		default: lives_left = 3; break;
+		case 3:  lives_left = 2; break;
+		case 4:  lives_left = 2; break;	
 	}
 	
 }

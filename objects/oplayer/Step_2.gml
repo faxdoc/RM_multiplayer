@@ -1,13 +1,10 @@
 #region general
 
-
 switch( meta_state ) {
 	default:
 		if ( first_looser == undefined && lives_left <= 0 ) {
 			var ld_ = id;
-			with ( oplayer ) {
-				first_looser = ld_;
-			}
+			with ( oplayer ) { first_looser = ld_; }
 		}
 		var st_ = 0;
 		with ( oplayer ) {
@@ -15,9 +12,7 @@ switch( meta_state ) {
 				st_++;
 			}
 		}
-		if ( st_ <= 1 ) {// && meta_state < 5 
-			meta_state = e_meta_state.round_end;
-		}
+		if ( st_ <= 1 ) meta_state = e_meta_state.round_end;
 	break;
 	case e_meta_state.level_select:
 	case e_meta_state.round_end:
@@ -27,21 +22,14 @@ switch( meta_state ) {
 
 #endregion
 
+
 switch(meta_state) {
 	case e_meta_state.level_select:
 		if ( !instance_exists(obutton_levels) ) {
-			var d_ = 1/10;
-			var i = 0;
-			ICD( GW*(d_+(d_*i++)),GH*0.55,0,obutton_levels).image_index = 0;
-			ICD( GW*(d_+(d_*i++)),GH*0.55,0,obutton_levels).image_index = 1;
-			ICD( GW*(d_+(d_*i++)),GH*0.55,0,obutton_levels).image_index = 2;
-			ICD( GW*(d_+(d_*i++)),GH*0.55,0,obutton_levels).image_index = 3;
-			ICD( GW*(d_+(d_*i++)),GH*0.55,0,obutton_levels).image_index = 4;
-			ICD( GW*(d_+(d_*i++)),GH*0.55,0,obutton_levels).image_index = 5;
-			ICD( GW*(d_+(d_*i++)),GH*0.55,0,obutton_levels).image_index = 6;
-			ICD( GW*(d_+(d_*i++)),GH*0.55,0,obutton_levels).image_index = 7;
-			ICD( GW*(d_+(d_*i++)),GH*0.55,0,obutton_levels).image_index = 8;
-			
+			var d_ = 1/10, i = 0; repeat(9) {
+				ICD( GW*(d_+(d_*i)),GH*0.55,0,obutton_levels).image_index = i;
+				i++;
+			}
 		}
 	break;
 	case e_meta_state.round_end:
@@ -49,17 +37,10 @@ switch(meta_state) {
 			meta_state = e_meta_state.level_select;
 			final_timer = 0;
 			global.display_room_name = "";
-			//event_perform( ev_create, 0 );
 		}
-		if instance_exists(overlet_object) {
-			IDD(overlet_object);
-		}
-		if instance_exists(par_hitbox) {
-			IDD(par_hitbox);
-		}
-		if instance_exists(ohook) {
-			IDD(ohook);
-		}
+		if instance_exists( overlet_object ) { IDD( overlet_object	); }
+		if instance_exists( par_hitbox	   ) { IDD( par_hitbox		); }
+		if instance_exists( ohook		   ) { IDD( ohook			); }
 	break;
 	case e_meta_state.round_start:
 		hp = hp_max;
@@ -112,7 +93,7 @@ switch(meta_state) {
 			aim_dir = 0;
 			draw_xscale =1;
 			var_dir = 0;
-			shoot_delay = =;
+			shoot_delay = 0;
 			
 		}
 		INVIS = 60;
@@ -130,7 +111,6 @@ switch(meta_state) {
 	#endregion
 	
 }
-
 
 if ( meta_state != e_meta_state.main ) {
 	var lddd_ = id;
