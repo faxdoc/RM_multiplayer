@@ -34,7 +34,7 @@ if ( player_local ) {
 	switch( meta_state ) {
 		case 6:
 			DSC(c_darkest);
-			DSA( 0.8 );
+			DSA( 0.9 );
 			draw_rectangle(0,0,room_width,room_height,false);
 			DSC(c_white);
 			DSA(1);
@@ -43,9 +43,9 @@ if ( player_local ) {
 				with ( first_looser ) {
 					var _c_ = player_colour;
 					draw_set_halign(fa_center);
-					draw_text_transformed_color( GW*0.5, floor(GH*0.38), "Player " + string(player_id) + " choosing stage", 2, 2, 0, _c_, _c_, _c_, _c_, 1 );
+					draw_text_transformed_color( GW*0.5, floor(GH*0.28), "Player " + string(player_id) + " choosing stage", 2, 2, 0, _c_, _c_, _c_, _c_, 1 );
 					draw_set_halign(fa_left);
-					var mdx_ = GW*0.5, mdy_ = GH*0.5;
+					var mdx_ = GW*0.5, mdy_ = GH*0.4;
 					var ww_ = priority_select_timer;
 					DSC(_c_);
 					draw_rectangle( mdx_-ww_, mdy_-12, mdx_+ww_, mdy_+12, false );
@@ -54,16 +54,19 @@ if ( player_local ) {
 			} else {
 				var _c_ = player_colour;
 				draw_set_halign(fa_center);
-				draw_text_transformed_color( GW*0.5, floor(GH*0.38), "Anyone can choose stage", 2, 2, 0, _c_, _c_, _c_, _c_, 1 );
+				draw_text_transformed_color( GW*0.5, floor(GH*0.28), "Anyone can choose stage", 2, 2, 0, _c_, _c_, _c_, _c_, 1 );
 				draw_set_halign(fa_left);
 			}
 			
 			if ( global.display_room_name != "" ) {
-				var c = c_ltgray;
-				var xx_ = GW*0.5;
-				var yy_ = GH*0.9;
+				
+				var xx_ = floor(GW*0.5);
+				var yy_ = floor(GH*0.75);
 				draw_set_halign(fa_center);
-				draw_text_transformed_color( xx_, yy_, global.display_room_name, 2, 2, 0, c,c,c,c, 1 );
+				var c = merge_colour(c_white,c_black,0.9);
+				draw_text_transformed_color( xx_, yy_+1, global.display_room_name, 3, 3, 0, c,c,c,c, 1 );
+				var c = merge_colour(c_white,c_ltgray,0.1);
+				draw_text_transformed_color( xx_, yy_, global.display_room_name, 3, 3, 0, c,c,c,c, 1 );
 				draw_set_halign(fa_left);
 			}
 		

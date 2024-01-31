@@ -79,7 +79,8 @@ if ( controller != undefined ) {
 			case 4: st_ = "Friendship Area";	break;
 			case 5: st_ = "Floating islands";	break;
 			case 6: st_ = "Dilapidated Bridge"; break;
-			case 7: st_ = "City ruins";			break;
+			case 7: st_ = "Vines";				break;
+			case 8: st_ = "City ruins";			break;
 		}
 		
 		if ( st_ != "" ) {

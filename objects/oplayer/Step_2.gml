@@ -63,15 +63,15 @@ switch(meta_state) {
 		if ( !instance_exists(obutton_levels) ) {
 			var d_ = 1/10;
 			var i = 0;
-			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 0;
-			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 1;
-			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 2;
-			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 3;
-			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 4;
-			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 5;
-			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 6;
-			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 7;
-			ICD( GW*(d_+(d_*i++)),GH*0.65,0,obutton_levels).image_index = 8;
+			ICD( GW*(d_+(d_*i++)),GH*0.55,0,obutton_levels).image_index = 0;
+			ICD( GW*(d_+(d_*i++)),GH*0.55,0,obutton_levels).image_index = 1;
+			ICD( GW*(d_+(d_*i++)),GH*0.55,0,obutton_levels).image_index = 2;
+			ICD( GW*(d_+(d_*i++)),GH*0.55,0,obutton_levels).image_index = 3;
+			ICD( GW*(d_+(d_*i++)),GH*0.55,0,obutton_levels).image_index = 4;
+			ICD( GW*(d_+(d_*i++)),GH*0.55,0,obutton_levels).image_index = 5;
+			ICD( GW*(d_+(d_*i++)),GH*0.55,0,obutton_levels).image_index = 6;
+			ICD( GW*(d_+(d_*i++)),GH*0.55,0,obutton_levels).image_index = 7;
+			ICD( GW*(d_+(d_*i++)),GH*0.55,0,obutton_levels).image_index = 8;
 			
 		}
 	break;

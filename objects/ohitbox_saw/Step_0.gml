@@ -73,7 +73,7 @@ switch(move_state) {
 				hit_freeze--;
 			}
 		}
-		dmg = base_dmg * 1.5;
+		dmg = base_dmg * 2;
 	
 		image_xscale = base_xscale*0.8;
 		image_yscale = base_yscale*0.8;
