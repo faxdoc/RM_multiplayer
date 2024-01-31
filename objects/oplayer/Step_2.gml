@@ -1,45 +1,5 @@
 #region general
 player_input_init
-floor_type = tile_sort_genre(tplace_meeting_index(x+11,y+8+vsp,layer_type));
-walk_spd = base_walk_spd + 0.065 + 0.05;
-if ( grenade_cooldown ) grenade_cooldown--;
-
-#region input
-
-if ( global.training_mode ) lives_left = 4;
-//jump buffer
-if( jump_press )jump_buffer = 12;
-if (y > room_height) jump_buffer = 0;
-if( jump_buffer )jump_buffer--;
-
-//hook buffer
-if( K2  ) hook_cooldown     = 15;
-if( K2P ) hook_press_buffer =  5;
-hook_press_buffer--;
-
-var k2_ = K2;
-var k2p_ = hook_press_buffer;
-
-if( !input_skip ){
-	if(  hook_cooldown ) hook_cooldown--;
-} else {
-	hook_cooldown = 0;
-	k2_  = false;
-	k2p_ = false;
-	wep_select = false;
-}
-
-#endregion
-
-#region platform down y
-mask_index = splayer_mask_platform;
-var alt_col = ( !gen_col_sort( x, y, layer_col, 2 ) && gen_col_sort( x, y+2, layer_col, 2 ) );
-mask_index = splayer_mask;
-touching_platform = alt_col;
-
-#endregion
-
-#endregion
 
 switch( meta_state ) {
 	default:
@@ -64,6 +24,8 @@ switch( meta_state ) {
 	
 	break;
 }
+
+#endregion
 
 switch(meta_state) {
 	case e_meta_state.level_select:
@@ -129,7 +91,45 @@ switch(meta_state) {
 		if ( intro_timer > 0 ) {
 			intro_timer--;
 		}
-	
+		floor_type = tile_sort_genre(tplace_meeting_index(x+11,y+8+vsp,layer_type));
+		walk_spd = base_walk_spd + 0.065 + 0.05;
+		if ( grenade_cooldown ) grenade_cooldown--;
+
+		#region input
+
+		if ( global.training_mode ) lives_left = 4;
+		//jump buffer
+		if( jump_press )jump_buffer = 12;
+		if (y > room_height) jump_buffer = 0;
+		if( jump_buffer )jump_buffer--;
+
+		//hook buffer
+		if( K2  ) hook_cooldown     = 15;
+		if( K2P ) hook_press_buffer =  5;
+		hook_press_buffer--;
+
+		var k2_ = K2;
+		var k2p_ = hook_press_buffer;
+
+		if( !input_skip ){
+			if(  hook_cooldown ) hook_cooldown--;
+		} else {
+			hook_cooldown = 0;
+			k2_  = false;
+			k2p_ = false;
+			wep_select = false;
+		}
+
+		#endregion
+
+		#region platform down y
+		mask_index = splayer_mask_platform;
+		var alt_col = ( !gen_col_sort( x, y, layer_col, 2 ) && gen_col_sort( x, y+2, layer_col, 2 ) );
+		mask_index = splayer_mask;
+		touching_platform = alt_col;
+
+		#endregion
+
 	#region main
 		switch( state ) {
 			#region hook
@@ -577,42 +577,7 @@ switch(meta_state) {
 	}
 	#endregion
 	
-	if ( INVIS ) INVIS--;
-	draw_alpha = !( INVIS mod 4 > 1 );
-	
-	break;
-	#endregion
-	
-	#region respawn
-	case e_meta_state.dying:
-		if ( spawn_timer == 0 ) {
-			if ( instance_exists(orespawn_box) ) {
-				x = orespawn_box.x;
-				y = orespawn_box.y;
-			} else {
-				x = room_width  / 2;
-				y = room_height / 2;
-			}
-		}
-		INVIS = 60;
-		if ( spawn_timer++ > 90 ) {
-			hsp = 0;
-			vsp = 0;
-			spawn_timer = 0;
-			meta_state = e_meta_state.respawn;
-			
-			INVIS = 60; 
-			self_draw = true;
-		}
-		
-	break;
-	#endregion
-	
-}
-
-
-
-#region draw variables
+	#region draw variables
 
 var hh = ( state == e_player.normal) ? KRIGHT-KLEFT : 0;
 var bwave, bmax =-1, bmin = 0, bdur = 4;
@@ -734,6 +699,42 @@ if ( on_ground ) {
 	target_y = 0;
 	body_y = 0;
 }
+legs_running_index = legs_index;
+#endregion
+
+	if ( INVIS ) INVIS--;
+	draw_alpha = !( INVIS mod 4 > 1 );
+	
+	break;
+	#endregion
+	
+	#region respawn
+	case e_meta_state.dying:
+		if ( spawn_timer == 0 ) {
+			if ( instance_exists(orespawn_box) ) {
+				x = orespawn_box.x;
+				y = orespawn_box.y;
+			} else {
+				x = room_width  / 2;
+				y = room_height / 2;
+			}
+		}
+		INVIS = 60;
+		if ( spawn_timer++ > 90 ) {
+			hsp = 0;
+			vsp = 0;
+			spawn_timer = 0;
+			meta_state = e_meta_state.respawn;
+			
+			INVIS = 60; 
+			self_draw = true;
+		}
+		
+	break;
+	#endregion
+	
+}
+
 
 if ( meta_state != e_meta_state.main ) {
 	var lddd_ = id;
@@ -745,10 +746,6 @@ if ( meta_state != e_meta_state.main ) {
 		}
 	}
 }
-
-legs_running_index = legs_index;
-
-#endregion
 
 if ( SHAKE > 0.05 ) {
 	SHAKE *= 0.85;
