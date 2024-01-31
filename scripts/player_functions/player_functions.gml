@@ -228,7 +228,7 @@ function player_throw_grenade() {
 		if ( knife_timer > 20 ) {
 			knife_state = 0;
 			knife_timer = 0;
-			grenade_cooldown = 120;
+			grenade_cooldown = 140;
 		}
 		#endregion
 	

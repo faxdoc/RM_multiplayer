@@ -18,6 +18,23 @@ if ( controller != undefined ) {
 		image_blend = c_white;
 		image_xscale = lerp(image_xscale, 1, 0.2 );
 		image_yscale = lerp(image_yscale, 1, 0.2 );
+		
+		var st_ = "";
+		switch(image_index) {
+			case 0: st_ = "Arena";				break;
+			case 1: st_ = "Twr";				break;
+			case 2: st_ = "Ceiling";			break;
+			case 3: st_ = "Inital Sendoff";		break;
+			case 4: st_ = "Friendship Area";	break;
+			case 5: st_ = "Floating islands";	break;
+			case 6: st_ = "Dilapidated Bridge"; break;
+			case 7: st_ = "Vines";				break;
+			case 8: st_ = "City ruins";			break;
+		}
+		
+		if ( st_ != "" ) {
+			global.display_room_name = st_;
+		}
 	} else {
 		image_xscale = lerp(image_xscale,0.7, 0.2 );
 		image_yscale = lerp(image_yscale,0.7, 0.2 );

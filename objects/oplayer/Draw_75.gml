@@ -11,10 +11,10 @@ if ( player_local ) {
 	var i = 0; with ( oplayer ) {
 		c = merge_colour(c_ltgray, player_colour, 0.5 );
 		DSC( c_dkgray );
-		draw_text( GW*0.15 + ( i*(GW*0.2)), 1+ yl_,    "PLAYER-" + string(i) );
+		draw_text( GW*0.15 + ( i*(GW*0.2)), 1+ yl_,  display_name );
 		DSC( c );
 		
-		draw_text( GW*0.15 + ( i*(GW*0.2)), yl_,    "PLAYER-" + string(i) );
+		draw_text( GW*0.15 + ( i*(GW*0.2)), yl_,   display_name );
 		ii = 0; repeat(lives_left) {
 			draw_sprite_ext(shp_icon,0, ( GW*0.15 + ( i*(GW*0.2)) )+(ii++*18)+8, yl_-8, 1, 1, 0, c, 1  );
 		}
@@ -43,7 +43,7 @@ if ( player_local ) {
 				with ( first_looser ) {
 					var _c_ = player_colour;
 					draw_set_halign(fa_center);
-					draw_text_transformed_color( GW*0.5, floor(GH*0.28), "Player " + string(player_id) + " choosing stage", 2, 2, 0, _c_, _c_, _c_, _c_, 1 );
+					draw_text_transformed_color( GW*0.5, floor(GH*0.28), display_name + " is choosing stage", 2, 2, 0, _c_, _c_, _c_, _c_, 1 );
 					draw_set_halign(fa_left);
 					var mdx_ = GW*0.5, mdy_ = GH*0.4;
 					var ww_ = priority_select_timer;
@@ -202,54 +202,54 @@ if ( player_local ) {
 				#region 3-4 players
 				
 				
-				var i = 0, nll = 0; with ( oplayer ) {
-					if ( nll == 2 ) yy += 64;
-					c = merge_colour(c_ltgray,  player_colour, 0.5 );
+				//var i = 0, nll = 0; with ( oplayer ) {
+				//	if ( nll == 2 ) yy += 64;
+				//	c = merge_colour(c_ltgray,  player_colour, 0.5 );
 				
-					if    ( meta_state != 1 && show_hp_timer < 35 ) c = merge_color( c, c_ltgray, round( (show_hp_timer/8) mod 1 ) );
-					lc_ = ( meta_state != 1 && show_hp_timer < 35 ) ? lives_left+1 : lives_left;
+				//	if    ( meta_state != 1 && show_hp_timer < 35 ) c = merge_color( c, c_ltgray, round( (show_hp_timer/8) mod 1 ) );
+				//	lc_ = ( meta_state != 1 && show_hp_timer < 35 ) ? lives_left+1 : lives_left;
 					
 				
-					if ( lc_ > 1 ) {
-						DSC(c_black);
-						draw_text_transformed( GW*0.44 + ( i*(GW*0.1)), yy-29,  lc_, 4, 4, 0 );
-						DSC( c );
-						draw_text_transformed( GW*0.44 + ( i*(GW*0.1)), yy-29,  lc_, 4, 4, 0 );
+				//	if ( lc_ > 1 ) {
+				//		DSC(c_black);
+				//		draw_text_transformed( GW*0.44 + ( i*(GW*0.1)), yy-29,  lc_, 4, 4, 0 );
+				//		DSC( c );
+				//		draw_text_transformed( GW*0.44 + ( i*(GW*0.1)), yy-29,  lc_, 4, 4, 0 );
 					
-						if ( i == 0 ) {
-							ii = 0; repeat(lc_) {
-								draw_sprite_ext(shp_icon,0, ( GW*0.36 + ( i*(GW*0.33)) )-(ii++*18)+8, yy, 1, 1, 0, c, 1  );
-							}
-						}else {
-							ii = 0; repeat(lc_) {
-								draw_sprite_ext(shp_icon,0, ( GW*0.26 + ( i*(GW*0.33)) )+(ii++*18)+8, yy, 1, 1, 0, c, 1  );
-							}
-						}
-						i++;
-						i = i mod 2;
+				//		if ( i == 0 ) {
+				//			ii = 0; repeat(lc_) {
+				//				draw_sprite_ext(shp_icon,0, ( GW*0.36 + ( i*(GW*0.33)) )-(ii++*18)+8, yy, 1, 1, 0, c, 1  );
+				//			}
+				//		}else {
+				//			ii = 0; repeat(lc_) {
+				//				draw_sprite_ext(shp_icon,0, ( GW*0.26 + ( i*(GW*0.33)) )+(ii++*18)+8, yy, 1, 1, 0, c, 1  );
+				//			}
+				//		}
+				//		i++;
+				//		i = i mod 2;
 						
-					} else {
+				//	} else {
 						
-						if ( lives_left > 0 ) {
-							c = merge_colour(c_ltgray, player_colour, ( show_hp_timer/5 ) mod 1  );
+				//		if ( lives_left > 0 ) {
+				//			c = merge_colour(c_ltgray, player_colour, ( show_hp_timer/5 ) mod 1  );
 					
-							DSC(c_black);
-							draw_text_transformed( GW*0.44 + ( i*(GW*0.1)), yy-29,  lc_, 4, 4, 0 );
-							DSC( c );
-							draw_text_transformed( GW*0.44 + ( i*(GW*0.1)), yy-29,  lc_, 4, 4, 0 );
+				//			DSC(c_black);
+				//			draw_text_transformed( GW*0.44 + ( i*(GW*0.1)), yy-29,  lc_, 4, 4, 0 );
+				//			DSC( c );
+				//			draw_text_transformed( GW*0.44 + ( i*(GW*0.1)), yy-29,  lc_, 4, 4, 0 );
 					
-							if ( i == 0 ) {
-								draw_sprite_ext(shp_icon,0, ( GW*0.36 + ( i*(GW*0.33)) )+8, yy, 2, 2, 0, c, 1  );
-							} else {
-								draw_sprite_ext(shp_icon,0, ( GW*0.26 + ( i*(GW*0.33)) )+8, yy, 2, 2, 0, c, 1  );	
-							}
-						}
-						i++;
-						i = i mod 2;
+				//			if ( i == 0 ) {
+				//				draw_sprite_ext(shp_icon,0, ( GW*0.36 + ( i*(GW*0.33)) )+8, yy, 2, 2, 0, c, 1  );
+				//			} else {
+				//				draw_sprite_ext(shp_icon,0, ( GW*0.26 + ( i*(GW*0.33)) )+8, yy, 2, 2, 0, c, 1  );	
+				//			}
+				//		}
+				//		i++;
+				//		i = i mod 2;
 						
-					}
-					nll++;
-				}
+				//	}
+				//	nll++;
+				//}
 				#endregion
 			}
 			

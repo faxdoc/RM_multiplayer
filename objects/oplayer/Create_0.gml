@@ -354,6 +354,7 @@ hp = 150;
 hp_max = 150;
 lives_left = 4;
 
+display_name = player_name;
 
 #region shader
 
@@ -410,6 +411,6 @@ switch(player_id) {
 		y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom, 0.5) );  
 	break;
 }
-priority_select_timer = 300;
+priority_select_timer = 600;
 pre_hp = hp;
 damage_taken = 0;

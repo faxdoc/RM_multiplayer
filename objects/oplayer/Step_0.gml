@@ -155,8 +155,8 @@ switch(meta_state) {
 #region meta state
 switch( meta_state ) {
 	case -1:
-		intro_timer += 1.25;
-		if ( intro_timer > 100 ) {
+		intro_timer += 1;
+		if ( intro_timer > 110 ) {
 			intro_timer = 20;
 			spawn_timer = 0;
 			meta_state = 1;
