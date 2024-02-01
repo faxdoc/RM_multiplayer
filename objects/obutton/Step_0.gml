@@ -19,7 +19,7 @@ if ( mouse_check_button_pressed(mb_left) ) {
 		omultiplayer_manager.game_has_started = true; 
 		
 		switch(image_index) {
-			case 0: rollback_create_game( 2, true  ); rollback_use_random_input(false); break;
+			case 0: rollback_create_game( 4, true  ); rollback_use_random_input(false); break;
 			case 1: rollback_create_game( 2, false ); break;
 			case 2: rollback_create_game( 3, false ); break;
 			case 3: rollback_create_game( 4, false ); break;
