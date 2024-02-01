@@ -141,6 +141,6 @@ hooking_enemy = false;
 
 
 function detach_sound() {
-	audio_play_sound_pitch_falloff( snd_detach_hook, .4, RR( .95, 1.05 ), 0 );
+	audio_play_sound_pitch_falloff( snd_detach_hook, 0.4, RR( .95, 1.05 ), 0 );
 }
 

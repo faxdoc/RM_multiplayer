@@ -39,9 +39,10 @@ surface_resize( application_surface, GW, GH );
 application_surface_draw_enable( false );
 draw_set_font( fnt_default );
 
+//Maybe change
 global.fnt_number_big		= font_add_sprite( snumber_big, ord("0"), false, 1 );
 global.display_room_name	= "";
 global.inital_select		= false;
 global.training_mode		= false;
-global.music = -1;
 
+rollback_use_random_input( false );

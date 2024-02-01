@@ -14,8 +14,10 @@ switch( meta_state ) {
 		}
 		if ( st_ <= 1 ) {
 			meta_state = e_meta_state.round_end;
-			if ( audio_is_playing( global.music ) ) {
-				audio_sound_gain( global.music, 0, 0 );
+			if ( player_local ) {
+				with ( music_player ) {
+					stop_playing_music();
+				}
 			}
 		}
 		
@@ -53,16 +55,16 @@ switch(meta_state) {
 		INVIS = 30; 
 		intro_timer += 0.75;
 		if ( intro_timer > 105 ) {
+			if ( player_local ) {
+				with ( music_player ) {
+					start_playing_music();
+				}
+			}
 			intro_timer = 20;
 			spawn_timer = 0;
 			meta_state = e_meta_state.main;
 			state = e_player.normal;
 			INVIS = 60;
-			if ( !audio_is_playing( global.music ) ) {
-				global.music = audio_play_sound( snd_music_gameplay, 0, true );
-				audio_sound_gain( global.music, 0, 0 );
-				audio_sound_gain( global.music, 0.7, 1200 );	
-			}
 		}
 		
 	break;
@@ -89,6 +91,9 @@ switch(meta_state) {
 	#region respawn
 	case e_meta_state.dying:
 		if ( spawn_timer == 0 ) {
+			audio_play_sound_pitch(snd_explotion_0, 0.7, RR(0.8,1.1), 0 );
+			audio_play_sound_pitch(snd_explotion_1, 0.7, RR(0.8,1.1), 0 );
+			
 			if ( instance_exists(orespawn_box) ) {
 				x = orespawn_box.x;
 				y = orespawn_box.y;

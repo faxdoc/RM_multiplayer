@@ -52,7 +52,7 @@ if ( intro_timer > 0 ) {
 				case 0:
 					draw_type = e_draw_type.starting_hook;
 					if ( k2_ || hook_cooldown <= 0 || hook_type__ > 0 ) {
-						audio_play_sound_pitch( snd_blob_0, 0.7, 0.6, 1 );
+						//audio_play_sound_pitch( snd_blob_0, 0.7, 0.6, 1 );
 						substate = 1;
 						var drr = point_direction( x, y-gun_height, MX, MY );
 						var t = instance_create_depth( x+LDX(gun_len,drr), y-gun_height+LDY(gun_len,drr), 1, ohook );

@@ -251,6 +251,7 @@
     {"id":{"name":"snd_throw_grenade","path":"sounds/snd_throw_grenade/snd_throw_grenade.yy",},},
     {"id":{"name":"sbullet_lime","path":"sprites/sbullet_lime/sbullet_lime.yy",},},
     {"id":{"name":"splayer_legs_crouching","path":"sprites/splayer_legs_crouching/splayer_legs_crouching.yy",},},
+    {"id":{"name":"omusic","path":"objects/omusic/omusic.yy",},},
     {"id":{"name":"sammo_alt","path":"sprites/sammo_alt/sammo_alt.yy",},},
     {"id":{"name":"splayer_hand_inner","path":"sprites/splayer_hand_inner/splayer_hand_inner.yy",},},
     {"id":{"name":"splayer_turnaround_pistol","path":"sprites/splayer_turnaround_pistol/splayer_turnaround_pistol.yy",},},

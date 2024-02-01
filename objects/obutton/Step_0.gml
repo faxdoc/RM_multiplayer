@@ -16,10 +16,11 @@ if ( mouse_check_button_pressed(mb_left) ) {
 
 		//var rm__ = rl_[ floor(mouse_x + omultiplayer_control_old.intimer ) mod ( array_length(rl_)-1 )];
 		//if audio_is_playing(global.music) audio_stop_sound(global.music);
-		omultiplayer_manager.game_has_started = true; 
 		
+		omultiplayer_manager.game_has_started = true; 
+		audio_stop_sound( snd_music_menu_loop );
 		switch(image_index) {
-			case 0: rollback_create_game( 4, true  ); rollback_use_random_input(false); break;
+			case 0: rollback_create_game( 2, true  ); break;
 			case 1: rollback_create_game( 2, false ); break;
 			case 2: rollback_create_game( 3, false ); break;
 			case 3: rollback_create_game( 4, false ); break;

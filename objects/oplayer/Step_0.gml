@@ -5,6 +5,9 @@ if (!random_inited ) {
 	if ( !instance_exists(orandom) ) {
 		MAKES(orandom);
 	}
+	if ( player_local ) {
+		music_player = instance_create_depth( 0,0,0,omusic );
+	}
 	switch(instance_number(oplayer)) {
 		default: lives_left = 3; break;
 		case 3:  lives_left = 2; break;

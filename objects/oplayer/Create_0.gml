@@ -5,7 +5,7 @@ on_ground = false;
 jump_charge = 0;
 spawn_timer = 0;
 follow_other_player_cooldown = 60;
-
+music_player = -1;
 get_back_life_cooldown = 0;
 get_back_life_cooldown_cap = 600;
 

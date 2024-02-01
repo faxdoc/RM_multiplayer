@@ -312,7 +312,7 @@ function play_walk_sound(vol_,pt_) {
 function audio_play_sound_pitch_falloff(sound,volume,pitch,priority,falloff_ = 300 ) {
 	if !instance_exists(oplayer) exit;
 	//var falloff_volume = 0.3;
-	var peak_vol = audio_sound_get_gain(sound) * volume * 0.3;
+	var peak_vol = audio_sound_get_gain(sound) * volume * 0.6;
 		
 	var snd = audio_play_sound( sound, priority, false );
 	audio_sound_gain( snd, peak_vol, 0 );

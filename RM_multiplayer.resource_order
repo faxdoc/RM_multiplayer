@@ -191,6 +191,7 @@
     {"name":"sbullet_big_lime","order":1,"path":"sprites/sbullet_big_lime/sbullet_big_lime.yy",},
     {"name":"snd_throw_grenade","order":8,"path":"sounds/snd_throw_grenade/snd_throw_grenade.yy",},
     {"name":"splayer_legs_crouching","order":3,"path":"sprites/splayer_legs_crouching/splayer_legs_crouching.yy",},
+    {"name":"omusic","order":3,"path":"objects/omusic/omusic.yy",},
     {"name":"sammo_alt","order":1,"path":"sprites/sammo_alt/sammo_alt.yy",},
     {"name":"splayer_hand_inner","order":6,"path":"sprites/splayer_hand_inner/splayer_hand_inner.yy",},
     {"name":"splayer_turnaround_pistol","order":6,"path":"sprites/splayer_turnaround_pistol/splayer_turnaround_pistol.yy",},

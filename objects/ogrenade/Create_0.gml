@@ -65,18 +65,12 @@ destroy_function = function() {
 	t.stun_mult = 0.4;
 	t.damage_mult = 0.85;
 
-	if ( parent && instance_exists(parent) ) {
-		if ( instance_exists(parent) && push_player && point_distance( x, y, parent.x , parent.y-22 ) < 82 ) {
+	if ( parent && instance_exists( parent ) ) {
+		if ( instance_exists( parent ) && push_player && point_distance( x, y, parent.x , parent.y-22 ) < 82 ) {
 			var dr = point_direction( x, y, parent.x , parent.y-22 );
-			//var pwr_ = 2.75;
-			//if ( TRINK[e_trinket.heavy_ammo] ) {
-			var pwr_ = 3.1;	
-			//} else {
-				//pwr_ = 2.75;
-			//}
-	
-			parent.hsp += LDX( pwr_, dr );//3.1 | 2.95
-			var upval	= LDY( pwr_, dr );//3.1 | 2.95
+			var pwr_ = 3.1;
+			parent.hsp += LDX( pwr_, dr );
+			var upval	= LDY( pwr_, dr );
 			if ( upval > 0 ) {
 				parent.vsp += upval;
 			} else {
@@ -85,8 +79,7 @@ destroy_function = function() {
 			}
 		}
 	}
-	//if ( do_explotion_sound ) {
-		audio_play_sound_pitch_falloff( snd_explotion_1, 0.6, RR( 1.7, 2 ), 0 );
-	//}
+	audio_play_sound_pitch_falloff( snd_explotion_1, 0.7, RR( 1.7, 2 ), 0 );
+	
 }
 
