@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_cute_highpitch",
   "type": 0,
-  "volume": 0.21,
+  "volume": 0.4,
 }

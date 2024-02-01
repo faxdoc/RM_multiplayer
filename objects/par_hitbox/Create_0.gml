@@ -238,7 +238,7 @@ destroy_function = function() {
 		
 			//SHAKE+=4;
 		
-			audio_play_sound_pitch_falloff(snd_explotion_0,0.5,0.6+random_fixed(.25),4);
+			audio_play_sound_pitch_falloff(snd_explotion_0,0.6,0.6+random_fixed(0.25),4);
 			//} else {
 			//	//var bcl = TRINK[13] ? c_olive : c_white;
 			//	var do_blend =  TRINK[13];

@@ -16,9 +16,9 @@ if (!random_inited ) {
 	
 }
 
-KUP		= _input.KUP;	
-KDOWN	= _input.KDOWN;	
-KLEFT	= _input.KLEFT;	
+KUP		= _input.KUP;
+KDOWN	= _input.KDOWN;
+KLEFT	= _input.KLEFT;
 KRIGHT	= _input.KRIGHT;
 K1		= _input.K1;	
 K2		= _input.K2;	

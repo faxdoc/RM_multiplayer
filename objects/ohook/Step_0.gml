@@ -63,10 +63,11 @@ if (state == 0) {
 	
 	if ( place_meeting(x,y,oplayer) ) {
 		//show_message("a");
-		audio_play_sound_pitch_falloff(snd_blob_hit_wall, .6, .2+random_fixed(.05), 0 );
+		//
 		
 		var t = instance_place(x,y,oplayer);
 		if ( !t.INVIS && t != parent ) {
+			audio_play_sound_pitch_falloff(snd_blob_hit_wall, .6, .2+random_fixed(.05), 0 );
 			update_wire_pos();
 			state = 1;
 			hooking_type = 1;
@@ -348,7 +349,7 @@ if (state == 0) {
 		}
 		if ( !pulled && pull_input ) {
 			pulled = true;
-			//audio_play_sound_pitch( snd_hook_upgrade_activate, RR(.9,1.05)*.2, RR(.94,1.12), 0 );
+			audio_play_sound_pitch( snd_hook_upgrade_activate, RR(.9,1.05)*0.2, RR(0.94,1.12), 0 );
 			//repeat(8) {
 			//	var fx = create_fx( oplayer.x, player_mid_y, sdot_wave, .5+random_fixed(.4), 0, 10 );
 			//	fx.image_blend = choose_fixed(c_dkgray, mcol, mcol, );

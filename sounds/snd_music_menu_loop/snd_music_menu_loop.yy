@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_music_menu_loop.ogg",
   "type": 0,
-  "volume": 0.7,
+  "volume": 0.2,
 }

@@ -62,9 +62,9 @@ switch(meta_state) {
 			}
 			intro_timer = 20;
 			spawn_timer = 0;
-			meta_state = e_meta_state.main;
-			state = e_player.normal;
-			INVIS = 60;
+			meta_state  = e_meta_state.main;
+			state		= e_player.normal;
+			INVIS		= 60;
 		}
 		
 	break;
@@ -91,8 +91,11 @@ switch(meta_state) {
 	#region respawn
 	case e_meta_state.dying:
 		if ( spawn_timer == 0 ) {
-			audio_play_sound_pitch(snd_explotion_0, 0.7, RR(0.8,1.1), 0 );
-			audio_play_sound_pitch(snd_explotion_1, 0.7, RR(0.8,1.1), 0 );
+			//audio_play_sound_pitch(snd_explotion_0, 0.7, RR( 0.8, 0.9 ), 0 );
+			audio_play_sound_pitch(snd_explotion_1, 0.7, RR( 0.5, 0.6 ), 0 );
+			//audio_play_sound_pitch(snd_explotion_1, 0.7, RR( 0.7, 0.8 ), 0 );
+			
+			audio_play_sound_pitch( choose(snd_fallout_0,snd_fallout_1), 0.9, RR( 0.95, 1.05 ), 0 );
 			
 			if ( instance_exists(orespawn_box) ) {
 				x = orespawn_box.x;
@@ -101,8 +104,8 @@ switch(meta_state) {
 				x = room_width  / 2;
 				y = room_height / 2;
 			}
-			var i = 0; repeat(weapon_number) {
-				if (RELOAD[i] > 0 )RELOAD[i] = 0;
+			var i = 0; repeat( weapon_number ) {
+				if (RELOAD[i] > 0 ) RELOAD[i] = 0;
 				i++;
 			}
 			gun_charge = 0;
@@ -114,7 +117,6 @@ switch(meta_state) {
 			shoot_delay = 0;
 			
 		}
-		
 		INVIS = 60;
 		
 		if ( spawn_timer++ > 90 ) {

@@ -52,7 +52,7 @@ if ( intro_timer > 0 ) {
 				case 0:
 					draw_type = e_draw_type.starting_hook;
 					if ( k2_ || hook_cooldown <= 0 || hook_type__ > 0 ) {
-						//audio_play_sound_pitch( snd_blob_0, 0.7, 0.6, 1 );
+						audio_play_sound_pitch( snd_blob_hit_wall, 0.7, 0.5, 1 );
 						substate = 1;
 						var drr = point_direction( x, y-gun_height, MX, MY );
 						var t = instance_create_depth( x+LDX(gun_len,drr), y-gun_height+LDY(gun_len,drr), 1, ohook );
@@ -102,6 +102,11 @@ if ( intro_timer > 0 ) {
 				dash_dir = point_direction(0,0,hh,vv);
 				if hh == 0 && vv == 0 dash_dir = -1;
 				state = e_player.parry;
+				audio_play_sound_pitch( snd_jump, 0.9,  RR(1.1,1.25), 0 );
+				audio_play_sound_pitch( snd_hook_upgrade_activate, 0.9,  RR( 0.7, 0.8 ), 0 );
+				
+				
+				
 				INVIS = 20;
 				effect_create_depth(  40, ef_flare, x, y-22, 0, merge_colour(c_aqua,c_dkgray,0.8) );
 					
@@ -135,6 +140,9 @@ if ( intro_timer > 0 ) {
 				state = e_player.parry;
 				INVIS = 20;
 				effect_create_depth(  40, ef_flare, x, y-22, 0, merge_colour(c_aqua,c_dkgray,0.8) );
+				audio_play_sound_pitch( snd_jump, 0.9,  RR(1.1,1.25), 0 );
+				audio_play_sound_pitch( snd_hook_upgrade_activate, 0.9,  RR( 0.7, 0.8 ), 0 );
+				
 			}
 			var lddd_ = id;
 			if ( instance_exists( ohook ) ) {

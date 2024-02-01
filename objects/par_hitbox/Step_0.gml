@@ -74,22 +74,7 @@ repeat(step_number) {
 			break;
 		}
 	}
-	
-	//hit
-	if ( size_mult != 1 ) {
-		var sx = image_xscale;
-		var sy = image_yscale;
-		image_xscale = sx*size_mult;
-		image_yscale = sy*size_mult;
-		//var t = instance_place(x,y,par_enemy);
-		image_xscale = sx;
-		image_yscale = sy;
-	} else {
-		//var t = instance_place(x,y,par_enemy);
-	}
-	
 	if ( multihit && multihit_cooldown ) multihit_cooldown--;
-	
 	
 	var t = undefined;
 	var t_ = id;
@@ -98,9 +83,12 @@ repeat(step_number) {
 			t = id;
 		}
 	}
-	//var t = instance_place( x, y, oplayer );
+	
 	#region Hit enemy
 	if ( t && parent != undefined && t != parent && !t.INVIS ) {
+		
+		var pt_ = clamp( 1.1-dmg/90,   0.5, 1 );
+		var vol_= clamp( 0.3+dmg/80, 0.4, 0.9 );
 		
 		if ( t.state != e_player.hit ) {
 			effect_create_depth(  -40, ef_ring, t.x, t.y-22, 0, merge_colour(c_red,c_ltgray,0.6) );
@@ -111,10 +99,17 @@ repeat(step_number) {
 			
 			parent.screen_flash_col	= c_gray;
 			parent.flash_alpha		= 0.07;
-		
+			var snd_ = dmg > 50 ? snd_hit_extra : choose( snd_hit_2, snd_hit_3 );
+			audio_play_sound_pitch( snd_,		RR(0.75,0.8)*1.1*vol_, RR(0.95,1.05)*pt_, 0 );
+			//snd_ = choose(  );
+			audio_play_sound_pitch( snd_hit_alt,	RR(0.75,0.8)*1.1*vol_, RR(0.95,1.05)*pt_, 0 );
 		} else {
+			var snd_ = dmg > 50 ? snd_hit_extra : choose( snd_hit_0, snd_hit_1, snd_hit_4 );
 			t.hit_freeze = floor( max(4,dmg/8) );
 			damage_mult *= 0.8;
+			audio_play_sound_pitch( snd_, RR(0.75,0.8)*vol_, RR(0.95,1.05)*pt_, 0 );
+			snd_ = choose( snd_take_damage, snd_take_damage_alt, snd_take_damage_3 );
+			audio_play_sound_pitch( snd_, RR(0.75,0.8)*vol_, RR(0.95,1.05)*pt_, 0 );
 		}
 		t.can_dash = true;
 		
@@ -159,76 +154,12 @@ repeat(step_number) {
 			}
 		}
 		
-		//t.vsp -= 2;
 		t.SHAKE += shake_add * 0.5;
 		parent.SHAKE += shake_add;
 		destroy_function();
 		IDD();
 	}
 	
-	
-	
-	
-	//if t && ( ( !PLC(x,y,par_bulletshield ) || instance_place(x,y,par_bulletshield).active = false  )  || ghost ) && (!do_hitscan_check || scr_check_hitscan_collision( oplayer.x, player_mid_y, t ) ) {
-	//	//check
-	//	if ( !multihit ) {
-	//		if ds_map_exists(hit_list,t) exit;
-	//		hit_list[? t] = 1;
-	//		if t.invis exit;
-	//	} else {
-	//		if t.invis exit;
-	//		if multihit_cooldown exit;
-	//		multihit_cooldown = multihit_cooldown_amount;
-	//		multihits_left--;
-	//		if ( multihits_left <= 0 ) {
-	//			IDD();
-	//			step_number = 0;
-	//		}
-	//	}
-	//	//affect
-	//	t.hp -= dmg;
-	//	t.stun += stun;
-	//	if poison_add > 0 t.poison_timer = poison_add;
-	//	MP += dmg*mp_mult*t.give_mp_mult;
-		
-	//	//knockback
-	//	if ( t.knockable ) {
-	//		var knock_dir = move_type == e_movetype.melee ? knockback_dir : dir;
-	//		if ( !alt_knockback ) {
-	//			t.hsp += LDX( knockback*t.knockback_mult, knock_dir );
-	//		} else {
-	//			t.hsp += sign( LDX( knockback*t.knockback_mult, knock_dir ) )*max( ( knockback*t.knockback_mult*0.35 ), LDX( knockback*t.knockback_mult, knock_dir ) );
-	//		}
-	//		t.vsp += LDY(knockback*t.knockback_mult,knock_dir);
-	//	}
-		
-	//	if ( self_push ) {
-	//		var flr = false;
-	//		with ( parent ) {
-	//			if tplace_meeting_walls_general(x,y+1) flr = true;
-	//		}
-	//		var knock_dir = move_type == e_movetype.melee ? knockback_dir : dir;
-	//		if( !flr ){
-	//			parent.hsp -= LDX(-knockback/2.5,knock_dir);
-	//			parent.vsp -= LDY(-knockback/2.5,knock_dir);
-	//		} else {
-	//			parent.hsp -= LDX(-knockback*1.5,knock_dir);
-	//			parent.vsp -= LDY(-knockback*1.5,knock_dir);
-	//		}
-	//	}
-	//	with t event_perform( ev_other, ev_user0 );
-		
-	//	//juice
-	//	SHAKE += shake_add;
-	//	alarm[1] = 2;
-		
-	//	//bullet
-	//	if ( !piercing && !multihit ) {
-	//		hit_wall = true;
-	//		IDD();
-	//		step_number = 0;
-	//	}
-	//}
 	#endregion
 	
 	

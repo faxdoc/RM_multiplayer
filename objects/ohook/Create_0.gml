@@ -102,13 +102,13 @@ function general_wall_col() {
 	v2.oldx -= parent.hsp;
 	v2.oldy -= parent.vsp;
 	hooking_type = 0;
-	audio_play_sound_pitch_falloff( snd_blob_hit_wall, 0.6, 0.2 + random_fixed( 0.05 ), 0 );
-	with (parent) {
-		if (hook_sound != -1) {
-			audio_stop_sound(hook_sound);
-			hook_sound = -1;
-		}
-	}
+	//audio_play_sound_pitch_falloff( snd_blob_hit_wall, 0.6, 0.2 + random_fixed( 0.05 ), 0 );
+	//with (parent) {
+	//	if (hook_sound != -1) {
+	//		audio_stop_sound(hook_sound);
+	//		hook_sound = -1;
+	//	}
+	//}
 	image_xscale = 1;
 	image_yscale = 1;
 }
