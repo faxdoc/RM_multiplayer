@@ -118,7 +118,7 @@ if ( intro_timer > 0 ) {
 				audio_play_sound_pitch( snd_voice_dash_0,RR(0.95,1.05)*0.7,RR(0.95,1.05),0);
 				parry_timer = 0;
 			}
-			
+			air_combo = false;
 		break;
 		#endregion
 	
@@ -168,7 +168,7 @@ if ( intro_timer > 0 ) {
 					}	
 				}
 			}
-							
+			air_combo = false;
 		break;
 		#endregion
 	
@@ -224,7 +224,6 @@ if ( intro_timer > 0 ) {
 				audio_play_sound_pitch( snd_combo_over_effect, RR(0.95,1.05)*0.5, RR(0.95,1.05)*1.22, 0 );
 				
 				if ( instance_exists(own_grapple) ) {
-					
 					state = e_player.hook;
 					substate = 1;
 				} else {
@@ -234,6 +233,7 @@ if ( intro_timer > 0 ) {
 				if gen_col(x,y+3) {
 					INVIS = 20;
 				}
+				
 				with ICD(x, bbox_top-26, 0, otext_up ) {
 					type = 1;
 					str = "-"+add0_float( floor(other.damage_taken),2);
@@ -250,9 +250,16 @@ if ( intro_timer > 0 ) {
 				hsp = -hsp*1.3;
 			}
 				
-			if ( ( gen_col(x,y+1) || alt_col ) && vsp >= 0 ) {
-				hit_timer -= 5;
+			if ( ( gen_col(x,y+4) || alt_col ) ) {
+				if ( !air_combo ) {
+					//hit_timer -= 0.5;
+				} else if ( vsp >= 0 ) {
+					hit_timer -= 5;
+				}
+			} else {
+				air_combo = true;
 			}
+			
 			sprite_index = splayer_hit;
 			draw_type = e_draw_type.animation;
 			
@@ -267,7 +274,7 @@ if ( intro_timer > 0 ) {
 				}
 				
 				if( bounce_cooldown ) bounce_cooldown--;
-				if( bounce_cooldown && ( vsp > 2 ) &&  ( gen_col( x, y + 1 + vsp ) || alt_col ) ) {
+				if( bounce_cooldown && ( vsp > 3 ) &&  ( gen_col( x, y + 1 + vsp ) || alt_col ) ) {
 					var i = 16;
 					while ( i-- && !gen_col( x, y+1 ) ) y++;
 					vsp = -vsp*0.7;

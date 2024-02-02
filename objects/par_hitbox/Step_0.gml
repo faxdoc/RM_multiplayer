@@ -126,6 +126,8 @@ repeat(step_number) {
 			t.hit_substate = 2;
 			
 		}
+		
+		
 		t.can_dash = true;
 		
 		t.state = e_player.hit;

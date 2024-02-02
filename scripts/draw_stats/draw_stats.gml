@@ -1,11 +1,24 @@
 function draw_stats() {
 	
-	var xx = floor(x)-14, yy = floor(bbox_top)-8, cc = merge_colour(c_ltgray, player_colour, 0.5 );// merge_color( c_orange, c_gray, .2 );
-	var cc2 = merge_color( c_red, c_gray, 0.1 ); 
+	var xx = floor(x)-14, yy = floor(bbox_top)-8;// merge_color( c_orange, c_gray, .2 );
+	var cc, cc2;
 	var calt = c_darkest;
+	
+	
 	if ( hit_freeze ) {
 		cc = merge_colour(c_white, player_colour, 0.4 );
-		cc2 = merge_color( c_red, c_white, 0.4 ); 
+		if ( air_combo ) {
+			cc2 = merge_color( c_red, c_white, 0.4 ); 
+		} else {
+			cc2 = merge_color( c_fuchsia, c_white, 0.35 ); 
+		}
+	} else {
+		cc = merge_colour(c_ltgray, player_colour, 0.5 );
+		if ( air_combo ) {
+			cc2 = merge_color( c_red, c_gray, 0.1 );
+		} else {
+			cc2 = merge_color( c_fuchsia, c_gray, 0.1 );
+		}
 	}
 	// yy -= 2;
 	draw_set_font(global.fnt_number_big);

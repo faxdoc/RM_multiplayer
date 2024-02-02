@@ -559,9 +559,9 @@ function bullet_general(dmg,spd,sprite, unacc, obj_ = par_hitbox, cb_mult_ = 1, 
 			t.knockback = dmg * 1;
 		break;
 		case e_gun.pistol:// gun 1
-			t.stun_mult = 1.8;
-			t.knockback *= 1.8;
-			t.bonus_vsp = -1;
+			t.stun_mult = 1.1;
+			t.knockback *= 1.2;
+			t.bonus_vsp = -0.3;
 		break;
 		case e_gun.rail:
 			t.stun_mult = 2.6;

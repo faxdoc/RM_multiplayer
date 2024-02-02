@@ -23,6 +23,7 @@
     {"name":"temp_unimport","order":5,"path":"folders/Sounds/sound/gameplay/temp_unimport.yy",},
     {"name":"menu","order":3,"path":"folders/Sounds/sound/menu.yy",},
     {"name":"player","order":2,"path":"folders/Sounds/sound/player.yy",},
+    {"name":"bgs","order":14,"path":"folders/Sprites/bgs.yy",},
     {"name":"bullets","order":6,"path":"folders/Sprites/bullets.yy",},
     {"name":"fxs","order":5,"path":"folders/Sprites/fxs.yy",},
     {"name":"guns","order":3,"path":"folders/Sprites/guns.yy",},
@@ -59,7 +60,6 @@
     {"name":"Particle Systems","order":6,"path":"folders/unused/Particle Systems.yy",},
     {"name":"Sequences","order":2,"path":"folders/unused/Sequences.yy",},
     {"name":"Timelines","order":1,"path":"folders/unused/Timelines.yy",},
-    {"name":"bgs","order":14,"path":"folders/Sprites/bgs.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"snd_ready","order":17,"path":"sounds/snd_ready/snd_ready.yy",},

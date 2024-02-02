@@ -81,7 +81,8 @@ if (state == 0) {
 			v2.oldx -= parent.hsp;
 			v2.oldy -= parent.vsp;
 			if ( t.state == e_player.hit ) {
-				t.hit_timer += 20;
+				t.hit_timer += 15;
+				t.air_combo = true;
 			} else if ( t.state == e_player.ledge ) {
 				t.state = e_player.normal;
 			}
