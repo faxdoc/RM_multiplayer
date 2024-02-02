@@ -3,11 +3,17 @@ if ( visible ) {
 		var lx_ = parent.camera_x;
 		var ly_ = parent.camera_y;
 		
-		background_max_x = lx_*0.13;
-		background_max_y = ly_*0.13;
+		paralax_timer += 0.2;
+		if paralax_timer > 128 paralax_timer = 0;
 		
-		background_mid_x = lx_*0.19;
-		background_mid_y = ly_*0.19;
+		background_cloud_x = lx_*0.95;
+		background_cloud_y = ly_*0.95;
+		
+		background_max_x = lx_*0.9;
+		background_max_y = ly_*0.9;
+		
+		background_mid_x = lx_*0.85;
+		background_mid_y = ly_*0.85;
 	}
 }
 

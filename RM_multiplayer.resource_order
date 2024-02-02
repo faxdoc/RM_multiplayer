@@ -195,6 +195,7 @@
     {"name":"spalette_player_3","order":2,"path":"sprites/spalette_player_3/spalette_player_3.yy",},
     {"name":"snd_railgun_shooting","order":4,"path":"sounds/snd_railgun_shooting/snd_railgun_shooting.yy",},
     {"name":"splayer_idle","order":1,"path":"sprites/splayer_idle/splayer_idle.yy",},
+    {"name":"scloud_bg","order":3,"path":"sprites/scloud_bg/scloud_bg.yy",},
     {"name":"snd_respawn","order":20,"path":"sounds/snd_respawn/snd_respawn.yy",},
     {"name":"ohitbox_saw","order":2,"path":"objects/ohitbox_saw/ohitbox_saw.yy",},
     {"name":"snd_walk_stone","order":1,"path":"sounds/snd_walk_stone/snd_walk_stone.yy",},

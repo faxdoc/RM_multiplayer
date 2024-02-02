@@ -2,8 +2,10 @@ var ld_ = layer_get_id("Background");
 var dp_ = layer_get_depth(ld_);
 depth = dp_ - 50;
 parent = undefined;
+paralax_timer = 0;
 
-
+background_cloud_x = 0;
+background_cloud_y = 0;
 
 background_max_x = 0;
 background_max_y = 0;

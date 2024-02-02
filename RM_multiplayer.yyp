@@ -255,6 +255,7 @@
     {"id":{"name":"spalette_player_3","path":"sprites/spalette_player_3/spalette_player_3.yy",},},
     {"id":{"name":"snd_railgun_shooting","path":"sounds/snd_railgun_shooting/snd_railgun_shooting.yy",},},
     {"id":{"name":"splayer_idle","path":"sprites/splayer_idle/splayer_idle.yy",},},
+    {"id":{"name":"scloud_bg","path":"sprites/scloud_bg/scloud_bg.yy",},},
     {"id":{"name":"snd_respawn","path":"sounds/snd_respawn/snd_respawn.yy",},},
     {"id":{"name":"ohitbox_saw","path":"objects/ohitbox_saw/ohitbox_saw.yy",},},
     {"id":{"name":"snd_walk_metal","path":"sounds/snd_walk_metal/snd_walk_metal.yy",},},
