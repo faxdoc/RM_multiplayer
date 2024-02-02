@@ -5,7 +5,13 @@ if (!random_inited ) {
 	if ( !instance_exists(orandom) ) {
 		MAKES(orandom);
 	}
-	
+	if ( player_local ) {
+		with ( MAKES(oparalax_render) ) {
+			visible = true;
+			parent = other;
+		}
+		
+	}
 	//if ( !instance_exists(oparticle_spawner) ) {
 	//	MAKES(oparticle_spawner);
 	//}

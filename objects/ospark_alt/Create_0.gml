@@ -1,6 +1,6 @@
 falling = false;
 //event_inherited();
-start = 30 + random_fixed(95);
+start = 15 + random_fixed(65);
 duration = start;
 
 //col = merge_color(choose_fixed(c_orange,c_red,c_yellow,c_white ),c_white,.5);
@@ -15,3 +15,4 @@ draw_angle = 0;
 draw_xscale = 1;
 layer_col = layer_get_id("Tiles_1");
 
+init_del = true;

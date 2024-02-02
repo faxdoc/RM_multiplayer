@@ -327,6 +327,7 @@ hit_freeze = 0;
 bounce_cooldown = 0;
 do_collision = true;
 hit_timer = 0;
+parry_timer = 0;
 
 player_colour = c_aqua;
 player_palette = spalette_player_1;

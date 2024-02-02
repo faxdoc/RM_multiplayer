@@ -1,4 +1,4 @@
-exit;
+//exit;
 DSC(image_blend);DSA(image_alpha);
 var dfx = x-(x - xprevious)*2;
 var dfy = y-(y - yprevious)*2;

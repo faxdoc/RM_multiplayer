@@ -431,8 +431,8 @@ switch(current_weapon) {
 			b.multihit			= true;
 			b.dir_angle_spin	= RR( 7, 8 );
 			b.bounces = true;
-			b.hsp				= LDX( b.spd*0.21, b.dir );
-			b.vsp				= LDY( b.spd*0.21, b.dir );
+			b.hsp				= LDX( b.spd*0.2, b.dir );
+			b.vsp				= LDY( b.spd*0.2, b.dir );
 			b.can_bounce_delay  = 12;
 				
 			scr_set_size( b, 1 );

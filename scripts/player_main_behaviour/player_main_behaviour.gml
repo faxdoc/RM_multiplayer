@@ -5,8 +5,16 @@ if ( intro_timer > 0 ) {
 	}
 	floor_type = tile_sort_genre(tplace_meeting_index(x+11,y+8+vsp,layer_type));
 	walk_spd = base_walk_spd + 0.065 + 0.05;
-	if ( grenade_cooldown ) grenade_cooldown--;
-
+	if ( grenade_cooldown ) {
+		grenade_cooldown--;
+		if (!grenade_cooldown) {
+			audio_play_sound_pitch( snd_grenade_gotten, RR(0.9,1), RR(0.9,1), 0 );
+			with ICD(x,bbox_top-8,5,otext_up) {
+				type = 9;
+				blend = other.player_colour;
+			}
+		}
+	}
 	#region input
 	
 	if ( global.training_mode ) lives_left = 4;
@@ -108,7 +116,7 @@ if ( intro_timer > 0 ) {
 				effect_create_depth(  40, ef_flare, x, y-22, 0, merge_colour(c_aqua,c_dkgray,0.8) );
 				audio_play_sound_pitch( snd_jump, 0.9,  RR(1.1,1.25), 0 );
 				audio_play_sound_pitch( snd_voice_dash_0,RR(0.95,1.05)*0.7,RR(0.95,1.05),0);
-				
+				parry_timer = 0;
 			}
 			
 		break;
@@ -116,6 +124,7 @@ if ( intro_timer > 0 ) {
 	
 		#region normal
 		case e_player.normal:
+			
 			hit_substate = 0;
 			skip_draw = false;
 			pre_hook_state = state;
@@ -148,7 +157,7 @@ if ( intro_timer > 0 ) {
 				effect_create_depth(  40, ef_flare, x, y-22, 0, merge_colour(c_aqua,c_dkgray,0.8) );
 				audio_play_sound_pitch( snd_jump, 0.9,  RR(1.1,1.25), 0 );
 				audio_play_sound_pitch( snd_voice_dash_0,RR(0.95,1.05)*0.7,RR(0.95,1.05),0);
-				
+				parry_timer = 0;
 			}
 			
 			var lddd_ = id;
@@ -278,7 +287,7 @@ if ( intro_timer > 0 ) {
 		#region parry
 		case e_player.parry:
 			can_dodge_cooldown = 10;
-			if (hit_timer == 0 && dash_dir != -1 ) {
+			if (parry_timer == 0 && dash_dir != -1 ) {
 				hsp = LDX( 5, dash_dir );
 				vsp = LDY( 5, dash_dir );
 					
@@ -290,15 +299,15 @@ if ( intro_timer > 0 ) {
 				
 			if ( dash_dir == -1 ) {
 				vsp += grav;
-				if ( hit_timer++ > 13 ) {
+				if ( parry_timer++ > 13 ) {
 					state = e_player.normal;
 					skip_draw = false;
 					//INVIS = 1;
-					hit_timer = 0;
+					parry_timer = 0;
 				}
 				if ( gen_col(x,y+1)||alt_col) hsp *= frc;	
 			} else {
-				if ( hit_timer++ > 10 || gen_col(x,y+1) || alt_col ) {
+				if ( parry_timer++ > 10 || gen_col(x,y+1) || alt_col ) {
 					state = e_player.normal;
 					skip_draw = false;
 						
@@ -308,7 +317,7 @@ if ( intro_timer > 0 ) {
 						INVIS = 0;
 					}
 						
-					hit_timer = 0;
+					parry_timer = 0;
 					hsp *= 0.85;
 					if  ( vsp < 0 ) {
 						vsp *= 0.3;

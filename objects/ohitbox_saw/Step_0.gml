@@ -28,25 +28,44 @@ switch(move_state) {
 				can_push_cooldown = 20;
 				hit_freeze = max( hit_freeze, 2 );
 			}
-			if ( t_.sprite_index == splayer_grenade ) {
-				enflamed = clamp( enflamed + 0.3, 1, 2 );
-				SHAKE++;
+			switch(t_.sprite_index ) {
+				case splayer_grenade_blue:
+				case splayer_grenade_green:
+				case splayer_grenade_red:
+				case splayer_grenade_white:
+					enflamed = clamp( enflamed + 0.3, 1, 2 );
+					SHAKE++;
 				
-				vsp  += t_.vsp*0.55;
-				hsp  += t_.hsp*0.55;
-				hsp *= 0.9;
-				IDD( t_ );
-			} else if ( t_.object_index != object_index ) {
-				
-				hsp = lerp( hsp, LDX( 6, t_.dir ), 0.4 );
-				vsp = lerp( vsp, LDY( 6, t_.dir ), 0.4 );
-				x += RR(-2,2);
-				y += RR(-2,2);
+					vsp  += t_.vsp*0.55;
+					hsp  += t_.hsp*0.55;
+					hsp *= 0.9;
+					with( t_ ) {
+						destroy_function();
+						IDD();
+					}
+					//IDD( t_ );
+				break;
+				default:
+					hsp = lerp( hsp, LDX( 6, t_.dir ), 0.4 );
+					vsp = lerp( vsp, LDY( 6, t_.dir ), 0.4 );
+					x += RR(-2,2);
+					y += RR(-2,2);
+					with( t_ ) {
+						destroy_function();
+						IDD();
+					}
+				break;
 			}
+			//if ( t_.sprite_index == splayer_grenade ) {
+				
+			//} else if ( t_.object_index != object_index ) {
+				
+				
+			//}
 		}
-		if ( PLC( x, y, ogrenade ) ) {
+		if ( PLC( x, y, ogrenade ) && !can_push_cooldown ) {
 			can_push_cooldown = 3;	
-			vsp -= 3.5;
+			vsp -= 4;
 		}
 		
 		if ( can_push_cooldown ) {
@@ -165,14 +184,10 @@ switch(move_state) {
 			if( place_meeting(x,y,par_hitbox) ){
 				can_push_cooldown = 2;
 				var t_ = instance_place(x,y,par_hitbox);
-				//hsp *= .9;
-				//vsp *= .9;
 
 				if ( t_.sprite_index == splayer_grenade ) {
 					enflamed = clamp( enflamed + 0.3, 1, 2 );
 					SHAKE++;
-					//if ( ds_exists(hit_list,ds_type_map ) ) {
-					//if  !is_undefined( hitmap ) && ds_exists( hitmap, ds_type_map ) ds_map_clear( hitmap );
 					IDD(t_);
 				}
 			}
@@ -180,17 +195,13 @@ switch(move_state) {
 			can_push_cooldown--;
 		}
 		
-		
-		//sprite_index = sbullet_saw_player_lime;
 		dmg = base_dmg * 4;
 		image_alpha			= RR(.75,.8);
 		draw_angle			-= angle_spin*3;
 		image_xscale		= base_xscale*1.4;
 		image_yscale		= base_yscale*1.4;
-		//image_blend			= merge_color(base_blend,c_gray,.45);
 		silhouette_blend	= merge_colour(c_gray,c_aqua,0.2);
 		silhouette_timer += .5;
-		//trail_fx = sprite_index;
 		
 		var vv_ = vsp;
 		var spd_ = 1;
@@ -250,16 +261,13 @@ switch(move_state) {
 			}
 		}
 		
-		//image_xscale *= RR(.95,1);
-		//image_yscale *= RR(.95,1);
-		
 		if ( random_fixed( 1 ) > 0.8 ) {
 			var dr_ = spin_dir;
 			var t = ICD( x - LDX( 16, dr_ + 90 ), y - LDY( 16 ,dr_ + 90 ), 0, ospark_alt );
 			var ddr = dr_-45+RR(-30,30);
 			t.hsp = LDX(-RR(3,5),ddr);
 			t.vsp = LDY(-RR(3,5),ddr);
-			t.col = c_black;//dmerge_colour(c_gray,c_red,.2);
+			t.col = c_black;
 		}
 		
 		if ( random_fixed( 1 ) > 0.8 ) {
@@ -268,39 +276,7 @@ switch(move_state) {
 		}
 		mask_index = sprite_index;
 		
-		
-		//if ( place_meeting( x, y, ohook ) ) {
-		//	var dpr_ = get_angle_at_player();
-		//	var ds_ = point_distance( x, y, oplayer.x, player_mid_y );
-			
-		//	var nx_ = oplayer.x    - LDX( 16, dpr_ );
-		//	var ny_ = player_mid_y - LDY( 16, dpr_ );
-		//	var nm_ = ds_ div 32;
-		//	var i = 0; repeat( nm_ ) {
-		//		var xx_ = lerp(x, nx_, i / nm_ );
-		//		var yy_ = lerp(y, ny_, i / nm_ );
-				
-		//		var fx_ = create_fx( xx_, yy_, sprite_index, 2, image_angle,depth+1);
-		//		fx_.image_blend = silhouette_blend;
-		//		fx_.image_xscale = image_xscale;
-		//		fx_.image_yscale = image_yscale;
-		//		fx_.type = e_fx.fade;
-		//		fx_.timer = .75;
-		
-		//		i++;
-		//	}
-		//	x = nx_;
-		//	y = ny_;
-			
-		//	vsp = -2.5;
-		//	hsp =  sign(LDX(1,dpr_))*0.7;
-		//	angle_spin = 3;
-		//	if( bounces_left <= 0 )bounces_left++;
-		//	move_state = 0;
-		//}
-		
 		if ( place_meeting( x, y, ogrenade ) ) {
-			//y -= 8;
 			vsp = -0.5;
 			angle_spin = 3;
 			if ( bounces_left <= 0 ) bounces_left++;
@@ -309,7 +285,6 @@ switch(move_state) {
 		
 		
 		if ( bbox_right < 0 || bbox_bottom < 0 || bbox_left > room_width || bbox_top > room_height ) {
-			//if !is_undefined(hitmap) && ds_exists( hitmap, ds_type_map ) ds_map_clear( hitmap );
 			IDD();
 		}
 	break;

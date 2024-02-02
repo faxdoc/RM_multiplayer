@@ -12,3 +12,4 @@ depth = -1000;
 draw_angle = 0;
 
 type = 0;
+blend = c_white;

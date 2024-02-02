@@ -12,6 +12,7 @@ switch( meta_state ) {
 				st_++;
 			}
 		}
+		
 		if ( st_ <= 1 ) {
 			var wid_ = id;
 			with ( oplayer ) {
