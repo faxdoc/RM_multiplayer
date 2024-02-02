@@ -92,7 +92,7 @@ repeat(step_number) {
 		
 		if ( t.state != e_player.hit ) {
 			effect_create_depth(  -40, ef_ring, t.x, t.y-22, 0, merge_colour(c_red,c_ltgray,0.6) );
-			t.hit_freeze = floor(max(8,dmg/7 ) );
+			t.hit_freeze = floor(max(8,dmg/6 ) );
 			
 			t.screen_flash_col	= c_gray;
 			t.flash_alpha		= 0.07;
@@ -111,7 +111,7 @@ repeat(step_number) {
 			audio_play_sound_pitch( snd_, RR(0.75,0.8)*vol_, RR(0.95,1.05), 0 );
 		} else {
 			var snd_ = dmg >= 55 ? snd_hit_extra : choose( snd_hit_0, snd_hit_1, snd_hit_4 );
-			t.hit_freeze = floor( max(4,dmg/8) );
+			t.hit_freeze = floor( max(4,dmg/6) );
 			damage_mult *= 0.8;
 			if dmg >= 55 {
 				audio_play_sound_pitch( snd_, RR(0.75,0.8)*vol_, RR(0.95,1.05)*pt_, 0, 0.1 );

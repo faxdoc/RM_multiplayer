@@ -200,7 +200,7 @@ if (state == 0) {
 				vert.xx -= offx;
 				vert.yy -= offy;
 				var dr_ = point_direction(parent.x,parent.y,hook_object.x, hook_object.y );
-				var ds_ = ( max(0,point_distance( parent.x,parent.y,hook_object.x, hook_object.y )-20) / (pulled ? 50 : 80) ) / 1.1;
+				var ds_ = ( max(0,point_distance( parent.x,parent.y,hook_object.x, hook_object.y )-10) / (pulled ? 50 : 90) ) / 1.3;
 				hook_object.hsp -= LDX(ds_,dr_);
 				hook_object.vsp -= LDY(ds_,dr_);
 				hook_object.bounce_cooldown = 30;

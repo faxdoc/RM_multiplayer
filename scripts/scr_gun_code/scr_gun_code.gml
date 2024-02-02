@@ -75,7 +75,7 @@ switch(current_weapon) {
 		if( CLIP[cg] == 0 )gun_charge = 0;
 		
 		if ( gun_charge <= 0 ) {
-			if( k1_ )gun_charge = 1;
+			if( k1p_ )gun_charge = 1;
 		}
 		//LOG(gun_charge)
 		if ( gun_charge > 0 ) {
@@ -160,7 +160,7 @@ switch(current_weapon) {
 				shoot_delay = 40;
 				gun_fully_charged = false;
 				if ( CLIP[cg] == 2 ) {
-					RELOAD[cg] = 100;
+					RELOAD[cg] = 120;
 				}
 				CLIP[cg]--;
 			}
@@ -223,7 +223,7 @@ switch(current_weapon) {
 				audio_play_sound_pitch( snd_shoot_2, 0.65, 1.15 + random_fixed( 0.1 ),1);
 			}
 			//gun_general(4,60,9);
-			var b = bullet_general( (gun_fully_charged ? 7 : 5)*0.35,30, gun_fully_charged ? sbullet_bolt_white : sbullet_bolt,0);
+			var b = bullet_general( (gun_fully_charged ? 9 : 6)*0.35,30, gun_fully_charged ? sbullet_bolt_white : sbullet_bolt,0);
 			b.duration = 8;
 			b.mp_mult =  0;
 		
@@ -236,7 +236,7 @@ switch(current_weapon) {
 			bullet_effects_general( sammo_red );
 			effect_general( 0.6, 3, 4 );
 			if ( CLIP[cg] == max_ammo ) {
-				RELOAD[cg] = 1000;
+				RELOAD[cg] = 900;
 			}
 			CLIP[cg]--;
 		}
@@ -541,8 +541,8 @@ function bullet_general(dmg,spd,sprite, unacc, obj_ = par_hitbox, cb_mult_ = 1, 
 	
 	switch(current_weapon) {
 		case e_gun.shotgun:
-			t.knockback = dmg * 1.3;
-			t.stun_mult = 1.2;
+			t.knockback = dmg * 1.1;
+			t.stun_mult = 1.6;
 			t.spd *= 1.4;
 			t.duration *= 0.93;
 			t.damage_mult = 1.4;
@@ -560,27 +560,15 @@ function bullet_general(dmg,spd,sprite, unacc, obj_ = par_hitbox, cb_mult_ = 1, 
 		break;
 		case e_gun.pistol:// gun 1
 			t.stun_mult = 1.8;
-			t.knockback *= 1.9;
-			t.bonus_vsp = -2;
+			t.knockback *= 1.8;
+			t.bonus_vsp = -1;
 		break;
 		case e_gun.rail:
-			t.stun_mult = 1.5;
+			t.stun_mult = 2.6;
 			t.knockback *= 2.1;
 		break;
 		
 	}
-	//if current_weapon == e_gun.shotgun {
-	//	t.knockback = dmg * 1.5;
-	//	t.stun_mult = 1.2;
-	//} else if current_weapon == e_gun.sniper {
-	//	t.knockback = dmg * 0.05;
-	//	t.stun_mult = dmg * 0.05;
-	//} else {
-	//	t.knockback = dmg * 1;
-	//}
-	
-		
-	
 	
 	return t;
 	

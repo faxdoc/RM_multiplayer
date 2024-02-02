@@ -230,9 +230,16 @@ if ( player_local ) {
 		var yoffset_ = 2;
 		var CAMX = 0;
 		var CAMY = 0;
-		
+		switch(current_weapon) {
+			case e_gun.shotgun:
+			case e_gun.rail:
+				draw_text( mx_-22-CAMX-xoffset_, my_+7-CAMY-yoffset_, CLIP[ current_weapon ] );
+			break;
+		}
+		 
 		if ( CLIP[ current_weapon ] != 99 ) {
 			DSA( choose_fixed( 0.7, 0.8, 0.9 ) );
+			
 			var col = c_dkgray;
 			draw_line_width_color(mx_-10-CAMX-xoffset_-1,my_+12-CAMY-yoffset_+1,mx_-10+pw-CAMX-xoffset_-1,my_+12-CAMY-yoffset_+1,5, col, col );
 			var col = c_white;

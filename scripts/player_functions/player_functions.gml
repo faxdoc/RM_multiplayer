@@ -249,9 +249,9 @@ function player_charge_jump() {
 		if (jump_charge != jump_charge_max) {
 			if ( jump_charge > 4 ) {
 				var dr = random_fixed(360);
-				if (random_fixed(1) > .6) {
-					ICD(x+LDX(68,dr),y+LDY(68,dr),-1,ocharge_fx).target = id;
-				}
+				//if (random_fixed(1) > .6) {
+				ICD(x+LDX(68,dr),y+LDY(68,dr),-1,ocharge_fx).target = id;
+				//}
 			}
 		} else {
 			jump_charge_buffer = 60;
@@ -259,19 +259,19 @@ function player_charge_jump() {
 
 		if ( pre_charge != jump_charge_max && jump_charge == jump_charge_max ) {
 			//if (audio_is_playing(snd_charging_jump_new)) audio_stop_sound(snd_charging_jump_new);
-			//SHAKE++;
+			SHAKE++;
 			var size = 6;
 			var spd;
 			var bll = c_orange;
-			//repeat(7) {
-			//	spd = 3+random_fixed(1);
-			//	var dir = random_fixed(360);
-			//	fx = create_fx( x + LDX(size*1.5,dir) + hsp, y + LDY(size*1.5,dir) + vsp -12, sdot_wave, .3+random_fixed(.4), 0, -110 );
-			//	fx.image_blend = merge_color(bll,c_orange,.3+random_fixed(.5));
-			//	fx.hsp = LDX(spd,dir);
-			//	fx.vsp = LDY(spd,dir);
-			//	fx.frc = 0.9;
-			//}
+			repeat(4) {
+				spd = 3+random_fixed(1);
+				var dir = random_fixed(360);
+				fx = create_fx( x + LDX(size*1.5,dir) + hsp, y + LDY(size*1.5,dir) + vsp -6, sdot_wave, .3+random_fixed(.4), 0, -110 );
+				fx.image_blend = merge_color(bll,c_orange,0.3+random_fixed(0.5));
+				//fx.hsp = LDX(spd,dir);
+				//fx.vsp = LDY(spd,dir);
+				//fx.frc = 0.9;
+			}
 		}
 	}
 }

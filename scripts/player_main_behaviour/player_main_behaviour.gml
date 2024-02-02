@@ -258,10 +258,11 @@ if ( intro_timer > 0 ) {
 				}
 				
 				if( bounce_cooldown ) bounce_cooldown--;
-				if( bounce_cooldown && ( vsp > 3 ) &&  ( gen_col( x, y + 1 + vsp ) || alt_col ) ) {
+				if( bounce_cooldown && ( vsp > 2 ) &&  ( gen_col( x, y + 1 + vsp ) || alt_col ) ) {
 					var i = 16;
 					while ( i-- && !gen_col( x, y+1 ) ) y++;
 					vsp = -vsp*0.7;
+					hit_timer += 5;
 					hsp *= frc;
 					hsp *= frc;
 				}
@@ -271,7 +272,7 @@ if ( intro_timer > 0 ) {
 				hit_freeze--;
 				bounce_cooldown = 26;
 			}
-			show_debug_message(hit_freeze);
+			//show_debug_message(hit_freeze);
 		break;
 		#endregion
 		#region parry
@@ -331,6 +332,7 @@ if ( intro_timer > 0 ) {
 				sprite_index = splayer_wallhug;
 				image_index = 0;
 			}
+			can_dash = true;
 		
 			if( K2 ) hook_press_buffer = 5;
 			var ex_check = dlc_mode ? !gen_col( x+draw_xscale*8, y ) : false;
@@ -538,6 +540,7 @@ if ( input_skip < 2 ) {
 					
 			#region switch general
 			if ( current_weapon != pre_wep ) {
+				shoot_press_buffer = 0;
 				audio_play_sound_pitch(snd_reload_0,.5,.6+random_fixed(0.1),0);
 				switching_weapon = true;
 				gun_charging = false;

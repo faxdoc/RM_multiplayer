@@ -76,7 +76,7 @@ if( do_hit ){
 	if ( !delete_on_wall_col ) {
 		if ( !hit_wall ) {
 			hit_fx = -1;
-			duration += 320;
+			duration += 420;
 			dmg *= .8;
 			shake_add *= .6;
 			lag_add *= .6;
@@ -106,6 +106,7 @@ if( do_hit ){
 			vsp = 0;
 			grav = 0;
 			depth = -90;
+			image_angle += 180;
 				
 			image_index = random_fixed(8);
 			if ( instance_exists( parent ) ) {

@@ -18,7 +18,9 @@
     {"name":"gameplay","order":1,"path":"folders/Sounds/sound/gameplay.yy",},
     {"name":"action","order":2,"path":"folders/Sounds/sound/gameplay/action.yy",},
     {"name":"combat","order":3,"path":"folders/Sounds/sound/gameplay/combat.yy",},
+    {"name":"import","order":6,"path":"folders/Sounds/sound/gameplay/import.yy",},
     {"name":"movement","order":1,"path":"folders/Sounds/sound/gameplay/movement.yy",},
+    {"name":"temp_unimport","order":5,"path":"folders/Sounds/sound/gameplay/temp_unimport.yy",},
     {"name":"menu","order":3,"path":"folders/Sounds/sound/menu.yy",},
     {"name":"player","order":2,"path":"folders/Sounds/sound/player.yy",},
     {"name":"bullets","order":6,"path":"folders/Sprites/bullets.yy",},
@@ -57,8 +59,6 @@
     {"name":"Particle Systems","order":6,"path":"folders/unused/Particle Systems.yy",},
     {"name":"Sequences","order":2,"path":"folders/unused/Sequences.yy",},
     {"name":"Timelines","order":1,"path":"folders/unused/Timelines.yy",},
-    {"name":"temp_unimport","order":5,"path":"folders/Sounds/sound/gameplay/temp_unimport.yy",},
-    {"name":"import","order":6,"path":"folders/Sounds/sound/gameplay/import.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"snd_ready","order":17,"path":"sounds/snd_ready/snd_ready.yy",},
