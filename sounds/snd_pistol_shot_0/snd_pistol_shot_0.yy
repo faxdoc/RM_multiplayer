@@ -12,12 +12,12 @@
   "conversionMode": 0,
   "duration": 0.51825,
   "parent": {
-    "name": "temp_unimport",
-    "path": "folders/Sounds/sound/gameplay/temp_unimport.yy",
+    "name": "import",
+    "path": "folders/Sounds/sound/gameplay/import.yy",
   },
   "preload": false,
   "sampleRate": 44100,
   "soundFile": "snd_pistol_shot_0.wav",
   "type": 0,
-  "volume": 1.0,
+  "volume": 0.4,
 }

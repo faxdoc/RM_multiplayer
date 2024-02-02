@@ -87,7 +87,7 @@ repeat(step_number) {
 	#region Hit enemy
 	if ( t && parent != undefined && t != parent && !t.INVIS ) {
 		
-		var pt_ = clamp( 1.1-dmg/90,   0.5, 1 );
+		var pt_ = clamp( 1.1-dmg/90,   0.75, 1 )+0.1;
 		var vol_= clamp( 0.3+dmg/80, 0.4, 0.9 );
 		
 		if ( t.state != e_player.hit ) {
@@ -99,17 +99,32 @@ repeat(step_number) {
 			
 			parent.screen_flash_col	= c_gray;
 			parent.flash_alpha		= 0.07;
-			var snd_ = dmg > 50 ? snd_hit_extra : choose( snd_hit_2, snd_hit_3 );
-			audio_play_sound_pitch( snd_,		RR(0.75,0.8)*1.1*vol_, RR(0.95,1.05)*pt_, 0 );
+			var snd_ = dmg >= 55 ? snd_hit_extra : choose( snd_hit_2, snd_hit_3 );
+		
 			//snd_ = choose(  );
-			audio_play_sound_pitch( snd_hit_alt,	RR(0.75,0.8)*1.1*vol_, RR(0.95,1.05)*pt_, 0 );
+			if ( dmg < 55 ) {
+				audio_play_sound_pitch( snd_,		RR(0.75,0.8)*1.1*vol_, RR(0.95,1.05)*pt_, 0 );
+			} else {
+				audio_play_sound_pitch( snd_hit_extra, RR(0.9,0.96), RR(0.95,1.05), 0, 0.1 );
+			}
+			snd_ = choose( snd_take_damage, snd_take_damage_alt, snd_take_damage_3 );
+			audio_play_sound_pitch( snd_, RR(0.75,0.8)*vol_, RR(0.95,1.05), 0 );
 		} else {
-			var snd_ = dmg > 50 ? snd_hit_extra : choose( snd_hit_0, snd_hit_1, snd_hit_4 );
+			var snd_ = dmg >= 55 ? snd_hit_extra : choose( snd_hit_0, snd_hit_1, snd_hit_4 );
 			t.hit_freeze = floor( max(4,dmg/8) );
 			damage_mult *= 0.8;
-			audio_play_sound_pitch( snd_, RR(0.75,0.8)*vol_, RR(0.95,1.05)*pt_, 0 );
-			snd_ = choose( snd_take_damage, snd_take_damage_alt, snd_take_damage_3 );
-			audio_play_sound_pitch( snd_, RR(0.75,0.8)*vol_, RR(0.95,1.05)*pt_, 0 );
+			if dmg >= 55 {
+				audio_play_sound_pitch( snd_, RR(0.75,0.8)*vol_, RR(0.95,1.05)*pt_, 0, 0.1 );
+			} else {
+				audio_play_sound_pitch( snd_, RR(0.75,0.8)*vol_, RR(0.95,1.05)*pt_, 0 );
+			}
+			
+			audio_play_sound_pitch( snd_hit_alt, RR(0.75,0.8)*vol_, RR(0.95,1.05), 0 );
+		}
+		if ( t.hit_substate == 1 ) {
+			if instance_exists(t.own_grapple) t.own_grapple.state = 2;
+			t.hit_substate = 2;
+			
 		}
 		t.can_dash = true;
 		
@@ -119,8 +134,10 @@ repeat(step_number) {
 		t.hit_freeze = max(4,dmg/3);
 		t.bounce_cooldown = 30;
 		
-		t.can_hook_delay = false;
-		t.hook_air_cancel = false;
+		if ( t.hit_substate == 0 ) {
+			t.can_hook_delay = false;
+			t.hook_air_cancel = false;
+		}
 		
 		parent.can_hook_delay = false;
 		parent.hook_air_cancel = false;
@@ -147,6 +164,7 @@ repeat(step_number) {
 		t.vsp += LDY( knockback*1.6, dir );
 		
 		t.vsp = lerp( t.vsp, min(-knockback*1.4,t.vsp), 0.5-LDY(0.5,dir) );
+		t.vsp += bonus_vsp;
 		
 		with ( t ) {
 			while gen_col(x,y+vsp+1) && !gen_col(x,y-1) {

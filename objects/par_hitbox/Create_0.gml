@@ -12,6 +12,7 @@ has_been_knocked = false;
 draw_x_offset = 0;
 draw_y_offset = 0;
 damage_mult = 1;
+bonus_vsp = 0;
 
 delete_on_wall_col = true;
 move_type = e_movetype.vector;

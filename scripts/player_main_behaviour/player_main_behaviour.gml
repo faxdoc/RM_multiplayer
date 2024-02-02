@@ -55,9 +55,9 @@ if ( intro_timer > 0 ) {
 						audio_play_sound_pitch( snd_blob_hit_wall, 0.7, 0.5, 1 );
 						substate = 1;
 						var drr = point_direction( x, y-gun_height, MX, MY );
-						var t = instance_create_depth( x+LDX(gun_len,drr), y-gun_height+LDY(gun_len,drr), 1, ohook );
-						t.dir = drr;
-						t.parent = id;
+						own_grapple = instance_create_depth( x+LDX(gun_len,drr), y-gun_height+LDY(gun_len,drr), 1, ohook );
+						own_grapple.dir = drr;
+						own_grapple.parent = id;
 					
 						var bll =  merge_color(c_darkest,c_black,0.4);
 						repeat( 3 ) {
@@ -68,25 +68,18 @@ if ( intro_timer > 0 ) {
 							sp.hsp = LDX(nspd,ndir);
 							sp.vsp = LDY(nspd,ndir)-2;
 						}
+						
 						var fx = create_fx( x+LDX(gun_len,drr), y-gun_height+LDY(gun_len,drr), sgun_blink_2,1,drr,0);
 						fx.image_blend = bll;
 						hook_charges = 0;
 						can_hook_delay = 15;
-					} else {
-						//if ( ( !alt_col && !gen_col(x,y+1) && KPDOWN == 1 &&  vsp < 3.8 ) ) {
-						//	vsp = 3.8;hsp += .1*hh;
-						//	repeat(3) {
-						//		var spd = 3+random_fixed(1); var dir = random_fixed(360);
-						//		fx = create_fx( x + LDX(6*1.5,dir) + hsp, y + LDY(6*1.5,dir) + vsp -24, sdot_wave, .3+random_fixed(.4), 0, -110 );
-						//		fx.image_blend = merge_color(c_darkest,c_orange,.3+random_fixed(.5)); fx.hsp =  LDX(spd,dir); fx.vsp = LDY(spd,dir); fx.frc = .9;
-						//	}
-						//}
+						
 					}
 				break;
 				case 1:
 					space_buffer = true;
 					draw_type = e_draw_type.hook;
-					if ( !instance_exists( ohook ) ) {
+					if ( !instance_exists( own_grapple ) ) {
 							
 						substate = 0;
 						state = e_player.normal;
@@ -96,14 +89,15 @@ if ( intro_timer > 0 ) {
 			}
 			player_state_general( alt_col );
 			if  ( gen_col(x,y+1) || alt_col ) can_dash = true;
-			if ( KDASHP && state == e_player.hook && can_dash ) {
+			if ( KDASHP && state == e_player.hook && can_dash && !can_dodge_cooldown ) {
 				var hh = KRIGHT-KLEFT;
 				var vv = KDOWN-KUP;
 				dash_dir = point_direction(0,0,hh,vv);
 				if hh == 0 && vv == 0 dash_dir = -1;
 				state = e_player.parry;
 				audio_play_sound_pitch( snd_jump, 0.9,  RR(1.1,1.25), 0 );
-				audio_play_sound_pitch( snd_hook_upgrade_activate, 0.9,  RR( 0.7, 0.8 ), 0 );
+				audio_play_sound_pitch(snd_voice_dash_0,RR(0.95,1.05)*0.7,RR(0.95,1.05),0);
+				//audio_play_sound_pitch( snd_hook_upgrade_activate, 0.9,  RR( 0.7, 0.8 ), 0 );
 				
 				
 				
@@ -116,7 +110,7 @@ if ( intro_timer > 0 ) {
 	
 		#region normal
 		case e_player.normal:
-				
+			hit_substate = 0;
 			skip_draw = false;
 			pre_hook_state = state;
 			//vsp += grav;
@@ -131,7 +125,7 @@ if ( intro_timer > 0 ) {
 			draw_type = e_draw_type.aiming;
 				
 			if  ( gen_col(x,y+1) || alt_col ) can_dash = true;
-			if ( KDASHP && state == e_player.normal && can_dash ) {
+			if ( KDASHP && state == e_player.normal && can_dash  && !can_dodge_cooldown ) {
 				var hh = KRIGHT-KLEFT;
 				var vv = KDOWN-KUP;
 					
@@ -141,12 +135,12 @@ if ( intro_timer > 0 ) {
 				INVIS = 20;
 				effect_create_depth(  40, ef_flare, x, y-22, 0, merge_colour(c_aqua,c_dkgray,0.8) );
 				audio_play_sound_pitch( snd_jump, 0.9,  RR(1.1,1.25), 0 );
-				audio_play_sound_pitch( snd_hook_upgrade_activate, 0.9,  RR( 0.7, 0.8 ), 0 );
+				audio_play_sound_pitch( snd_voice_dash_0,RR(0.95,1.05)*0.7,RR(0.95,1.05),0);
 				
 			}
 			var lddd_ = id;
-			if ( instance_exists( ohook ) ) {
-				with ( ohook ) {
+			if ( instance_exists( own_grapple ) ) {
+				with ( own_grapple ) {
 					if ( parent == lddd_ ) {
 						state = 2;
 					}	
@@ -158,11 +152,62 @@ if ( intro_timer > 0 ) {
 	
 		#region hit
 		case e_player.hit:
+			
+			
+			switch( hit_substate ) {
+				case 0:
+					if ( K2P ) {
+						hit_timer += 10;
+						audio_play_sound_pitch( snd_blob_hit_wall, 0.7, 0.5, 1 );
+						hit_substate = 1;
+						var drr = point_direction( x, y-gun_height, MX, MY );
+						own_grapple = instance_create_depth( x+LDX(gun_len,drr), y-gun_height+LDY(gun_len,drr), 1, ohook );
+						own_grapple.dir = drr;
+						own_grapple.parent = id;
+					
+						var bll =  merge_color(c_darkest,c_black,0.4);
+						repeat( 3 ) {
+							var sp = ICD( x+LDX(gun_len,drr), y-gun_height+LDY(gun_len,drr), 2, ospark_alt );
+							sp.col =  bll;
+							var ndir = drr;
+							var nspd = 4;
+							sp.hsp = LDX(nspd,ndir);
+							sp.vsp = LDY(nspd,ndir)-2;
+						}
+						
+						var fx = create_fx( x+LDX(gun_len,drr), y-gun_height+LDY(gun_len,drr), sgun_blink_2,1,drr,0);
+						fx.image_blend = bll;
+						hook_charges = 0;
+						can_hook_delay = 15;
+						
+					}
+					
+				break;
+				case 1:
+					space_buffer = true;
+					if ( !instance_exists( own_grapple ) ) {
+						hit_substate = 2;
+						hook_air_cancel = true;
+						hit_timer += 10;
+					}
+				break;
+			}
+			
 			gun_charge = 0;
 			gun_charging = false;
 			gun_fully_charged = false;
 			if ( !hit_timer-- ) {
-				state = e_player.normal;
+				audio_play_sound_pitch( snd_combo_end, RR(0.95,1.05)*0.7, RR(0.95,1.05)*0.98, 0 );
+				
+				audio_play_sound_pitch( snd_combo_over_effect, RR(0.95,1.05)*0.5, RR(0.95,1.05)*1.22, 0 );
+				
+				if ( instance_exists(own_grapple) ) {
+					
+					state = e_player.hook;
+					substate = 1;
+				} else {
+					state = e_player.normal;
+				}
 				skip_draw = false;
 				if gen_col(x,y+3) {
 					INVIS = 20;
@@ -171,8 +216,10 @@ if ( intro_timer > 0 ) {
 					type = 1;
 					str = "-"+add0_float( floor(other.damage_taken),2);
 				}
-			
+				hit_substate = 0;
+				
 			}
+			
 			if ( hit_timer mod 4 == 0 ) {
 				effect_create_depth( depth-3 + (hit_timer mod 7), ef_smoke, x, y-22, 0, merge_colour(c_white,c_ltgray,random_range_fixed(0.5,1)) );
 			}
@@ -186,7 +233,7 @@ if ( intro_timer > 0 ) {
 			}
 			sprite_index = splayer_hit;
 			draw_type = e_draw_type.animation;
-		
+			
 			if ( hit_freeze <= 0 ) {
 				var hh = KRIGHT-KLEFT;
 				var vv = KDOWN-KUP;
@@ -221,6 +268,7 @@ if ( intro_timer > 0 ) {
 		#endregion
 		#region parry
 		case e_player.parry:
+			can_dodge_cooldown = 10;
 			if (hit_timer == 0 && dash_dir != -1 ) {
 				hsp = LDX( 5, dash_dir );
 				vsp = LDY( 5, dash_dir );
@@ -355,7 +403,7 @@ if ( place_meeting(x,y,odelete_box) || hp <= 0 || ( state == e_player.hit && pla
 	hsp = 0;
 	vsp = 0;
 	with ( oplayer ) {
-		SHAKE += 5;
+		SHAKE += 7;
 		show_hp_timer = 1;
 	}
 	state  = 2;

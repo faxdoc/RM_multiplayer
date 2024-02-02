@@ -14,6 +14,8 @@ switch( meta_state ) {
 		}
 		if ( st_ <= 1 ) {
 			meta_state = e_meta_state.round_end;
+			audio_play_sound_pitch( snd_round_over, 1, 1, 0 );
+			
 			if ( player_local ) {
 				with ( music_player ) {
 					stop_playing_music();
@@ -54,23 +56,33 @@ switch(meta_state) {
 		hp = hp_max;
 		INVIS = 30; 
 		intro_timer += 0.75;
+		if ( intro_timer == 0.75 ) {
+			audio_play_sound_pitch( snd_ready, 1, 1, 0 );
+		}
 		if ( intro_timer > 105 ) {
 			if ( player_local ) {
 				with ( music_player ) {
 					start_playing_music();
 				}
 			}
+			audio_play_sound_pitch( snd_round_start, 1, 1, 0 );
 			intro_timer = 20;
 			spawn_timer = 0;
 			meta_state  = e_meta_state.main;
 			state		= e_player.normal;
 			INVIS		= 60;
 		}
+		if ( intro_timer == 75 ) {
+			audio_play_sound_pitch(snd_respawn, RR(0.9,1),  RR(0.9,1), 0 );
+		}
 		
 	break;
 	case e_meta_state.respawn:
 		hp = hp_max;
 		INVIS = 30; 
+		if ( spawn_timer == 5 ) {
+			audio_play_sound_pitch(snd_respawn, RR(0.9,1), RR(0.9,1), 0 );
+		}
 		if ( spawn_timer++ > 30 ) {
 			spawn_timer = 0;
 			meta_state	= e_meta_state.main;
@@ -80,11 +92,14 @@ switch(meta_state) {
 		damage_taken = 0;
 		pre_hp = hp;
 		draw_alpha = 1;
+		hit_substate = 0;
 		
 	break;
 	#region main
 	case e_meta_state.main:
 		player_main_behaviour();
+		if ( can_dodge_cooldown ) can_dodge_cooldown--;
+		
 	break;
 	#endregion
 	
@@ -92,7 +107,7 @@ switch(meta_state) {
 	case e_meta_state.dying:
 		if ( spawn_timer == 0 ) {
 			//audio_play_sound_pitch(snd_explotion_0, 0.7, RR( 0.8, 0.9 ), 0 );
-			audio_play_sound_pitch(snd_explotion_1, 0.7, RR( 0.5, 0.6 ), 0 );
+			audio_play_sound_pitch(snd_explotion_1, 0.4, RR( 0.5, 0.6 ), 0 );
 			//audio_play_sound_pitch(snd_explotion_1, 0.7, RR( 0.7, 0.8 ), 0 );
 			
 			audio_play_sound_pitch( choose(snd_fallout_0,snd_fallout_1), 0.9, RR( 0.95, 1.05 ), 0 );
@@ -136,8 +151,8 @@ switch(meta_state) {
 
 if ( meta_state != e_meta_state.main ) {
 	var lddd_ = id;
-	if ( instance_exists( ohook ) ) {
-		with ( ohook ) {
+	if ( !is_undefined( own_grapple ) && instance_exists( own_grapple ) ) {
+		with ( own_grapple ) {
 			if ( parent == lddd_ ) {
 				state = 2;
 			}	

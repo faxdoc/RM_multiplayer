@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_take_damage.wav",
   "type": 0,
-  "volume": 1.0,
+  "volume": 0.6,
 }

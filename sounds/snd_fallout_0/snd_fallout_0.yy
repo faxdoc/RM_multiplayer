@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_fallout_0.wav",
   "type": 0,
-  "volume": 1.0,
+  "volume": 0.5,
 }

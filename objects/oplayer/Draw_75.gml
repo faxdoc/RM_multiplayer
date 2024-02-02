@@ -32,6 +32,7 @@ if ( player_local ) {
 		
 	}
 	switch( meta_state ) {
+		#region level select
 		case e_meta_state.level_select:
 			DSC(c_darkest);
 			DSA( 0.9 );
@@ -60,8 +61,8 @@ if ( player_local ) {
 			
 			if ( global.display_room_name != "" ) {
 				
-				var xx_ = floor(GW*0.5);
-				var yy_ = floor(GH*0.75);
+				var xx_ = floor( GW * 0.5  );
+				var yy_ = floor( GH * 0.75 );
 				draw_set_halign(fa_center);
 				var c = merge_colour(c_white,c_black,0.9);
 				draw_text_transformed_color( xx_, yy_+1, global.display_room_name, 3, 3, 0, c,c,c,c, 1 );
@@ -69,7 +70,7 @@ if ( player_local ) {
 				draw_text_transformed_color( xx_, yy_, global.display_room_name, 3, 3, 0, c,c,c,c, 1 );
 				draw_set_halign(fa_left);
 			}
-		
+			
 			if ( instance_exists(obutton_levels) ) {
 				with ( obutton_levels ) draw_self();
 			}
@@ -97,17 +98,23 @@ if ( player_local ) {
 			draw_rectangle(0,0,room_width,room_height,false);
 			DSC(c_white);
 			DSA(1);
+			
 		break;
+		#endregion
+		#region main
 		case e_meta_state.main:
 			if ( intro_timer > 0 ) {
-				var sz_ = max(2,( (intro_timer*intro_timer)/140));
-				draw_sprite_ext(sstart,1,GW/2,GH/2,sz_,sz_,0, c_orange, 1 );
+				var sz_ = max( 2, ( ( intro_timer * intro_timer ) / 140 ) );
+				draw_sprite_ext( sstart, 1, GW/2, GH/2, sz_, sz_,0, c_orange, 1 );
 			}
 			
 			
 		break;
+		#endregion
 		
+		#region round
 		case e_meta_state.round_end:
+			draw_sprite_ext(sgame,0,GW*0.5,GH*0.5, 2, 2, 0, c_white, 1 );
 			DSC(c_darkest);
 			DSA( min(0.8, ( final_timer/100 ) - 0.7 ) );
 			draw_rectangle(0,0,room_width,room_height,false);
@@ -119,6 +126,9 @@ if ( player_local ) {
 				draw_set_halign(fa_left);
 			}
 		break;
+		
+		#endregion
+		
 	}
 	
 	

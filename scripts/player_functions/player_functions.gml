@@ -130,18 +130,21 @@ function player_state_general(alt_col) {
 		
 		var doing_hook = false;
 		
-		with ( ohook ) {
-			if parent = ld_ doing_hook = true;
-		}
+		//with ( ohook ) {
+		//	if parent = ld_ doing_hook = true;
+		//}
 		
-		if ( instance_exists( ohook ) ) {
-			with ( ohook ) {
-				if  ( hook_object != -1 && hook_object = ld_ ) {
-					llt_  = true; 
-					space_buffer = true;
-				}
+		//if ( instance_exists( ohook ) ) {
+		//	with ( ohook ) {
+		//		if  ( hook_object != -1 && hook_object = ld_ ) {
+		//			llt_  = true; 
+		//			space_buffer = true;
+		//		}
 				
-			}
+		//	}
+		//}
+		if ( !is_undefined(own_grapple) && instance_exists(own_grapple) ) {
+			if ( own_grapple.parent == ld_ ) doing_hook = true;
 		}
 		
 		if( doing_hook || move_hooked || llt_ ) {
@@ -277,7 +280,8 @@ function player_jump() {
 	if ( jump_charge_buffer == 0 ) {
 		vsp = -jump_pwr*lerp( WORLD_GRAV, 1, .3 );
 		land_y = 0;
-		audio_play_sound_pitch(snd_jump,.65,RR(.95,1.05),0);
+		audio_play_sound_pitch(snd_jump,.35,RR(.95,1.05),0);
+		audio_play_sound_pitch( choose(snd_voice_jump_0,snd_voice_jump_1), RR(0.95,1.05)*0.22,  RR(0.95,1.05), 0 );
 	} else {
 		vsp = -( jump_pwr + 3 );
 		land_y = 0;
@@ -287,7 +291,10 @@ function player_jump() {
 		//repeat(4) ICD( x, y, -1, ospark_alt );
 		//repeat(2) ICD( x, y, -1,     osmoke );
 		SHAKE++;
-		audio_play_sound_pitch(snd_charged_jump,0.75,RR(.9,1.1),0);
+		audio_play_sound_pitch(snd_charged_jump,				0.75,RR(.9,1.1),0);
+		audio_play_sound_pitch( snd_jump_charge, RR(0.95,1.05),  RR(0.95,1.05), 0 );
+		
+		
 	}
 	
 	jump_buffer = 0;
@@ -310,14 +317,63 @@ function play_walk_sound(vol_,pt_) {
 }
 
 function audio_play_sound_pitch_falloff(sound,volume,pitch,priority,falloff_ = 300 ) {
-	if !instance_exists(oplayer) exit;
-	//var falloff_volume = 0.3;
-	var peak_vol = audio_sound_get_gain(sound) * volume * 0.6;
+	var x_ = x, y_ = y+22;
+	with ( oplayer ) {
+		if ( player_local ) {
+			var vol = audio_sound_get_gain(sound) * volume;
+			var snd = audio_play_sound(sound,priority,false);
+			var ds_ = clamp(1.2-point_distance(x_,y_,x,y)/310,0.1,1);
+			audio_sound_gain(snd,vol*ds_,0);
+			audio_sound_pitch(snd,pitch);
+		}
+	}
+	//if !instance_exists(oplayer) exit;
+	////var falloff_volume = 0.3;
+	//var peak_vol = audio_sound_get_gain(sound) * volume * 0.6;
 		
-	var snd = audio_play_sound( sound, priority, false );
-	audio_sound_gain( snd, peak_vol, 0 );
-	audio_sound_pitch( snd, pitch );
-	return snd;
+	//var snd = audio_play_sound( sound, priority, false );
+	//audio_sound_gain( snd, peak_vol, 0 );
+	//audio_sound_pitch( snd, pitch );
+	//return snd;
+	//if ( object_index == oplayer ) {
+		
+		
+		//with ( oplayer ) {
+		//	if (player_local ) {
+		//		var vol = audio_sound_get_gain(sound) * volume;
+		//		var snd = audio_play_sound(sound,priority,false);
+		//		var ds_ = clamp(1.2-point_distance(x_,y_,x,y)/310,0.1,1);
+		//		audio_sound_gain(snd,vol*ds_* 0.6,0);
+		//		audio_sound_pitch(snd,pitch);
+		//	}
+		//}
+		
+		
+		
+			
+		//	var ld_ = id;
+		//	var x_ = x, y_ = y;
+		//	with ( oplayer ) {
+		//		if ( player_local && id != ld_ ) {
+		//			var snd_2 = audio_play_sound(sound,priority,false);
+		//			var ds_ = clamp(1.3-point_distance(x_,y_,x,y)/300,0.1,1);
+		//			audio_sound_gain(snd_2,vol*ds_,0);
+		//			audio_sound_pitch(snd_2,pitch);
+		//		}
+		//	 }
+			
+		//	return snd;
+		//} else {
+		//	return noone;
+		//}
+	//} else {
+	//	var vol = audio_sound_get_gain(sound) * volume;
+	//	var snd = audio_play_sound(sound,priority,false);
+	//	audio_sound_gain(snd,vol,0);
+	//	audio_sound_pitch(snd,pitch);
+	//	return snd;
+	//}
+	
 }
 
 
@@ -555,8 +611,8 @@ function player_ledge_detect(hh,jump_hold) {
 					state = e_player.normal;
 				}
 				can_hook_delay = 0;
-				if( instance_exists(ohook) ){
-					IDD(ohook);
+				if( instance_exists(own_grapple) ){
+					IDD(own_grapple);
 				}
 				draw_xscale = hh;
 				audio_play_sound_pitch(snd_ledge_grab, 0.85, RR(.9,1.1)+.05, 0);
@@ -567,8 +623,8 @@ function player_ledge_detect(hh,jump_hold) {
 					state = e_player.normal;
 				}
 				can_hook_delay = 0;
-				if( instance_exists(ohook) ){
-					IDD(ohook);
+				if( instance_exists(own_grapple) ){
+					IDD(own_grapple);
 				}
 			} else {
 				if( substate == 1 )pre_hook_state = e_player.normal;

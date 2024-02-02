@@ -12,12 +12,12 @@
   "conversionMode": 0,
   "duration": 1.296344,
   "parent": {
-    "name": "temp_unimport",
-    "path": "folders/Sounds/sound/gameplay/temp_unimport.yy",
+    "name": "import",
+    "path": "folders/Sounds/sound/gameplay/import.yy",
   },
   "preload": false,
   "sampleRate": 44100,
   "soundFile": "snd_respawn.wav",
   "type": 0,
-  "volume": 1.0,
+  "volume": 0.5,
 }

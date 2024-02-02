@@ -8,6 +8,8 @@ follow_other_player_cooldown = 60;
 music_player = -1;
 get_back_life_cooldown = 0;
 get_back_life_cooldown_cap = 600;
+own_grapple = undefined;
+can_dodge_cooldown = 0;
 
 show_hp_timer = 0;
 gun_charging = false;
@@ -23,6 +25,8 @@ shoot_hold_buffer		= 0;
 input_skip = 0;
 INVIS = 0;
 intro_timer = 0;
+
+hit_substate = 0;
 
 move_alt_blink	= 0;
 skip_redo		= true;

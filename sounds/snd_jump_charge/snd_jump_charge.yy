@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSound",
   "resourceVersion": "1.0",
-  "name": "snd_menu_back_alt",
+  "name": "snd_jump_charge",
   "audioGroupId": {
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
@@ -10,14 +10,14 @@
   "bitRate": 128,
   "compression": 0,
   "conversionMode": 0,
-  "duration": 0.630875,
+  "duration": 0.276594,
   "parent": {
-    "name": "temp_unimport",
-    "path": "folders/Sounds/sound/gameplay/temp_unimport.yy",
+    "name": "import",
+    "path": "folders/Sounds/sound/gameplay/import.yy",
   },
   "preload": false,
   "sampleRate": 44100,
-  "soundFile": "snd_menu_back_alt.wav",
+  "soundFile": "snd_jump_charge.wav",
   "type": 0,
-  "volume": 1.0,
+  "volume": 0.5,
 }

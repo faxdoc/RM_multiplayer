@@ -15,6 +15,11 @@ if ( controller != undefined ) {
 	var k1p = controller.K1P;
 	
 	if ( instance_position(mx_,my_,id) ) {
+		if ( !hovered ) {
+			hovered = true;
+			audio_play_sound_pitch(snd_menu_hover, random_fixed(0.9), RR(0.9,1.05),0);
+		}
+	
 		image_blend = c_white;
 		image_xscale = lerp(image_xscale, 1, 0.2 );
 		image_yscale = lerp(image_yscale, 1, 0.2 );
@@ -36,9 +41,10 @@ if ( controller != undefined ) {
 			global.display_room_name = st_;
 		}
 	} else {
+		hovered = false;
 		image_xscale = lerp(image_xscale,0.7, 0.2 );
 		image_yscale = lerp(image_yscale,0.7, 0.2 );
-		image_blend = c_gray;
+		image_blend  = c_gray;
 	}
 
 	if (k1p ) {
@@ -46,7 +52,7 @@ if ( controller != undefined ) {
 		if ( instance_position(mx_,my_,id) ) {
 			//randomize();
 			var rl_ = [rtest,rtower,rceiling,rflat,rplatform,ropen,rbridge,rempty,rcity];
-
+			audio_play_sound_pitch( choose( snd_menu_select_0, snd_menu_select_1), RR(0.95,1.05),  RR(0.95,1.05), 0 );
 			var rm__ = rl_[ image_index ];
 			switch(image_index) {
 				default: room_goto(rm__); break;
@@ -71,7 +77,7 @@ if ( controller != undefined ) {
 				if ( instance_position(mx_,my_,id) ) {
 					//randomize();
 					var rl_ = [rtest,rtower,rceiling,rflat,rplatform,ropen,rbridge,rempty,rcity];
-
+					audio_play_sound_pitch( choose( snd_menu_select_0, snd_menu_select_1), RR(0.95,1.05),  RR(0.95,1.05), 0 );
 					var rm__ = rl_[ image_index ];
 					switch(image_index) {
 						default: room_goto(rm__); global.inital_select = true; break;
@@ -84,6 +90,11 @@ if ( controller != undefined ) {
 	}
 	
 	if ( do_hover_ ) {
+		if ( !hovered ) {
+			hovered = true;
+			audio_play_sound_pitch(snd_menu_hover, random_fixed(0.9), RR(0.9,1.05),0);
+		}
+		
 		image_blend = c_white;
 		image_xscale = lerp(image_xscale, 1, 0.2 );
 		image_yscale = lerp(image_yscale, 1, 0.2 );
@@ -105,6 +116,7 @@ if ( controller != undefined ) {
 		}
 		
 	} else {
+		hovered = false;
 		image_xscale = lerp(image_xscale,0.7, 0.2 );
 		image_yscale = lerp(image_yscale,0.7, 0.2 );
 		image_blend = c_gray;

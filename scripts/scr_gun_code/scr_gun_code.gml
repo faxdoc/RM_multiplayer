@@ -70,7 +70,7 @@ switch(current_weapon) {
 		
 		
 		#region v2
-		CLIP[cg] = clamp( CLIP[cg], 0, 5 );
+		CLIP[cg] = clamp( CLIP[cg], 0, 4 );
 		if( RELOAD[cg] <= 0 )CLIP[cg] = 5;
 		if( CLIP[cg] == 0 )gun_charge = 0;
 		
@@ -79,15 +79,15 @@ switch(current_weapon) {
 		}
 		//LOG(gun_charge)
 		if ( gun_charge > 0 ) {
-			if( round(gun_charge) mod 4 == 1 ){
+			if( round(gun_charge) mod 4 == 1 ) {
 				gun_general(10,60,9);
 				var b = bullet_general(4.9,18,bullet_sprites[0],0);
 				b.duration *= 1.2;
 				scr_set_size(b,.9);
 				bullet_effects_general(sammo);
 				effect_general(.7,4,2);
-				audio_play_sound_pitch(snd_railgun_shooting,.8,.9+random_fixed(.1),1);
-				audio_play_sound_pitch(snd_shoot_1,.25,.95+random_fixed(.1),1);
+				audio_play_sound_pitch(snd_railgun_shooting,0.5,0.9+random_fixed(.1),1);
+				//audio_play_sound_pitch(snd_shoot_1,.25,.95+random_fixed(.1),1);
 				CLIP[cg]--;
 				RELOAD[cg] = 76;
 				shoot_delay = 15;
@@ -267,16 +267,16 @@ switch(current_weapon) {
 			var yy = y-gun_height+LDY(gun_len,drr);
 
 			var t = ICD( xx, yy, -1, ogrenade );
-			t.bounce = .9;
+			t.bounce = 0.9;
 			t.hsp = LDX(7+gun_charge/5,drr) * 0.82 * 0.94;
 			t.vsp = LDY(7+gun_charge/5,drr) * 0.82 * 0.94;
 			t.grav = 0;
-			t.duration *= 1;//0.96*1.05;
+			//t.duration *= 0.96;//0.96*1.05;
 			t.explode_on_ground = true;
 			t.explotion_size = 1;
 			t.explode_on_contact = true;
 			t.push_player = true;
-			t.duration = 12;
+			t.duration = 11;
 			t.explode_damage = 22*dmg_mult;
 			t.sprite_index = srocket_alt;
 			t.spin = 0;
@@ -285,11 +285,11 @@ switch(current_weapon) {
 			t.parent = id;
 			
 				
-			audio_play_sound_pitch(snd_railgun_shooting,0.8,.85+random_fixed(.1),1);
-			audio_play_sound_pitch(snd_shoot_1,0.25,0.75+random_fixed(.1),1);
+			audio_play_sound_pitch( snd_railgun_shooting,0.8,  0.85 + random_fixed( 0.1 ), 1 );
+			audio_play_sound_pitch( 		 snd_shoot_1,0.25, 0.75 + random_fixed( 0.1 ), 1 );
 						
 			CLIP[cg]--;
-			RELOAD[cg] = 105;
+			RELOAD[cg] = 135;
 			effect_general(3,12,6);
 			//gun_general(70,90,2);
 			gun_charge = 0;
@@ -440,9 +440,9 @@ switch(current_weapon) {
 				
 			bullet_effects_general( sammo_small );
 				
+			//audio_play_sound_pitch( snd_railgun_shooting, 0.8, 0.85 + random_fixed(0.1), 1 );
 			audio_play_sound_pitch( snd_railgun_shooting, 0.8, 0.85 + random_fixed(0.1), 1 );
-			audio_play_sound_pitch( snd_railgun_shooting, 0.8, 0.85 + random_fixed(0.1), 1 );
-			audio_play_sound_pitch( snd_shoot_1, 0.25, 0.75 + random_fixed( 0.1 ), 1 );
+			audio_play_sound_pitch( choose(snd_pistol_shot_0,snd_pistol_shot_1), RR(0.85,0.95), 0.95 + random_fixed( 0.1 ), 1 );
 						
 			CLIP[cg]--;
 			effect_general(3,12,6);
@@ -555,8 +555,9 @@ function bullet_general(dmg,spd,sprite, unacc, obj_ = par_hitbox, cb_mult_ = 1, 
 			t.knockback = dmg * 1;
 		break;
 		case e_gun.pistol:// gun 1
-			t.stun_mult = 2;
+			t.stun_mult = 2.5;
 			t.knockback *= 1.9;
+			t.bonus_vsp = -1;
 		break;
 		case e_gun.rail:
 			t.stun_mult = 1.5;

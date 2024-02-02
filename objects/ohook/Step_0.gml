@@ -56,14 +56,11 @@ if (state == 0) {
 	#endregion
 	
 	#region enemy collision
-	//var pre_scale = image_xscale;
+	
 	image_xscale = 4.5;
 	image_yscale = 4.5;
-	// player_exists &&  place_meeting(x,y,par_enemy) &&
 	
 	if ( place_meeting(x,y,oplayer) ) {
-		//show_message("a");
-		//
 		
 		var t = instance_place(x,y,oplayer);
 		if ( !t.INVIS && t != parent ) {
@@ -76,15 +73,17 @@ if (state == 0) {
 			var n = wire.number-1;
 			//var v1 = vl[0];
 			var v2 = vl[n];
-			wire.line_len = ( point_distance(x,y,parent.x,parent.y-24) / (1+n) )*.75;//8
+			wire.line_len = ( point_distance(x,y,parent.x,parent.y-24) / (1+n) )*0.9;//8
 			hooking_enemy = true;
-			x = lerp(hook_object.bbox_left,hook_object.bbox_right,0.5);
-			y = lerp(hook_object.bbox_bottom,hook_object.bbox_top,0.5);
+			x = lerp( hook_object.bbox_left,   hook_object.bbox_right, 0.5 );
+			y = lerp( hook_object.bbox_bottom, hook_object.bbox_top,   0.5 );
 			hook_mult = 1;
 			v2.oldx -= parent.hsp;
 			v2.oldy -= parent.vsp;
 			if ( t.state == e_player.hit ) {
 				t.hit_timer += 20;
+			} else if ( t.state == e_player.ledge ) {
+				t.state = e_player.normal;
 			}
 		}
 	} else if place_meeting(x,y,ohitbox_saw) {
@@ -201,7 +200,7 @@ if (state == 0) {
 				vert.xx -= offx;
 				vert.yy -= offy;
 				var dr_ = point_direction(parent.x,parent.y,hook_object.x, hook_object.y );
-				var ds_ = ( max(0,point_distance( parent.x,parent.y,hook_object.x, hook_object.y )-20) / (pulled ? 50 : 80) ) / 1.7;
+				var ds_ = ( max(0,point_distance( parent.x,parent.y,hook_object.x, hook_object.y )-20) / (pulled ? 50 : 80) ) / 1.1;
 				hook_object.hsp -= LDX(ds_,dr_);
 				hook_object.vsp -= LDY(ds_,dr_);
 				hook_object.bounce_cooldown = 30;

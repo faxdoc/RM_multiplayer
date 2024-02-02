@@ -8,6 +8,7 @@ if ( !self_draw ) { exit; }
 if ( state == e_player.hit ) {
 	if ( hh != 0 || vv != 0 ) {
 		var di_dir = point_direction(0,0,hh,vv);
+		draw_sprite_ext(sdi_indicator,player_id,x,y-21,1,1,di_dir,c_dkgray, 1 ); 
 		draw_sprite_ext(sdi_indicator,player_id,x,y-22,1,1,di_dir,c_white, 1 ); 
 	}
 }
