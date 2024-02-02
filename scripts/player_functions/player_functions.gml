@@ -160,6 +160,7 @@ function player_state_general(alt_col) {
 				vsp *= 0.8;
 			}
 		}
+		
 		vsp += grav;
 		
 		player_ledge_detect( hh, jump_hold );
@@ -717,7 +718,8 @@ function approach(current,target,spd) {
 function player_platform_col(vv,jump_press) {
 	//stop if going down to
 	mask_index = splayer_mask_platform;
-	if( vsp > 0 && gen_col_sort(x,y+vsp+1.5,layer_col,2) && !gen_col_sort(x,y,layer_col,2) ){
+	//var parry_skip = (  state == e_player.parry && vsp > 0 );
+	if ( vsp > 0 && gen_col_sort(x,y+vsp+1.5,layer_col,2) && !gen_col_sort(x,y,layer_col,2 ) && ( state != e_player.parry || vsp <= grav*1.5 ) ) {// && !(state == e_player.parry && vsp >= 0) 
 		y = round(y);
 		var v = sign(vsp);
 		while( !gen_col_sort(x,y+v,layer_col,2) ){
@@ -726,9 +728,9 @@ function player_platform_col(vv,jump_press) {
 		vsp = 0;
 		floor_type = e_floor.wood;
 		
-	}
+	}// || state == e_player.parry && vsp > 0
 	//fall trough
-	if (state == e_player.normal || state = e_player.hook )&& ( jump_press && vv == 1 && gen_col_sort(x,y+1,layer_col,2) && !gen_col_sort(x,y,layer_col,2) && !gen_col_sort(x,y+1,layer_col,1) ) && vsp == 0 {
+	if (state == e_player.normal || state = e_player.hook ) && ( ( (jump_press  && vv == 1) ) && gen_col_sort(x,y+1,layer_col,2) && !gen_col_sort(x,y,layer_col,2) && !gen_col_sort(x,y+1,layer_col,1) ) && vsp == 0 {
 		jump_buffer = 0;
 		y++;
 		vsp += 1.8;

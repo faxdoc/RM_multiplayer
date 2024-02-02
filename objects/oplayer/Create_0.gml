@@ -10,6 +10,7 @@ get_back_life_cooldown = 0;
 get_back_life_cooldown_cap = 600;
 own_grapple = undefined;
 can_dodge_cooldown = 0;
+winner = -1;
 
 show_hp_timer = 0;
 gun_charging = false;

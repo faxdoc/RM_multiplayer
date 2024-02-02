@@ -47,7 +47,7 @@ if ( player_local ) {
 					draw_text_transformed_color( GW*0.5, floor(GH*0.28), display_name + " is choosing stage", 2, 2, 0, _c_, _c_, _c_, _c_, 1 );
 					draw_set_halign(fa_left);
 					var mdx_ = GW*0.5, mdy_ = GH*0.4;
-					var ww_ = priority_select_timer;
+					var ww_ = priority_select_timer/2;
 					DSC(_c_);
 					draw_rectangle( mdx_-ww_, mdy_-12, mdx_+ww_, mdy_+12, false );
 					DSC(c_white);
@@ -60,7 +60,6 @@ if ( player_local ) {
 			}
 			
 			if ( global.display_room_name != "" ) {
-				
 				var xx_ = floor( GW * 0.5  );
 				var yy_ = floor( GH * 0.75 );
 				draw_set_halign(fa_center);
@@ -69,6 +68,8 @@ if ( player_local ) {
 				var c = merge_colour(c_white,c_ltgray,0.1);
 				draw_text_transformed_color( xx_, yy_, global.display_room_name, 3, 3, 0, c,c,c,c, 1 );
 				draw_set_halign(fa_left);
+				
+				
 			}
 			
 			if ( instance_exists(obutton_levels) ) {
@@ -114,17 +115,34 @@ if ( player_local ) {
 		
 		#region round
 		case e_meta_state.round_end:
-			draw_sprite_ext(sgame,0,GW*0.5,GH*0.5, 2, 2, 0, c_white, 1 );
+			
 			DSC(c_darkest);
-			DSA( min(0.8, ( final_timer/100 ) - 0.7 ) );
+			DSA( min( 0.9, ( final_timer/10 ) - 9 ) );
 			draw_rectangle(0,0,room_width,room_height,false);
 			DSC(c_white);
 			DSA(1);
-			if ( final_timer > 120 ) {
-				draw_set_halign(fa_center);
-				draw_text_transformed(GW/2,GH/2,lives_left <= 0 ? "Opponent win" : "You win", 3, 3, 0 );
-				draw_set_halign(fa_left);
+			if ( final_timer == 125 ) {
+				audio_play_sound_pitch( snd_victory, 0.8, 1, 0 );
 			}
+			if ( final_timer > 100 ) {
+				var size_ = 128;
+				
+				var vv_ = abs( sin( final_timer / 24 ) ) * size_;
+				var va_pos = max( 0, 90-(final_timer-100)*2 );
+				
+				draw_sprite_stretched_ext( winner.player_avatar_sprite, 0, GW*0.5-( vv_/2 ), GH*0.4-(size_/2)-va_pos*4 + 8, vv_, size_, c_black, 0.8 ); 
+				
+				draw_sprite_stretched( winner.player_avatar_sprite, 0, GW*0.5-( vv_/2 ), GH*0.4-(size_/2)-va_pos*4, vv_, size_ ); 
+				draw_set_halign( fa_center );
+				var c = c_black;
+				draw_text_transformed_colour( GW*0.5, GH*0.75+va_pos*4+2, ( instance_exists(winner) ? winner.display_name : "" ) + " Wins!!", 3, 3, 0, c, c, c, c, 0.9 );
+				c = ( instance_exists(winner) ? merge_colour( c_white, winner.player_colour, 0.5 ) : c_white );
+				draw_text_transformed_colour( GW*0.5, GH*0.75+va_pos*4, ( instance_exists(winner) ? winner.display_name : "" ) + " Wins!!", 3, 3, 0, c, c, c, c, 1 );
+				draw_set_halign( fa_left );
+			} else {
+				draw_sprite_ext(sgame,0,GW*0.5,GH*0.5, 2, 2, 0, c_white, 1 );
+			}
+			
 		break;
 		
 		#endregion
@@ -202,13 +220,43 @@ if ( player_local ) {
 	#endregion
 			
 			
-			
-	var cursor_col = c_white;
-	if (  ( can_hook_delay || hook_air_cancel ) ) {
-		cursor_col = merge_color( c_dkgray, c_orange, 0.5 );
+	
+	
+	var mx_ = device_mouse_x_to_gui(0);
+	var my_ = device_mouse_y_to_gui(0);
+	if ( RELOAD[ current_weapon ] >  0 ) {
+		var pw = RELOAD[ current_weapon ] * 0.15;
+		var xoffset_ = -2;
+		var yoffset_ = 2;
+		var CAMX = 0;
+		var CAMY = 0;
+		
+		if ( CLIP[ current_weapon ] != 99 ) {
+			DSA( choose_fixed( 0.7, 0.8, 0.9 ) );
+			var col = c_dkgray;
+			draw_line_width_color(mx_-10-CAMX-xoffset_-1,my_+12-CAMY-yoffset_+1,mx_-10+pw-CAMX-xoffset_-1,my_+12-CAMY-yoffset_+1,5, col, col );
+			var col = c_white;
+			draw_line_width_color(mx_-10-CAMX-xoffset_,my_+12-CAMY-yoffset_,mx_-10+pw-CAMX-xoffset_,my_+12-CAMY-yoffset_,5, col, col );
+		} else {
+			var col = c_dkgray;
+			draw_line_width_color(mx_-pw-CAMX-xoffset_-1,my_+12-CAMY-yoffset_+1,mx_+pw-CAMX-xoffset_-1,my_+12-CAMY-yoffset_+1,4, col, col );
+			var col = c_white;
+			draw_line_width_color(mx_-pw-CAMX-xoffset_,my_+12-CAMY-yoffset_,mx_+pw-CAMX-xoffset_,my_+12-CAMY-yoffset_,4, col, col );
+		}
+		DSA( 1 );
 	}
-	draw_sprite_ext( scursor, 1, device_mouse_x_to_gui(0),  device_mouse_y_to_gui(0), 1, 1, 0, cursor_col, 1 );
-	draw_sprite_ext( scursor, 0, device_mouse_x_to_gui(0),  device_mouse_y_to_gui(0), 1, 1, 0, cursor_col, 1 );
+
+	//var cursor_col = c_white;
+	//if ( can_parry_cooldown ) {
+	//	cursor_col = merge_color( c_dkgray, c_aqua, 0.4 );
+	//}
+	draw_sprite_ext( scursor, 0, mx_,  my_, 1, 1, 0, ( !can_dash || can_dodge_cooldown || state == e_player.parry ) ? merge_color( c_dkgray, c_aqua, 0.4 ) : c_white, 1  );
+	
+	//cursor_col = c_white;
+	//if () {
+	//	cursor_col = merge_color( c_dkgray, c_orange, 0.5 );
+	//}
+	draw_sprite_ext( scursor, 1, mx_,  my_, 1, 1, 0,  can_hook_delay || hook_air_cancel ?  merge_color( c_dkgray, c_orange, 0.5 ) : c_white, 1 );
 }
 
 

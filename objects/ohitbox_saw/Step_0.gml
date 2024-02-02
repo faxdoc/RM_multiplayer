@@ -21,28 +21,28 @@ switch(move_state) {
 		if( place_meeting( x, y, par_hitbox ) ) {
 			
 			
-				var t_ = instance_place( x, y, par_hitbox );
-					//audio_play_sound_pitch_falloff( snd_maya_hit_saw, RR( 0.8, 0.9 ), RR( 0.95, 1.1 ), -10 );//RR(1.5,1.7)
-					//hit_list[? t_] = 1;
-					if ( can_push_cooldown <= 0 ) {
-						can_push_cooldown = 20;
-						hit_freeze = max(hit_freeze,2);
-					}
-					if ( t_.sprite_index == splayer_grenade ) {
-						enflamed = clamp( enflamed + 0.3, 1, 2 );
-						SHAKE++;
+			var t_ = instance_place( x, y, par_hitbox );
+			//audio_play_sound_pitch_falloff( snd_maya_hit_saw, RR( 0.8, 0.9 ), RR( 0.95, 1.1 ), -10 );//RR(1.5,1.7)
+			//hit_list[? t_] = 1;
+			if ( can_push_cooldown <= 0 ) {
+				can_push_cooldown = 20;
+				hit_freeze = max( hit_freeze, 2 );
+			}
+			if ( t_.sprite_index == splayer_grenade ) {
+				enflamed = clamp( enflamed + 0.3, 1, 2 );
+				SHAKE++;
 				
-						vsp  += t_.vsp*0.4;
-						hsp  += t_.hsp*0.4;
-						hsp *= 0.9;
-						IDD( t_ );
-					} else if ( t_.object_index != object_index ) {
+				vsp  += t_.vsp*0.55;
+				hsp  += t_.hsp*0.55;
+				hsp *= 0.9;
+				IDD( t_ );
+			} else if ( t_.object_index != object_index ) {
 				
-						hsp = lerp( hsp, LDX( 6, t_.dir ), 0.4 );
-						vsp = lerp( vsp, LDY( 6, t_.dir ), 0.4 );
-						x += RR(-2,2);
-						y += RR(-2,2);
-				} 
+				hsp = lerp( hsp, LDX( 6, t_.dir ), 0.4 );
+				vsp = lerp( vsp, LDY( 6, t_.dir ), 0.4 );
+				x += RR(-2,2);
+				y += RR(-2,2);
+			}
 		}
 		if ( PLC( x, y, ogrenade ) ) {
 			can_push_cooldown = 3;	
@@ -93,7 +93,7 @@ switch(move_state) {
 					var i = 0;
 					mask_index = sdot_wave;
 					
-					while ( i++ < 32 && gen_col(x,y+4) ) {
+					while ( i++ < 32 && gen_col( x, y+4 ) ) {
 						y--;
 					}
 				} else {
@@ -127,7 +127,6 @@ switch(move_state) {
 			y += vsp;
 			draw_angle += 10;
 			if ( !duration-- ) {
-				//if ds_exists( hitmap, ds_type_map ) ds_map_clear( hitmap );
 				IDD();
 			}
 			if (!alt_init) {

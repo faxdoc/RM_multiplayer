@@ -8,9 +8,11 @@ if ( intro_timer > 0 ) {
 	if ( grenade_cooldown ) grenade_cooldown--;
 
 	#region input
-
+	
 	if ( global.training_mode ) lives_left = 4;
 	//jump buffer
+	
+	
 	if( jump_press )jump_buffer = 12;
 	if (y > room_height) jump_buffer = 0;
 	if( jump_buffer )jump_buffer--;
@@ -36,7 +38,7 @@ if ( intro_timer > 0 ) {
 
 	#region platform down y
 	mask_index = splayer_mask_platform;
-	var alt_col = ( !gen_col_sort( x, y, layer_col, 2 ) && gen_col_sort( x, y+2, layer_col, 2 ) );
+	var alt_col = (( !gen_col_sort( x, y, layer_col, 2 ) && gen_col_sort( x, y+2, layer_col, 2 ) ) );// && !( state == e_player.parry || vsp > 1 );
 	mask_index = splayer_mask;
 	touching_platform = alt_col;
 
@@ -89,22 +91,26 @@ if ( intro_timer > 0 ) {
 			}
 			player_state_general( alt_col );
 			if  ( gen_col(x,y+1) || alt_col ) can_dash = true;
-			if ( KDASHP && state == e_player.hook && can_dash && !can_dodge_cooldown ) {
+			if ( KDASHP && state == e_player.normal && can_dash  && !can_dodge_cooldown ) {
 				var hh = KRIGHT-KLEFT;
 				var vv = KDOWN-KUP;
+				
 				dash_dir = point_direction(0,0,hh,vv);
+				if ( ( gen_col( x, y+4 ) || alt_col ) && vsp >= 0 ) {
+					dash_dir = -1;
+					hsp *= 0.8;
+					vsp = 0;
+				}
+				
 				if hh == 0 && vv == 0 dash_dir = -1;
 				state = e_player.parry;
-				audio_play_sound_pitch( snd_jump, 0.9,  RR(1.1,1.25), 0 );
-				audio_play_sound_pitch(snd_voice_dash_0,RR(0.95,1.05)*0.7,RR(0.95,1.05),0);
-				//audio_play_sound_pitch( snd_hook_upgrade_activate, 0.9,  RR( 0.7, 0.8 ), 0 );
-				
-				
-				
 				INVIS = 20;
 				effect_create_depth(  40, ef_flare, x, y-22, 0, merge_colour(c_aqua,c_dkgray,0.8) );
-					
+				audio_play_sound_pitch( snd_jump, 0.9,  RR(1.1,1.25), 0 );
+				audio_play_sound_pitch( snd_voice_dash_0,RR(0.95,1.05)*0.7,RR(0.95,1.05),0);
+				
 			}
+			
 		break;
 		#endregion
 	
@@ -128,8 +134,14 @@ if ( intro_timer > 0 ) {
 			if ( KDASHP && state == e_player.normal && can_dash  && !can_dodge_cooldown ) {
 				var hh = KRIGHT-KLEFT;
 				var vv = KDOWN-KUP;
-					
+				
 				dash_dir = point_direction(0,0,hh,vv);
+				if ( ( gen_col( x, y+4 ) || alt_col ) && vsp >= 0 ) {
+					dash_dir = -1;
+					hsp *= 0.8;
+					vsp = 0;
+				}
+				
 				if hh == 0 && vv == 0 dash_dir = -1;
 				state = e_player.parry;
 				INVIS = 20;
@@ -138,6 +150,7 @@ if ( intro_timer > 0 ) {
 				audio_play_sound_pitch( snd_voice_dash_0,RR(0.95,1.05)*0.7,RR(0.95,1.05),0);
 				
 			}
+			
 			var lddd_ = id;
 			if ( instance_exists( own_grapple ) ) {
 				with ( own_grapple ) {
@@ -197,7 +210,7 @@ if ( intro_timer > 0 ) {
 			gun_charging = false;
 			gun_fully_charged = false;
 			if ( !hit_timer-- ) {
-				audio_play_sound_pitch( snd_combo_end, RR(0.95,1.05)*0.7, RR(0.95,1.05)*0.98, 0 );
+				audio_play_sound_pitch( snd_combo_end,		   RR(0.95,1.05)*0.7, RR(0.95,1.05)*0.98, 0 );
 				
 				audio_play_sound_pitch( snd_combo_over_effect, RR(0.95,1.05)*0.5, RR(0.95,1.05)*1.22, 0 );
 				
@@ -228,7 +241,7 @@ if ( intro_timer > 0 ) {
 				hsp = -hsp*1.3;
 			}
 				
-			if ( gen_col(x,y+1) && vsp >= 0 ) {
+			if ( ( gen_col(x,y+1) || alt_col ) && vsp >= 0 ) {
 				hit_timer -= 5;
 			}
 			sprite_index = splayer_hit;
@@ -240,7 +253,6 @@ if ( intro_timer > 0 ) {
 				if ( hh != 0 || vv != 0 ) {
 					var di_dir = point_direction(0,0,hh,vv);
 					hsp *= 0.98;
-					//vsp *= 0.99;
 					hsp += LDX( 0.12, di_dir );
 					vsp += LDY( 0.12, di_dir );
 				}
@@ -257,10 +269,6 @@ if ( intro_timer > 0 ) {
 				player_unactive_general(alt_col);
 			} else {
 				hit_freeze--;
-				//if gen_col(x,y+2) && !gen_col(x,y-2) {
-				//	y--;
-				//}
-					
 				bounce_cooldown = 26;
 			}
 			show_debug_message(hit_freeze);
@@ -274,6 +282,7 @@ if ( intro_timer > 0 ) {
 				vsp = LDY( 5, dash_dir );
 					
 			}
+			
 			can_dash = false;
 			sprite_index = splayer_dodge;
 			draw_type = e_draw_type.animation;
@@ -286,7 +295,7 @@ if ( intro_timer > 0 ) {
 					//INVIS = 1;
 					hit_timer = 0;
 				}
-					
+				if ( gen_col(x,y+1)||alt_col) hsp *= frc;	
 			} else {
 				if ( hit_timer++ > 10 || gen_col(x,y+1) || alt_col ) {
 					state = e_player.normal;
@@ -523,23 +532,23 @@ if ( input_skip < 2 ) {
 			
 		if ( quick_num_ != undefined ) {
 			wep_dir = clamp( quick_num_, 0, 5 );
-			if ( WEP_DATA[ wep_dir ].found ) {
-				previous_weapon = current_weapon;
-				current_weapon = wep_dir;
+			
+			previous_weapon = current_weapon;
+			current_weapon = wep_dir;
 					
-				#region switch general
-				if ( current_weapon != pre_wep ) {
-					audio_play_sound_pitch(snd_reload_0,.5,.6+random_fixed(0.1),0);
-					switching_weapon = true;
-					gun_charging = false;
-					gun_charge = 0;
-						
-				}
-					
-				#endregion
-					
+			#region switch general
+			if ( current_weapon != pre_wep ) {
+				audio_play_sound_pitch(snd_reload_0,.5,.6+random_fixed(0.1),0);
+				switching_weapon = true;
+				gun_charging = false;
+				gun_charge = 0;
+				RELOAD[current_weapon] = max(5,RELOAD[current_weapon]+2);
 			}
+					
+			#endregion
+					
 		}
+		
 	}
 	#endregion		
 }

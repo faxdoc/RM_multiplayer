@@ -130,7 +130,7 @@ repeat(step_number) {
 		
 		t.state = e_player.hit;
 		t.hp -= dmg*damage_mult;
-		t.hit_timer = floor(dmg*7.5*stun_mult);
+		t.hit_timer = floor(dmg*8*stun_mult);
 		t.hit_freeze = max(4,dmg/3);
 		t.bounce_cooldown = 30;
 		

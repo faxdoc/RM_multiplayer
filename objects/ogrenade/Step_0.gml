@@ -47,8 +47,13 @@ if ( do_smoke && random_fixed(1) < .8 ) ICD(x,y,0,osmoke);
 //		//}
 //	//}
 //}
-
-if ( place_meeting(x,y,oplayer) ) {
+if place_meeting(x,y,par_hitbox) {
+	var t_ = instance_place(x,y,par_hitbox);
+	if ( t_.parent != parent ) {
+		destroy_function();
+		IDD();
+	}
+} else if ( place_meeting(x,y,oplayer) ) {
 	var t = instance_place(x,y,oplayer);
 	if ( t && parent != undefined && t != parent && !t.INVIS ) {
 		destroy_function();

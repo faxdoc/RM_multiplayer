@@ -13,6 +13,15 @@ switch( meta_state ) {
 			}
 		}
 		if ( st_ <= 1 ) {
+			var wid_ = id;
+			with ( oplayer ) {
+				if ( lives_left > 0 ) winner = wid_;
+			}
+			var fwin = winner;
+			with ( oplayer ) {
+				winner = fwin;
+			}
+			
 			meta_state = e_meta_state.round_end;
 			audio_play_sound_pitch( snd_round_over, 1, 1, 0 );
 			

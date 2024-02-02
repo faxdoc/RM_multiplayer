@@ -46,3 +46,4 @@ global.inital_select		= false;
 global.training_mode		= false;
 
 rollback_use_random_input( false );
+audio_channel_num(32);

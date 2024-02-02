@@ -81,15 +81,15 @@ switch(current_weapon) {
 		if ( gun_charge > 0 ) {
 			if( round(gun_charge) mod 4 == 1 ) {
 				gun_general(10,60,9);
-				var b = bullet_general(4.9,18,bullet_sprites[0],0);
-				b.duration *= 1.2;
-				scr_set_size(b,.9);
+				var b = bullet_general(4.9,19,bullet_sprites[0],0);
+				b.duration *= 1.15;
+				scr_set_size(b,0.9);
 				bullet_effects_general(sammo);
-				effect_general(.7,4,2);
+				effect_general(0.7,4,2);
 				audio_play_sound_pitch(snd_railgun_shooting,0.5,0.9+random_fixed(.1),1);
 				//audio_play_sound_pitch(snd_shoot_1,.25,.95+random_fixed(.1),1);
 				CLIP[cg]--;
-				RELOAD[cg] = 76;
+				RELOAD[cg] = 86;
 				shoot_delay = 15;
 			}
 					
@@ -143,7 +143,7 @@ switch(current_weapon) {
 				gun_len = 28;
 				var i = 0;
 				repeat(4) {
-					var b = bullet_general( 4, 50, !gun_fully_charged ? bullet_sprites[0] : bullet_sprites[2], 6 );
+					var b = bullet_general( 4, 51, !gun_fully_charged ? bullet_sprites[0] : bullet_sprites[2], 6 );
 					b.frc = 0.8;
 					b.duration = 15 + ( i++ / 1.5 );
 					b.spd *=       0.30;
@@ -152,15 +152,15 @@ switch(current_weapon) {
 					b.knockback *= 0.95;
 				}
 				
-				bullet_effects_general(undefined);
-				bullet_effects_general(undefined);
+				bullet_effects_general( undefined );
+				bullet_effects_general( undefined );
 				effect_general( 1, 9, 3 );
 				
 				gun_charge  =  0;
 				shoot_delay = 40;
 				gun_fully_charged = false;
 				if ( CLIP[cg] == 2 ) {
-					RELOAD[cg] = 120;
+					RELOAD[cg] = 100;
 				}
 				CLIP[cg]--;
 			}
@@ -223,7 +223,7 @@ switch(current_weapon) {
 				audio_play_sound_pitch( snd_shoot_2, 0.65, 1.15 + random_fixed( 0.1 ),1);
 			}
 			//gun_general(4,60,9);
-			var b = bullet_general( (gun_fully_charged ? 7 : 4)*0.35,30, gun_fully_charged ? sbullet_bolt_white : sbullet_bolt,0);
+			var b = bullet_general( (gun_fully_charged ? 7 : 5)*0.35,30, gun_fully_charged ? sbullet_bolt_white : sbullet_bolt,0);
 			b.duration = 8;
 			b.mp_mult =  0;
 		
@@ -276,7 +276,7 @@ switch(current_weapon) {
 			t.explotion_size = 1;
 			t.explode_on_contact = true;
 			t.push_player = true;
-			t.duration = 11;
+			t.duration = 12;
 			t.explode_damage = 22*dmg_mult;
 			t.sprite_index = srocket_alt;
 			t.spin = 0;
@@ -431,8 +431,8 @@ switch(current_weapon) {
 			b.multihit			= true;
 			b.dir_angle_spin	= RR( 7, 8 );
 			b.bounces = true;
-			b.hsp				= LDX( b.spd*0.2, b.dir );
-			b.vsp				= LDY( b.spd*0.2, b.dir );
+			b.hsp				= LDX( b.spd*0.21, b.dir );
+			b.vsp				= LDY( b.spd*0.21, b.dir );
 			b.can_bounce_delay  = 12;
 				
 			scr_set_size( b, 1 );
@@ -551,13 +551,17 @@ function bullet_general(dmg,spd,sprite, unacc, obj_ = par_hitbox, cb_mult_ = 1, 
 			t.knockback = dmg * 0.05;
 			t.stun_mult = dmg * 0.05;
 		break;
+		case e_gun.flame:
+			t.knockback = dmg * 1;
+			t.stun_mult = 1.3;
+		break;
 		default:
 			t.knockback = dmg * 1;
 		break;
 		case e_gun.pistol:// gun 1
-			t.stun_mult = 2.5;
+			t.stun_mult = 1.8;
 			t.knockback *= 1.9;
-			t.bonus_vsp = -1;
+			t.bonus_vsp = -2;
 		break;
 		case e_gun.rail:
 			t.stun_mult = 1.5;
