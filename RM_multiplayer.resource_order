@@ -167,6 +167,7 @@
     {"name":"snd_voice_jump_1","order":1,"path":"sounds/snd_voice_jump_1/snd_voice_jump_1.yy",},
     {"name":"splayer_turnaround_nail","order":9,"path":"sprites/splayer_turnaround_nail/splayer_turnaround_nail.yy",},
     {"name":"ophy_dot_stone","order":4,"path":"objects/ophy_dot_stone/ophy_dot_stone.yy",},
+    {"name":"scooldown_box_outer","order":7,"path":"sprites/scooldown_box_outer/scooldown_box_outer.yy",},
     {"name":"snd_grenade_bounce","order":5,"path":"sounds/snd_grenade_bounce/snd_grenade_bounce.yy",},
     {"name":"sminus","order":10,"path":"sprites/sminus/sminus.yy",},
     {"name":"splayer_legde_mask","order":3,"path":"sprites/splayer_legde_mask/splayer_legde_mask.yy",},

@@ -223,6 +223,7 @@
     {"id":{"name":"snd_voice_jump_1","path":"sounds/snd_voice_jump_1/snd_voice_jump_1.yy",},},
     {"id":{"name":"splayer_turnaround_nail","path":"sprites/splayer_turnaround_nail/splayer_turnaround_nail.yy",},},
     {"id":{"name":"ophy_dot_stone","path":"objects/ophy_dot_stone/ophy_dot_stone.yy",},},
+    {"id":{"name":"scooldown_box_outer","path":"sprites/scooldown_box_outer/scooldown_box_outer.yy",},},
     {"id":{"name":"snd_grenade_bounce","path":"sounds/snd_grenade_bounce/snd_grenade_bounce.yy",},},
     {"id":{"name":"sminus","path":"sprites/sminus/sminus.yy",},},
     {"id":{"name":"splayer_legde_mask","path":"sprites/splayer_legde_mask/splayer_legde_mask.yy",},},
