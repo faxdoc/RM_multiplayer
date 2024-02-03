@@ -82,14 +82,13 @@ switch(current_weapon) {
 			if( round(gun_charge) mod 4 == 1 ) {
 				gun_general(10,60,9);
 				var b = bullet_general(4.9,19,bullet_sprites[0],0);
-				b.duration *= 1.15;
+				b.duration *= 1.12;
 				scr_set_size(b,0.9);
 				bullet_effects_general(sammo);
 				effect_general(0.7,4,2);
-				audio_play_sound_pitch(snd_railgun_shooting,0.5,0.9+random_fixed(.1),1);
-				//audio_play_sound_pitch(snd_shoot_1,.25,.95+random_fixed(.1),1);
+				audio_play_sound_pitch( snd_railgun_shooting, 0.5, 0.9 + random_fixed( 0.1 ), 1 );
 				CLIP[cg]--;
-				RELOAD[cg] = 86;
+				RELOAD[cg] = 96;
 				shoot_delay = 15;
 			}
 					
@@ -263,20 +262,20 @@ switch(current_weapon) {
 			gun_charge = 30;
 			gun_len = 14;
 			var drr = point_direction(x,y-gun_height,MX,MY);
-			var xx = x+LDX(gun_len,drr);
-			var yy = y-gun_height+LDY(gun_len,drr);
+			var xx = x+LDX(gun_len*0.3,drr);
+			var yy = y-gun_height+LDY(gun_len*0.3,drr);
 
 			var t = ICD( xx, yy, -1, ogrenade );
 			t.bounce = 0.9;
-			t.hsp = LDX(7+gun_charge/5,drr) * 0.82 * 0.94;
-			t.vsp = LDY(7+gun_charge/5,drr) * 0.82 * 0.94;
+			t.hsp = LDX(7+gun_charge/5,drr) * 0.82 * 0.92;
+			t.vsp = LDY(7+gun_charge/5,drr) * 0.82 * 0.92;
 			t.grav = 0;
 			//t.duration *= 0.96;//0.96*1.05;
 			t.explode_on_ground = true;
 			t.explotion_size = 1;
 			t.explode_on_contact = true;
 			t.push_player = true;
-			t.duration = 12;
+			t.duration = 13;
 			t.explode_damage = 22*dmg_mult;
 			t.sprite_index = srocket_alt;
 			t.spin = 0;
@@ -366,7 +365,7 @@ switch(current_weapon) {
 				
 				bullet_effects_general(undefined);
 				gun_charge = -1;
-				RELOAD[cg] = 125;
+				RELOAD[cg] = 135;
 				audio_play_sound_pitch(snd_shoot_0,0.95, 1.05+random_fixed(.1), 1 );
 				audio_play_sound_pitch(snd_shoot_2, 0.4,  .95+random_fixed(.1), 1 );
 				if ( charge_sound != -1 ) {
@@ -375,7 +374,7 @@ switch(current_weapon) {
 				}
 				
 			}
-			RELOAD[current_weapon] = 125;
+			RELOAD[current_weapon] = 135;
 		} else {
 			//var needed_ = sniper_cost;
 			//if ( !k1_ && !SHOOT_BUFFER ) exit; 
@@ -394,7 +393,7 @@ switch(current_weapon) {
 				gun_charge = 1;
 				gun_fully_charged = false;
 				shoot_delay = 0;
-				RELOAD[current_weapon] = 125;
+				RELOAD[current_weapon] = 135;
 			}
 			
 			//MP -= needed_;
@@ -423,8 +422,16 @@ switch(current_weapon) {
 			var drr = point_direction( x, y - gun_height, MX, MY );
 			var xx = x+LDX( gun_len, drr );
 			var yy = y - gun_height + LDY( gun_len, drr );
-
-			var b = bullet_general( 2, 20, player_id == 0 ? sbullet_saw_player_aqua : sbullet_saw_player_lime, 0, ohitbox_saw );//
+			
+			var spr_ = sbullet_saw_player_aqua;
+			switch(player_id) {
+				default: spr_ = sbullet_saw_player_aqua;  break;
+				case 1:  spr_ = sbullet_saw_player_red;   break;
+				case 2:  spr_ = sbullet_saw_player_lime;  break;
+				case 3:  spr_ = sbullet_saw_player_white; break;
+				
+			}
+			var b = bullet_general( 2, 20, spr_, 0, ohitbox_saw );//
 			b.duration			*=  40;
 			b.frc				= 0.85;
 			b.fully_charged		= true;

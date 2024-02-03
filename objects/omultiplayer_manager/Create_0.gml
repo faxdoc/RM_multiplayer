@@ -43,7 +43,7 @@ draw_set_font( fnt_default );
 global.fnt_number_big		= font_add_sprite( snumber_big, ord("0"), false, 1 );
 global.display_room_name	= "";
 global.inital_select		= false;
-global.training_mode		= true;
+global.training_mode		= false;
 
 rollback_use_random_input( false );
 audio_channel_num(32);

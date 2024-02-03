@@ -210,7 +210,7 @@ if ( intro_timer > 0 ) {
 					if ( !instance_exists( own_grapple ) ) {
 						hit_substate = 2;
 						hook_air_cancel = true;
-						hit_timer += 10;
+						hit_timer += 13;
 					}
 				break;
 			}
@@ -250,7 +250,7 @@ if ( intro_timer > 0 ) {
 				hsp = -hsp*1.3;
 			}
 				
-			if ( ( gen_col(x,y+4) || alt_col ) ) {
+			if ( ( gen_col(x,y+6) || alt_col ) ) {
 				if ( !air_combo ) {
 					//hit_timer -= 0.5;
 				} else if ( vsp >= 0 ) {
@@ -321,7 +321,7 @@ if ( intro_timer > 0 ) {
 					if ( !gen_col(x,y+1) && !alt_col ) {
 						INVIS = 3;
 					} else {
-						INVIS = 0;
+						INVIS = 1;
 					}
 						
 					parry_timer = 0;

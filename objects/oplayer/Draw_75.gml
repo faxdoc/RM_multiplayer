@@ -23,6 +23,52 @@ if ( player_local ) {
 		DSC(c_white);
 	}
 	
+	var bx = GW*0.5;
+	var by = floor( GH*0.7 );
+	var mds_ = 16;
+	var rl_ = 0;
+	var ex_ = 0;
+	var wep_list  = [ 0, 5, 1, 4, 3, 2 ];
+	var rls			= [ 96, 320, 120,  135, 135,  900 ];
+	var cl_col = merge_color( c_dkgray, c_red, 0.5 );
+	//var gun_sprites = [ splayer_gun_pistol_silhouette, splayer_gun_small_silhouette, splayer_gun_shotgun_silhouette, splayer_gun_grenade_silhoutte, splayer_gun_sniper_silhouette, splayer_gun_rail_silhouette ];
+	var i = -3; repeat( 6 ) {
+		
+		//var ex_ = current_weapon == wep_list[i] ? -4 : -28;
+		//draw_sprite_ext( gun_sprites[i], 0, ex_+bx-2, by+i*mds_,   1.5, 1.5,  0, c_dkgray, 1 );
+		//draw_sprite_ext( gun_sprites[i], 0, ex_+bx+2, by+i*mds_,   1.5, 1.5,  0, c_dkgray, 1 );
+		//draw_sprite_ext( gun_sprites[i], 0, ex_+bx,   by+i*mds_-2, 1.5, 1.5,  0, c_dkgray, 1 );
+		//draw_sprite_ext( gun_sprites[i], 0, ex_+bx,   by+i*mds_+2, 1.5, 1.5,  0, c_dkgray, 1 );
+		
+		
+		draw_sprite_ext( scooldown_box, 0, ex_+bx+i*mds_, by, 1, 1, 0, c_white, 1 );		
+		draw_sprite_ext( sgun_icon,		i, ex_+bx+i*mds_, by, 1, 1, 0, c_white, 1 );
+		
+		if ( current_weapon == wep_list[i+3] ) {
+			
+		}
+		rl_ = RELOAD[wep_list[i+3]];
+		if ( rl_ > 0 ) {
+			draw_sprite_ext( scooldown, ( rl_/rls[i+3] )*15, ex_+bx+i*mds_, by, 1, 1, 0, c_black, 0.9 );
+		}
+		
+		//rl_ = RELOAD[wep_list[i]];
+		//if ( rl_ > 5 ) {
+		//	if  current_weapon == wep_list[i] {
+		//		draw_sprite_part_ext( gun_sprites[i], 0, 0, 0, 38 -(rl_/rls[i] )*44, 12, bx-4, by+i*mds_, 1.5, 1.5, cl_col, 1 );
+		//	} else {
+		//		draw_sprite_part_ext( gun_sprites[i], 0, 0, 0, 38 -(rl_/rls[i] )*44, 12, bx-28, by+i*mds_, 1.5, 1.5, cl_col, 1 );
+		//	}
+		//} else {
+		//	if current_weapon == wep_list[i] {
+		//		draw_sprite_part_ext( gun_sprites[i], 0, 0, 0, 44-( rl_/rls[i] )*44, 12, bx-4, by+i*mds_, 1.5, 1.5, c_ltgray, 1 );
+		//	} else {
+		//		draw_sprite_part_ext( gun_sprites[i], 0, 0, 0, 44-( rl_/rls[i] )*44, 12, bx-28, by+i*mds_, 1.5, 1.5, c_gray, 1 );	
+		//	}
+		//}
+		i++;
+	}
+	
 	if ( flash_alpha > 0 ) {
 		DSC( screen_flash_col	 );
 		DSA( flash_alpha	* 0.6);

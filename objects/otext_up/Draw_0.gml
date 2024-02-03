@@ -25,9 +25,14 @@ switch(type) {
 		var cc2  = merge_color( c_white, c_gray, 0.1 ); 
 		var calt = c_darkest;
 		
-		draw_sprite_ext( splayer_grenade_silhouete, 0, xx-10, yy-5, 1.5, 1.5, 0, calt, 0.5 );
-		draw_sprite_ext( splayer_grenade_silhouete, 0, xx-10, yy-6, 1.5, 1.5, 0, blend,  0.7 );
+		draw_sprite_ext( splayer_grenade_silhouete, 0, xx-10, yy-5, 1.5, 1.5, 0, calt, 0.5*min(1,duration/6 ) );
+		draw_sprite_ext( splayer_grenade_silhouete, 0, xx-10, yy-6, 1.5, 1.5, 0, blend,  0.7*min(1,duration/6 ) );
 		
+	break;
+	case 11:
+		var xx = x, yy = y, cc = merge_color( c_orange, c_gray, 0.2 );
+		
+		draw_sprite_ext( srocket_denied, 0, xx-10, yy-6, 1, 1, 0, c_white, 1.0 * min( 1, duration / 6 ) );
 	break;
 }
 //if ( type == 0 ) {

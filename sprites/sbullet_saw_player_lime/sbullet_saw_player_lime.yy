@@ -25,8 +25,8 @@
   "nineSlice": null,
   "origin": 4,
   "parent": {
-    "name": "level_3",
-    "path": "folders/Sprites/player/level_3.yy",
+    "name": "bullets_level_2",
+    "path": "folders/Sprites/player/bullets_level_2.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
@@ -54,7 +54,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"6956cd53-6b2d-4c55-a54e-2abaece315a6","path":"sprites/sbullet_saw_player_lime/sbullet_saw_player_lime.yy",},},},"Disabled":false,"id":"50948d79-1028-4cbe-913f-4cfbffb7b734","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"6956cd53-6b2d-4c55-a54e-2abaece315a6","path":"sprites/sbullet_saw_player_lime/sbullet_saw_player_lime.yy",},},},"Disabled":false,"id":"0b03371c-24a4-4997-a0bc-914872bde348","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

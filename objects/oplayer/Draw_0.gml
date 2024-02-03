@@ -104,11 +104,10 @@ switch( draw_type ) {
 		}
 
 		//body
-		
-		bwave = round(wave(bmax,bmin,bdur,.88));
+		bwave = round( wave( bmax, bmin, bdur, 0.88 ) );
 		var ind = var_dir >= 0 ? var_dir/90 * 13.9 : 0;
 		var ex = (var_dir < -30) ? -var_dir/80 * draw_xscale : 0;
-		draw_sprite_ext( splayer_body, ind,x+ex,yl_-10+y_off*.5+bwave,draw_xscale,1,0,image_blend,draw_alpha);
+		draw_sprite_ext( splayer_body, ind,x+ex,yl_-10+y_off*0.5+bwave,draw_xscale,1,0,image_blend,draw_alpha);
 		
 		var xx = var_dir > 0 ? var_dir/40 : var_dir/80;
 		draw_sprite_ext( splayer_hoodie,0,x-8*draw_xscale-xx*1.5*draw_xscale,yl_-22+y_off*1.4+bwave,draw_xscale,1,0,image_blend,draw_alpha);

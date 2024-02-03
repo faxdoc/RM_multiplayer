@@ -13,6 +13,8 @@ can_dodge_cooldown = 0;
 winner = -1;
 air_combo = false;
 
+gun_active_pos = 0;
+
 show_hp_timer = 0;
 gun_charging = false;
 SHOOT_BUFFER = 0;
