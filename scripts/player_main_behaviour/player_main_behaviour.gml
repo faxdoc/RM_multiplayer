@@ -659,21 +659,39 @@ if (!crouching) {
 			if( legs_index < 0  ) legs_index = 7.9;
 			if( legs_index > 7.9) legs_index = 0;
 		} 
-
-		switch( round(legs_index) mod 4 ) {
-			case 0:
-				target_y = 2;
-			break;
-			case 1:
-				target_y = 1;
-			break;
-			case 2:
-				target_y = 0;
-			break;
-			case 3:
-				target_y = 1;
-			break;
+		
+		if ( char_index == e_char_index.maya ) {
+			switch( round(legs_index/2) mod 4 ) {
+				case 0:
+					target_y = 0;
+				break;
+				case 1:
+					target_y = 1;
+				break;
+				case 2:
+					target_y = 2;
+				break;
+				case 3:
+					target_y = 1;
+				break;
+			}
+		} else {
+			switch( round( legs_index ) mod 4 ) {
+				case 0:
+					target_y = 2;
+				break;
+				case 1:
+					target_y = 1;
+				break;
+				case 2:
+					target_y = 0;
+				break;
+				case 3:
+					target_y = 1;
+				break;
+			}
 		}
+		
 	} else {
 		legs_index = (legs_index + 0.01) mod 2;
 		target_y = floor( legs_index );
@@ -691,9 +709,9 @@ if( !crouching ) {
 
 
 } else {
-legs_index = 0;
-target_y = 0;
-body_y = 0;
+	legs_index = 0;
+	target_y = 0;
+	body_y = 0;
 }
 legs_running_index = legs_index;
 #endregion

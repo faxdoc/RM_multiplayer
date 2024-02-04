@@ -15,6 +15,13 @@ air_combo = false;
 gun_flash_data = [0,0,0,0,0,0];
 gun_active_pos = 0;
 
+
+maya_has_parry	   = false;
+maya_has_parry_red = false;
+
+maya_grenade_state = 0;
+maya_sword_state = 0;
+maya_sword_swing_state = 0;
 maya_animation_swing_timer = 0;
 maya_sword_swing_charge = 0;
 maya_sword_blink_alpha = 0;

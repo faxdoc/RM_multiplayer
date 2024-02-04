@@ -1,21 +1,11 @@
 function scr_primary_attack_maya(){
 
 if ( current_weapon == 0 ) {
-		hair_alt_start_col  = #2E2E2E;
-		hair_alt_end_col	= #2E2E2E;
-	} else {
-		if ( CLIP[ current_weapon ] != 0 ) {
-			hair_alt_start_col  = #F09525;
-			hair_alt_end_col	= #F09525;
-		} else {
-			hair_alt_start_col  = #2E2E2E;
-			hair_alt_end_col	= #2E2E2E;
-		}
-	}
 	
 	if ( input_skip > 0 ) {
 		k1_ = false; k1p_ = false;
 	}
+	
 	#region grenade handle
 	var i = 1; repeat( 5 ) {
 		if ( CLIP[i] != 3 ) {
@@ -26,6 +16,7 @@ if ( current_weapon == 0 ) {
 		i++;
 	}
 	var on_ground_ = gen_col( x, y+1 );
+	
 	#endregion
 	
 	if ( input_skip <= 0 ) {
@@ -65,8 +56,8 @@ if ( current_weapon == 0 ) {
 					gun_height  = 20;
 					// gun_general( 10, 60, 9 );
 					
-					audio_play_sound_pitch(snd_maya_normal_cut, 0.8,  0.96 + random( 0.1 ), 1 );
-					audio_play_sound_pitch(snd_maya_swing_0,	0.35, 0.96 + random( 0.1 ), 1 );
+					// audio_play_sound_pitch(snd_maya_normal_cut, 0.8,  0.96 + random( 0.1 ), 1 );
+					// audio_play_sound_pitch(snd_maya_swing_0,	0.35, 0.96 + random( 0.1 ), 1 );
 					
 					var can_wallbounce = true;
 					RELOAD[ 0 ] = 30;
@@ -88,18 +79,9 @@ if ( current_weapon == 0 ) {
 							b.shake_add *= 1.2;
 							b.image_blend = c_aqua;
 							b.alt_knockback = true;
-							with ( b ) {
-								if ( PLC( x, y, par_enemy ) ) {
-									can_wallbounce = false;
-									space_buffer = true;
-									other.hsp -= LDX(.6,dir)*2.0*1.3;
-									other.vsp -= LDY(.5,dir)*1.5*1.3;
-			
-								}
-								
-							}
+							
 						}
-						audio_play_sound_pitch( snd_maya_blue_overlay, 0.7, RR( 0.97, 1.1 ), 0 );
+						// audio_play_sound_pitch( snd_maya_blue_overlay, 0.7, RR( 0.97, 1.1 ), 0 );
 						maya_has_parry = false;
 					} else if (maya_has_parry_red ) {
 						SHAKE += 2;
@@ -118,17 +100,9 @@ if ( current_weapon == 0 ) {
 							b.shake_add *= 1;
 							b.image_blend = c_red;
 							b.alt_knockback = true;
-							with ( b ) {
-								if ( PLC( x, y, par_enemy ) ) {
-									can_wallbounce = false;
-									space_buffer = true;
-									other.hsp -= LDX(.6,dir)*2.0*1.3;
-									other.vsp -= LDY(.5,dir)*1.5*1.3;
-								}
-								
-							}
+							
 						}
-						audio_play_sound_pitch( snd_maya_red_overlay, 0.7, RR( 0.97, 1.1 ), 0 );
+						// audio_play_sound_pitch( snd_maya_red_overlay, 0.7, RR( 0.97, 1.1 ), 0 );
 						maya_has_parry_red = false;
 					} else {
 						repeat( 2 ) {
@@ -145,15 +119,6 @@ if ( current_weapon == 0 ) {
 							b.lag_add   *= 0.9;
 							b.shake_add *= 0.9;
 							b.alt_knockback = true;
-							with ( b ) {
-								if ( PLC( x, y, par_enemy ) ) {
-									can_wallbounce = false;
-									space_buffer = true;
-									other.hsp -= LDX(.6,dir)*2.0*1.3;
-									other.vsp -= LDY(.5,dir)*1.5*1.3;
-								
-								}
-							}
 						}
 						
 					}
@@ -183,11 +148,11 @@ if ( current_weapon == 0 ) {
 					gun_height = 22;
 					bullet_effects_general(sammo_red);
 				}
-	
 				gun_charge				= 0;
 				shoot_delay 			= 30;
 				gun_fully_charged		= false;
 				maya_sword_swing_state = 1;
+				
 			}
 		break;
 		#endregion
@@ -201,19 +166,21 @@ if ( current_weapon == 0 ) {
 				maya_sword_swing_charge = min( max_charge, maya_sword_swing_charge + 1.5 );
 				maya_animation_swing_timer = max( 3, maya_animation_swing_timer );
 				if ( maya_sword_swing_charge == 22.5 ) {
-					swing_charge_sound = audio_play_sound_pitch( snd_maya_heart_alt, 0.4, 0.35, false );
+					// swing_charge_sound = audio_play_sound_pitch( snd_maya_heart_alt, 0.4, 0.35, false );
 				}
 				RELOAD[0] = max( 5, RELOAD[0] );
 				if ( pre_charge != max_charge && maya_sword_swing_charge == max_charge ) {
 					SHAKE++;
 					var size = 6;
 					var spd;
-					flash  = 3;
-					flash_col = c_aqua;
-					if ( audio_is_playing( swing_charge_sound ) ) {
-						audio_stop_sound( swing_charge_sound );
-						audio_play_sound_pitch(snd_maya_swing_wall,0.6,0.8,0);
-					}
+					// flash  = 3;
+					// flash_col = c_aqua;
+					
+					// if ( audio_is_plakying( swing_charge_sound ) ) {
+						// audio_stop_sound( swing_charge_sound );
+						// audio_play_sound_pitch(snd_maya_swing_wall,0.6,0.8,0);
+					// }
+					
 					repeat(7) {
 						spd = 3+random(1);
 						var _dir = random(360);
@@ -227,11 +194,12 @@ if ( current_weapon == 0 ) {
 					
 			} else if ( maya_sword_swing_charge != 60 ) {
 				maya_sword_swing_charge = 0;
-				if ( audio_is_playing( swing_charge_sound ) ) {
-					audio_stop_sound(swing_charge_sound);
-				}
+				// if ( audio_is_playing( swing_charge_sound ) ) {
+				// 	audio_stop_sound(swing_charge_sound);
+				// }
 				
 			}
+			
 			if ( !k1_ || K1P ) {
 				if ( maya_sword_swing_charge >= 60 ) {
 					maya_sword_blink_alpha = max(80,maya_sword_blink_alpha+20);
@@ -239,8 +207,8 @@ if ( current_weapon == 0 ) {
 					maya_sword_swing_charge = 0;
 					shoot_press_buffer = 0;
 					
-					audio_play_sound_pitch( snd_maya_charged_cut, 0.8,  (0.96 + random( 0.1 ))*0.9, 1 );
-					audio_play_sound_pitch( snd_maya_swing_2,	 0.20, 1.05 + random( 0.1 ), 1 );
+					// audio_play_sound_pitch( snd_maya_charged_cut, 0.8,  (0.96 + random( 0.1 ))*0.9, 1 );
+					// audio_play_sound_pitch( snd_maya_swing_2,	 0.20, 1.05 + random( 0.1 ), 1 );
 					
 					gun_len		= 26;
 					gun_height  = 20;
@@ -271,24 +239,24 @@ if ( current_weapon == 0 ) {
 							b.alt_knockback = true;
 						}
 						var ng_ = gen_col(x,y+1);
-						with ( b ) {
-							if ( PLC( x, y, par_enemy ) ) {
-								can_wallbounce = false;
-								space_buffer = true;
+						// with ( b ) {
+						// 	if ( PLC( x, y, par_enemy ) ) {
+						// 		can_wallbounce = false;
+						// 		space_buffer = true;
 								
-								if ( !ng_ ) {
-									other.hsp -= LDX(.6,dir)*2.0*0.85;
-									other.vsp = min( -6, other.vsp-3 );
-								} else {
-									other.hsp -= LDX(.6,dir)*2.0*0.65;
-									other.vsp -= LDY(.6,dir)*2.0*0.65;
-								}
-								other.can_hook_delay = 0;
-								other.hook_air_cancel = 0;
-								do_ver_spd = false;
-							}
-						}
-						audio_play_sound_pitch( snd_maya_blue_overlay, 0.7, RR( 0.97, 1.1 )*0.95, 0 );
+						// 		if ( !ng_ ) {
+						// 			other.hsp -= LDX(.6,dir)*2.0*0.85;
+						// 			other.vsp = min( -6, other.vsp-3 );
+						// 		} else {
+						// 			other.hsp -= LDX(.6,dir)*2.0*0.65;
+						// 			other.vsp -= LDY(.6,dir)*2.0*0.65;
+						// 		}
+						// 		other.can_hook_delay = 0;
+						// 		other.hook_air_cancel = 0;
+						// 		do_ver_spd = false;
+						// 	}
+						// }
+						// audio_play_sound_pitch( snd_maya_blue_overlay, 0.7, RR( 0.97, 1.1 )*0.95, 0 );
 						maya_has_parry = false;
 					} else {
 						
@@ -307,23 +275,23 @@ if ( current_weapon == 0 ) {
 							b.alt_knockback = true;
 						}
 						var ng_ = gen_col( x, y + 1 );
-						with ( b ) {
-							if ( PLC( x, y, par_enemy ) ) {
-								can_wallbounce = false;
-								space_buffer = true;
+						// with ( b ) {
+						// 	if ( PLC( x, y, par_enemy ) ) {
+						// 		can_wallbounce = false;
+						// 		space_buffer = true;
 								
-								if (!ng_ ) {
-									other.hsp -= LDX(.6,dir)*2.0*0.85;
-									other.vsp = min( -6, other.vsp-3 );
-								} else {
-									other.hsp -= LDX(.6,dir)*2.0*0.65;
-									other.vsp -= LDY(.6,dir)*2.0*0.65;
-								}
-								other.can_hook_delay = 0;
-								other.hook_air_cancel = 0;
-								do_ver_spd = false;
-							}
-						}
+						// 		if (!ng_ ) {
+						// 			other.hsp -= LDX(.6,dir)*2.0*0.85;
+						// 			other.vsp = min( -6, other.vsp-3 );
+						// 		} else {
+						// 			other.hsp -= LDX(.6,dir)*2.0*0.65;
+						// 			other.vsp -= LDY(.6,dir)*2.0*0.65;
+						// 		}
+						// 		other.can_hook_delay = 0;
+						// 		other.hook_air_cancel = 0;
+						// 		do_ver_spd = false;
+						// 	}
+						// }
 					}
 					
 					shoot_delay = 30;
@@ -360,8 +328,6 @@ if ( current_weapon == 0 ) {
 					effect_general(0,4,0);
 					gun_len =  6;
 					gun_height = 22;
-					bullet_effects_general(sammo_red);
-					bullet_effects_general(sammo_red);
 					
 					gun_charge				= 0;
 					shoot_delay 			= 30;
@@ -384,10 +350,13 @@ if ( current_weapon == 0 ) {
 	}
 	if ( maya_has_parry ) {
 		maya_sword_blink_colour = c_aqua;
-		maya_sword_blink_alpha = wave( 40, 60, 3, RR( 0.1, 0.25 ) );
+		maya_sword_blink_alpha = 60;
 	} else if ( maya_has_parry_red ) {
 		maya_sword_blink_colour = c_red;
-		maya_sword_blink_alpha = wave( 20, 40, 3, RR( 0.1, 0.25 ) );
+		maya_sword_blink_alpha = 40;
 	}
 	
 }
+
+}
+

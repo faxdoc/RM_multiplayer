@@ -1,3 +1,3 @@
-function scr_primary_attack_ameli(){
+function scr_primary_attack_ameli() {
 
 }

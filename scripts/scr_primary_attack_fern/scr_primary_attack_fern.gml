@@ -431,6 +431,7 @@ switch(current_weapon) {
 				case 3:  spr_ = sbullet_saw_player_white; break;
 				
 			}
+			
 			var b = bullet_general( 2, 20, spr_, 0, ohitbox_saw );//
 			b.duration			*=  40;
 			b.frc				= 0.85;
