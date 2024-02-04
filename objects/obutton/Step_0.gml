@@ -24,12 +24,14 @@ if ( mouse_check_button_pressed(mb_left) ) {
 		omultiplayer_manager.game_has_started = true; 
 		audio_stop_sound( snd_music_menu_loop );
 		switch(sprite_index) {
-			case s_2playermainmenuactive: rollback_create_game( 2, true  ); break;
-			case s_3playermainmenuactive: rollback_create_game( 2, false ); break;
-			case s_4playermainmenuactive: rollback_create_game( 3, false ); break;
-			case straining:				  rollback_create_game( 4, false ); break;
+			case s_2playermainmenuactive: rollback_create_game( 2, false ); break;
+			case s_3playermainmenuactive: rollback_create_game( 3, false ); break;
+			case s_4playermainmenuactive: rollback_create_game( 4, false ); break;
+			case straining:				  rollback_create_game( 2, true  ); break;
 		}
-		with ( obutton ) IDD(); 
+		with ( obutton ) IDD();
+		layer_set_visible( layer_get_id("Assets_1"), false );
+		layer_set_visible( layer_get_id("Assets_2"), false );
 	}
 }
 

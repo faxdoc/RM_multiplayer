@@ -11,24 +11,50 @@ if ( player_local ) {
 	var xx  = floor( GW*0.08 );
 	var yy = yl_;
 	var ds_ = GW*0.25;
+	var c;
 	
 	var i = 0; with ( oplayer ) {
-		c = merge_colour(c_ltgray, player_colour, 0.5 );
-		//DSC( c_dkgray );
-		//draw_text( GW*0.15 + ( i*(GW*0.2)), 1+ yl_,  display_name );
-		//DSC( c );
+		if ( player_colour == c_red ) {
+			draw_sprite_ext(portrait_base,		0,  xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
+			
+			if ( hit_timer <= 0 ) {
+				draw_sprite_ext( sface_fern_normal,	0,	xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
+			} else {
+				draw_sprite_ext( sface_fern_hit,	0,	xx+i*ds_+ ((hit_freeze*342) mod 4) - 2, yy+ ((hit_freeze*1462) mod 4) - (2*min(hit_freeze,1)), 1, 1, 0, merge_colour( c_white, c_red, min( hit_freeze/4, 1 ) ), 1 );
+			}
+			
+			ii = 0; repeat( lives_left ) {
+				draw_sprite_ext( splayer_hp,	 0,  xx+i*ds_ + ii*15+31, yy+11, 1, 1, 0, c_white, 1 );
+				ii++;
+			}
+		} else {
+			c = merge_colour( c_white, player_colour, 0.5 );
+			draw_sprite_ext( sportrait_base_grayscale,  0, xx+i*ds_, yy, 1, 1, 0, c, 1 );
+			
+			if ( hit_timer <= 0 ) {
+				draw_sprite_ext( sface_fern_normal,	0,	xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
+			} else {
+				draw_sprite_ext( sface_fern_hit,	0,	xx+i*ds_ + ((hit_freeze*342) mod 4) - 2, yy + ((hit_freeze*1462) mod 4) - (2*min(hit_freeze,1)), 1, 1, 0,  merge_colour( c_white, c_red, min( hit_freeze/4, 1 ) ), 1 );
+			}
+			
+			ii = 0; repeat( lives_left ) {
+				draw_sprite_ext( splayer_hp_grayscale, 0,  xx+i*ds_ + ii*15+31, yy+11, 1, 1, 0, c, 1 );
+				ii++;
+			}
+		}
+		c = merge_colour( c_gray, player_colour, 0.5 );
+		DSC( c_black );DSA(0.9);
+		draw_text( xx+i*ds_+26-1, yy+16-1,  display_name );
+		draw_text( xx+i*ds_+26-1, yy+16,  display_name );
+		DSC( c );DSA(1);
 		
-		//draw_text( GW*0.15 + ( i*(GW*0.2)), yl_,   display_name );
+		draw_text( xx+i*ds_+26, yy+16,   display_name );
+		
 		//ii = 0; repeat( lives_left ) {
 		//	draw_sprite_ext(shp_icon,0, ( GW*0.15 + ( i*(GW*0.2)) )+(ii++*18)+8, yl_-4, 1, 1, 0, c, 1  );
 		//}
 		
-		draw_sprite_ext(portrait_base,   0,  xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
-		draw_sprite_ext(sface_fern_normal,0, xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
-		ii = 0; repeat( lives_left ) {
-			draw_sprite_ext( splayer_hp,	 0,  xx+i*ds_ + ii*15+31, yy+11, 1, 1, 0, c_white, 1 );
-			ii++;
-		}
+		
 		
 		i++;
 		
@@ -36,8 +62,8 @@ if ( player_local ) {
 	}
 	
 	var bx = GW*0.5;
-	var by = floor( GH*0.87 );
-	var mds_ = 20;
+	var by = floor( GH*0.87 )+1;
+	var mds_ = 19;
 	var rl_ = 0;
 	var ex_ = 0;
 	var myl_ = 0;
@@ -48,13 +74,6 @@ if ( player_local ) {
 	
 	//var gun_sprites = [ splayer_gun_pistol_silhouette, splayer_gun_small_silhouette, splayer_gun_shotgun_silhouette, splayer_gun_grenade_silhoutte, splayer_gun_sniper_silhouette, splayer_gun_rail_silhouette ];
 	var i = 0; repeat( 6 ) {
-		
-		//var ex_ = current_weapon == wep_list[i] ? -4 : -28;
-		//draw_sprite_ext( gun_sprites[i], 0, ex_+bx-2, by+i*mds_,   1.5, 1.5,  0, c_dkgray, 1 );
-		//draw_sprite_ext( gun_sprites[i], 0, ex_+bx+2, by+i*mds_,   1.5, 1.5,  0, c_dkgray, 1 );
-		//draw_sprite_ext( gun_sprites[i], 0, ex_+bx,   by+i*mds_-2, 1.5, 1.5,  0, c_dkgray, 1 );
-		//draw_sprite_ext( gun_sprites[i], 0, ex_+bx,   by+i*mds_+2, 1.5, 1.5,  0, c_dkgray, 1 );
-		
 		
 		myl_ = 1;
 		if ( current_weapon == wep_list[i] ) {
@@ -126,10 +145,12 @@ if ( player_local ) {
 		#region level select
 		case e_meta_state.level_select:
 			DSC(c_darkest);
-			DSA( 0.9 );
+			DSA( 1 );
 			draw_rectangle(0,0,room_width,room_height,false);
 			DSC(c_white);
 			DSA(1);
+			draw_sprite_tiled_ext(spattern_victory,0, -level_select_timer*0.1, -level_select_timer*0.1, 2, 2, c_purple, 0.35 );
+			
 			
 			if ( first_looser != undefined && first_looser.priority_select_timer > 0 ) {
 				with ( first_looser ) {
@@ -169,25 +190,37 @@ if ( player_local ) {
 			
 		break;
 		case e_meta_state.round_start:
-			draw_sprite_ext(sstart,0,GW/2,GH/2, 2, 2, 0, merge_color( c_gray, c_orange, 0.5 + ( intro_timer / 240 ) ), 1 );
-			var vll_ = (120-intro_timer)/60;
+		
+			draw_sprite_ext( sstart_bg_rep,0, 0  +( ( intro_timer * 40 ) mod 580),  GH/2, 1, 1, 0, c_white, 1 );
+			draw_sprite_ext( sstart_bg_rep,0,-580+( ( intro_timer * 40 ) mod 580),  GH/2, 1, 1, 0, c_white, 1 );
 			
+			
+			var vll_ = (120-intro_timer)/60;
 			vll_ = vll_ * vll_ * vll_;
 			var xx = GW*0.5;
-			var yy = GH*0.7;
+			var yy = GH*0.5;
 			
 			
-			DSC(  merge_color( c_gray, c_red, 0.3 + ( intro_timer / 240 ) ) );
-			draw_rectangle( xx-vll_*42, yy, xx+vll_*42, yy+16, false );
-			DSC( c_white );
+			blend_add;
+			DSC(  c_orange );DSA( (intro_timer)/120 );
+			draw_rectangle( xx-vll_*42, yy-47, xx+vll_*42, yy+46, false );
+			DSC( c_white );DSA(1);
+			blend_normal;
 			
-			DSC(  merge_color( c_gray, c_orange, 0.5 + ( intro_timer / 240 ) ) );
-			draw_rectangle( xx-vll_*32, yy, xx+vll_*32, yy+16, false );
-			DSC( c_white );
+			draw_sprite_ext( sstart, 0, GW/2-4, GH/2+4, 1, 1, 0, c_blue, 0.4 );
+			draw_sprite_ext( sstart, 0, GW/2,	GH/2,	1, 1, 0, c_white, 1 );
+			
+			
+			
+			
+			
+			//DSC(  merge_color( c_gray, c_orange, 0.5 + ( intro_timer / 240 ) ) );
+			//draw_rectangle( xx-vll_*32, yy, xx+vll_*32, yy+16, false );
+			//DSC( c_white );
 			
 			DSC(c_darkest);
 			DSA( 0.9- (intro_timer/30) );
-			draw_rectangle(0,0,room_width,room_height,false);
+			draw_rectangle( 0,0,room_width,room_height,false);
 			DSC(c_white);
 			DSA(1);
 			
@@ -207,28 +240,36 @@ if ( player_local ) {
 		#region round
 		case e_meta_state.round_end:
 			
-			DSC(c_darkest);
-			DSA( min( 0.9, ( final_timer/10 ) - 9 ) );
-			draw_rectangle(0,0,room_width,room_height,false);
-			DSC(c_white);
-			DSA(1);
-			if ( final_timer == 125 ) {
+			//DSC(c_darkest);
+			//DSA( );
+			//var rt_ = max( 0.1, -(150-final_timer)/128 );
+			
+			draw_sprite_tiled_ext(spattern_victory,0,final_timer*final_effect_speed,final_timer*final_effect_speed, 2, 2, c_darkest,  min( 1, ( final_timer/12 ) - 9 ) );
+			//draw_rectangle(0,0,room_width,room_height,false);
+			//DSC(c_white);
+			//DSA(1);
+			
+			if ( final_timer == 125*0.95 ) {
 				audio_play_sound_pitch( snd_victory, 0.8, 1, 0 );
 			}
+			
+			var xxl_ = GW*0.6;
 			if ( final_timer > 100 ) {
-				var size_ = 128;
+				var size_ = 64;
 				
-				var vv_ = abs( sin( final_timer / 24 ) ) * size_;
+				var vv_ = abs( sin( final_timer / 34 ) ) * size_;
 				var va_pos = max( 0, 90-(final_timer-100)*2 );
 				
-				draw_sprite_stretched_ext( winner.player_avatar_sprite, 0, GW*0.5-( vv_/2 ), GH*0.4-(size_/2)-va_pos*4 + 8, vv_, size_, c_black, 0.8 ); 
+				draw_sprite( sfernwinsprite, 0, -va_pos*6, GH );
 				
-				draw_sprite_stretched( winner.player_avatar_sprite, 0, GW*0.5-( vv_/2 ), GH*0.4-(size_/2)-va_pos*4, vv_, size_ ); 
+				draw_sprite_stretched_ext( winner.player_avatar_sprite, 0, xxl_-( vv_/2 ), GH*0.4-(size_/2)-va_pos*4 + 8, vv_, size_, c_black, 0.8 ); 
+				
+				draw_sprite_stretched( winner.player_avatar_sprite, 0, xxl_-( vv_/2 ), GH*0.4-(size_/2)-va_pos*4, vv_, size_ ); 
 				draw_set_halign( fa_center );
 				var c = c_black;
-				draw_text_transformed_colour( GW*0.5, GH*0.75+va_pos*4+2, ( instance_exists(winner) ? winner.display_name : "" ) + " Wins!!", 3, 3, 0, c, c, c, c, 0.9 );
+				draw_text_transformed_colour( xxl_, GH*0.7+va_pos*4+2, ( instance_exists(winner) ? winner.display_name : "" ) + " Wins!!", 3, 3, 0, c, c, c, c, 0.9 );
 				c = ( instance_exists(winner) ? merge_colour( c_white, winner.player_colour, 0.5 ) : c_white );
-				draw_text_transformed_colour( GW*0.5, GH*0.75+va_pos*4, ( instance_exists(winner) ? winner.display_name : "" ) + " Wins!!", 3, 3, 0, c, c, c, c, 1 );
+				draw_text_transformed_colour( xxl_, GH*0.7+va_pos*4, ( instance_exists(winner) ? winner.display_name : "" ) + " Wins!!", 3, 3, 0, c, c, c, c, 1 );
 				draw_set_halign( fa_left );
 			} else {
 				draw_sprite_ext(sgame,0,GW*0.5,GH*0.5, 2, 2, 0, c_white, 1 );
@@ -313,8 +354,8 @@ if ( player_local ) {
 			
 	
 	
-	var mx_ = device_mouse_x_to_gui(0);
-	var my_ = device_mouse_y_to_gui(0);
+	var mx_ = device_mouse_x_to_gui( 0 );
+	var my_ = device_mouse_y_to_gui( 0 );
 	if ( RELOAD[ current_weapon ] >  0 ) {
 		var pw = RELOAD[ current_weapon ] * 0.15;
 		var xoffset_ = -2;

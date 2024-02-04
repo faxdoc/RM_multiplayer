@@ -51,9 +51,13 @@ switch(meta_state) {
 				i++;
 			}
 		}
+		level_select_timer++;
 	break;
 	case e_meta_state.round_end:
-		if ( final_timer++ > 300 ) {
+		final_effect_speed *= 0.96;
+		final_effect_speed = max(0.03,final_effect_speed);
+		final_timer += 0.95;
+		if ( final_timer > 340 ) {
 			meta_state = e_meta_state.level_select;
 			final_timer = 0;
 			global.display_room_name = "";
@@ -116,6 +120,8 @@ switch(meta_state) {
 	#region respawn
 	case e_meta_state.dying:
 		if ( spawn_timer == 0 ) {
+			hit_freeze = 0;
+			hit_timer = 0;
 			//audio_play_sound_pitch(snd_explotion_0, 0.7, RR( 0.8, 0.9 ), 0 );
 			audio_play_sound_pitch(snd_explotion_1, 0.4, RR( 0.5, 0.6 ), 0 );
 			//audio_play_sound_pitch(snd_explotion_1, 0.7, RR( 0.7, 0.8 ), 0 );
@@ -192,7 +198,7 @@ var i = 0; repeat(6) {
 	if RELOAD[wep_list[i]] > 5 {
 		gun_flash_data[i] = 8.5;
 	} else if ( RELOAD[wep_list[i]] <= 0 && gun_flash_data[i] > 0 ) {
-		gun_flash_data[i] -= 0.25;
+		gun_flash_data[i] -= 0.33;
 	}
 	i++;
 }

@@ -393,7 +393,8 @@ function start_palette() {
 }
 first_looser = undefined;
 random_inited = false;
-
+final_effect_speed = 160;
+level_select_timer = 0;
 #endregion
 
 switch(player_id) {

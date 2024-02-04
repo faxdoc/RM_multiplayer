@@ -1,5 +1,3 @@
-
-draw_sprite_ext(stitle,0,GW*0.5,GH*0.35+2, 1.5, 1.5, sin(intimer/60), c_black,  1 );
-draw_sprite_ext(stitle,0,GW*0.5,GH*0.35, 1.5, 1.5,   sin(intimer/60), c_ltgray, 1 );
-
+draw_sprite_tiled_ext(spattern,0,intimer*0.2,intimer*0.2,2,2,c_black,1);
+draw_sprite_tiled_ext(spattern,0,intimer*0.2,intimer*0.2,2,2,c_lime,0.15);
 
