@@ -130,6 +130,7 @@
     {"name":"sface_fern_hit","order":1,"path":"sprites/sface_fern_hit/sface_fern_hit.yy",},
     {"name":"splayer_mask_crouch","order":2,"path":"sprites/splayer_mask_crouch/splayer_mask_crouch.yy",},
     {"name":"s_3playermainmenuactive","order":1,"path":"sprites/s_3playermainmenuactive/s_3playermainmenuactive.yy",},
+    {"name":"omenu_bg_render","order":17,"path":"objects/omenu_bg_render/omenu_bg_render.yy",},
     {"name":"rplatform","order":5,"path":"rooms/rplatform/rplatform.yy",},
     {"name":"splayer_gun_pickup","order":1,"path":"sprites/splayer_gun_pickup/splayer_gun_pickup.yy",},
     {"name":"snd_round_start","order":18,"path":"sounds/snd_round_start/snd_round_start.yy",},

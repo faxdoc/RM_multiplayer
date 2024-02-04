@@ -175,6 +175,7 @@
     {"id":{"name":"splayer_gun_grenade_reload","path":"sprites/splayer_gun_grenade_reload/splayer_gun_grenade_reload.yy",},},
     {"id":{"name":"s_3playermainmenuactive","path":"sprites/s_3playermainmenuactive/s_3playermainmenuactive.yy",},},
     {"id":{"name":"sface_fern_normal","path":"sprites/sface_fern_normal/sface_fern_normal.yy",},},
+    {"id":{"name":"omenu_bg_render","path":"objects/omenu_bg_render/omenu_bg_render.yy",},},
     {"id":{"name":"splayer_gun_pistol","path":"sprites/splayer_gun_pistol/splayer_gun_pistol.yy",},},
     {"id":{"name":"rplatform","path":"rooms/rplatform/rplatform.yy",},},
     {"id":{"name":"splayer_gun_pickup","path":"sprites/splayer_gun_pickup/splayer_gun_pickup.yy",},},
