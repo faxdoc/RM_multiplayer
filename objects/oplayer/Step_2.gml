@@ -209,4 +209,10 @@ if ( maya_animation_swing_timer > 0 ) {
 if ( maya_sword_blink_alpha > 0 ) {
 	maya_sword_blink_alpha -= 1;
 }
-	
+
+var hh = KRIGHT-KLEFT;	
+if ( hh == 0 ) {
+	maya_body_tilt = lerp(maya_body_tilt,hh, 0.15 );
+} else {
+	maya_body_tilt = lerp(maya_body_tilt,hh, 0.15 );
+}

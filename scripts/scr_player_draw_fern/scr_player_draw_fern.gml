@@ -10,6 +10,7 @@ switch( draw_type ) {
 	case e_draw_type.hook:
 	case e_draw_type.aiming:
 		
+		
 		var bly_ = floor(body_y-land_y);
 		var yl_ = y-bly_+1;
 		bwave = round(wave(bmax,bmin,bdur,.89));

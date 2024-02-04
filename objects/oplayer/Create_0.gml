@@ -108,6 +108,8 @@ legs_running_index = 0;
 draw_type = e_draw_type.aiming;
 blink_timer = 0;
 blink_state = 0;
+maya_body_tilt = 0;
+
 timer		= 0;
 
 head_x		= 0;
@@ -451,3 +453,6 @@ K8R		= 0;
 KRPAUSE	= 0;
 KRBACK	= 0;
 #endregion
+maya_body_tilt = 0;
+
+maya_sword_blink_colour = 0;
