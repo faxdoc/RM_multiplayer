@@ -53,6 +53,7 @@
     {"name":"biomes","order":1,"path":"folders/Sprites/tiles/biomes.yy",},
     {"name":"moss","order":1,"path":"folders/Sprites/tiles/biomes/moss.yy",},
     {"name":"ui","order":8,"path":"folders/Sprites/ui.yy",},
+    {"name":"main_game","order":35,"path":"folders/Sprites/ui/main_game.yy",},
     {"name":"main_menu","order":34,"path":"folders/Sprites/ui/main_menu.yy",},
     {"name":"active","order":16,"path":"folders/Sprites/ui/main_menu/active.yy",},
     {"name":"player","order":8,"path":"folders/Sprites/ui/player.yy",},
@@ -64,7 +65,7 @@
     {"name":"Particle Systems","order":6,"path":"folders/unused/Particle Systems.yy",},
     {"name":"Sequences","order":2,"path":"folders/unused/Sequences.yy",},
     {"name":"Timelines","order":1,"path":"folders/unused/Timelines.yy",},
-    {"name":"main_game","order":35,"path":"folders/Sprites/ui/main_game.yy",},
+    {"name":"Maya","order":12,"path":"folders/Sprites/player/Maya.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"snd_ready","order":17,"path":"sounds/snd_ready/snd_ready.yy",},
