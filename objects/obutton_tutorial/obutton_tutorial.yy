@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obutton_2player",
+  "name": "obutton_tutorial",
   "eventList": [],
   "managed": true,
   "overriddenProperties": [],
@@ -29,8 +29,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "s_2playermainmenuactive",
-    "path": "sprites/s_2playermainmenuactive/s_2playermainmenuactive.yy",
+    "name": "straining",
+    "path": "sprites/straining/straining.yy",
   },
   "spriteMaskId": null,
   "visible": true,

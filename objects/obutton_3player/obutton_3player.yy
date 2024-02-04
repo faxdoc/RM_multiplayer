@@ -6,10 +6,13 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "ui",
-    "path": "folders/Sprites/ui.yy",
+    "name": "main_menu",
+    "path": "folders/Sprites/ui/main_menu.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "obutton",
+    "path": "objects/obutton/obutton.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,

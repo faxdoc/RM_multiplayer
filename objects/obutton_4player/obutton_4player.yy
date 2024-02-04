@@ -6,10 +6,13 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "ui",
-    "path": "folders/Sprites/ui.yy",
+    "name": "main_menu",
+    "path": "folders/Sprites/ui/main_menu.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "obutton",
+    "path": "objects/obutton/obutton.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -26,8 +29,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "_4playermainmenuactive",
-    "path": "sprites/_4playermainmenuactive/_4playermainmenuactive.yy",
+    "name": "s_4playermainmenuactive",
+    "path": "sprites/s_4playermainmenuactive/s_4playermainmenuactive.yy",
   },
   "spriteMaskId": null,
   "visible": true,
