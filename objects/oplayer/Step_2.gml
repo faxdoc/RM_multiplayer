@@ -186,4 +186,13 @@ if ( show_hp_timer > 0 ) {
 	}
 }
 
+var wep_list  = [ 0, 5, 1, 4, 3, 2 ];
+var i = 0; repeat(6) {
 	
+	if RELOAD[wep_list[i]] > 5 {
+		gun_flash_data[i] = 8.5;
+	} else if ( RELOAD[wep_list[i]] <= 0 && gun_flash_data[i] > 0 ) {
+		gun_flash_data[i] -= 0.25;
+	}
+	i++;
+}

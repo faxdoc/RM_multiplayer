@@ -7,17 +7,29 @@ if ( player_local ) {
 	draw_surface_part(application_surface,frac(camera_x),frac(camera_y),GW*2,GH*2,round(screen_shake_x)-xoffset_, round(screen_shake_y)-yoffset_);
 	shader_reset();
 	var ii = 0,c = -1;
-	var yl_ = GH*0.94;
+	var yl_ = floor( GH*0.91 );
+	var xx  = floor( GW*0.08 );
+	var yy = yl_;
+	var ds_ = GW*0.25;
+	
 	var i = 0; with ( oplayer ) {
 		c = merge_colour(c_ltgray, player_colour, 0.5 );
-		DSC( c_dkgray );
-		draw_text( GW*0.15 + ( i*(GW*0.2)), 1+ yl_,  display_name );
-		DSC( c );
+		//DSC( c_dkgray );
+		//draw_text( GW*0.15 + ( i*(GW*0.2)), 1+ yl_,  display_name );
+		//DSC( c );
 		
-		draw_text( GW*0.15 + ( i*(GW*0.2)), yl_,   display_name );
-		ii = 0; repeat(lives_left) {
-			draw_sprite_ext(shp_icon,0, ( GW*0.15 + ( i*(GW*0.2)) )+(ii++*18)+8, yl_-4, 1, 1, 0, c, 1  );
+		//draw_text( GW*0.15 + ( i*(GW*0.2)), yl_,   display_name );
+		//ii = 0; repeat( lives_left ) {
+		//	draw_sprite_ext(shp_icon,0, ( GW*0.15 + ( i*(GW*0.2)) )+(ii++*18)+8, yl_-4, 1, 1, 0, c, 1  );
+		//}
+		
+		draw_sprite_ext(portrait_base,   0,  xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
+		draw_sprite_ext(sface_fern_normal,0, xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
+		ii = 0; repeat( lives_left ) {
+			draw_sprite_ext( splayer_hp,	 0,  xx+i*ds_ + ii*15+31, yy+11, 1, 1, 0, c_white, 1 );
+			ii++;
 		}
+		
 		i++;
 		
 		DSC(c_white);
@@ -32,8 +44,10 @@ if ( player_local ) {
 	var wep_list  = [ 0, 5, 1, 4, 3, 2 ];
 	var rls			= [ 96, 320, 120,  135, 135,  900 ];
 	var cl_col = merge_color( c_dkgray, c_red, 0.5 );
+	var visual_i = -3.5;
+	
 	//var gun_sprites = [ splayer_gun_pistol_silhouette, splayer_gun_small_silhouette, splayer_gun_shotgun_silhouette, splayer_gun_grenade_silhoutte, splayer_gun_sniper_silhouette, splayer_gun_rail_silhouette ];
-	var i = -3; repeat( 6 ) {
+	var i = 0; repeat( 6 ) {
 		
 		//var ex_ = current_weapon == wep_list[i] ? -4 : -28;
 		//draw_sprite_ext( gun_sprites[i], 0, ex_+bx-2, by+i*mds_,   1.5, 1.5,  0, c_dkgray, 1 );
@@ -42,29 +56,62 @@ if ( player_local ) {
 		//draw_sprite_ext( gun_sprites[i], 0, ex_+bx,   by+i*mds_+2, 1.5, 1.5,  0, c_dkgray, 1 );
 		
 		
-		myl_ = 3;
-		if ( current_weapon == wep_list[i+3] ) {
+		myl_ = 1;
+		if ( current_weapon == wep_list[i] ) {
 			myl_ = 0;
 		}
 		
-		rl_ = RELOAD[wep_list[i+3]];
+		rl_ = RELOAD[wep_list[i]];
 		if ( rl_ > 0 ) {
-			draw_sprite_ext( scooldown_box, 0, ex_+bx+i*mds_, by+myl_,					1.1, 1.1, 0,  merge_colour(c_dkgray,c_red,0.5), 1 );		
-			draw_sprite_ext( sgun_icon,		i+3, ex_+bx+i*mds_, by+myl_,				1.1, 1.1, 0,  merge_colour(c_dkgray,c_red,0.5), 1 );
-			draw_sprite_ext( scooldown, 15-( rl_/rls[i+3] )*15, ex_+bx+i*mds_, by+myl_, 1.1, 1.1, 0, c_black, 0.9 );
+			//draw_sprite_ext( scooldown_box, 0, ex_+bx+visual_i*mds_, by+myl_,					1.1, 1.1, 0,  merge_colour(c_dkgray,c_red,0.5), 1 );		
+			draw_sprite_ext( sabilities_icon,		i, ex_+bx+visual_i*mds_, by+myl_,				1, 1, 0,  merge_colour(c_dkgray,c_red,0.6), 1 );
+			draw_sprite_ext( scooldown, 27-( rl_/rls[i] )*27, ex_+bx+visual_i*mds_, by+myl_, 1, 1, 0, c_white, 0.7 );
 		} else {
-			draw_sprite_ext( scooldown_box, 0, ex_+bx+i*mds_, by+myl_,    1.1, 1.1, 0, c_ltgray, 1 );		
-			if ( current_weapon == wep_list[i+3] ) {
-				draw_sprite_ext( sgun_icon,		i+3, ex_+bx+i*mds_, by+myl_,  1.1, 1.1, 0, merge_colour( c_white, c_orange, 0.1 ), 1 );
-			}else {
-				draw_sprite_ext( sgun_icon,		i+3, ex_+bx+i*mds_, by+myl_,  1.1, 1.1, 0, merge_color( c_gray, c_dkgray, 0.5 ), 1 );	
+			//draw_sprite_ext( scooldown_box, 0, ex_+bx+visual_i*mds_, by+myl_,    1.1, 1.1, 0, c_ltgray, 1 );		
+			if ( current_weapon == wep_list[i] ) {
+				draw_sprite_ext( sabilities_icon,		i, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, merge_colour( c_white, c_orange, 0.1 ), 1 );
+				if ( gun_flash_data[i] > 0 ) {
+					draw_sprite_ext( sreload_flash, gun_flash_data[i], ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, c_white, 0.75 );
+				}
+				
+			} else {
+				draw_sprite_ext( sabilities_icon,		i, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, merge_color( c_gray, c_dkgray, 0.6 ), 1 );	
+				if ( gun_flash_data[i] > 0 ) {
+					draw_sprite_ext( sreload_flash, gun_flash_data[i], ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, c_gray, 0.7 );
+				}
+				
 			}
 		}
+		
+		visual_i++;
 		i++;
+		
 	}
 	
-	 wep_list  = [ 0, 2, 5, 4, 3, 1 ];
-	draw_sprite_ext(scooldown_box_outer,0,  ex_+bx+(wep_list[current_weapon]-3)*mds_, by, 1.1, 1.1, 0, c_white, 1 );
+	myl_ = 3;
+	if ( grenade_cooldown ) {
+		//draw_sprite_ext( scooldown_box, 0,								ex_+bx+visual_i*mds_, by+myl_, 1.1, 1.1, 0,  merge_colour(c_dkgray,c_red,0.5), 1 );		
+		draw_sprite_ext( sabilities_icon,		6,								ex_+bx+visual_i*mds_, by+myl_, 1.1, 1.1, 0,  merge_colour(c_dkgray,c_red,0.5), 1 );
+		draw_sprite_ext( scooldown,		27-( grenade_cooldown/140 )*26, ex_+bx+visual_i*mds_, by+myl_, 1.1, 1.1, 0, c_white, 0.9 );
+	} else {
+		//draw_sprite_ext( scooldown_box, 0, ex_+bx+visual_i*mds_, by+myl_,  1.1, 1.1, 0, c_orange, 1 );
+		draw_sprite_ext( sabilities_icon,		6, ex_+bx+visual_i*mds_, by+myl_,  1.1, 1.1, 0, merge_color( c_gray, c_dkgray, 0.5 ), 1 );	
+	}
+	draw_sprite_ext( snumbers, 6, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, c_gray, 1 );
+	
+	wep_list  = [ 0, 2, 5, 4, 3, 1 ];
+	draw_sprite_ext( scooldown_box_outer,0,  ex_+bx+(wep_list[current_weapon]-3.5)*mds_, by, 1, 1, 0, c_white, 1 );
+	
+	wep_list  = [ 0, 5, 1, 4, 3, 2 ];
+	var i = 0; repeat(6) {
+		if ( current_weapon == wep_list[i] ) {
+			draw_sprite_ext( snumbers, i, ex_+bx+(i-3.5)*mds_-2, by+myl_-3-1,  1, 1, 0, c_white, 1 );
+		} else {
+			draw_sprite_ext( snumbers, i, ex_+bx+(i-3.5)*mds_+1, by+myl_+1,  1, 1, 0, c_gray, 1 );
+		}
+		
+		i++;
+	}
 	
 	
 	if ( flash_alpha > 0 ) {

@@ -12,7 +12,7 @@ own_grapple = undefined;
 can_dodge_cooldown = 0;
 winner = -1;
 air_combo = false;
-
+gun_flash_data = [0,0,0,0,0,0];
 gun_active_pos = 0;
 
 show_hp_timer = 0;
