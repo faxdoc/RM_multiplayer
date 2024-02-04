@@ -202,3 +202,11 @@ var i = 0; repeat(6) {
 	}
 	i++;
 }
+
+if ( maya_animation_swing_timer > 0 ) {
+	maya_animation_swing_timer--;
+}
+if ( maya_sword_blink_alpha > 0 ) {
+	maya_sword_blink_alpha -= 1;
+}
+	

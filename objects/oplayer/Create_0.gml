@@ -15,6 +15,10 @@ air_combo = false;
 gun_flash_data = [0,0,0,0,0,0];
 gun_active_pos = 0;
 
+maya_animation_swing_timer = 0;
+maya_sword_swing_charge = 0;
+maya_sword_blink_alpha = 0;
+
 show_hp_timer = 0;
 gun_charging = false;
 SHOOT_BUFFER = 0;
@@ -29,8 +33,14 @@ shoot_hold_buffer		= 0;
 input_skip = 0;
 INVIS = 0;
 intro_timer = 0;
-
 hit_substate = 0;
+
+enum e_char_index {
+	fern,
+	maya,
+	ameli,
+}
+char_index = e_char_index.maya;
 
 move_alt_blink	= 0;
 skip_redo		= true;
@@ -238,51 +248,6 @@ dlc_mode			   = false;
 hook_cooldown = 0;
 hook_type__ = 2;
 
-KUP		= 0;
-KDOWN	= 0;
-KLEFT	= 0;
-KRIGHT	= 0;
-K1		= 0;
-K2		= 0;
-K3		= 0;
-K4		= 0;
-K5		= 0;
-K6		= 0;
-K7		= 0;
-K8		= 0;
-KPAUSE	= 0;
-KBACK	= 0;
-
-KPUP	= 0;
-KPDOWN	= 0;
-KPLEFT	= 0;
-KPRIGHT	= 0;
-K1P		= 0;
-K2P		= 0;
-K3P		= 0;
-K4P		= 0;
-K5P		= 0;
-K6P		= 0;
-K7P		= 0;
-K8P		= 0;
-KPPAUSE	= 0;
-KPBACK  = 0;
-
-KRUP	= 0;
-KRDOWN	= 0;
-KRLEFT	= 0;
-KRRIGHT	= 0;
-K1R		= 0;
-K2R		= 0;
-K3R		= 0;
-K4R		= 0;
-K5R		= 0;
-K6R		= 0;
-K7R		= 0;
-K8R		= 0;
-KRPAUSE	= 0;
-KRBACK	= 0;
-
 KQ0 = false;
 KQ1 = false;
 KQ2 = false;
@@ -334,13 +299,6 @@ parry_timer = 0;
 
 player_colour = c_aqua;
 player_palette = spalette_player_1;
-
- //x = floor( lerp( ospawn_box.bbox_left,ospawn_box.bbox_right,   0) ); 
- //y = floor( lerp( ospawn_box.bbox_top,ospawn_box.bbox_bottom, 0.5) );
- 
-
-//player_colour = c_aqua;  player_palette = spalette_player_1; x = floor( lerp(ospawn_box.bbox_left,ospawn_box.bbox_right,   0) ); y = floor( lerp(ospawn_box.bbox_top,ospawn_box.bbox_bottom,0.5) ); // break;
-
 
 if ( player_local ) {
 	view_enabled = true;
@@ -446,3 +404,50 @@ charge_sound = -1;
 
 #endregion
 
+
+#region input
+KUP		= 0;
+KDOWN	= 0;
+KLEFT	= 0;
+KRIGHT	= 0;
+K1		= 0;
+K2		= 0;
+K3		= 0;
+K4		= 0;
+K5		= 0;
+K6		= 0;
+K7		= 0;
+K8		= 0;
+KPAUSE	= 0;
+KBACK	= 0;
+
+KPUP	= 0;
+KPDOWN	= 0;
+KPLEFT	= 0;
+KPRIGHT	= 0;
+K1P		= 0;
+K2P		= 0;
+K3P		= 0;
+K4P		= 0;
+K5P		= 0;
+K6P		= 0;
+K7P		= 0;
+K8P		= 0;
+KPPAUSE	= 0;
+KPBACK  = 0;
+
+KRUP	= 0;
+KRDOWN	= 0;
+KRLEFT	= 0;
+KRRIGHT	= 0;
+K1R		= 0;
+K2R		= 0;
+K3R		= 0;
+K4R		= 0;
+K5R		= 0;
+K6R		= 0;
+K7R		= 0;
+K8R		= 0;
+KRPAUSE	= 0;
+KRBACK	= 0;
+#endregion

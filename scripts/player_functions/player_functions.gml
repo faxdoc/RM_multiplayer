@@ -165,7 +165,18 @@ function player_state_general(alt_col) {
 		
 		player_ledge_detect( hh, jump_hold );
 	}
-	scr_gun_code();
+	switch( char_index ) {
+		case e_char_index.fern:
+			scr_player_draw_fern();
+		break;
+		case e_char_index.maya:
+			scr_player_draw_maya();
+		break;
+		case e_char_index.ameli:
+			scr_player_draw_ameli();
+		break;
+	}
+
 	
 	#endregion
 }
