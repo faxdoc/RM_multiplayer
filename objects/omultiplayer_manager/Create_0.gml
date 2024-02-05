@@ -3,10 +3,9 @@
 
 
 
-global.test_enabled = TEST_DEFAULT;
-global.live_turned_on = LIVE_DEFAULT;
-
-
+global.test_enabled			= TEST_DEFAULT;
+global.live_turned_on		= LIVE_DEFAULT;
+global.training_mode		= false;
 
 
 
@@ -50,6 +49,8 @@ if ( global.test_enabled ) {
 	layer_set_visible( layer_get_id("Assets_2"), false );
 	game_has_started = true;
 	rollback_create_game(2,true);
+	global.training_mode = true;
+	
 } else if ( !rollback_join_game() ) {
 	game_has_started = false;
 } else {
@@ -67,7 +68,7 @@ draw_set_font( fnt_default );
 global.fnt_number_big		= font_add_sprite( snumber_big, ord("0"), false, 1 );
 global.display_room_name	= "";
 global.inital_select		= false;
-global.training_mode		= false;
+
 
 rollback_use_random_input( false );
 audio_channel_num(32);

@@ -67,6 +67,9 @@ switch(meta_state) {
 		if instance_exists( ohook		   ) { IDD( ohook			); }
 	break;
 	case e_meta_state.round_start:
+		if ( global.training_mode ) {
+			intro_timer = 130;
+		}
 		hp = hp_max;
 		INVIS = 30; 
 		intro_timer += 0.75;

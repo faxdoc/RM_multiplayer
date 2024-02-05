@@ -19,17 +19,22 @@ if ( mouse_check_button_pressed(mb_left) ) {
 	if ( instance_position(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),id) ) {
 		
 		audio_play_sound_pitch( choose( snd_menu_select_0, snd_menu_select_1), RR(0.95,1.05),  RR(0.95,1.05), 0 );
-		IDD(orandom);
-		IDD(omenu_bg_render);
+		IDD( orandom );
+		IDD( omenu_bg_render );
 		omultiplayer_manager.game_has_started = true; 
 		audio_stop_sound( snd_music_menu_loop );
+		
 		switch(sprite_index) {
 			case s_2playermainmenuactive: rollback_create_game( 2, false ); break;
 			case s_3playermainmenuactive: rollback_create_game( 3, false ); break;
 			case s_4playermainmenuactive: rollback_create_game( 4, false ); break;
-			case straining:				  rollback_create_game( 2, true  ); break;
+			case straining:				  rollback_create_game( 2, true  ); global.training_mode = true; break;
 		}
-		with ( obutton ) IDD();
+		
+		with ( obutton ) {
+			IDD();
+		}
+		
 		layer_set_visible( layer_get_id("Assets_1"), false );
 		layer_set_visible( layer_get_id("Assets_2"), false );
 	}

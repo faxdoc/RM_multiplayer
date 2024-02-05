@@ -467,3 +467,23 @@ KRBACK	= 0;
 maya_body_tilt = 0;
 
 maya_sword_blink_colour = 0;
+
+
+switch(char_index) {
+	default:
+	case e_char_index.fern:
+	
+	break;
+	case e_char_index.maya:
+		base_walk_spd += 0.06;//base_walk_spd	= 0.385;
+		hp_max = 125;
+		hp = 125;
+		grav *= 1.1;//0.17*1.2;
+		base_jump_pwr += 1.2;// 4.68;
+	break;
+	case e_char_index.ameli:
+		base_walk_spd *= 0.9;
+		hp_max = 100;
+		hp = 100;
+	break;
+}
