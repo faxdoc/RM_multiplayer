@@ -172,8 +172,8 @@ switch(current_weapon) {
 	
 	#region rail
 	case e_gun.rail:
-		var max_ammo = 19;
-		var charge_cap = 24;
+		var max_ammo   = 17;
+		var charge_cap = 28;
 		if( RELOAD[cg] <= 0 )CLIP[cg] = max_ammo;
 		if( CLIP[cg] == 0 ) {
 			if( k1p_ )audio_play_sound_pitch( snd_shoot_no_bullets, RR(.8,1),RR(.95,1.1),-1);
@@ -226,8 +226,8 @@ switch(current_weapon) {
 				audio_play_sound_pitch( snd_shoot_2, 0.65, 1.15 + random_fixed( 0.1 ),1);
 			}
 			//gun_general(4,60,9);
-			var b = bullet_general( (gun_fully_charged ? 9 : 6)*0.35,30, gun_fully_charged ? sbullet_bolt_white : sbullet_bolt,0);
-			b.duration = 8;
+			var b = bullet_general( (gun_fully_charged ? 8 : 5)*0.35,30, gun_fully_charged ? sbullet_bolt_white : sbullet_bolt,0);
+			b.duration = 7;
 			b.mp_mult =  0;
 		
 			var unacc_array = [0,.3,-0.2,0.5,0.1,-0.6,1,0.4,-0.7,-1,-0.3,0.4,-0.2];
@@ -239,7 +239,7 @@ switch(current_weapon) {
 			bullet_effects_general( sammo_red );
 			effect_general( 0.6, 3, 4 );
 			if ( CLIP[cg] == max_ammo ) {
-				RELOAD[cg] = 900;
+				RELOAD[cg] = 960;
 			}
 			CLIP[cg]--;
 		}
@@ -595,14 +595,14 @@ function bullet_general(dmg,spd,sprite, unacc, obj_ = par_hitbox, cb_mult_ = 1, 
 			t.bonus_vsp = -0.3;
 		break;
 		case e_gun.rail:
-			t.stun_mult = 2.6;
-			t.knockback *= 2.1;
+			t.stun_mult = 2;
+			t.knockback *= 1.8;
 		break;
 		
 	}
 	if ( char_index == e_char_index.maya ) {
-		t.stun_mult *= 0.4;
-		t.knockback = dmg * dmg_mult * 0.3;
+		t.stun_mult *= 0.6;
+		t.knockback = dmg * dmg_mult * 0.35;
 	}
 	return t;
 	

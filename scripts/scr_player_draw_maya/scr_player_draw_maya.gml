@@ -144,12 +144,12 @@ function scr_player_draw_maya(){
 			#region legs
 			if ( on_ground ) {
 				if ( round(hsp) == 0 ) {
-					draw_sprite_ext( splayer_maya_legs, legs_index,  xx_, yy_+extra_leg_y,draw_xscale,1,0,image_blend,draw_alpha);
+					draw_sprite_ext( splayer_maya_legs, legs_index,  x, yy_+extra_leg_y,draw_xscale,1,0,image_blend,draw_alpha);
 				} else {
 					draw_sprite_ext( splayer_maya_legs_run, legs_running_index*draw_xscale,  x, yy_+extra_leg_y,draw_xscale,1,0,image_blend,draw_alpha);
 				}
 			} else {
-				draw_sprite_ext( splayer_maya_legs_jump, legs_index,  xx_, yy_+extra_leg_y,draw_xscale,1,0,image_blend,draw_alpha);
+				draw_sprite_ext( splayer_maya_legs_jump, legs_index,  x, yy_+extra_leg_y,draw_xscale,1,0,image_blend,draw_alpha);
 			}
 			
 			#endregion

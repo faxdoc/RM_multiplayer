@@ -468,11 +468,13 @@ maya_body_tilt = 0;
 
 maya_sword_blink_colour = 0;
 
-
+//portrait_expression_base = sface_fern_normal;
+//portrait_expression_hurt = sface_fern_hit;
 switch(char_index) {
 	default:
 	case e_char_index.fern:
-	
+		//portrait_expression_base = sface_fern_normal;
+		//portrait_expression_hurt = sface_fern_hit;
 	break;
 	case e_char_index.maya:
 		base_walk_spd += 0.06;//base_walk_spd	= 0.385;
@@ -480,10 +482,14 @@ switch(char_index) {
 		hp = 125;
 		grav *= 1.1;//0.17*1.2;
 		base_jump_pwr += 1.2;// 4.68;
+		//portrait_expression_base = sface_maya_normal;
+		//portrait_expression_hurt = sface_maya_hit;
 	break;
 	case e_char_index.ameli:
 		base_walk_spd *= 0.9;
-		hp_max = 100;
-		hp = 100;
+		hp_max	= 100;
+		hp		= 100;
+		//portrait_expression_base = sface_ameli_normal;
+		//portrait_expression_hurt = sface_ameli_hit;
 	break;
 }

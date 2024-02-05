@@ -18,9 +18,32 @@ if ( player_local ) {
 			draw_sprite_ext(portrait_base,		0,  xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
 			
 			if ( hit_timer <= 0 ) {
-				draw_sprite_ext( sface_fern_normal,	0,	xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
+				switch(char_index) {
+					default:
+					case e_char_index.fern:
+						draw_sprite_ext( sface_fern_normal,	0,	xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
+					break;
+					case e_char_index.maya:
+						draw_sprite_ext( sface_maya_normal,	0,	xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
+					break;
+					case e_char_index.ameli:
+						draw_sprite_ext( sface_ameli_normal,	0,	xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
+					break;
+				}
+				
 			} else {
-				draw_sprite_ext( sface_fern_hit,	0,	xx+i*ds_+ ((hit_freeze*342) mod 4) - 2, yy+ ((hit_freeze*1462) mod 4) - (2*min(hit_freeze,1)), 1, 1, 0, merge_colour( c_white, c_red, min( hit_freeze/4, 1 ) ), 1 );
+				switch(char_index) {
+					default:
+					case e_char_index.fern:
+						draw_sprite_ext( sface_fern_hit,	0,	xx+i*ds_+ ((hit_freeze*342) mod 4) - 2, yy+ ((hit_freeze*1462) mod 4) - (2*min(hit_freeze,1)), 1, 1, 0, merge_colour( c_white, c_red, min( hit_freeze/4, 1 ) ), 1 );
+					break;
+					case e_char_index.maya:
+						draw_sprite_ext( sface_maya_hit,	0,	xx+i*ds_+ ((hit_freeze*342) mod 4) - 2, yy+ ((hit_freeze*1462) mod 4) - (2*min(hit_freeze,1)), 1, 1, 0, merge_colour( c_white, c_red, min( hit_freeze/4, 1 ) ), 1 );
+					break;
+					case e_char_index.ameli:
+						draw_sprite_ext( sface_ameli_hit,	0,	xx+i*ds_+ ((hit_freeze*342) mod 4) - 2, yy+ ((hit_freeze*1462) mod 4) - (2*min(hit_freeze,1)), 1, 1, 0, merge_colour( c_white, c_red, min( hit_freeze/4, 1 ) ), 1 );
+					break;
+				}
 			}
 			
 			ii = 0; repeat( lives_left ) {
@@ -32,9 +55,35 @@ if ( player_local ) {
 			draw_sprite_ext( sportrait_base_grayscale,  0, xx+i*ds_, yy, 1, 1, 0, c, 1 );
 			
 			if ( hit_timer <= 0 ) {
-				draw_sprite_ext( sface_fern_normal,	0,	xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
+				//draw_sprite_ext( portrait_expression_base,	0,	xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
+				switch(char_index) {
+					default:
+					case e_char_index.fern:
+						draw_sprite_ext( sface_fern_normal,	0,	xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
+					break;
+					case e_char_index.maya:
+						draw_sprite_ext( sface_maya_normal,	0,	xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
+					break;
+					case e_char_index.ameli:
+						draw_sprite_ext( sface_ameli_normal,	0,	xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
+					break;
+				}
+				
 			} else {
-				draw_sprite_ext( sface_fern_hit,	0,	xx+i*ds_ + ((hit_freeze*342) mod 4) - 2, yy + ((hit_freeze*1462) mod 4) - (2*min(hit_freeze,1)), 1, 1, 0,  merge_colour( c_white, c_red, min( hit_freeze/4, 1 ) ), 1 );
+				switch(char_index) {
+					default:
+					case e_char_index.fern:
+						draw_sprite_ext( sface_fern_hit,	0,	xx+i*ds_+ ((hit_freeze*342) mod 4) - 2, yy+ ((hit_freeze*1462) mod 4) - (2*min(hit_freeze,1)), 1, 1, 0, merge_colour( c_white, c_red, min( hit_freeze/4, 1 ) ), 1 );
+					break;
+					case e_char_index.maya:
+						draw_sprite_ext( sface_maya_hit,	0,	xx+i*ds_+ ((hit_freeze*342) mod 4) - 2, yy+ ((hit_freeze*1462) mod 4) - (2*min(hit_freeze,1)), 1, 1, 0, merge_colour( c_white, c_red, min( hit_freeze/4, 1 ) ), 1 );
+					break;
+					case e_char_index.ameli:
+						draw_sprite_ext( sface_ameli_hit,	0,	xx+i*ds_+ ((hit_freeze*342) mod 4) - 2, yy+ ((hit_freeze*1462) mod 4) - (2*min(hit_freeze,1)), 1, 1, 0, merge_colour( c_white, c_red, min( hit_freeze/4, 1 ) ), 1 );
+					break;
+				}
+				
+				//draw_sprite_ext( portrait_expression_hurt,	0,	xx+i*ds_ + ((hit_freeze*342) mod 4) - 2, yy + ((hit_freeze*1462) mod 4) - (2*min(hit_freeze,1)), 1, 1, 0,  merge_colour( c_white, c_red, min( hit_freeze/4, 1 ) ), 1 );
 			}
 			
 			ii = 0; repeat( lives_left ) {
@@ -139,23 +188,16 @@ if ( player_local ) {
 		#region maya
 		case e_char_index.maya:
 				var amult = 1;
-				var yy = GH*0.5;
-				var xx = GW*0.5;
+				var xx = floor( GW * 0.45 )-15;
+				var yy = floor( GH * 0.85 );
 				
-		
+				
 				var ds_ = 14;
 				draw_sprite_ext( smaya_abilities_bar, 0, xx, yy, 1, 1, 0, c_white, amult );
 				
-				var cw_ = clamp(current_weapon,0,5);
-				var nms_ = [
-					0,
-					2,
-					5,
-					4,
-					3,
-					1,
-				];
-				var exe		= 20;
+				var cw_ = clamp( current_weapon, 0, 5 );
+				var nms_ = [ 0, 2, 5, 4, 3, 1 ];
+				var exe		=  20;
 				var exy		= -10;
 				var ang_	= -90;
 				var vl_		= nms_[ floor( clamp( current_weapon, 0, 5 ) ) ];
@@ -213,10 +255,12 @@ if ( player_local ) {
 					}
 					i++;
 				}
-				if ( CLIP[current_weapon] != 0 ) {
+				
+				var alt_col_ = CLIP[current_weapon] != 0 || current_weapon == 0;
+				if ( alt_col_ ) {
 					draw_sprite_ext( smaya_abilities_bar, 1, xx, yy, 1, 1, 0, c_gray, amult );
 				} else {
-					draw_sprite_ext( smaya_abilities_bar, 1, xx, yy, 1, 1, 0, merge_colour(c_gray,c_red,.2), amult );
+					draw_sprite_ext( smaya_abilities_bar, 1, xx, yy, 1, 1, 0, merge_colour( c_gray, c_red, 0.2 ), amult );
 				}
 				var nms_ = [
 					0,
@@ -227,13 +271,13 @@ if ( player_local ) {
 					1,
 				];
 				var vl_ = nms_[ floor(clamp( current_weapon, 0, 5 )) ];
-		
-				if ( CLIP[ current_weapon ] != 0 ) {
-					draw_sprite_ext(smaya_abilities_icons, vl_, xx - 1 + ( vl_ * ds_ )+4, yy+4, 1, 1, 0, c_orange, amult );
+				
+				
+				if ( alt_col_ ) {
+					draw_sprite_ext( smaya_abilities_icons, vl_, xx - 1 + ( vl_ * ds_ )+4, yy+4, 1, 1, 0, c_orange, amult );
 				}
-		
-		
-				draw_sprite_ext( smaya_abilites_select,	   0, xx + ( vl_ * ds_ )+5, yy+1, 1, 1, 0, CLIP[current_weapon] != 0 ? c_white : merge_colour(c_ltgray,c_red,0.5), amult );
+				draw_sprite_ext( smaya_abilites_select,	   0, xx + ( vl_ * ds_ )+5, yy+1, 1, 1, 0, alt_col_ ? c_white : merge_colour(c_ltgray,c_red,0.5), amult );
+				
 		break;
 		#endregion
 		#region ameli
