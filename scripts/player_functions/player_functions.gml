@@ -176,8 +176,21 @@ function player_state_general(alt_col) {
 			scr_primary_attack_ameli();
 		break;
 	}
+	if ( knife_state == 1 ) {
+			switch( char_index ) {
+				case e_char_index.fern:
+				player_throw_grenade();
+			break;
+			case e_char_index.maya:
+				scr_secondary_attack_maya();
+			break;
+			case e_char_index.ameli:
+				scr_secondary_attack_ameli();
+			break;
+		}
+	}
 
-	
+
 	#endregion
 }
 

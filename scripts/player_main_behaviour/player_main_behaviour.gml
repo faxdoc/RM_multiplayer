@@ -1,6 +1,6 @@
 function player_main_behaviour(){
-player_input_init
-if ( intro_timer > 0 ) {
+	player_input_init
+	if ( intro_timer > 0 ) {
 		intro_timer--;
 	}
 	floor_type = tile_sort_genre(tplace_meeting_index(x+11,y+8+vsp,layer_type));
@@ -29,7 +29,7 @@ if ( intro_timer > 0 ) {
 	if( K2  ) hook_cooldown     = 15;
 	if( K2P ) hook_press_buffer =  5;
 	hook_press_buffer--;
-
+	
 	var k2_ = K2;
 	var k2p_ = hook_press_buffer;
 
@@ -121,7 +121,7 @@ if ( intro_timer > 0 ) {
 			air_combo = false;
 		break;
 		#endregion
-	
+		
 		#region normal
 		case e_player.normal:
 			
@@ -293,46 +293,19 @@ if ( intro_timer > 0 ) {
 		#endregion
 		#region parry
 		case e_player.parry:
-			can_dodge_cooldown = 10;
-			if (parry_timer == 0 && dash_dir != -1 ) {
-				hsp = LDX( 5, dash_dir );
-				vsp = LDY( 5, dash_dir );
-					
+			switch( char_index ) {
+				case e_char_index.fern:
+					scr_special_fern();
+				break;
+				case e_char_index.maya:
+					scr_special_maya();
+				break;
+				case e_char_index.ameli:
+					scr_special_ameli();
+				break;
 			}
 			
-			can_dash = false;
-			sprite_index = splayer_dodge;
-			draw_type = e_draw_type.animation;
-				
-			if ( dash_dir == -1 ) {
-				vsp += grav;
-				if ( parry_timer++ > 13 ) {
-					state = e_player.normal;
-					skip_draw = false;
-					//INVIS = 1;
-					parry_timer = 0;
-				}
-				if ( gen_col(x,y+1)||alt_col) hsp *= frc;	
-			} else {
-				if ( parry_timer++ > 10 || gen_col(x,y+1) || alt_col ) {
-					state = e_player.normal;
-					skip_draw = false;
-						
-					if ( !gen_col(x,y+1) && !alt_col ) {
-						INVIS = 3;
-					} else {
-						INVIS = 1;
-					}
-						
-					parry_timer = 0;
-					hsp *= 0.85;
-					if  ( vsp < 0 ) {
-						vsp *= 0.3;
-					} else {
-						vsp *= 0.8;
-					}
-				}
-			}
+			
 				
 				
 				
@@ -627,12 +600,12 @@ case e_draw_type.aiming:
 	land_y = land_y < 0.05 ? 0 : land_y*0.85;
 	land_y = clamp(land_y,0,2.5);
 		
-	if ( knife_state == 0 ) {
+	// if ( knife_state == 0 ) {
 			
-	} else {
-		player_throw_grenade();
-	}
+	// } else {
 		
+	// }
+	
 	if ( switching_weapon ) {
 		switch_timer++;
 		if (switch_timer > 10 ) {

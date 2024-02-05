@@ -135,7 +135,6 @@ function scr_secondary_attack_maya(){
 						t.knockback *= 2.5;
 						t.lag_add 	*= 4;
 						t.shake_add	*= 3;
-						t.mp_mult = 0;
 						t.is_bullet = false;
 						//audio_play_sound_pitch(snd_grenade_in_air, 0.6, 0.9, 0 );
 						t.sprite_index = sbaseball_test;
@@ -196,7 +195,6 @@ function scr_secondary_attack_maya(){
 							b.ghost = true;
 							b.lag_add   *= 1;
 							b.shake_add *= 1;
-							b.give_mp_mult = 0.1;
 							b.alt_knockback = true;
 							with ( b ) {
 								if ( PLC( x, y, par_enemy ) ) {

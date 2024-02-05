@@ -56,7 +56,7 @@ switch( draw_type ) {
 		
 		
 		//head
-		bwave = round(wave(bmax,bmin,bdur,.92));
+		bwave = round( wave( bmax, bmin, bdur, 0.92 ) );
 		var xx = var_dir > 0 ? var_dir/10 : var_dir/50;
 		var head_x = x-1*draw_xscale-xx*draw_xscale+hh;
 		var head_y = yl_-25+y_off+bwave + (crouching ? 1 : 0);
