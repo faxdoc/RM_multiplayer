@@ -12,17 +12,19 @@ rollback_define_input({
 	K6:		vk_control,
 	K7:		ord( "Q" ),
 	K8:		ord( "T" ),
-	dash:	[ord( "E" ),vk_shift,ord("F")],
+	dash:	[ord( "E" ),vk_shift],
 	KBACK:	vk_enter,
 	mx:		m_axisx,
 	my:		m_axisy,
 	
+	
 	quickswap_0: ord( "1" ),
 	quickswap_1: ord( "2" ),
 	quickswap_2: ord( "3" ),
-	quickswap_3: ord( "4" ),
-	quickswap_4: ord( "5" ),
-	quickswap_5: ord( "6" )
+	quickswap_3: [ord( "4" ), ord("R") ],
+	quickswap_4: [ord( "5" ), ord("F") ],
+	quickswap_5: [ord( "6" ), ord("G") ],
+	switch_grapple_mode: ord( "U" )
 	
 });
 

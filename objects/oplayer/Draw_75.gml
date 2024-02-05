@@ -13,52 +13,54 @@ if ( player_local ) {
 	var ds_ = GW*0.25;
 	var c;
 	
-	var i = 0; with ( oplayer ) {
-		if ( player_colour == c_red ) {
-			draw_sprite_ext(portrait_base,		0,  xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
+	if ( instance_exists(oplayer) ) {
+		var i = 0; with ( oplayer ) {
+			if ( player_colour == c_red ) {
+				draw_sprite_ext(portrait_base,		0,  xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
 			
-			if ( hit_timer <= 0 ) {
-				draw_sprite_ext( sface_fern_normal,	0,	xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
+				if ( hit_timer <= 0 ) {
+					draw_sprite_ext( sface_fern_normal,	0,	xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
+				} else {
+					draw_sprite_ext( sface_fern_hit,	0,	xx+i*ds_+ ((hit_freeze*342) mod 4) - 2, yy+ ((hit_freeze*1462) mod 4) - (2*min(hit_freeze,1)), 1, 1, 0, merge_colour( c_white, c_red, min( hit_freeze/4, 1 ) ), 1 );
+				}
+			
+				ii = 0; repeat( lives_left ) {
+					draw_sprite_ext( splayer_hp,	 0,  xx+i*ds_ + ii*15+31, yy+11, 1, 1, 0, c_white, 1 );
+					ii++;
+				}
 			} else {
-				draw_sprite_ext( sface_fern_hit,	0,	xx+i*ds_+ ((hit_freeze*342) mod 4) - 2, yy+ ((hit_freeze*1462) mod 4) - (2*min(hit_freeze,1)), 1, 1, 0, merge_colour( c_white, c_red, min( hit_freeze/4, 1 ) ), 1 );
-			}
+				c = merge_colour( c_white, player_colour, 0.5 );
+				draw_sprite_ext( sportrait_base_grayscale,  0, xx+i*ds_, yy, 1, 1, 0, c, 1 );
 			
-			ii = 0; repeat( lives_left ) {
-				draw_sprite_ext( splayer_hp,	 0,  xx+i*ds_ + ii*15+31, yy+11, 1, 1, 0, c_white, 1 );
-				ii++;
-			}
-		} else {
-			c = merge_colour( c_white, player_colour, 0.5 );
-			draw_sprite_ext( sportrait_base_grayscale,  0, xx+i*ds_, yy, 1, 1, 0, c, 1 );
+				if ( hit_timer <= 0 ) {
+					draw_sprite_ext( sface_fern_normal,	0,	xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
+				} else {
+					draw_sprite_ext( sface_fern_hit,	0,	xx+i*ds_ + ((hit_freeze*342) mod 4) - 2, yy + ((hit_freeze*1462) mod 4) - (2*min(hit_freeze,1)), 1, 1, 0,  merge_colour( c_white, c_red, min( hit_freeze/4, 1 ) ), 1 );
+				}
 			
-			if ( hit_timer <= 0 ) {
-				draw_sprite_ext( sface_fern_normal,	0,	xx+i*ds_, yy, 1, 1, 0, c_white, 1 );
-			} else {
-				draw_sprite_ext( sface_fern_hit,	0,	xx+i*ds_ + ((hit_freeze*342) mod 4) - 2, yy + ((hit_freeze*1462) mod 4) - (2*min(hit_freeze,1)), 1, 1, 0,  merge_colour( c_white, c_red, min( hit_freeze/4, 1 ) ), 1 );
+				ii = 0; repeat( lives_left ) {
+					draw_sprite_ext( splayer_hp_grayscale, 0,  xx+i*ds_ + ii*15+31, yy+11, 1, 1, 0, c, 1 );
+					ii++;
+				}
 			}
-			
-			ii = 0; repeat( lives_left ) {
-				draw_sprite_ext( splayer_hp_grayscale, 0,  xx+i*ds_ + ii*15+31, yy+11, 1, 1, 0, c, 1 );
-				ii++;
-			}
+			c = merge_colour( c_gray, player_colour, 0.5 );
+			DSC( c_black );DSA(0.9);
+			draw_text( xx+i*ds_+26-1, yy+16-1,  display_name );
+			draw_text( xx+i*ds_+26-1, yy+16,  display_name );
+			DSC( c );DSA(1);
+		
+			draw_text( xx+i*ds_+26, yy+16,   display_name );
+		
+			//ii = 0; repeat( lives_left ) {
+			//	draw_sprite_ext(shp_icon,0, ( GW*0.15 + ( i*(GW*0.2)) )+(ii++*18)+8, yl_-4, 1, 1, 0, c, 1  );
+			//}
+		
+		
+		
+			i++;
+		
+			DSC(c_white);
 		}
-		c = merge_colour( c_gray, player_colour, 0.5 );
-		DSC( c_black );DSA(0.9);
-		draw_text( xx+i*ds_+26-1, yy+16-1,  display_name );
-		draw_text( xx+i*ds_+26-1, yy+16,  display_name );
-		DSC( c );DSA(1);
-		
-		draw_text( xx+i*ds_+26, yy+16,   display_name );
-		
-		//ii = 0; repeat( lives_left ) {
-		//	draw_sprite_ext(shp_icon,0, ( GW*0.15 + ( i*(GW*0.2)) )+(ii++*18)+8, yl_-4, 1, 1, 0, c, 1  );
-		//}
-		
-		
-		
-		i++;
-		
-		DSC(c_white);
 	}
 	
 	var bx = GW*0.5;

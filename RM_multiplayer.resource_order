@@ -41,6 +41,7 @@
     {"name":"bullets_level_2","order":5,"path":"folders/Sprites/player/bullets_level_2.yy",},
     {"name":"level_3","order":4,"path":"folders/Sprites/player/level_3.yy",},
     {"name":"masks","order":2,"path":"folders/Sprites/player/masks.yy",},
+    {"name":"Maya","order":12,"path":"folders/Sprites/player/Maya.yy",},
     {"name":"full_sprites","order":2,"path":"folders/Sprites/player/non-palette/full_sprites.yy",},
     {"name":"main","order":1,"path":"folders/Sprites/player/non-palette/main.yy",},
     {"name":"head","order":1,"path":"folders/Sprites/player/non-palette/main/head.yy",},
@@ -65,7 +66,6 @@
     {"name":"Particle Systems","order":6,"path":"folders/unused/Particle Systems.yy",},
     {"name":"Sequences","order":2,"path":"folders/unused/Sequences.yy",},
     {"name":"Timelines","order":1,"path":"folders/unused/Timelines.yy",},
-    {"name":"Maya","order":12,"path":"folders/Sprites/player/Maya.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"snd_ready","order":17,"path":"sounds/snd_ready/snd_ready.yy",},
