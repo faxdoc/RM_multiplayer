@@ -14,7 +14,8 @@ winner = -1;
 air_combo = false;
 gun_flash_data = [0,0,0,0,0,0];
 gun_active_pos = 0;
-
+maya_add_x = 0;
+maya_add_y = 0;
 
 maya_has_parry	   = false;
 maya_has_parry_red = false;

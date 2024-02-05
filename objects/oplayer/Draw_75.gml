@@ -73,65 +73,175 @@ if ( player_local ) {
 	var visual_i = -3.5;
 	
 	//var gun_sprites = [ splayer_gun_pistol_silhouette, splayer_gun_small_silhouette, splayer_gun_shotgun_silhouette, splayer_gun_grenade_silhoutte, splayer_gun_sniper_silhouette, splayer_gun_rail_silhouette ];
-	var i = 0; repeat( 6 ) {
+	
+	switch( char_index ) {
+		#region fern
+		case e_char_index.fern:
+			var i = 0; repeat( 6 ) {
 		
-		myl_ = 1;
-		if ( current_weapon == wep_list[i] ) {
-			myl_ = 0;
-		}
+				myl_ = 1;
+				if ( current_weapon == wep_list[i] ) {
+					myl_ = 0;
+				}
 		
-		rl_ = RELOAD[wep_list[i]];
-		if ( rl_ > 0 ) {
-			//draw_sprite_ext( scooldown_box, 0, ex_+bx+visual_i*mds_, by+myl_,					1.1, 1.1, 0,  merge_colour(c_dkgray,c_red,0.5), 1 );		
-			draw_sprite_ext( sabilities_icon,		i, ex_+bx+visual_i*mds_, by+myl_,				1, 1, 0,  merge_colour(c_dkgray,c_red,0.6), 1 );
-			draw_sprite_ext( scooldown, 27-( rl_/rls[i] )*27, ex_+bx+visual_i*mds_, by+myl_, 1, 1, 0, c_white, 0.7 );
-		} else {
-			//draw_sprite_ext( scooldown_box, 0, ex_+bx+visual_i*mds_, by+myl_,    1.1, 1.1, 0, c_ltgray, 1 );		
-			if ( current_weapon == wep_list[i] ) {
-				draw_sprite_ext( sabilities_icon,		i, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, merge_colour( c_white, c_orange, 0.1 ), 1 );
-				if ( gun_flash_data[i] > 0 ) {
-					draw_sprite_ext( sreload_flash, gun_flash_data[i], ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, c_white, 0.75 );
-				}
+				rl_ = RELOAD[wep_list[i]];
+				if ( rl_ > 0 ) {
+					//draw_sprite_ext( scooldown_box, 0, ex_+bx+visual_i*mds_, by+myl_,					1.1, 1.1, 0,  merge_colour(c_dkgray,c_red,0.5), 1 );		
+					draw_sprite_ext( sabilities_icon,		i, ex_+bx+visual_i*mds_, by+myl_,				1, 1, 0,  merge_colour(c_dkgray,c_red,0.6), 1 );
+					draw_sprite_ext( scooldown, 27-( rl_/rls[i] )*27, ex_+bx+visual_i*mds_, by+myl_, 1, 1, 0, c_white, 0.7 );
+				} else {
+					//draw_sprite_ext( scooldown_box, 0, ex_+bx+visual_i*mds_, by+myl_,    1.1, 1.1, 0, c_ltgray, 1 );		
+					if ( current_weapon == wep_list[i] ) {
+						draw_sprite_ext( sabilities_icon,		i, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, merge_colour( c_white, c_orange, 0.1 ), 1 );
+						if ( gun_flash_data[i] > 0 ) {
+							draw_sprite_ext( sreload_flash, gun_flash_data[i], ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, c_white, 0.75 );
+						}
 				
-			} else {
-				draw_sprite_ext( sabilities_icon,		i, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, merge_color( c_gray, c_dkgray, 0.6 ), 1 );	
-				if ( gun_flash_data[i] > 0 ) {
-					draw_sprite_ext( sreload_flash, gun_flash_data[i], ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, c_gray, 0.7 );
-				}
+					} else {
+						draw_sprite_ext( sabilities_icon,		i, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, merge_color( c_gray, c_dkgray, 0.6 ), 1 );	
+						if ( gun_flash_data[i] > 0 ) {
+							draw_sprite_ext( sreload_flash, gun_flash_data[i], ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, c_gray, 0.7 );
+						}
 				
+					}
+				}
+		
+				visual_i++;
+				i++;
+		
 			}
-		}
+			myl_ = 3;
+			if ( grenade_cooldown ) {
+				//draw_sprite_ext( scooldown_box, 0,								ex_+bx+visual_i*mds_, by+myl_, 1.1, 1.1, 0,  merge_colour(c_dkgray,c_red,0.5), 1 );		
+				draw_sprite_ext( sabilities_icon,		6,								ex_+bx+visual_i*mds_, by+myl_, 1.1, 1.1, 0,  merge_colour(c_dkgray,c_red,0.5), 1 );
+				draw_sprite_ext( scooldown,		27-( grenade_cooldown/140 )*26, ex_+bx+visual_i*mds_, by+myl_, 1.1, 1.1, 0, c_white, 0.9 );
+			} else {
+				//draw_sprite_ext( scooldown_box, 0, ex_+bx+visual_i*mds_, by+myl_,  1.1, 1.1, 0, c_orange, 1 );
+				draw_sprite_ext( sabilities_icon,		6, ex_+bx+visual_i*mds_, by+myl_,  1.1, 1.1, 0, merge_color( c_gray, c_dkgray, 0.5 ), 1 );	
+			}
+			draw_sprite_ext( snumbers, 6, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, c_gray, 1 );
+	
+			wep_list  = [ 0, 2, 5, 4, 3, 1 ];
+			draw_sprite_ext( scooldown_box_outer,0,  ex_+bx+(wep_list[current_weapon]-3.5)*mds_, by, 1, 1, 0, c_white, 1 );
+	
+			wep_list  = [ 0, 5, 1, 4, 3, 2 ];
+			var i = 0; repeat(6) {
+				if ( current_weapon == wep_list[i] ) {
+					draw_sprite_ext( snumbers, i, ex_+bx+(i-3.5)*mds_-2, by+myl_-3-1,  1, 1, 0, c_white, 1 );
+				} else {
+					draw_sprite_ext( snumbers, i, ex_+bx+(i-3.5)*mds_+1, by+myl_+1,  1, 1, 0, c_gray, 1 );
+				}
 		
-		visual_i++;
-		i++;
+				i++;
+			}
+		break;
+		#endregion
+		#region maya
+		case e_char_index.maya:
+				var amult = 1;
+				var yy = GH*0.5;
+				var xx = GW*0.5;
+				
 		
-	}
-	
-	myl_ = 3;
-	if ( grenade_cooldown ) {
-		//draw_sprite_ext( scooldown_box, 0,								ex_+bx+visual_i*mds_, by+myl_, 1.1, 1.1, 0,  merge_colour(c_dkgray,c_red,0.5), 1 );		
-		draw_sprite_ext( sabilities_icon,		6,								ex_+bx+visual_i*mds_, by+myl_, 1.1, 1.1, 0,  merge_colour(c_dkgray,c_red,0.5), 1 );
-		draw_sprite_ext( scooldown,		27-( grenade_cooldown/140 )*26, ex_+bx+visual_i*mds_, by+myl_, 1.1, 1.1, 0, c_white, 0.9 );
-	} else {
-		//draw_sprite_ext( scooldown_box, 0, ex_+bx+visual_i*mds_, by+myl_,  1.1, 1.1, 0, c_orange, 1 );
-		draw_sprite_ext( sabilities_icon,		6, ex_+bx+visual_i*mds_, by+myl_,  1.1, 1.1, 0, merge_color( c_gray, c_dkgray, 0.5 ), 1 );	
-	}
-	draw_sprite_ext( snumbers, 6, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, c_gray, 1 );
-	
-	wep_list  = [ 0, 2, 5, 4, 3, 1 ];
-	draw_sprite_ext( scooldown_box_outer,0,  ex_+bx+(wep_list[current_weapon]-3.5)*mds_, by, 1, 1, 0, c_white, 1 );
-	
-	wep_list  = [ 0, 5, 1, 4, 3, 2 ];
-	var i = 0; repeat(6) {
-		if ( current_weapon == wep_list[i] ) {
-			draw_sprite_ext( snumbers, i, ex_+bx+(i-3.5)*mds_-2, by+myl_-3-1,  1, 1, 0, c_white, 1 );
-		} else {
-			draw_sprite_ext( snumbers, i, ex_+bx+(i-3.5)*mds_+1, by+myl_+1,  1, 1, 0, c_gray, 1 );
-		}
+				var ds_ = 14;
+				draw_sprite_ext( smaya_abilities_bar, 0, xx, yy, 1, 1, 0, c_white, amult );
+				
+				var cw_ = clamp(current_weapon,0,5);
+				var nms_ = [
+					0,
+					2,
+					5,
+					4,
+					3,
+					1,
+				];
+				var exe		= 20;
+				var exy		= -10;
+				var ang_	= -90;
+				var vl_		= nms_[ floor( clamp( current_weapon, 0, 5 ) ) ];
 		
-		i++;
+				if ( CLIP[current_weapon] != 0 ) {
+					exe += 2;
+					draw_sprite_ext( smaya_abilities_icons, vl_, xx+76-1+exe, yy+14+exy,   1, 1 ,  ang_, c_dkgray, amult );
+					draw_sprite_ext( smaya_abilities_icons, vl_, xx+76+1+exe, yy+14+exy,   1, 1 ,  ang_, c_dkgray, amult );
+					draw_sprite_ext( smaya_abilities_icons, vl_, xx+76  +exe, yy+14-1+exy, 1, 1 ,  ang_, c_dkgray, amult );
+					draw_sprite_ext( smaya_abilities_icons, vl_, xx+76  +exe, yy+14+1+exy, 1, 1 ,  ang_, c_dkgray, amult );
+			
+					draw_sprite_ext( smaya_abilities_icons, vl_, xx+76+exe, yy+14+exy, 1, 1,  ang_, merge_colour(c_orange,c_gray,wave(0.0,0.3,5,0)), amult );
+				} else {
+					exe -= 5;
+					draw_sprite_ext( smaya_abilities_icons, vl_, xx+76-1+exe, yy+14+exy,   1, 1 ,  ang_, c_dkgray,  amult );
+					draw_sprite_ext( smaya_abilities_icons, vl_, xx+76+1+exe, yy+14+exy,   1, 1 ,  ang_, c_dkgray,  amult );
+					draw_sprite_ext( smaya_abilities_icons, vl_, xx+76  +exe, yy+14-1+exy, 1, 1 ,  ang_, c_dkgray,  amult );
+					draw_sprite_ext( smaya_abilities_icons, vl_, xx+76  +exe, yy+14+1+exy, 1, 1 ,  ang_, c_dkgray,  amult );
+			
+					draw_sprite_ext( smaya_abilities_icons, vl_, xx+76+exe, yy+14+exy, 1, 1,  ang_, c_gray,  amult );
+				}
+		
+				var nms_ = [
+					0,
+					5,
+					1,
+					4,
+					3,
+					2,
+				];
+		
+				var nnm_ = 0;
+				var rl_val_ = 0;
+				var pw_val_ = 0;
+				var i = 0;
+				draw_sprite_ext( smaya_abilities_icons, i, xx - 1 + ( i * ds_ )+4, yy+4, 1, 1, 0, c_white, amult );
+			
+				i = 1; repeat( 5 ) {
+					nnm_ = nms_[i];
+					rl_val_ = RELOAD[nnm_];
+					pw_val_ = ( 480 - rl_val_ ) / 480;
+					if ( WEP_DATA[ nnm_ ].found ) {
+						if ( CLIP[nnm_] == 0 ) {
+							draw_sprite_ext( smaya_abilites_fill,   1, xx - 0 + ( i * ds_ )+4, yy+5+11, 1, pw_val_, 0, merge_colour(c_gray, c_red, 0.6 ), amult*0.8 );
+							draw_sprite_ext( smaya_abilities_icons, i, xx - 1 + ( i * ds_ )+4, yy+4, 1, 1, 0, c_dkgray, amult );
+						} else if ( rl_val_ > 0 ) {
+							draw_sprite_ext( smaya_abilites_fill,   1, xx - 0 + ( i * ds_ )+4, yy+5+11, 1, pw_val_, 0, c_aqua, amult*0.7 );
+							draw_sprite_ext( smaya_abilities_icons, i, xx - 1 + ( i * ds_ )+4, yy+4, 1, 1, 0, c_ltgray, amult );
+						} else {
+							draw_sprite_ext( smaya_abilites_fill,   0, xx - 0 + ( i * ds_ )+4, yy+4+12, 1, 1, 0, c_gray, amult );
+							draw_sprite_ext( smaya_abilities_icons, i, xx - 1 + ( i * ds_ )+4, yy+4, 1, 1, 0, c_ltgray,  amult );
+						}
+					} else {
+						draw_sprite_ext( smaya_abilities_icons, i, xx - 1 + ( i * ds_ )+4, yy+4, 1, 1, 0, c_black, amult );
+					}
+					i++;
+				}
+				if ( CLIP[current_weapon] != 0 ) {
+					draw_sprite_ext( smaya_abilities_bar, 1, xx, yy, 1, 1, 0, c_gray, amult );
+				} else {
+					draw_sprite_ext( smaya_abilities_bar, 1, xx, yy, 1, 1, 0, merge_colour(c_gray,c_red,.2), amult );
+				}
+				var nms_ = [
+					0,
+					2,
+					5,
+					4,
+					3,
+					1,
+				];
+				var vl_ = nms_[ floor(clamp( current_weapon, 0, 5 )) ];
+		
+				if ( CLIP[ current_weapon ] != 0 ) {
+					draw_sprite_ext(smaya_abilities_icons, vl_, xx - 1 + ( vl_ * ds_ )+4, yy+4, 1, 1, 0, c_orange, amult );
+				}
+		
+		
+				draw_sprite_ext( smaya_abilites_select,	   0, xx + ( vl_ * ds_ )+5, yy+1, 1, 1, 0, CLIP[current_weapon] != 0 ? c_white : merge_colour(c_ltgray,c_red,0.5), amult );
+		break;
+		#endregion
+		#region ameli
+		case e_char_index.ameli:
+		
+		break;
+		#endregion
 	}
-	
 	
 	if ( flash_alpha > 0 ) {
 		DSC( screen_flash_col	 );

@@ -35,12 +35,15 @@ function player_state_general(alt_col) {
 	} else if ( grenade_input_buffer ) {
 		grenade_input_buffer--;
 	}
+	var ex_check = char_index = e_char_index.maya ? ( CLIP[current_weapon] > 0 || current_weapon == 0 ) : true;
 	
-	if ( grenade_input_buffer && knife_state == 0 && input_skip < 5 && !grenade_cooldown ) {//&& ( !gun_charging )
+	if ( grenade_input_buffer && knife_state == 0 && input_skip < 5 && !grenade_cooldown && ex_check ) {//&& ( !gun_charging )
 		//if ( current_weapon == 0 || CLIP[ current_weapon ] > 0 ) {//MP >= grenade_cost && 
 		knife_state = 1;
 		draw_xscale = x > MX ? -1 : 1;
 		grenade_input_buffer = 0;
+		maya_grenade_charge = 0;
+		maya_grenade_state = 0;
 		//}
 			//MP -= grenade_cost;
 		

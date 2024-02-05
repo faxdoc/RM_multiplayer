@@ -160,12 +160,12 @@ function scr_player_draw_maya(){
 			
 			if( hh == 0 || hh != draw_xscale ) {
 				draw_sprite_ext( splayer_maya_body_upper, ind,xx_+ex+nhh,yy_-10+y_off*0.5+bwave-1,draw_xscale,1,-nhh*18, image_blend, draw_alpha );
-				if ( legs != splayer_maya_legs_run ) {
+				if ( hh == 0 && gen_col(x,y+1) ) {
 					draw_sprite_ext( splayer_maya_body, ind,xx_+ex+nhh,yy_-10+y_off*0.5+bwave-1,draw_xscale,1,-nhh*18, image_blend, draw_alpha );
 				}
 			} else {
 				draw_sprite_ext( splayer_maya_body_upper, ind,xx_+ex+hhp_,yy_-10+y_off*0.5+bwave-1,draw_xscale,1,-hhp_*20, image_blend, draw_alpha );
-				if ( legs != splayer_maya_legs_run ) {
+				if ( hh == 0 && gen_col(x,y+1) ) {
 					draw_sprite_ext( splayer_maya_body, ind,xx_+ex+hhp_,yy_-10+y_off*0.5+bwave-1,draw_xscale,1,-hhp_*20, image_blend, draw_alpha );
 				}
 			}
