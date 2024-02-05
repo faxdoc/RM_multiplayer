@@ -32,12 +32,12 @@ function scr_secondary_attack_maya(){
 				if ( maya_grenade_charge != max_charge ) {
 					if ( maya_grenade_charge > 3/charge_levels[current_weapon] ) {
 						var dr = random(360);
-						if ( random( 1 ) > 0.6 ) {
-							with (ICD(x+LDX(68,dr),y+LDY(68,dr),-1,ocharge_fx)) {
-								target_offset_y = -22;
-								image_blend = c_aqua;
-							}
-						}
+						//if ( random( 1 ) > 0.6 ) {
+							//with (ICD(x+LDX(68,dr),y+LDY(68,dr),-1,ocharge_fx)) {
+								//target_offset_y = -22;
+								//image_blend = c_aqua;
+							//}
+						//}
 					}
 				}
 				switch(current_weapon) {
@@ -116,7 +116,7 @@ function scr_secondary_attack_maya(){
 						var dmg_mult = 1;
 						blink_state = 2;
 						timer		= 20;
-						var dr	= point_direction( x, y, mx, my );
+						var dr	= point_direction( x, y, MX, MY );
 						var t	= ICD( x + draw_xscale * 16, y - 17, 0, par_hitbox );
 						t.move_type 	= e_movetype.hvsp;
 						t.hsp			= LDX( 6, dr ) * 1.1* (0.9+charge_level*.2);
@@ -197,15 +197,15 @@ function scr_secondary_attack_maya(){
 							b.shake_add *= 1;
 							b.alt_knockback = true;
 							with ( b ) {
-								if ( PLC( x, y, par_enemy ) ) {
-									INVIS = max(INVIS,10);
-									do_bounce_ = true;
-								}
+								//if ( PLC( x, y, par_eneMY ) ) {
+								//	INVIS = max(INVIS,10);
+								//	do_bounce_ = true;
+								//}
 							}
 						}
 						
 							
-						var _dr =  point_direction(x,y-gun_height, mx, my );
+						var _dr =  point_direction(x,y-gun_height, MX, MY );
 						
 						
 						var hspd_ = LDX( lerp(4.5,8,charge_level), _dr );
@@ -315,7 +315,7 @@ function scr_secondary_attack_maya(){
 						var can_wallbounce = true;
 						var nmult_ = 1.4;
 						SHAKE += ex_ ? 3 : 2;
-						draw_xscale = sign(x-mx) == 1 ? -1 :  1;
+						draw_xscale = sign(x-MX) == 1 ? -1 :  1;
 						repeat( 2 ) {
 							var b = bullet_general( 24*charge_pwr_, 0.1, splayer_maya_slash_hard, 0, , 0.5 );
 							// b.y;
@@ -338,7 +338,7 @@ function scr_secondary_attack_maya(){
 						if ( !gen_col( x, y+1 ) ) {
 							vsp = min( -3, vsp - 1 );
 						}
-						var _dir = point_direction( x, y-gun_height, mx, my );
+						var _dir = point_direction( x, y-gun_height, MX, MY );
 						 hsp -= LDX( 1.5, _dir )*0.9;
 						 vsp = min( other.vsp - LDY( 2.8, _dir ), -LDY( 3.2, _dir ) )*0.9;
 						
@@ -410,7 +410,7 @@ function scr_secondary_attack_maya(){
 						shoot_press_buffer = 0;
 						gun_charge = 30;
 						gun_len = 14;
-						var drr = point_direction( x, y-gun_height, mx, my );
+						var drr = point_direction( x, y-gun_height, MX, MY );
 						var xx = x+LDX( gun_len, drr );
 						var yy = y - gun_height + LDY( gun_len, drr );
 			
@@ -460,7 +460,7 @@ function scr_secondary_attack_maya(){
 			            }
 			            
 						gun_len = 22;
-						var drr = point_direction( x, y - gun_height, mx, my );
+						var drr = point_direction( x, y - gun_height, MX, MY );
 						var xx = x + LDX( gun_len, drr );
 						var yy = y - gun_height + LDY( gun_len, drr );
 						

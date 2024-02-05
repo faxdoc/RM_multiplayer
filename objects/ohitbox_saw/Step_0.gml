@@ -133,29 +133,32 @@ switch(move_state) {
 			}
 		#region alt movement
 		} else {
-			var drr_ = get_angle_at_player();
-			var _ds = get_distance_from_player();
-			hsp *= 0.97;
-			vsp *= 0.97;
-			var sp_ = min(0.3,(_ds-10) /100);
-			hsp += LDX( sp_, drr_ );
-			vsp += LDY( sp_, drr_ );
-			depth = 10;
-			grav = 0;
-			x += hsp;
-			y += vsp;
-			draw_angle += 10;
-			if ( !duration-- ) {
-				IDD();
-			}
-			if (!alt_init) {
-				duration = 900;
-				knockback *= 0.5;
-				hsp *= 0.5;
-				vsp *= 0.5;
-				alt_init = true;
-				base_xscale += 0.25;
-				base_yscale += 0.25;
+			if ( instance_exists( parent ) ) {
+				var drr_ = get_angle_at_player();
+				var _ds = point_distance(x,y,parent.x,parent.y);
+				hsp *= 0.97;
+				vsp *= 0.97;
+				var sp_ = min(0.3,(_ds-10) /100);
+				hsp += LDX( sp_, drr_ );
+				vsp += LDY( sp_, drr_ );
+				depth = 10;
+				grav = 0;
+				x += hsp;
+				y += vsp;
+				draw_angle += 10;
+				if ( !duration-- ) {
+					IDD();
+				}
+				if (!alt_init) {
+					duration = 900;
+					knockback *= 0.5;
+					hsp *= 0.5;
+					vsp *= 0.5;
+					alt_init = true;
+					base_xscale += 0.25;
+					base_yscale += 0.25;
+					alt_init = true;
+				}
 			}
 		}
 		#endregion

@@ -161,38 +161,40 @@ destroy_function = function() {
 				t.vsp = ( LDY( spd*random_range_fixed(.6,1)*.2, ddr ) -1-random_fixed(6) )*.9;
 				if( spark_col != -1 )t.col = spark_col;
 			}
-		
-			if ( point_distance(x,y,parent.x,parent.y-22) < 30 ) {
-				if ( parent.state != e_player.hit ) {
-					effect_create_depth(  -40, ef_ring, t.x, t.y-22, 0, merge_colour(c_red,c_ltgray,0.6) );
-					parent.hit_freeze = floor(max(8,dmg/5 ) );
 			
-					parent.screen_flash_col	= c_gray;
-					parent.flash_alpha		= 0.07;
-		
-				} else {
-					parent.hit_freeze = floor( max(4,dmg/6) );
-				}
-		
-				parent.state = e_player.hit;
-				parent.hp -= dmg;
-				parent.hit_timer = floor(dmg*8*stun_mult);
-				parent.hit_freeze = max(4,dmg/3);
-				parent.bounce_cooldown = 30;
-		
-				parent.can_hook_delay = false;
-				var tt_ = parent;
-				with ( ohook ) {
-					if ( parent == tt_ || hook_object == tt_ ) {
-						state = 2;
-						if (instance_exists(wire) ) {
-							IDD(wire);
+			if ( instance_exists( parent ) ) {
+				if ( point_distance(x,y,parent.x,parent.y-22) < 30 ) {
+					if ( parent.state != e_player.hit ) {
+						effect_create_depth(  -40, ef_ring, t.x, t.y-22, 0, merge_colour(c_red,c_ltgray,0.6) );
+						parent.hit_freeze = floor(max(8,dmg/5 ) );
+				
+						parent.screen_flash_col	= c_gray;
+						parent.flash_alpha		= 0.07;
+				
+					} else {
+						parent.hit_freeze = floor( max(4,dmg/6) );
+					}
+				
+					parent.state = e_player.hit;
+					parent.hp -= dmg;
+					parent.hit_timer = floor(dmg*8*stun_mult);
+					parent.hit_freeze = max(4,dmg/3);
+					parent.bounce_cooldown = 30;
+				
+					parent.can_hook_delay = false;
+					var tt_ = parent;
+					with ( ohook ) {
+						if ( parent == tt_ || hook_object == tt_ ) {
+							state = 2;
+							if (instance_exists(wire) ) {
+								IDD(wire);
+							}
 						}
 					}
+					parent.hsp *= 0.25;
+					parent.vsp *= 0.25;
+					parent.vsp = -4;
 				}
-				parent.hsp *= 0.25;
-				parent.vsp *= 0.25;
-				parent.vsp = -4;
 			}
 			audio_play_sound_pitch_falloff(choose_fixed(snd_explotion_1,snd_explotion_2),.4,.6+random_fixed(.25),4);
 			audio_play_sound_pitch_falloff(choose_fixed(snd_explotion_1,snd_explotion_2),.4,.5+random_fixed(.15),4);

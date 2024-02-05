@@ -19,6 +19,9 @@ gun_active_pos = 0;
 maya_has_parry	   = false;
 maya_has_parry_red = false;
 
+
+active_timer = 0;
+maya_grenade_charge = 0;
 maya_grenade_state = 0;
 maya_sword_state = 0;
 maya_sword_swing_state = 0;

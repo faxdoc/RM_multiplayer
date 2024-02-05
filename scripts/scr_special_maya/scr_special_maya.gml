@@ -84,40 +84,6 @@ function scr_special_maya(){
 					state = e_player.normal;
 					draw_type = e_draw_type.aiming;
 					parry_hit = true;
-				} else if ( t2_ && ds2_ < 6 ) {
-					can_input	= true;
-					doing_active= false;
-				// 	
-				// 	audio_play_sound_pitch(snd_maya_parry, 1, RR(1,1.05),0);
-				// 	audio_play_sound_pitch(snd_maya_start_hyper,0.7, RR(1,1.05)*0.9,0);
-				// 	audio_play_sound_pitch_falloff( snd_explotion_1,0.3,0.9+random(.15),4);
-				// 	audio_play_sound_pitch( snd_crystal_jump,		  1.30, 0.8 + random( 0.1 ),	7 );
-					
-					hsp *= 0.6;
-					if ( K3 || KUP ) {
-						vsp = -4.0;
-					} else {
-						vsp = -2.0;
-					}
-					maya_has_parry_red = true;
-					space_buffer = true;
-				// 	scr_player_anti_stucklock( true, 1 );
-					hit_timer = 4;
-					INVIS = max (INVIS, 60 );
-					SHAKE += 2;
-					draw_type = e_draw_type.aiming;
-					repeat( 20 ) {
-						var dr = random(360);
-						var len = ( 8 + random( 32 * 1.5 ) )*0.5;
-						var eff = ICD( x+LDX( len, dr ), y - 21 + LDY( len, dr ), 2, osmoke_fx );
-						eff.dir = dr;
-						eff.image_index = 0;
-						eff.image_blend = c_red;
-						eff.spd *= 2;
-					}
-					draw_type = e_draw_type.aiming;
-					state = e_player.normal;
-					// parry_hit = true;
 				} else {
 					parry_duration--;
 					if ( parry_duration <= 0 ) {
