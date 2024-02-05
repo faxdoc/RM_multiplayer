@@ -22,10 +22,13 @@ var do_col = false;
 // if( PLC(x,y,par_enemy) ){
 // 	do_col = true;
 
-image_xscale = 9;
-image_yscale = 9;
+image_xscale = 7;
+image_yscale = 7;
 if ( PLC( x, y, oplayer ) ) {
-	do_col = true;
+	var tll_ = instance_place(x,y,oplayer);
+	if ( parent == tll_ ) {
+		do_col = true;
+	}
 }
 image_xscale = 2;
 image_yscale = 2;
@@ -33,8 +36,8 @@ if( PLC(x,y,par_hitbox) ){
 	do_col = true;
 	ex_dmg *= 1.2;
 }
-image_xscale = 9;
-image_yscale = 9;
+image_xscale = 7;
+image_yscale = 7;
 
 
 if ( do_col ) {
@@ -55,7 +58,7 @@ if ( do_col ) {
 	t.duration			 = 12*ex_dmg;
 	t.do_explotion_sound = false;
 	
-	t.explode_damage = 34*dmg_mult*lerp( 0.8, 1.3, charge_level );
+	t.explode_damage = 34*dmg_mult*lerp( 0.8, 1.3, charge_level )*dmg;
 	t.sprite_index	 = srocket_alt;
 	t.spin			 = 0;
 	t.draw_angle	 = image_angle;
@@ -95,7 +98,7 @@ if ( !duration-- || instance_number( oplayer_maya_star ) > 3 ) {
 	t.push_player		 = true;
 	t.duration			 = 12*ex_dmg;
 	t.do_explotion_sound = false;
-	t.explode_damage	 = 34*dmg_mult*lerp( 0.8, 1.3, charge_level );
+	t.explode_damage	 = 34*dmg_mult*lerp( 0.8, 1.3, charge_level )*dmg;
 	t.sprite_index		 = srocket_alt;
 	t.spin				 = 0;
 	t.draw_angle		 = image_angle;

@@ -16,7 +16,12 @@ function scr_secondary_attack_maya(){
 					CLIP[ current_weapon ]--;
 						//pistol saw
 					if( current_weapon == 5 )CLIP[5] = 0;
+						//long swing?
 					if( current_weapon == 2 )CLIP[2] = min(CLIP[2],1);
+					
+					//long swing?
+					if( current_weapon == e_gun.sniper )CLIP[e_gun.sniper] = min(CLIP[e_gun.sniper],1);
+					
 				}
 				knife_timer = min(floor(maya_grenade_charge),5);
 			} else {
@@ -290,7 +295,7 @@ function scr_secondary_attack_maya(){
 				#endregion
 				#region Large swing
 				case e_gun.rail:
-				show_debug_message("asdaglr")
+				//show_debug_message("asdaglr")
 					var ex_ = charge_level == 1;
 					var charge_pwr_ = lerp(0.8,1.4,charge_level) + ( charge_level == 1 ? 0.5 : 0) + (maya_has_parry ? 0.7 : 0);
 					if ( knife_timer == 7 ) {
@@ -353,6 +358,7 @@ function scr_secondary_attack_maya(){
 						state = e_player.normal;
 						image_speed = 1;
 						maya_grenade_charge = 0;
+						RELOAD[e_gun.rail] = 500;
 					}
 					
 				break;
@@ -420,6 +426,7 @@ function scr_secondary_attack_maya(){
 						var t = ICD( xx, yy, -1, oplayer_maya_star );
 						t.charge_level = charge_level;
 						t.parent = id;
+						t.dmg *= 0.2;
 						
 						var rep_num = rocket_distance-4;	
 						with ( t ) {
@@ -448,6 +455,7 @@ function scr_secondary_attack_maya(){
 						knife_state = 0;
 						knife_timer = 0;
 						maya_grenade_charge = 0;
+						RELOAD[e_gun.grenade] = 400;
 					}
 				break;
 				#endregion
@@ -479,8 +487,7 @@ function scr_secondary_attack_maya(){
 						b.hsp			    = LDX( b.spd*0.25, b.dir );
 						b.vsp			    = LDY( b.spd*0.25, b.dir );
 						b.alt_movement      = true;
-						b.can_bounce_player = true;
-						b.can_bounce_delay  = 12;
+						b.parent = id;
 						scr_set_size( b, charge_pwr_ *1.1 );
 						shoot_delay = 20;
 						
@@ -495,6 +502,7 @@ function scr_secondary_attack_maya(){
 						knife_state = 0;
 						knife_timer = 0;
 						maya_grenade_charge = 0;
+						RELOAD[e_gun.flame] = 500;
 					}
 				break;
 				#endregion

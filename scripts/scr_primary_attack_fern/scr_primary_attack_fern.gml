@@ -1,18 +1,22 @@
 function random_range_fixed(x_,y_) {
+	if ( !instance_exists(orandom) ) return x_;
 	orandom.random_array_index = (orandom.random_array_index+1) mod (array_length(orandom.random_array)-1);
 	return lerp(x_,y_,orandom.random_array[orandom.random_array_index]);
 }
 function irandom_range_fixed(x_,y_) {
+	if ( !instance_exists(orandom) ) return x_;
 	orandom.random_array_index = (orandom.random_array_index+1) mod (array_length(orandom.random_array)-1);
 	return floor(lerp(x_,y_,orandom.random_array[orandom.random_array_index]));
 }
 
 function random_fixed(x_) {
+	if ( !instance_exists(orandom) ) return x_;
 	orandom.random_array_index = (orandom.random_array_index+1) mod (array_length(orandom.random_array)-1);
 	return x_*orandom.random_array[orandom.random_array_index];
 }
 
 function irandom_fixed(x_) {
+	if ( !instance_exists(orandom) ) return x_;
 	orandom.random_array_index = (orandom.random_array_index+1) mod (array_length(orandom.random_array)-1);
 	return floor( x_*orandom.random_array[orandom.random_array_index] );
 }
@@ -106,7 +110,7 @@ switch(current_weapon) {
 		if( RELOAD[cg] <= 0 ) CLIP[cg] = 2;
 		
 		if( CLIP[cg] == 0 ){
-			if k1p_ audio_play_sound_pitch( snd_shoot_no_bullets, RR(.8,1),RR(.95,1.1),-1);
+			if k1p_ audio_play_sound_pitch( snd_shoot_no_bullets, RR( 0.8, 1 ), RR( 0.95, 1.1 ), -1 );
 			exit;
 		}
 			if ( k1p_ ) {
@@ -415,7 +419,7 @@ switch(current_weapon) {
 			gun_charge = 0;
 			exit;
 		}
-			
+		
 		if ( k1p_ && gun_charge <= 0 ) {
 			shoot_press_buffer = 0;
 			gun_len = 22;
@@ -442,7 +446,8 @@ switch(current_weapon) {
 			b.hsp				= LDX( b.spd*0.2, b.dir );
 			b.vsp				= LDY( b.spd*0.2, b.dir );
 			b.can_bounce_delay  = 12;
-				
+			
+			
 			scr_set_size( b, 1 );
 			shoot_delay = 20;
 				
@@ -529,9 +534,27 @@ function bullet_general(dmg,spd,sprite, unacc, obj_ = par_hitbox, cb_mult_ = 1, 
 	var mp_mult  = 1;
 	
 	
-	var drr = point_direction( x, y-gun_height, target_x, target_y ) + random_range_fixed( -unacc, unacc );
-	var xx = x				+ LDX( gun_len*0.1, drr );
-	var yy = y-gun_height	+ LDY( gun_len*0.1, drr ) + ( crouching ? 5 : 0 );
+	switch(sprite) {
+		case splayer_maya_slash:
+		case splayer_maya_slash_hard:
+		case splayer_maya_slash_heavy:
+		case splayer_maya_slash_long:
+			dmg_mult *= 0.5;
+			var bonus_offset = -8;
+			var drr = point_direction( x, y-gun_height+bonus_offset, target_x, target_y ) + random_range_fixed( -unacc, unacc );
+			var xx = x							+ LDX( gun_len, drr );
+			var yy = y-gun_height+bonus_offset	+ LDY( gun_len, drr ) + ( crouching ? 5 : 0 );
+		break;
+		default:
+			var drr = point_direction( x, y-gun_height, target_x, target_y ) + random_range_fixed( -unacc, unacc );
+			var xx = x				+ LDX( gun_len*0.1, drr );
+			var yy = y-gun_height	+ LDY( gun_len*0.1, drr ) + ( crouching ? 5 : 0 );
+		break;
+	}
+
+
+
+	
 	
 	var cb_ =  0.055;
 	hsp -= LDX( min( dmg, 30 ) * cb_ * cb_mult_, drr );
@@ -577,7 +600,10 @@ function bullet_general(dmg,spd,sprite, unacc, obj_ = par_hitbox, cb_mult_ = 1, 
 		break;
 		
 	}
-	
+	if ( char_index == e_char_index.maya ) {
+		t.stun_mult *= 0.4;
+		t.knockback = dmg * dmg_mult * 0.3;
+	}
 	return t;
 	
 }

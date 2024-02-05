@@ -19,14 +19,15 @@ function scr_player_draw_maya(){
 		#region maya main
 		case e_draw_type.hook:
 		case e_draw_type.aiming:
+		var hh = ( can_input && ( state == e_player.normal || state == e_player.hook ) ) ? KRIGHT-KLEFT : 0;
 			var bmax = 0, bmin = 0, bdur = 0;
 			var bly_ = floor(body_y-land_y);
-			var extra_leg_y = 2;
+			var extra_leg_y = ( hh != 0 && on_ground ) ? 4 : 2;
 			var xx_ = x;
 			var yy_ = y-extra_leg_y;
 			//draw_sprite( splayer_maya_bow, 0, head_x+( draw_xscale * 6 )+1+hsp, head_y+10 );
 			#region general calculate 
-			var hh = ( can_input && ( state == e_player.normal || state == e_player.hook ) ) ? KRIGHT-KLEFT : 0;
+			
 			
 			var body_bonus_x = 0;
 			
@@ -145,7 +146,7 @@ function scr_player_draw_maya(){
 				if ( round(hsp) == 0 ) {
 					draw_sprite_ext( splayer_maya_legs, legs_index,  xx_, yy_+extra_leg_y,draw_xscale,1,0,image_blend,draw_alpha);
 				} else {
-					draw_sprite_ext( splayer_maya_legs_run, legs_running_index*draw_xscale,  x+hh*4, yy_+extra_leg_y,draw_xscale,1,0,image_blend,draw_alpha);
+					draw_sprite_ext( splayer_maya_legs_run, legs_running_index*draw_xscale,  x, yy_+extra_leg_y,draw_xscale,1,0,image_blend,draw_alpha);
 				}
 			} else {
 				draw_sprite_ext( splayer_maya_legs_jump, legs_index,  xx_, yy_+extra_leg_y,draw_xscale,1,0,image_blend,draw_alpha);
@@ -160,12 +161,12 @@ function scr_player_draw_maya(){
 			
 			if( hh == 0 || hh != draw_xscale ) {
 				draw_sprite_ext( splayer_maya_body_upper, ind,xx_+ex+nhh,yy_-10+y_off*0.5+bwave-1,draw_xscale,1,-nhh*18, image_blend, draw_alpha );
-				if ( hh == 0 && gen_col(x,y+1) ) {
+				if ( hh == 0 || !on_ground ) {
 					draw_sprite_ext( splayer_maya_body, ind,xx_+ex+nhh,yy_-10+y_off*0.5+bwave-1,draw_xscale,1,-nhh*18, image_blend, draw_alpha );
 				}
 			} else {
 				draw_sprite_ext( splayer_maya_body_upper, ind,xx_+ex+hhp_,yy_-10+y_off*0.5+bwave-1,draw_xscale,1,-hhp_*20, image_blend, draw_alpha );
-				if ( hh == 0 && gen_col(x,y+1) ) {
+				if (hh == 0 || !on_ground ) {
 					draw_sprite_ext( splayer_maya_body, ind,xx_+ex+hhp_,yy_-10+y_off*0.5+bwave-1,draw_xscale,1,-hhp_*20, image_blend, draw_alpha );
 				}
 			}

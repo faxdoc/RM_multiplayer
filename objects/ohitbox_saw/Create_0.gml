@@ -20,6 +20,8 @@ alt_init = false;
 player_exists = true;
 //can_hitfreeze_cooldown = 0;
 
+alt_init_2 = false;
+
 collision_init();
 gen_col = PLA;
 //switch(current_biome) {

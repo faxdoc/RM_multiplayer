@@ -1,3 +1,15 @@
+#macro TEST_DEFAULT true
+#macro LIVE_DEFAULT true
+
+
+
+global.test_enabled = TEST_DEFAULT;
+global.live_turned_on = LIVE_DEFAULT;
+
+
+
+
+
 rollback_define_player(oplayer);
 rollback_define_input({
 	KUP:	ord( "W" ),
@@ -26,7 +38,19 @@ rollback_define_input({
 	
 });
 
-if ( !rollback_join_game() ) {
+if ( global.test_enabled ) {
+	IDD(orandom);
+	IDD(omenu_bg_render);
+	omultiplayer_manager.game_has_started = true; 
+	audio_stop_sound( snd_music_menu_loop );
+	with ( obutton ) {
+		IDD();
+	}
+	layer_set_visible( layer_get_id("Assets_1"), false );
+	layer_set_visible( layer_get_id("Assets_2"), false );
+	game_has_started = true;
+	rollback_create_game(2,true);
+} else if ( !rollback_join_game() ) {
 	game_has_started = false;
 } else {
 	game_has_started = true;
@@ -47,3 +71,9 @@ global.training_mode		= false;
 
 rollback_use_random_input( false );
 audio_channel_num(32);
+
+
+
+
+
+

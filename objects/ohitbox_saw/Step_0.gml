@@ -40,8 +40,10 @@ switch(move_state) {
 					hsp  += t_.hsp*0.55;
 					hsp *= 0.9;
 					with( t_ ) {
-						destroy_function();
-						IDD();
+						if ( object_index != ohitbox_saw ) {
+							destroy_function();
+							IDD();
+						}
 					}
 					//IDD( t_ );
 				break;
@@ -134,30 +136,32 @@ switch(move_state) {
 		#region alt movement
 		} else {
 			if ( instance_exists( parent ) ) {
-				var drr_ = get_angle_at_player();
-				var _ds = point_distance(x,y,parent.x,parent.y);
+				var drr_ =  point_direction(x,y,parent.x,parent.y);
+				var _ds =  point_distance(x,y,parent.x,parent.y);
 				hsp *= 0.97;
 				vsp *= 0.97;
 				var sp_ = min(0.3,(_ds-10) /100);
 				hsp += LDX( sp_, drr_ );
 				vsp += LDY( sp_, drr_ );
-				depth = 10;
+				depth = -220;
 				grav = 0;
 				x += hsp;
 				y += vsp;
 				draw_angle += 10;
+				dir = 85;
 				if ( !duration-- ) {
 					IDD();
 				}
-				if (!alt_init) {
-					duration = 900;
-					knockback *= 0.5;
+				if (!alt_init_2) {
+					knockback *= 1.5;
+					duration = 600;
 					hsp *= 0.5;
 					vsp *= 0.5;
-					alt_init = true;
 					base_xscale += 0.25;
 					base_yscale += 0.25;
-					alt_init = true;
+					alt_init_2 = true;
+					stun_mult *= 2;
+					base_dmg *= 2;
 				}
 			}
 		}
@@ -186,13 +190,13 @@ switch(move_state) {
 		if (!can_push_cooldown ) {
 			if( place_meeting(x,y,par_hitbox) ){
 				can_push_cooldown = 2;
-				var t_ = instance_place(x,y,par_hitbox);
+				//var t_ = instance_place(x,y,par_hitbox);
 
-				if ( t_.sprite_index == splayer_grenade ) {
-					enflamed = clamp( enflamed + 0.3, 1, 2 );
-					SHAKE++;
-					IDD(t_);
-				}
+				//if ( t_.sprite_index == splayer_grenade ) {
+				//	enflamed = clamp( enflamed + 0.3, 1, 2 );
+				//	SHAKE++;
+				//	IDD(t_);
+				//}
 			}
 		} else {
 			can_push_cooldown--;

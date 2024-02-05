@@ -17,5 +17,5 @@ image_index = 1;
 gen_col = PLA;
 layer_col  = layer_get_id( "Tiles_1" );
 parent = undefined;
-
+dmg = 1;
 charge_level = 0;

@@ -1,7 +1,7 @@
 function scr_primary_attack_maya(){
 
 var i = 0; repeat(weapon_number) {
-	if (RELOAD[i] > 0 )RELOAD[i] = max( 0, RELOAD[i] - 1 );
+	if ( RELOAD[i] > 0 ) RELOAD[i] = max( 0, RELOAD[i] - 1 );
 	i++;
 }
 	
@@ -39,7 +39,7 @@ var k1_ = shoot_hold_buffer > 0;
 var k1p_ = shoot_press_buffer > 0;
 	
 var pre_reload = RELOAD[0];
-if (RELOAD[0] > 0 )  RELOAD[0] = max(0,RELOAD[0]-1);
+//if (RELOAD[0] > 0 )  RELOAD[0] = max(0,RELOAD[0]-1);
 gun_charge = 0;
 	
 	

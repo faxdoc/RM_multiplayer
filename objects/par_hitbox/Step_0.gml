@@ -129,10 +129,8 @@ repeat(step_number) {
 				t.own_grapple.state = 2;
 			}
 			t.hit_substate = 2;
-			
 		}
-		
-		
+		t.space_buffer = true;
 		t.can_dash = true;
 		
 		t.state = e_player.hit;
