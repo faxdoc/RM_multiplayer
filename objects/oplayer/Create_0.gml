@@ -327,14 +327,18 @@ camera_y = y;
 camera_spd = 0.053;
 camera_clamp_pos = true;
 
-if ( !global.inital_select ) {
-	if ( global.training_mode ) {
-		meta_state = e_meta_state.round_start;	
-	} else {
-		meta_state = e_meta_state.level_select;
-	}
+if global.test_enabled {
+	meta_state = INIT_TEST_STATE;
 } else {
-	meta_state = e_meta_state.round_start;
+	if ( !global.inital_select ) {
+		if ( global.training_mode ) {
+			meta_state = e_meta_state.round_start;	
+		} else {
+			meta_state = e_meta_state.level_select;
+		}
+	} else {
+		meta_state = e_meta_state.round_start;
+	}
 }
 hp = 150;
 hp_max = 150;
@@ -413,6 +417,7 @@ enum e_meta_state {
 	dying,
 	
 	level_select = 6,
+	char_select = 43,
 	
 }
 

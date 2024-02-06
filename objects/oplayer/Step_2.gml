@@ -1,6 +1,19 @@
 #region general
 
 switch( meta_state ) {
+	#region char select
+	case e_meta_state.char_select:
+		if ( !instance_exists(obutton_character) ) {
+			var xx = GW*0.5;
+			var yy = GH*0.4;
+			ICD( xx-82-32, yy, 0, oplayer_select_fern  );
+			ICD( xx+00-32, yy, 0, oplayer_select_maya  );
+			ICD( xx+82-32, yy, 0, oplayer_select_ameli );
+		}
+		level_select_timer++;
+		
+	break;
+	#endregion
 	default:
 		if ( first_looser == undefined && lives_left <= 0 ) {
 			var ld_ = id;

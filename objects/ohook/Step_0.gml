@@ -270,7 +270,7 @@ if (state == 0) {
 					var len = wire.line_len;
 					var len_2 = sqrt((dx*dx)+(dy*dy));
 					var diff = len_2 - len;
-					//if ( hook_mult > 0.1 ) {
+					if ( hook_mult > 0.1 ) {
 					//if ( diff > 0 ) {
 					percent = (diff / len_2) / wire.stretch;
 					var offx = dx * percent;
@@ -282,7 +282,7 @@ if (state == 0) {
 					hook_object.hsp -= LDX(ds_,dr_);
 					hook_object.vsp -= LDY(ds_,dr_);
 					hook_object.bounce_cooldown = 30;
-					//}
+					}
 				break;
 			}
 			

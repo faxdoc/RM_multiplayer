@@ -7,12 +7,12 @@ switch(move_state) {
 			hsp *= 0.85;
 			vsp *= 0.85;
 			init = true;
-			multihits_left = 12;
-			knockback *= 2;
+			//multihits_left = 12;
+			knockback *= 0.7;
 			
-			multihit_cooldown_amount = 7;
+			//multihit_cooldown_amount = 7;
 			lag_add *= 0;
-			shake_add *= .2;
+			shake_add *= 0.2;
 		}
 		
 		silhouette_draw = true;
@@ -74,10 +74,10 @@ switch(move_state) {
 			can_push_cooldown--;
 			
 		}
-		if ( multihits_left < 12 ) {
-			multihits_left = 12;
-			hit_freeze = 4;
-		} 
+		//if ( multihits_left < 12 ) {
+		//	multihits_left = 12;
+		//	hit_freeze = 4;
+		//} 
 		
 		if ( !alt_movement ) {
 			if ( hit_freeze <= 0 ) {
@@ -94,7 +94,7 @@ switch(move_state) {
 				hit_freeze--;
 			}
 		}
-		dmg = base_dmg * 2;
+		dmg = base_dmg * 1;
 	
 		image_xscale = base_xscale*0.8;
 		image_yscale = base_yscale*0.8;
@@ -124,7 +124,8 @@ switch(move_state) {
 					multihit_cooldown_amount = 12;
 					lag_add   *= 2.0;
 					shake_add *= 2.0;
-				
+					knockback *= 3.0;
+					
 					while ( i++ < 32 && gen_col( x, y ) ) {
 						image_xscale = base_xscale*1.3;
 						image_yscale = base_yscale*1.3;
@@ -152,7 +153,7 @@ switch(move_state) {
 				if ( !duration-- ) {
 					IDD();
 				}
-				if (!alt_init_2) {
+				if ( !alt_init_2 ) {
 					knockback *= 1.5;
 					duration = 600;
 					hsp *= 0.5;
@@ -182,11 +183,11 @@ switch(move_state) {
 			//if ( !is_undefined(hitmap) && ds_exists( hitmap, ds_type_map ) ) ds_map_clear( hitmap );
 			IDD();
 		}
-		
+		stun_mult = 2;
 	break;
 	case 1:
-		
-		
+		stun_mult = 0.75;
+		multihit = false;
 		if (!can_push_cooldown ) {
 			if( place_meeting(x,y,par_hitbox) ){
 				can_push_cooldown = 2;
@@ -290,10 +291,10 @@ switch(move_state) {
 			move_state = 0;
 		}
 		
-		
 		if ( bbox_right < 0 || bbox_bottom < 0 || bbox_left > room_width || bbox_top > room_height ) {
 			IDD();
 		}
+		
 	break;
 	case 2:
 		

@@ -51,7 +51,11 @@ gen_col = PLA;
 base_xscale = image_xscale;
 base_yscale = image_yscale;
 base_blend = image_blend;
-base_dmg = dmg;
+base_dmg = dmg*1.5;
 
 damage_mult = 2;
+
+multihits_left = 5;
+multihit = true;
+multihit_cooldown_amount = 12;
 

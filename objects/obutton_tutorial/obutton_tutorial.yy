@@ -29,8 +29,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "straining",
-    "path": "sprites/straining/straining.yy",
+    "name": "strainingactive",
+    "path": "sprites/strainingactive/strainingactive.yy",
   },
   "spriteMaskId": null,
   "visible": true,

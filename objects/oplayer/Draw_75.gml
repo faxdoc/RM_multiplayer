@@ -401,12 +401,54 @@ if ( player_local ) {
 	if ( flash_alpha > 0 ) {
 		DSC( screen_flash_col	 );
 		DSA( flash_alpha	* 0.6);
-		draw_rectangle(0,0,room_width,room_height,false);
+		draw_rectangle( 0, 0, room_width, room_height, false );
 		DSC(c_white);
 		DSA(1);
 		
 	}
 	switch( meta_state ) {
+		#region char select
+		case e_meta_state.char_select:
+			DSC(c_darkest);
+			DSA( 1 );
+			draw_rectangle(0,0,room_width,room_height,false);
+			DSC(c_white);
+			DSA(1);
+			draw_sprite_tiled_ext(spattern_victory,0, -level_select_timer*0.1, -level_select_timer*0.1, 2, 2, c_purple, 0.35 );
+			
+			var c = c_aqua;
+			var crx_ = floor(GW*0.5);
+			var cry_ = floor(GH*0.3);
+			draw_set_halign( fa_center );
+			draw_text_transformed_color( crx_,cry_, "Select character", 2, 2, 0, c,c,c,c, 1 );
+			draw_set_halign( fa_left );
+			
+			with ( obutton_character ) {
+				
+				
+				var cxoffset_ = 6+2;
+				var cyoffset_ = 6;
+				
+				if ( instance_position( device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id ) ) {
+					c = c_ltgray;
+					draw_set_halign( fa_center );
+					draw_text_transformed_color(x+26,y-38,name, 2, 2, 0, c,c,c,c,1);
+					draw_set_halign( fa_left );
+					
+					draw_sprite_ext( schar_select_frame, 1, x-cxoffset_, y-cyoffset_, 2, 2, 0, c_white, 1 );
+				} else {
+					draw_sprite_ext( schar_select_frame, 0, x-cxoffset_, y-cyoffset_, 2, 2, 0, c_white, 1 );
+				}
+				
+				draw_self();
+				
+				if ( other.char_index == index ) {
+					draw_sprite_ext( schar_select_frame_selected, 0, x-cxoffset_, y-cyoffset_, 2, 2, 0, c_white, 1 );
+				}
+			}
+			
+		break;
+		#endregion
 		#region level select
 		case e_meta_state.level_select:
 			DSC(c_darkest);
