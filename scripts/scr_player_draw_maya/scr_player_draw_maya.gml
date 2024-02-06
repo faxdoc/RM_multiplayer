@@ -17,11 +17,12 @@ function scr_player_draw_maya(){
 	
 	switch( draw_type ) {
 		#region maya main
+		case e_draw_type.starting_hook:
 		case e_draw_type.hook:
 		case e_draw_type.aiming:
 		var hh = ( can_input && ( state == e_player.normal || state == e_player.hook ) ) ? KRIGHT-KLEFT : 0;
 			var bmax = 0, bmin = 0, bdur = 0;
-			var bly_ = floor(body_y-land_y);
+			var bly_ = floor( body_y - land_y );
 			var extra_leg_y = ( hh != 0 && on_ground ) ? 4 : 2;
 			var xx_ = x;
 			var yy_ = y-extra_leg_y;

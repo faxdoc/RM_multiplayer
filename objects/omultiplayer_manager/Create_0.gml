@@ -1,5 +1,5 @@
-#macro TEST_DEFAULT true
-#macro LIVE_DEFAULT true
+#macro TEST_DEFAULT false
+#macro LIVE_DEFAULT false
 
 
 
@@ -50,6 +50,8 @@ if ( global.test_enabled ) {
 	game_has_started = true;
 	rollback_create_game(2,true);
 	global.training_mode = true;
+	room_goto(rplatform);
+	
 	
 } else if ( !rollback_join_game() ) {
 	game_has_started = false;
@@ -75,6 +77,11 @@ audio_channel_num(32);
 
 
 
-
-
-
+global.training_mode_visible = true;
+global.frame_by_frame_mode   = false;
+global.training_nocooldown   = false;
+global.training_infinite_hp  = false;
+global.training_stun_render = false;
+global.training_display_hitboxes = false;
+global.training_mode_change_stage = false;
+global.speed_render = false;

@@ -3,7 +3,7 @@ function scr_secondary_attack_maya(){
 	var dmg_mult = 1;
 	var rocket_distance = 120;
 	
-	var max_charge = 40;
+	var max_charge = 30;
 	switch( maya_grenade_state ) {
 		case 0:
 			#region charge maya grendade
@@ -24,20 +24,19 @@ function scr_secondary_attack_maya(){
 					
 				}
 				knife_timer = min(floor(maya_grenade_charge),5);
+				//maya_grenade_charge *= 0.3;
 			} else {
 				shoot_delay = 5;
 				var pre_charge = maya_grenade_charge;
 				
 				//grenade, dash, large swing, long swing, dunno, saw
 				var charge_levels = [ 1, 3, 1.2, 1, 1.2, 1 ];
-				maya_grenade_charge = min( maya_grenade_charge + (charge_levels[current_weapon]), max_charge );
+				maya_grenade_charge = min( maya_grenade_charge + ( charge_levels[ current_weapon ] / 1.5 ), max_charge );
 				if ( maya_grenade_charge != max_charge ) {
 					if ( maya_grenade_charge > 3/charge_levels[current_weapon] ) {
 						var dr = random(360);
 						if ( random( 1 ) > 0.6 ) {
 							with (ICD(x+LDX(68,dr),y+LDY(68,dr),-1,ocharge_fx)) {
-								//target_offset_y = -22;
-								//image_blend = c_aqua;
 								target = other;
 							}
 						}
@@ -49,11 +48,6 @@ function scr_secondary_attack_maya(){
 						if ( vsp < 0 ) {
 							vsp *= 0.95;
 						}
-						//if ( state == e_player.normal || state == e_player.hook ) {
-						//	sprite_index = smaya_heavy_attack_charge;
-						//	draw_type = e_draw_type.animation;
-						//	state = e_player.animation;
-						//}
 					break;
 					case e_gun.sniper:
 						if ( vsp > 0 ) {
@@ -80,15 +74,10 @@ function scr_secondary_attack_maya(){
 					break;
 				}
 				if ( pre_charge != max_charge && maya_grenade_charge == max_charge ) {
-				// 	if ( audio_is_playing( maya_grenade_charge_sound ) ) {
-				// 		audio_stop_sound(maya_grenade_charge_sound);
-				// 	}
-				// 	audio_play_sound_pitch( snd_splatter_1, RR( 0.6, 0.7 ) * 0.4, RR( 0.6, 0.7 ) * 1.3, 0 );
-				// 	audio_play_sound_pitch( snd_splatter_1, RR( 0.6, 0.7 ) * 0.4, RR( 0.9, 1.0 ) * 1.3, 0 );
+					audio_play_sound_pitch( snd_splatter_1, RR( 0.6, 0.7 ) * 0.4, RR( 0.6, 0.7 ) * 1.3, 0 );
 					SHAKE++;
 					var size = 6;
 					var spd;
-					var bll = c_orange;
 					repeat(7) {
 						spd = 3+random(1);
 						var dir = random(360);
@@ -106,14 +95,12 @@ function scr_secondary_attack_maya(){
 		break;
 		case 1:
 			knife_timer++;
-			var charge_level = maya_grenade_charge/40;
+			var charge_level = maya_grenade_charge/30;
 			switch( current_weapon ) {
 				#region base pistol
 				case e_gun.pistol:
 					if ( knife_timer == 6 ) {
-						//audio_play_sound_pitch( snd_throw_grenade,	RR( 0.9, 1 ) * 0.2, RR( 0.97, 1.05 ), 0 );
-						
-				// 		audio_play_sound_pitch( snd_maya_throw_grenade,RR( 0.9, 1 ) * 0.9, RR( 0.97, 1.05 ), 0 );
+						audio_play_sound_pitch( snd_maya_throw_grenade,RR( 0.9, 1 ) * 0.9, RR( 0.97, 1.05 ), 0 );
 						
 						
 						var dmg_mult = 1;
@@ -122,44 +109,35 @@ function scr_secondary_attack_maya(){
 						var dr	= point_direction( x, y, MX, MY );
 						var t	= ICD( x + draw_xscale * 16, y - 17, 0, par_hitbox );
 						t.move_type 	= e_movetype.hvsp;
-						t.hsp			= LDX( 6, dr ) * 1.1* (0.9+charge_level*.2);
-						t.vsp			= LDY( 8, dr ) * 1.1* (0.9+charge_level*.2);
+						t.hsp			= LDX( 6, dr ) * 1.1* (0.9+charge_level*0.2);
+						t.vsp			= LDY( 8, dr ) * 1.1* (0.9+charge_level*0.2);
 						t.custom_user	= 0;
 						t.destroy_index = 1;
-						
+						t.anti_knockable = false;
 						t.bounces = true;
 						t.grav		= 0.21;
-						t.sprite_index = splayer_grenade;
 						t.duration = 62;
 						t.angle_spin = ( 2 + random( 4 ) ) * choose( -1, 1 );
 						t.draw_angle = random( 360 );
-						t.dmg =  24 * 1 * dmg_mult * lerp(.7,1.25,charge_level);
+						t.dmg =  17 * 1 * dmg_mult * lerp( 0.7, 1.25, charge_level);
 						t.size_mult =  1.4 * (0.7+(charge_level*0.6));
 						t.knockback *= 2.5;
 						t.lag_add 	*= 4;
 						t.shake_add	*= 3;
 						t.is_bullet = false;
-						//audio_play_sound_pitch(snd_grenade_in_air, 0.6, 0.9, 0 );
 						t.sprite_index = sbaseball_test;
 						t.hsp *= 0.4;
 						t.vsp *= 0.7;
 						t.can_be_knocked = true;
-						t.dmg *= 0.5;
+						//t.dmg *= ;
+						t.parent = id;
+						t.stun_mult = 0.2;
 						
 						
 						
-						with(t) {
-							var i = 32;
-							var fc = 1;
-							if (instance_exists(oplayer) )fc = sign(oplayer.x - x);
-							while( i > 0 && oplayer.gen_col( x, y ) ) {
-								i--;
-								x += fc;
-							}
-						}
 						if (tplace_meeting_walls( x, y + 1, layer_col ) ) hsp += 1.2 * draw_xscale;
 					}
-					if ( knife_timer > 20 ) {
+					if ( knife_timer > 30 ) {
 						knife_state = 0;
 						knife_timer = 0;
 						maya_grenade_charge = 0;
@@ -174,11 +152,8 @@ function scr_secondary_attack_maya(){
 					if ( knife_timer >= tm_ && knife_timer < 100 ) {
 						knife_timer += 100;
 						var do_bounce_ = false;
-						//audio_play_sound_pitch(snd_railgun_shooting, 0.90, 1.05 + random( 0.1 ), 1 );
-						//audio_play_sound_pitch( snd_maya_swing_0,	 0.35, 0.95 + random( 0.05 ), 1 );
-						
-				        //audio_play_sound_pitch( snd_maya_swosh,		0.05, 1.00 + random( 0.05 ), 1 );
-				        //audio_play_sound_pitch( snd_maya_dash,		0.65, 0.95 + random( 0.05 ), 1 );
+				        audio_play_sound_pitch( snd_maya_swosh,		0.05, 1.00 + random( 0.05 ), 1 );
+				        audio_play_sound_pitch( snd_maya_dash,		0.65, 0.95 + random( 0.05 ), 1 );
 						
 						
 						gun_len		= 56;
@@ -188,8 +163,8 @@ function scr_secondary_attack_maya(){
 						var nmult_ = 1.4;
 						SHAKE += 1;
 						repeat( 2 ) {
-							var b = bullet_general(  17*charge_pwr_, 0.1, splayer_maya_slash, 0, , 0.5 );
-							b.knockback *=  2.25*charge_pwr_;
+							var b = bullet_general(  10*charge_pwr_, 0.1, splayer_maya_slash, 0, , 0.5 );
+							b.knockback *= 0.5*charge_pwr_;
 							b.duration  = 14;
 							b.piercing  = true;
 							b.image_xscale  = 0.95*charge_pwr_;
@@ -200,12 +175,7 @@ function scr_secondary_attack_maya(){
 							b.lag_add   *= 1;
 							b.shake_add *= 1;
 							b.alt_knockback = true;
-							with ( b ) {
-								//if ( PLC( x, y, par_eneMY ) ) {
-								//	INVIS = max(INVIS,10);
-								//	do_bounce_ = true;
-								//}
-							}
+							
 						}
 						
 							
@@ -216,14 +186,6 @@ function scr_secondary_attack_maya(){
 						var vspd_ = LDY( lerp(4.5,8,charge_level), _dr );
 						var px_ = x + hspd_ * 6;
 						var py_ = y + hspd_ * 6;
-				// 		if ( charge_level == 1 ) {
-				// 			with ( par_hitbox ) {
-				// 				if (can_be_deleted && (distance_to_point(px_,py_) < 16 || PLC(x,y,oplayer) ) ) {
-				// 					IDD();
-				// 				}
-				// 			}
-				// 		}
-						
 						
 						var bb  = 0;
 						var do_add_ = false;
@@ -275,7 +237,7 @@ function scr_secondary_attack_maya(){
 							// LOG("b");
 							hsp += hspd_*.3;
 						} else {
-							oplayer.hsp = hspd_*.4;
+							hsp = hspd_*.4;
 						}
 						if (!gen_col(x,y+1) ) {
 							if ( do_bounce_ ) {
@@ -295,7 +257,7 @@ function scr_secondary_attack_maya(){
 				#endregion
 				#region Large swing
 				case e_gun.rail:
-				//show_debug_message("asdaglr")
+					
 					var ex_ = charge_level == 1;
 					var charge_pwr_ = lerp(0.8,1.4,charge_level) + ( charge_level == 1 ? 0.5 : 0) + (maya_has_parry ? 0.7 : 0);
 					if ( knife_timer == 7 ) {
@@ -314,8 +276,8 @@ function scr_secondary_attack_maya(){
 					
 					if ( knife_timer == 14 ) {
 						SHAKE += 4;
-				// 		audio_play_sound_pitch( snd_maya_quick_draw, 0.9, 0.76 + random( 0.05 ), 1 );
-				// 		audio_play_sound_pitch( snd_explotion_1,	 0.35, 1.95 + random( 0.1 ), 1 );
+						audio_play_sound_pitch( snd_maya_quick_draw, 0.9, 0.76 + random( 0.05 ), 1 );
+						audio_play_sound_pitch( snd_explotion_1,	 0.35, 1.95 + random( 0.1 ), 1 );
 						gun_len		= 16;
 						gun_height  = 24;
 						var do_ver_spd = true;
@@ -324,9 +286,9 @@ function scr_secondary_attack_maya(){
 						SHAKE += ex_ ? 3 : 2;
 						draw_xscale = sign(x-MX) == 1 ? -1 :  1;
 						repeat( 2 ) {
-							var b = bullet_general( 24*charge_pwr_, 0.1, splayer_maya_slash_hard, 0, , 0.5 );
+							var b = bullet_general( 30*charge_pwr_, 0.1, splayer_maya_slash_hard, 0, , 0.5 );
 							// b.y;
-							b.knockback *=  2.95*charge_pwr_;
+							b.knockback *=  0.15*charge_pwr_;
 							b.duration  = 26;
 							b.piercing  = true;
 							b.image_xscale *= 2.0 * lerp( 1, 1.2, charge_level );
@@ -369,11 +331,8 @@ function scr_secondary_attack_maya(){
 					var ex_ = charge_level == 1;
 					var charge_pwr_ = lerp( 0.6, 1.3, charge_level ) + ( ex_ ? 0.6 : 0 );
 					if ( knife_timer == 6 ) {
-						//audio_play_sound_pitch(snd_railgun_shooting, 0.9, 1.05 + random( 0.1 ), 1 );
-						//audio_play_sound_pitch(snd_shoot_1,			0.35, 0.95 + random( 0.1 ), 1 );
-						
-				        //audio_play_sound_pitch( snd_maya_quick_draw, 0.9, 0.95 + random( 0.1 ), 1 );
-						//audio_play_sound_pitch(snd_maya_charged_cut, 0.9, 0.95 + random( 0.1 ), 1 );
+				        audio_play_sound_pitch( snd_maya_quick_draw, 0.9, 0.95 + random( 0.1 ), 1 );
+						audio_play_sound_pitch(snd_maya_charged_cut, 0.9, 0.95 + random( 0.1 ), 1 );
 						gun_len		= 16;
 						gun_height  = 20;
 						var do_ver_spd = true;
@@ -383,7 +342,7 @@ function scr_secondary_attack_maya(){
 						repeat( 2 ) {
 							var b = bullet_general( 14*charge_pwr_, 0.1, splayer_maya_slash_long, 0, , 0.5 );
 							
-							b.knockback *=  2.95*charge_pwr_;
+							b.knockback *=  0.95*charge_pwr_;
 							b.duration  = 16;
 							b.piercing  = true;
 							b.image_xscale *= ( lerp( 0.8, 1.2, charge_level ) + ex_ ? 0.5 : 0 );
@@ -426,7 +385,7 @@ function scr_secondary_attack_maya(){
 						var t = ICD( xx, yy, -1, oplayer_maya_star );
 						t.charge_level = charge_level;
 						t.parent = id;
-						t.dmg *= 0.2;
+						t.dmg *= 0.4;
 						
 						var rep_num = rocket_distance-4;	
 						with ( t ) {
@@ -445,9 +404,9 @@ function scr_secondary_attack_maya(){
 								}
 							}
 						}
-				// 		audio_play_sound_pitch( snd_maya_create_star, RR( 0.9, 1.1 ), 0.95 + random( 0.2 ), 1 );
-				// 		audio_play_sound_pitch( snd_shoot_bullet_alt, 0.65,			  0.75 + random( 0.1 ), 1 );
-						//effect_general( 3, 12, 6 );
+						audio_play_sound_pitch( snd_maya_create_star, RR( 0.9, 1.1 ), 0.95 + random( 0.2 ), 1 );
+						audio_play_sound_pitch( snd_shoot_bullet_alt, 0.65,			  0.75 + random( 0.1 ), 1 );
+						
 						
 					}
                     					
@@ -494,7 +453,7 @@ function scr_secondary_attack_maya(){
 						//audio_play_sound_pitch(snd_railgun_shooting,.8,.85+random(.1),1);
 						//audio_play_sound_pitch(snd_shoot_1,.25,.75+random(.1),1);
 						
-				// 		audio_play_sound_pitch( snd_maya_summon_saw, RR( 0.9, 1 ) * 0.8, RR( 0.97, 1.05 ), 0 );
+						audio_play_sound_pitch( snd_maya_summon_saw, RR( 0.9, 1 ) * 0.8, RR( 0.97, 1.05 ), 0 );
 						
 						//effect_general(3,12,6);
 					}
@@ -514,4 +473,10 @@ function scr_secondary_attack_maya(){
 	}
 	
 	#endregion
+}
+
+function draw_rectangle_ca(x1, y1, x2, y2, color, alpha) {
+	draw_set_color(color);draw_set_alpha(alpha);
+	draw_rectangle(x1,y1,x2,y2,false);
+	draw_set_color(c_white);draw_set_alpha(1);
 }

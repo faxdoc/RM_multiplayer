@@ -1,6 +1,6 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function scr_special_fern(){
+function scr_special_fern(alt_col) {
 
 	can_dodge_cooldown = 10;
 	if (parry_timer == 0 && dash_dir != -1 ) {

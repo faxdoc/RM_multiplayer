@@ -1,5 +1,9 @@
 #region going
 if (state == 0) {
+	if instance_exists(wire) && instance_exists( parent ) && parent.char_index = e_char_index.maya {
+		wire.draw_index = 1;
+	}
+	
 	if ( parent != undefined ) {
 		wire.parent = parent;
 	}
@@ -185,26 +189,99 @@ if (state == 0) {
 			//	hook_object.bounce_cooldown = 30;
 			//}
 			
-			var vl = wire.vertex;
-			var vert = vl[0];
+			switch(parent.char_index) {
+				case e_char_index.maya:
+					if ( pull_input ) {
+						var _dr = point_direction( parent.x, parent.y-22, x, y );
+						parent.hsp = lerp( parent.hsp, LDX( 8, _dr ), 0.3 );
+						parent.vsp = lerp( parent.vsp, LDY( 8, _dr ), 0.3 );
+						if (!trail_cooldown--) {
+							//with ( oplayer ) {
+							//	scr_player_maya_trail();
+							//}
+							trail_cooldown = 1;
+						}
+						if ( point_distance( parent.x, parent.y-22, x, y ) <= 22 ) {
+							audio_play_sound_pitch( snd_shoot_1,		0.35, 0.95 + random( 0.1 ), 1 );
+							audio_play_sound_pitch(snd_railgun_shooting, 0.7, 1.05 + random( 0.1 ), 1 );
+							audio_play_sound_pitch( snd_maya_swing_2,	0.40, 1.05 + random( 0.1 ), 1 );
+							with ( parent ) {
+								repeat(2) {
+									var b = bullet_general(  6, 0.1, splayer_maya_slash, 0, , 0.5 );
+									// b.y;
+									//b.knockback *=  2;
+									b.duration  = 10;
+									b.piercing  = true;
+									b.image_xscale *= 1.45;
+									b.image_yscale *= 1.1;
+									b.image_speed = 3.4;
+									b.depth = depth-1;
+									b.ghost = true;
+									b.alt_knockback = true;
+									b.dir = _dr;
+								}
+								INVIS = max(INVIS,3);
+								hsp *= 0.75;
+								vsp = min( -5.5, vsp-1 );
+							}
+						
+						
+							detach_sound();
+							
+							state = 2;
+							spd = 0;
+							exit;
+						}
+					}
+					
+					var vl = wire.vertex;
+					var vert = vl[0];
 			
-			var dx = vert.xx- lerp(hook_object.bbox_left,hook_object.bbox_right,0.5);
-			var dy = vert.yy- lerp(hook_object.bbox_bottom,hook_object.bbox_top,0.5);
-			var len = wire.line_len;
-			var len_2 = sqrt((dx*dx)+(dy*dy));
-			var diff = len_2 - len;
-			if ( hook_mult > 0.1 ) {
-			//if ( diff > 0 ) {
-				percent = (diff / len_2) / wire.stretch;
-				var offx = dx * percent;
-				var offy = dy * percent;
-				vert.xx -= offx;
-				vert.yy -= offy;
-				var dr_ = point_direction(parent.x,parent.y,hook_object.x, hook_object.y );
-				var ds_ = ( max(0,point_distance( parent.x,parent.y,hook_object.x, hook_object.y )-10) / (pulled ? 50 : 90) ) / 1.3;
-				hook_object.hsp -= LDX(ds_,dr_);
-				hook_object.vsp -= LDY(ds_,dr_);
-				hook_object.bounce_cooldown = 30;
+					var dx = vert.xx- lerp(hook_object.bbox_left,hook_object.bbox_right,0.5);
+					var dy = vert.yy- lerp(hook_object.bbox_bottom,hook_object.bbox_top,0.5);
+					var len = wire.line_len;
+					var len_2 = sqrt((dx*dx)+(dy*dy));
+					var diff = len_2 - len;
+					
+					percent = (diff / len_2) / wire.stretch;
+					var offx = dx * percent;
+					var offy = dy * percent;
+					vert.xx -= offx;
+					vert.yy -= offy;
+					var dr_ = point_direction(parent.x,parent.y,hook_object.x, hook_object.y );
+					var ds_ = ( max(0,point_distance( parent.x,parent.y,hook_object.x, hook_object.y )-10) / (pulled ? 50 : 90) ) / 16;
+					hook_object.hsp -= LDX(ds_,dr_);
+					hook_object.vsp -= LDY(ds_,dr_);
+					hook_object.bounce_cooldown = 30;
+					
+				break;
+				default:
+					var vl = wire.vertex;
+					var vert = vl[0];
+			
+					var dx = vert.xx- lerp(hook_object.bbox_left,hook_object.bbox_right,0.5);
+					var dy = vert.yy- lerp(hook_object.bbox_bottom,hook_object.bbox_top,0.5);
+					var len = wire.line_len;
+					var len_2 = sqrt((dx*dx)+(dy*dy));
+					var diff = len_2 - len;
+					//if ( hook_mult > 0.1 ) {
+					//if ( diff > 0 ) {
+					percent = (diff / len_2) / wire.stretch;
+					var offx = dx * percent;
+					var offy = dy * percent;
+					vert.xx -= offx;
+					vert.yy -= offy;
+					var dr_ = point_direction(parent.x,parent.y,hook_object.x, hook_object.y );
+					var ds_ = ( max(0,point_distance( parent.x,parent.y,hook_object.x, hook_object.y )-10) / (pulled ? 50 : 90) ) / 1.3;
+					hook_object.hsp -= LDX(ds_,dr_);
+					hook_object.vsp -= LDY(ds_,dr_);
+					hook_object.bounce_cooldown = 30;
+					//}
+				break;
+			}
+			
+				
+			
 				//parent.hsp += LDX(ds_,dr_);
 				//parent.vsp += LDY(ds_,dr_);
 				
@@ -215,7 +292,7 @@ if (state == 0) {
 				
 				//hook_object.base_walk_spd = 0.01;
 			//}
-			}
+			
 			
 			
 		}

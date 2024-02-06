@@ -59,8 +59,8 @@ switch( maya_sword_swing_state ) {
 				gun_height  = 20;
 				// gun_general( 10, 60, 9 );
 					
-				// audio_play_sound_pitch(snd_maya_normal_cut, 0.8,  0.96 + random( 0.1 ), 1 );
-				// audio_play_sound_pitch(snd_maya_swing_0,	0.35, 0.96 + random( 0.1 ), 1 );
+				audio_play_sound_pitch(snd_maya_normal_cut, 0.8,  0.96 + random( 0.1 ), 1 );
+				audio_play_sound_pitch(snd_maya_swing_0,	0.35, 0.96 + random( 0.1 ), 1 );
 					
 				var can_wallbounce = true;
 				RELOAD[ 0 ] = 30;
@@ -70,7 +70,7 @@ switch( maya_sword_swing_state ) {
 					repeat( 2 ) {
 						var b = bullet_general( 16*dmg_mult, 0.1, splayer_maya_slash, 0, , 0.5 );
 						// b.y;
-						b.knockback *=  2.95;
+						b.knockback *=  1.2;
 						b.duration  = 16;
 						b.piercing  = true;
 						b.image_xscale *= 1.6*1.4;
@@ -84,7 +84,7 @@ switch( maya_sword_swing_state ) {
 						b.alt_knockback = true;
 							
 					}
-					// audio_play_sound_pitch( snd_maya_blue_overlay, 0.7, RR( 0.97, 1.1 ), 0 );
+					audio_play_sound_pitch( snd_maya_blue_overlay, 0.7, RR( 0.97, 1.1 ), 0 );
 					maya_has_parry = false;
 				} else if (maya_has_parry_red ) {
 					SHAKE += 2;
@@ -210,8 +210,8 @@ switch( maya_sword_swing_state ) {
 				maya_sword_swing_charge = 0;
 				shoot_press_buffer = 0;
 					
-				// audio_play_sound_pitch( snd_maya_charged_cut, 0.8,  (0.96 + random( 0.1 ))*0.9, 1 );
-				// audio_play_sound_pitch( snd_maya_swing_2,	 0.20, 1.05 + random( 0.1 ), 1 );
+				audio_play_sound_pitch( snd_maya_charged_cut, 0.8,  (0.96 + random( 0.1 ))*0.9, 1 );
+				audio_play_sound_pitch( snd_maya_swing_2,	 0.20, 1.05 + random( 0.1 ), 1 );
 					
 				gun_len		= 26;
 				gun_height  = 20;
@@ -228,7 +228,7 @@ switch( maya_sword_swing_state ) {
 					repeat( 2 ) {
 
 						var b = bullet_general( 16*dmg_mult*nmult_, 0.1, splayer_maya_slash_heavy, 0, , 0.5 );
-						b.knockback *=  2.95;
+						b.knockback *=  1.7;
 						b.duration  = 16;
 						b.piercing  = true;
 						b.image_xscale *=  3.1*1.4*second_swing_size_mult*0.82;
@@ -242,30 +242,13 @@ switch( maya_sword_swing_state ) {
 						b.alt_knockback = true;
 					}
 					var ng_ = gen_col(x,y+1);
-					// with ( b ) {
-					// 	if ( PLC( x, y, par_enemy ) ) {
-					// 		can_wallbounce = false;
-					// 		space_buffer = true;
-								
-					// 		if ( !ng_ ) {
-					// 			other.hsp -= LDX(.6,dir)*2.0*0.85;
-					// 			other.vsp = min( -6, other.vsp-3 );
-					// 		} else {
-					// 			other.hsp -= LDX(.6,dir)*2.0*0.65;
-					// 			other.vsp -= LDY(.6,dir)*2.0*0.65;
-					// 		}
-					// 		other.can_hook_delay = 0;
-					// 		other.hook_air_cancel = 0;
-					// 		do_ver_spd = false;
-					// 	}
-					// }
-					// audio_play_sound_pitch( snd_maya_blue_overlay, 0.7, RR( 0.97, 1.1 )*0.95, 0 );
+					audio_play_sound_pitch( snd_maya_blue_overlay, 0.7, RR( 0.97, 1.1 )*0.95, 0 );
 					maya_has_parry = false;
 				} else {
 						
 					repeat( 2 ) {
 						var b = bullet_general(  8*dmg_mult*nmult_, 0.1, splayer_maya_slash_heavy, 0, , 0.5 );
-						b.knockback *=  2.25;
+						b.knockback *=  1.5;
 						b.duration  = 10;
 						b.piercing  = true;
 						b.image_xscale *= 2.95*second_swing_size_mult*0.82;

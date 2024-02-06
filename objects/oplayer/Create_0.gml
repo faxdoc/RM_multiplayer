@@ -16,6 +16,7 @@ gun_flash_data = [0,0,0,0,0,0];
 gun_active_pos = 0;
 maya_add_x = 0;
 maya_add_y = 0;
+parry_duration = 0;
 
 maya_has_parry	   = false;
 maya_has_parry_red = false;
@@ -51,7 +52,7 @@ enum e_char_index {
 	maya,
 	ameli,
 }
-char_index = e_char_index.maya;
+char_index = e_char_index.fern;
 
 move_alt_blink	= 0;
 skip_redo		= true;
@@ -326,7 +327,11 @@ camera_spd = 0.053;
 camera_clamp_pos = true;
 
 if ( !global.inital_select ) {
-	meta_state = e_meta_state.level_select;
+	if ( global.training_mode ) {
+		meta_state = e_meta_state.round_start;	
+	} else {
+		meta_state = e_meta_state.level_select;
+	}
 } else {
 	meta_state = e_meta_state.round_start;
 }
@@ -391,8 +396,7 @@ switch(player_id) {
 	break;
 }
 priority_select_timer = 600;
-pre_hp = hp;
-damage_taken = 0;
+
 
 
 enum e_meta_state {
@@ -493,3 +497,5 @@ switch(char_index) {
 		//portrait_expression_hurt = sface_ameli_hit;
 	break;
 }
+pre_hp = hp;
+damage_taken = 0;

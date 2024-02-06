@@ -601,7 +601,7 @@ function bullet_general(dmg,spd,sprite, unacc, obj_ = par_hitbox, cb_mult_ = 1, 
 		
 	}
 	if ( char_index == e_char_index.maya ) {
-		t.stun_mult *= 0.6;
+		t.stun_mult *= 0.95;
 		t.knockback = dmg * dmg_mult * 0.35;
 	}
 	return t;

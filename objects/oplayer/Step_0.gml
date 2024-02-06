@@ -1,5 +1,8 @@
 var _input = rollback_get_input();
 
+
+
+		
 if (!random_inited ) {
 	if ( global.live_turned_on ) {
 		if ( !instance_exists( obj_gmlive ) ) {

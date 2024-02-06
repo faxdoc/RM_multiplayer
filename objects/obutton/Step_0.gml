@@ -28,7 +28,7 @@ if ( mouse_check_button_pressed(mb_left) ) {
 			case s_2playermainmenuactive: rollback_create_game( 2, false ); break;
 			case s_3playermainmenuactive: rollback_create_game( 3, false ); break;
 			case s_4playermainmenuactive: rollback_create_game( 4, false ); break;
-			case straining:				  rollback_create_game( 2, true  ); global.training_mode = true; break;
+			case straining:				  rollback_create_game( 2, true  ); global.training_mode = true; room_goto(rplatform); break;
 		}
 		
 		with ( obutton ) {

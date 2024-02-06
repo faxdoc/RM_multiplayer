@@ -18,9 +18,10 @@ if (bounces && move_type = e_movetype.hvsp) {
 			audio_play_sound_pitch_falloff( choose_fixed(snd_grenade_bounce,snd_grenade_bounce_alt), RR( .7, .9 )*.6, RR(.95,1.05), 0 );
 			play_sound_cooldown = 15;
 		}
+		
 		if ( bounces_left > 0 ) {
 			//if ( sprite_index == sbaseball_test ) {
-			//	audio_play_sound_pitch_falloff( snd_metal_hit_1, 0.3, RR(1.5,1.7)*1.5, -10 );
+				audio_play_sound_pitch_falloff( snd_metal_hit_1, 0.3, RR(1.5,1.7)*1.5, -10 );
 			//}
 			if ( !--bounces_left ) {
 				bounces = false;

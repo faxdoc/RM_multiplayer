@@ -52,6 +52,11 @@ switch(meta_state) {
 			}
 		}
 		level_select_timer++;
+		if (level_select_timer > 2 ) {
+			 global.training_mode_change_stage = false;
+		}
+		
+		
 	break;
 	case e_meta_state.round_end:
 		final_effect_speed *= 0.96;
@@ -67,6 +72,17 @@ switch(meta_state) {
 		if instance_exists( ohook		   ) { IDD( ohook			); }
 	break;
 	case e_meta_state.round_start:
+		global.training_mode_change_stage = false;
+		if ( char_index != e_char_index.maya && KLEFT && KRIGHT && KDOWN && K7 ) {
+			show_debug_message("a")
+			char_index = e_char_index.maya;
+			base_walk_spd += 0.08;//base_walk_spd	= 0.385;
+			hp_max = 125;
+			hp = 125;
+			grav *= 1.1;//0.17*1.2;
+			base_jump_pwr += 1.25;// 4.68;
+		}
+		
 		if ( global.training_mode ) {
 			intro_timer = 130;
 		}
@@ -218,4 +234,33 @@ if ( hh == 0 ) {
 	maya_body_tilt = lerp(maya_body_tilt,hh, 0.15 );
 } else {
 	maya_body_tilt = lerp(maya_body_tilt,hh, 0.15 );
+}
+
+if ( global.training_mode ) {
+	if ( global.training_nocooldown ) {
+		with (oplayer) {
+			var i = 0; repeat(6) {
+				RELOAD[i] = 0;
+				i++;
+			}
+			grenade_cooldown = 0;
+		}
+	}
+	if ( global.training_infinite_hp ) {
+		with (oplayer) {
+			if ( state == e_player.hit ) {
+				hp = max(hp,1);
+			} else {
+				hp = hp_max;	
+			}
+		}
+	}
+	if (  global.training_mode_change_stage ) {
+		with (oplayer) {
+			meta_state	= e_meta_state.level_select;
+		}
+		
+	}
+
+	
 }

@@ -1,4 +1,7 @@
 function scr_player_draw_fern(){
+var bwave, bmax =-1, bmin = 0, bdur = 4;
+var hh =  KRIGHT-KLEFT;
+var vv =  KDOWN-KUP;
 
 #region Fern Mode
 switch( draw_type ) {

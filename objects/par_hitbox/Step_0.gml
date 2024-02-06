@@ -3,6 +3,7 @@ if ( alt_init ) {
 	duration *= 1.2;
 	alt_init = false;
 }
+
 #region hitfreeze
 if ( do_hitfreeze ) {
 	if ( hitfreeze > 0 ) {
@@ -187,6 +188,52 @@ repeat(step_number) {
 	
 	#endregion
 	
+	
+	if ( can_be_knocked ) {
+		var _t = instance_place( x, y, par_hitbox );
+		duration += 0.6;
+		if ( _t ) {
+			audio_play_sound_pitch_falloff( snd_maya_hit_ball, RR( 0.8, 0.9 ), RR( 0.95, 1.1 ), -10 );//RR(1.5,1.7)
+			//show_message("a");
+			can_be_knocked = false;
+			hsp *= 0.4;
+			vsp *= 0.4;
+			hsp += LDX( 9+_t.dmg*0.5, _t.dir );
+			vsp += LDY( 9+_t.dmg*0.5, _t.dir );
+			dmg *= 1.2;
+			dmg += _t.dmg;
+			
+			do_hitfreeze = true;
+			hitfreeze = 6;
+			if instance_exists(t_.parent) {
+				parent = t_.parent;
+				with ( t_.parent ) {
+					SHAKE++;
+				}
+			}
+				
+			
+			//scr_hitlag(30);
+			if (!has_been_knocked) {
+				image_yscale *= 0.8;
+				image_xscale *= 1.6;
+				grav *= 0.9;
+			}
+			repeat(3) MAKES(ospark_alt);
+			dir = point_direction(0,0,hsp,vsp);
+			draw_angle = dir;
+			angle_spin = 0;
+			duration  = 60;
+			has_been_knocked = true;
+			bounces_left = 1;
+		}
+	} else if ( !PLC(x,y,par_hitbox ) && !anti_knockable ) {
+		can_be_knocked = true;
+	}
+	if ( has_been_knocked ) {
+		dir = point_direction(0,0,hsp,vsp);
+		draw_angle = dir;
+	}
 	
 }
 

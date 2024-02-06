@@ -110,6 +110,117 @@ if ( player_local ) {
 		DSC(c_white);
 	}
 	
+	
+	#region debug input
+	if ( global.training_mode ) {
+		
+		var commands = [
+			"I: Toggle game speed"						,
+			"O: change map"								,
+			"P: Toggle debug visibility"				,
+			"K: frame by frame (broken atm)"	,
+			"L: Increase frame by one"					,
+			"N: No cooldowns"							+ (global.training_nocooldown	? " On" : " Off"),
+			"M: Infinite hp"							+ (global.training_infinite_hp	? " On" : " Off"),
+			"B: Display stunframes/invis"				,
+			"C: Display speed"							,
+			"V: Display hitboxes"
+		];
+		var keys = [
+			ord("I"),
+			ord("O"),
+			ord("P"),
+			ord("K"),
+			ord("L"),
+			ord("N"),
+			ord("M"),
+			ord("B"),
+			ord("C"),
+			ord("V"),
+		];
+		var functions = [
+			function() { game_set_speed( game_get_speed(gamespeed_fps) == 60 ? 15 : ( game_get_speed(gamespeed_fps) == 30 ? 60 : 30 ),gamespeed_fps)},
+			function() { global.training_mode_change_stage	= !global.training_mode_change_stage  },
+			function() { global.training_mode_visible		= !global.training_mode_visible		  },
+			function() { global.frame_by_frame_mode			= !global.frame_by_frame_mode		  },
+			function() {},
+			function() { global.training_nocooldown			= !global.training_nocooldown		 },
+			function() { global.training_infinite_hp		= !global.training_infinite_hp		 },
+			function() { global.training_stun_render		= !global.training_stun_render		 },
+			function() { global.speed_render		= !global.speed_render		 },
+			function() { global.training_display_hitboxes	= !global.training_display_hitboxes  },
+		];
+		var tr_x = floor(GW*0.6);
+		var tr_y = floor(GH*0.05);
+		var idis = 12;
+		
+		if ( global.frame_by_frame_mode ) {
+			scr_freeze_game();
+		}
+		var render_ = global.training_mode_visible;
+		
+		if ( render_  ) {
+			draw_rectangle_ca(tr_x-8,tr_y-8,tr_x+218,tr_y+array_length(keys)*idis + 8, c_black, 0.8 );
+			var i = 0; repeat(array_length(keys)) {
+				if KCP(keys[i]) functions[i]();
+				draw_text(tr_x,tr_y+idis*i,commands[i]);
+				i++;
+			}
+		} else {
+			draw_text(tr_x+190,tr_y-12,"P:vis");
+			var i = 0; repeat(array_length(keys)) {
+				if KCP(keys[i]) functions[i]();
+				i++;
+			}
+		}
+		
+		if ( global.training_stun_render ) {
+			draw_set_font(global.fnt_number_big);
+			var cx_ = camera_x;
+			var cy_ = camera_y;
+			with (oplayer) {
+				
+				DSC(c_aqua);
+				draw_text( x-cx_, bbox_top-cy_-68, INVIS );
+				DSC(c_red);
+				draw_text( x-cx_, bbox_top-cy_-48, hit_timer );
+				DSC(c_white);
+			}
+			draw_set_font(fnt_default);
+		}
+		
+		if ( global.speed_render ) {
+			draw_set_font(global.fnt_number_big);
+			var cx_ = camera_x;
+			var cy_ = camera_y;
+			with (oplayer) {
+				
+				DSC(c_ltgray);
+				draw_text( x-cx_-12, bbox_bottom-cy_+16, hsp );
+				draw_text( x-cx_-12, bbox_bottom-cy_+32, vsp );		
+				DSC(c_white);
+			}
+			draw_set_font(fnt_default);
+		}
+		
+		if ( global.training_display_hitboxes ) {
+			var cx_ = camera_x;
+			var cy_ = camera_y;
+			DSC(c_aqua);
+			with (oplayer) {
+				draw_rectangle(bbox_right-cx_,bbox_top-cy_,bbox_left-cx_,bbox_bottom-cy_,true);
+			}
+			DSC(c_red);
+			with (par_hitbox) {
+				draw_rectangle(bbox_right-cx_,bbox_top-cy_,bbox_left-cx_,bbox_bottom-cy_,true);
+			}
+			DSC(c_white);
+		}
+		
+	}
+	
+	#endregion
+	
 	var bx = GW*0.5;
 	var by = floor( GH*0.87 )+1;
 	var mds_ = 19;

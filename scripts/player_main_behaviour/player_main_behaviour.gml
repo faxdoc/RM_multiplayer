@@ -117,6 +117,7 @@ function player_main_behaviour(){
 				audio_play_sound_pitch( snd_jump, 0.9,  RR(1.1,1.25), 0 );
 				audio_play_sound_pitch( snd_voice_dash_0,RR(0.95,1.05)*0.7,RR(0.95,1.05),0);
 				parry_timer = 0;
+				active_timer = 0;
 			}
 			air_combo = false;
 		break;
@@ -158,6 +159,7 @@ function player_main_behaviour(){
 				audio_play_sound_pitch( snd_jump, 0.9,  RR(1.1,1.25), 0 );
 				audio_play_sound_pitch( snd_voice_dash_0,RR(0.95,1.05)*0.7,RR(0.95,1.05),0);
 				parry_timer = 0;
+				active_timer = 0;
 			}
 			
 			var lddd_ = id;
@@ -260,7 +262,19 @@ function player_main_behaviour(){
 				air_combo = true;
 			}
 			
-			sprite_index = splayer_hit;
+			switch(char_index) {
+				case e_char_index.fern:
+					sprite_index = splayer_hit;
+				break;
+				case e_char_index.maya:
+					sprite_index = splayer_maya_hit;
+				break;
+				case e_char_index.ameli:
+					sprite_index = splayer_hit;
+				break;
+			}
+			
+			
 			draw_type = e_draw_type.animation;
 			
 			if ( hit_freeze <= 0 ) {
@@ -295,7 +309,7 @@ function player_main_behaviour(){
 		case e_player.parry:
 			switch( char_index ) {
 				case e_char_index.fern:
-					scr_special_fern();
+					scr_special_fern(alt_col);
 				break;
 				case e_char_index.maya:
 					scr_special_maya();
@@ -317,12 +331,31 @@ function player_main_behaviour(){
 		case e_player.ledge:
 			hook_air_cancel = false;
 			draw_type = e_draw_type.animation;
-			if ( sprite_index != splayer_wallhug && sprite_index != splayer_wallhug_still ) {
-				sprite_index = splayer_wallhug;
-				image_index = 0;
+			
+			switch(sprite_index) {
+				case splayer_wallhug: 
+				case splayer_wallhug_still:
+				case splayer_maya_wallhug_still:
+				case splayer_maya_wallhug:
+				
+				break;
+				default:
+					switch(char_index) {
+						case e_char_index.ameli:
+							sprite_index = splayer_maya_wallhug;
+						break;
+						case e_char_index.fern:
+							sprite_index = splayer_wallhug;
+						break;
+						case e_char_index.maya:
+							sprite_index = splayer_maya_wallhug;
+						break;
+					}
+					image_index = 0;
+				break;
 			}
 			can_dash = true;
-		
+			
 			if( K2 ) hook_press_buffer = 5;
 			var ex_check = dlc_mode ? !gen_col( x+draw_xscale*8, y ) : false;
 			if( KPDOWN == 1 || ex_check ) {
@@ -470,7 +503,7 @@ if ( hit_freeze <= 0 ) {
 
 
 #region blend fxs
-if ( state == e_player.parry ) { 
+if ( state == e_player.parry && ( char_index != e_char_index.maya || parry_duration > 0 ) ) { 
 	blend = merge_color(c_aqua,c_white,0.7);
 	blend_timer = 3;
 }

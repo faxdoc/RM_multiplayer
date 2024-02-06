@@ -1,6 +1,5 @@
 var hh =  KRIGHT-KLEFT;
 var vv =  KDOWN-KUP;
-var bwave, bmax =-1, bmin = 0, bdur = 4;
 
 #region general effects
 
