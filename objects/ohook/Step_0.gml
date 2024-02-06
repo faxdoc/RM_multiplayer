@@ -160,7 +160,13 @@ if (state == 0) {
 } else if( state == 1 ) {
 	if ( parent != undefined ) {
 		pull_input = parent.KDOWN;		//( ( KDOWN && !DOWN_PULL_OFF ) || input_check( "pull" ) );
-		hold_input = !parent.K2P;
+		//hold_input = !parent.K2P;
+		if ( parent.grapple_mode == 0 ) {
+			hold_input = !parent.K2P;
+		} else {
+			hold_input = parent.K2;
+		}
+		
 	} else {
 		pull_input = false;
 		hold_input = false;

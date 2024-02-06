@@ -53,6 +53,7 @@ enum e_char_index {
 	ameli,
 }
 char_index = e_char_index.fern;
+grapple_mode = 0; 
 
 move_alt_blink	= 0;
 skip_redo		= true;

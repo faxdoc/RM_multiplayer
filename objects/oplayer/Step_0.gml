@@ -91,6 +91,16 @@ KRBACK	= false;
 MX = _input.mx;
 MY = _input.my;
 
+if ( _input.switch_grapple_mode_pressed ) {
+	if ( grapple_mode == 0 ) {
+		grapple_mode = 1;
+		ICD( x-92, bbox_top-32, 0, otext_up ).str = "Grapple mode set to hold";
+	} else {
+		ICD( x-92, bbox_top-32, 0, otext_up ).str = "Grapple mode set to press";
+		grapple_mode = 0;
+	}
+}
+
 
 #region camera
 

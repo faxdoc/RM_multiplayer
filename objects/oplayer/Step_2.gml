@@ -257,6 +257,11 @@ if ( global.training_mode ) {
 	}
 	if (  global.training_mode_change_stage ) {
 		with (oplayer) {
+			if player_local {
+				with omusic {
+					stop_playing_music();
+				}
+			}
 			meta_state	= e_meta_state.level_select;
 		}
 		

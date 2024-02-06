@@ -1,5 +1,7 @@
 switch(type) {
 	case 0:
+		var c = c_darkest;
+		draw_text_colour( x, y+1, str, c, c, c, c, 1 );
 		draw_text( x, y, str );
 	break;
 	default:
