@@ -1,4 +1,4 @@
-#macro TEST_DEFAULT true
+#macro TEST_DEFAULT false
 #macro LIVE_DEFAULT false
 #macro INIT_TEST_STATE e_meta_state.char_select
 
@@ -86,3 +86,11 @@ global.training_stun_render = false;
 global.training_display_hitboxes = false;
 global.training_mode_change_stage = false;
 global.speed_render = false;
+
+global.grapple_mode	= [ 0, 0, 0, 0 ];
+global.tap_jump		= [ 0, 0, 0, 0 ];
+global.char_index	= [ e_char_index.fern, e_char_index.fern, e_char_index.fern, e_char_index.fern ];
+global.ready_state	= [ false, false, false, false ];
+
+
+

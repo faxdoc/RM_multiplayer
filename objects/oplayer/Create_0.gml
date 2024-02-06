@@ -327,19 +327,21 @@ camera_y = y;
 camera_spd = 0.053;
 camera_clamp_pos = true;
 
-if global.test_enabled {
-	meta_state = INIT_TEST_STATE;
-} else {
-	if ( !global.inital_select ) {
-		if ( global.training_mode ) {
-			meta_state = e_meta_state.round_start;	
-		} else {
-			meta_state = e_meta_state.level_select;
-		}
+//if ( global.test_enabled ) {
+	//meta_state = INIT_TEST_STATE;
+//} else {
+if ( !global.inital_select ) {
+	if ( global.training_mode ) {
+		meta_state = e_meta_state.char_select;	
 	} else {
-		meta_state = e_meta_state.round_start;
+		meta_state = e_meta_state.char_select;
 	}
+} else {
+	meta_state = e_meta_state.round_start;
 }
+
+//}
+
 hp = 150;
 hp_max = 150;
 lives_left = 4;

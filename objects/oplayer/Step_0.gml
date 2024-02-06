@@ -57,7 +57,7 @@ KPLEFT	= _input.KLEFT_pressed;
 KPRIGHT	= _input.KRIGHT_pressed;
 K1P		= _input.K1_pressed;	
 K2P		= _input.K2_pressed;	
-K3P		= _input.K3_pressed;	
+K3P		= _input.K3_pressed || (global.tap_jump[player_id] ?  _input.KUP_pressed : 0);	
 K4P		= _input.K4_pressed;	
 K5P		= _input.K5_pressed;	
 K6P		= _input.K6_pressed;	
@@ -91,15 +91,15 @@ KRBACK	= false;
 MX = _input.mx;
 MY = _input.my;
 
-if ( _input.switch_grapple_mode_pressed ) {
-	if ( grapple_mode == 0 ) {
-		grapple_mode = 1;
-		ICD( x-92, bbox_top-32, 0, otext_up ).str = "Grapple mode set to hold";
-	} else {
-		ICD( x-92, bbox_top-32, 0, otext_up ).str = "Grapple mode set to press";
-		grapple_mode = 0;
-	}
-}
+//if ( _input.switch_grapple_mode_pressed ) {
+//	if ( grapple_mode == 0 ) {
+//		grapple_mode = 1;
+//		ICD( x-92, bbox_top-32, 0, otext_up ).str = "Grapple mode set to hold";
+//	} else {
+//		ICD( x-92, bbox_top-32, 0, otext_up ).str = "Grapple mode set to press";
+//		grapple_mode = 0;
+//	}
+//}
 
 
 #region camera

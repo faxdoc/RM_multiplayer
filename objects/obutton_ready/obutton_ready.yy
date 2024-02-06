@@ -1,20 +1,15 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obutton_tapjump",
-  "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
-  ],
+  "name": "obutton_ready",
+  "eventList": [],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
     "name": "customize",
     "path": "folders/Sprites/ui/customize.yy",
   },
-  "parentObjectId": {
-    "name": "otoggle_button",
-    "path": "objects/otoggle_button/otoggle_button.yy",
-  },
+  "parentObjectId": null,
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -31,8 +26,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "smenu_extra_option",
-    "path": "sprites/smenu_extra_option/smenu_extra_option.yy",
+    "name": "sready_button",
+    "path": "sprites/sready_button/sready_button.yy",
   },
   "spriteMaskId": null,
   "visible": true,

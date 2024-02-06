@@ -3,14 +3,73 @@
 switch( meta_state ) {
 	#region char select
 	case e_meta_state.char_select:
+	
+		
 		if ( !instance_exists(obutton_character) ) {
 			var xx = GW*0.5;
 			var yy = GH*0.4;
-			ICD( xx-82-32, yy, 0, oplayer_select_fern  );
-			ICD( xx+00-32, yy, 0, oplayer_select_maya  );
-			ICD( xx+82-32, yy, 0, oplayer_select_ameli );
+			//ICD( xx-82-32, yy, 0, oplayer_select_fern   );
+			ICD( xx+00-32, yy, 0, oplayer_select_fern   );
+			//ICD( xx+82-32, yy, 0, oplayer_select_fern  );
+			ICD( xx-96, yy + 128, 0, obutton_ready		);
+			
+			ICD( xx+128-112, yy + 128-12-12, 0, obutton_grapplemode );
+			ICD( xx+128-112, yy + 128+12-12, 0, obutton_grapplemode_off );
+			
+			ICD( xx+128-112, yy + 128+32,   0, obutton_tapjump	   );
+			ICD( xx+128-112, yy + 128+32+24,0, obutton_tapjump_off );
 		}
+		
 		level_select_timer++;
+		
+		
+		with ( obutton_character ) {
+			if ( instance_position( device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id ) && other.K1P ) {
+				global.char_index[ other.player_id ] = index;
+			}
+			
+		}
+		
+		with ( otoggle_button ) {
+			if ( instance_position( device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id ) && other.K1P ) {
+				execute_function( other.player_id );
+					  
+			}
+			
+			
+			//show_debug_message( global.grapple_mode[  other.player_id ] );
+				//show_debug_message( global.tap_jump[	  other.player_id ] );
+			image_index = return_function( other.player_id );
+			
+		}
+		
+		with (obutton_ready) {
+			if ( instance_position( device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id ) && other.K1P  ) {
+				if ( !global.ready_state[ other.player_id ] ) {
+					global.ready_state[ other.player_id ] = true;
+					//
+				}
+			}
+			//image_index = global.ready_state[ other.player_id ] ? 0 : 1;
+			
+		}
+		
+		if global.training_mode {
+			if global.ready_state[ player_id ] {
+				with oplayer meta_state = e_meta_state.level_select;
+			}
+		} else {
+			var switch_state = true;
+			with ( oplayer ) {
+				if ( !global.ready_state[ player_id ] ) switch_state = false;
+			}
+			if ( switch_state ) {
+				with ( oplayer ) {
+					meta_state = e_meta_state.level_select;
+				}
+			}
+		}
+		
 		
 	break;
 	#endregion
@@ -58,7 +117,7 @@ switch( meta_state ) {
 
 switch(meta_state) {
 	case e_meta_state.level_select:
-		if ( !instance_exists(obutton_levels) ) {
+		if ( !instance_exists( obutton_levels ) ) {
 			var d_ = 1/10, i = 0; repeat(9) {
 				ICD( GW*(d_+(d_*i)),GH*0.55,0,obutton_levels).image_index = i;
 				i++;
@@ -76,7 +135,7 @@ switch(meta_state) {
 		final_effect_speed = max(0.03,final_effect_speed);
 		final_timer += 0.95;
 		if ( final_timer > 340 ) {
-			meta_state = e_meta_state.level_select;
+			meta_state = e_meta_state.char_select;
 			final_timer = 0;
 			global.display_room_name = "";
 		}
@@ -85,15 +144,23 @@ switch(meta_state) {
 		if instance_exists( ohook		   ) { IDD( ohook			); }
 	break;
 	case e_meta_state.round_start:
+		global.ready_state[ player_id ] = false;
 		global.training_mode_change_stage = false;
-		if ( char_index != e_char_index.maya && KLEFT && KRIGHT && KDOWN && K7 ) {
-			show_debug_message("a")
-			char_index = e_char_index.maya;
-			base_walk_spd += 0.08;//base_walk_spd	= 0.385;
-			hp_max = 125;
-			hp = 125;
-			grav *= 1.1;//0.17*1.2;
-			base_jump_pwr += 1.25;// 4.68;
+		
+		if ( intro_timer < 10 ) {
+			char_index = global.char_index[ player_id ];
+		} else {
+		
+			
+			if ( char_index != e_char_index.maya && KLEFT && KRIGHT && KDOWN && K7 ) {
+				show_debug_message("a")
+				char_index = e_char_index.maya;
+				base_walk_spd += 0.08;//base_walk_spd	= 0.385;
+				hp_max = 125;
+				hp = 125;
+				grav *= 1.1;//0.17*1.2;
+				base_jump_pwr += 1.25;// 4.68;
+			}
 		}
 		
 		if ( global.training_mode ) {
@@ -143,6 +210,7 @@ switch(meta_state) {
 	break;
 	#region main
 	case e_meta_state.main:
+		grapple_mode = global.grapple_mode[player_id];
 		player_main_behaviour();
 		if ( can_dodge_cooldown ) can_dodge_cooldown--;
 		

@@ -91,6 +91,7 @@ if ( player_local ) {
 				ii++;
 			}
 		}
+		
 		c = merge_colour( c_gray, player_colour, 0.5 );
 		DSC( c_black );DSA(0.9);
 		draw_text( xx+i*ds_+26-1, yy+16-1,  display_name );
@@ -418,13 +419,12 @@ if ( player_local ) {
 			
 			var c = c_aqua;
 			var crx_ = floor(GW*0.5);
-			var cry_ = floor(GH*0.3);
+			var cry_ = floor(GH*0.15);
 			draw_set_halign( fa_center );
 			draw_text_transformed_color( crx_,cry_, "Select character", 2, 2, 0, c,c,c,c, 1 );
 			draw_set_halign( fa_left );
 			
 			with ( obutton_character ) {
-				
 				
 				var cxoffset_ = 6+2;
 				var cyoffset_ = 6;
@@ -432,7 +432,7 @@ if ( player_local ) {
 				if ( instance_position( device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id ) ) {
 					c = c_ltgray;
 					draw_set_halign( fa_center );
-					draw_text_transformed_color(x+26,y-38,name, 2, 2, 0, c,c,c,c,1);
+					draw_text_transformed_color( x+26, y-41, name, 2, 2, 0, c, c, c, c, 1 );
 					draw_set_halign( fa_left );
 					
 					draw_sprite_ext( schar_select_frame, 1, x-cxoffset_, y-cyoffset_, 2, 2, 0, c_white, 1 );
@@ -442,9 +442,42 @@ if ( player_local ) {
 				
 				draw_self();
 				
-				if ( other.char_index == index ) {
+				if ( global.char_index[ other.player_id ] == index ) {
 					draw_sprite_ext( schar_select_frame_selected, 0, x-cxoffset_, y-cyoffset_, 2, 2, 0, c_white, 1 );
 				}
+				
+			}
+			
+			
+			with ( otoggle_button ) {
+				c = c_gray;
+				draw_text_transformed_color( x + 8, y-7, text, 1, 1, 0, c, c, c, c, 1 );
+				draw_sprite_ext(
+					sprite_index,
+					return_function( other.player_id ),
+					x,
+					y,
+					1,
+					1,
+					0,
+					c_white,
+					1
+				);
+			}
+			
+			with ( obutton_ready ) {
+				//draw_self();
+				draw_sprite_ext(
+					sprite_index,
+					global.ready_state[ other.player_id ] ? 2 : 0,
+					x,
+					y,
+					1,
+					1,
+					0,
+					c_white,
+					1
+				);
 			}
 			
 		break;
@@ -551,7 +584,7 @@ if ( player_local ) {
 			//DSA( );
 			//var rt_ = max( 0.1, -(150-final_timer)/128 );
 			
-			draw_sprite_tiled_ext(spattern_victory,0,final_timer*final_effect_speed,final_timer*final_effect_speed, 2, 2, c_darkest,  min( 1, ( final_timer/12 ) - 9 ) );
+			draw_sprite_tiled_ext( spattern_victory, 0, final_timer*final_effect_speed,final_timer*final_effect_speed, 2, 2, c_darkest,  min( 1, ( final_timer/12 ) - 9 ) );
 			//draw_rectangle(0,0,room_width,room_height,false);
 			//DSC(c_white);
 			//DSA(1);
