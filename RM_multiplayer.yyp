@@ -13,6 +13,8 @@
   },
   "defaultScriptType": 1,
   "Folders": [
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"boss_rush","folderPath":"folders/boss_rush.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"sprites","folderPath":"folders/boss_rush/sprites.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Extensions","folderPath":"folders/Extensions.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"GMLive","folderPath":"folders/Extensions/GMLive.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Internal","folderPath":"folders/Extensions/GMLive/Internal.yy",},
@@ -56,6 +58,8 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"player","folderPath":"folders/Sounds/sound/player.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sprites","folderPath":"folders/Sprites.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"bgs","folderPath":"folders/Sprites/bgs.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"boss","folderPath":"folders/Sprites/boss.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"ghost","folderPath":"folders/Sprites/boss/ghost.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"bullets","folderPath":"folders/Sprites/bullets.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"fxs","folderPath":"folders/Sprites/fxs.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"guns","folderPath":"folders/Sprites/guns.yy",},
@@ -105,10 +109,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Paths","folderPath":"folders/unused/Paths.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sequences","folderPath":"folders/unused/Sequences.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/unused/Timelines.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"boss_rush","folderPath":"folders/boss_rush.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"sprites","folderPath":"folders/boss_rush/sprites.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"boss","folderPath":"folders/Sprites/boss.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"ghost","folderPath":"folders/Sprites/boss/ghost.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"gcmt-dll.dll","CopyToMask":0,"filePath":"datafiles/GMLive",},

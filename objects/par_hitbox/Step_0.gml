@@ -203,7 +203,7 @@ repeat(step_number) {
 	if ( can_be_knocked ) {
 		var _t = instance_place( x, y, par_hitbox );
 		duration += 0.6;
-		if ( _t ) {
+		if ( _t && !_t.can_be_knocked ) {
 			audio_play_sound_pitch_falloff( snd_maya_hit_ball, RR( 0.8, 0.9 ), RR( 0.95, 1.1 ), -10 );//RR(1.5,1.7)
 			//show_message("a");
 			can_be_knocked = false;
@@ -212,7 +212,7 @@ repeat(step_number) {
 			hsp += LDX( 9+_t.dmg*0.5, _t.dir );
 			vsp += LDY( 9+_t.dmg*0.5, _t.dir );
 			dmg *= 1.2;
-			dmg += _t.dmg;
+			dmg += _t.dmg*0.8;
 			
 			do_hitfreeze = true;
 			hitfreeze = 6;

@@ -137,7 +137,7 @@ function scr_secondary_attack_maya(){
 						
 						if (tplace_meeting_walls( x, y + 1, layer_col ) ) hsp += 1.2 * draw_xscale;
 					}
-					if ( knife_timer > 30 ) {
+					if ( knife_timer > 45 ) {
 						knife_state = 0;
 						knife_timer = 0;
 						maya_grenade_charge = 0;
@@ -163,8 +163,8 @@ function scr_secondary_attack_maya(){
 						var nmult_ = 1.4;
 						SHAKE += 1;
 						repeat( 2 ) {
-							var b = bullet_general(  10*charge_pwr_, 0.1, splayer_maya_slash, 0, , 0.5 );
-							b.knockback *= 0.5*charge_pwr_;
+							var b = bullet_general(  11*charge_pwr_, 0.1, splayer_maya_slash, 0, , 0.5 );
+							b.knockback *= 1*charge_pwr_;
 							b.duration  = 14;
 							b.piercing  = true;
 							b.image_xscale  = 0.95*charge_pwr_;
@@ -175,6 +175,7 @@ function scr_secondary_attack_maya(){
 							b.lag_add   *= 1;
 							b.shake_add *= 1;
 							b.alt_knockback = true;
+							//b.stun_mult = 0.8;
 							
 						}
 						
@@ -343,7 +344,7 @@ function scr_secondary_attack_maya(){
 						repeat( 2 ) {
 							var b = bullet_general( 10*charge_pwr_, 0.1, splayer_maya_slash_long, 0, , 0.5 );
 							
-							b.knockback *=  0.95*charge_pwr_;
+							b.knockback *=  0.35*charge_pwr_;
 							b.duration  = 16;
 							b.piercing  = true;
 							b.image_xscale *= ( lerp( 0.8, 1.2, charge_level ) + ex_ ? 0.5 : 0 );
@@ -355,9 +356,11 @@ function scr_secondary_attack_maya(){
 							b.shake_add *= 1.2*charge_pwr_;
 							b.alt_knockback = true;
 							b.image_blend = ex_ ? c_aqua : c_white;
-							b.stun_mult = 0.3;
+							b.stun_mult = 0.7;
 							
 						}
+						
+						
 						if (!gen_col(x,y+1)) {
 							vsp = min( -4, vsp - 1 );
 						}
@@ -439,7 +442,7 @@ function scr_secondary_attack_maya(){
 						var xx = x + LDX( gun_len, drr );
 						var yy = y - gun_height + LDY( gun_len, drr );
 						
-						var b = bullet_general( 4.25*lerp( 1.1, charge_pwr_, 0.3 ), 20*charge_pwr_, spr_, 0, ohitbox_saw );
+						var b = bullet_general( 4.25*lerp( 1.1, charge_pwr_, 0.3 )*0.4, 20*charge_pwr_, spr_, 0, ohitbox_saw );
 						b.duration         *= 30;
 						b.frc               = 0.85;
 						b.fully_charged     = true;

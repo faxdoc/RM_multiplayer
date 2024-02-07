@@ -99,7 +99,9 @@ function player_main_behaviour(){
 			}
 			player_state_general( alt_col );
 			if  ( gen_col(x,y+1) || alt_col ) can_dash = true;
-			if ( KDASHP && state == e_player.normal && can_dash  && !can_dodge_cooldown ) {
+			
+			var check_m = char_index != e_char_index.maya || knife_state == 0;
+			if ( KDASHP && state == e_player.normal && can_dash  && !can_dodge_cooldown && check_m ) {
 				var hh = KRIGHT-KLEFT;
 				var vv = KDOWN-KUP;
 				
@@ -147,7 +149,9 @@ function player_main_behaviour(){
 			draw_type = e_draw_type.aiming;
 				
 			if  ( gen_col(x,y+1) || alt_col ) can_dash = true;
-			if ( KDASHP && state == e_player.normal && can_dash  && !can_dodge_cooldown ) {
+			
+			var check_m = char_index != e_char_index.maya || knife_state == 0;
+			if ( KDASHP && state == e_player.normal && can_dash  && !can_dodge_cooldown && check_m ) {
 				var hh = KRIGHT-KLEFT;
 				var vv = KDOWN-KUP;
 				
@@ -543,7 +547,10 @@ var wep_select_input_press = false;
 wep_select_input_hold  = K4;
 wep_select_input_press = K4P;
 
-if ( input_skip < 2 ) {
+
+var check_m = char_index != e_char_index.maya || knife_state == 0;
+
+if ( input_skip < 2 && check_m) {
 	#macro KCP keyboard_check_pressed
 	#macro sniper_cost  5
 	

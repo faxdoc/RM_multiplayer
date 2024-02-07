@@ -570,40 +570,49 @@ function bullet_general(dmg,spd,sprite, unacc, obj_ = par_hitbox, cb_mult_ = 1, 
 	t.mp_mult *= mp_mult;
 	t.parent = id;
 	
-	switch(current_weapon) {
-		case e_gun.shotgun:
-			t.knockback = dmg * 1.1;
-			t.stun_mult = 1.6;
-			t.spd *= 1.4;
-			t.duration *= 0.93;
-			t.damage_mult = 1.4;
-		break;
-		case e_gun.sniper:
-			t.knockback = dmg * 0.05;
-			t.stun_mult = dmg * 0.05;
-		break;
-		case e_gun.flame:
-			t.knockback = dmg * 1;
-			t.stun_mult = 1.3;
-		break;
-		default:
-			t.knockback = dmg * 1;
-		break;
-		case e_gun.pistol:// gun 1
-			t.stun_mult = 1.1;
-			t.knockback *= 1.2;
-			t.bonus_vsp = -0.3;
-		break;
-		case e_gun.rail:
-			t.stun_mult = 2;
-			t.knockback *= 1.8;
-		break;
+	
+	switch(char_index) {
+		case e_char_index.fern:
+		switch(current_weapon) {
+			case e_gun.shotgun:
+				t.knockback = dmg * 1.1;
+				t.stun_mult = 1.6;
+				t.spd *= 1.4;
+				t.duration *= 0.93;
+				t.damage_mult = 1.4;
+			break;
+			case e_gun.sniper:
+				t.knockback = dmg * 0.05;
+				t.stun_mult = dmg * 0.05;
+			break;
+			case e_gun.flame:
+				t.knockback = dmg * 1;
+				t.stun_mult = 1.3;
+			break;
+			default:
+				t.knockback = dmg * 1;
+			break;
+			case e_gun.pistol:// gun 1
+				t.stun_mult = 1.1;
+				t.knockback *= 1.2;
+				t.bonus_vsp = -0.3;
+			break;
+			case e_gun.rail:
+				t.stun_mult = 2;
+				t.knockback *= 1.8;
+			break;
 		
+		}
+		break;
+		case e_char_index.maya:
+			t.stun_mult *= 1.3;
+			t.knockback = dmg * dmg_mult * 0.35;
+		break;
 	}
-	if ( char_index == e_char_index.maya ) {
-		t.stun_mult *= 1.15;
-		t.knockback = dmg * dmg_mult * 0.40;
-	}
+	
+	//if ( char_index == e_char_index.maya ) {
+		
+	//}
 	return t;
 	
 }

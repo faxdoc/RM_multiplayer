@@ -1,5 +1,7 @@
 {
   "FolderOrderSettings": [
+    {"name":"boss_rush","order":19,"path":"folders/boss_rush.yy",},
+    {"name":"sprites","order":1,"path":"folders/boss_rush/sprites.yy",},
     {"name":"Extensions","order":18,"path":"folders/Extensions.yy",},
     {"name":"GMLive","order":1,"path":"folders/Extensions/GMLive.yy",},
     {"name":"Internal","order":1,"path":"folders/Extensions/GMLive/Internal.yy",},
@@ -39,6 +41,8 @@
     {"name":"menu","order":3,"path":"folders/Sounds/sound/menu.yy",},
     {"name":"player","order":2,"path":"folders/Sounds/sound/player.yy",},
     {"name":"bgs","order":9,"path":"folders/Sprites/bgs.yy",},
+    {"name":"boss","order":12,"path":"folders/Sprites/boss.yy",},
+    {"name":"ghost","order":1,"path":"folders/Sprites/boss/ghost.yy",},
     {"name":"bullets","order":11,"path":"folders/Sprites/bullets.yy",},
     {"name":"fxs","order":4,"path":"folders/Sprites/fxs.yy",},
     {"name":"guns","order":2,"path":"folders/Sprites/guns.yy",},
@@ -85,10 +89,6 @@
     {"name":"Particle Systems","order":6,"path":"folders/unused/Particle Systems.yy",},
     {"name":"Sequences","order":2,"path":"folders/unused/Sequences.yy",},
     {"name":"Timelines","order":1,"path":"folders/unused/Timelines.yy",},
-    {"name":"boss_rush","order":19,"path":"folders/boss_rush.yy",},
-    {"name":"sprites","order":1,"path":"folders/boss_rush/sprites.yy",},
-    {"name":"boss","order":12,"path":"folders/Sprites/boss.yy",},
-    {"name":"ghost","order":1,"path":"folders/Sprites/boss/ghost.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"snd_ready","order":17,"path":"sounds/snd_ready/snd_ready.yy",},

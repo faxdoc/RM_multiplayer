@@ -10,7 +10,7 @@ switch( meta_state ) {
 		//if (!instance_exists(opreference_tracker) ) {
 		//	exit;
 		//}
-		if ( !instance_exists(obutton_character) ) {
+		if ( !instance_exists( obutton_character ) ) {
 			var xx = GW*0.5;
 			var yy = GH*0.4;
 			ICD( xx-82-32, yy, 0, oplayer_select_maya   );
@@ -153,24 +153,53 @@ switch(meta_state) {
 		opreference_tracker.ready_state[ player_id ] = false;
 		global.training_mode_change_stage = false;
 		
-		if ( intro_timer < 10 ) {
-			char_index = opreference_tracker.char_index[ player_id ];
-		} else {
 		
-			
-			//if ( char_index != e_char_index.maya && KLEFT && KRIGHT && KDOWN && K7 ) {
-			//	show_debug_message("a")
-			//	char_index = e_char_index.maya;
-			//	base_walk_spd += 0.08;//base_walk_spd	= 0.385;
-			//	hp_max = 125;
-			//	hp = 125;
-			//	grav *= 1.1;//0.17*1.2;
-			//	base_jump_pwr += 1.25;// 4.68;
-			//}
+		if ( !char_init ) {
+			char_index = opreference_tracker.char_index[ player_id ];
+			char_init = true;
+			switch(char_index) {
+				default:
+				case e_char_index.fern:
+					//portrait_expression_base = sface_fern_normal;
+					//portrait_expression_hurt = sface_fern_hit;
+				break;
+				case e_char_index.maya:
+					base_walk_spd += 0.04;//base_walk_spd	= 0.385;
+					hp_max = 125;
+					hp = 125;
+					grav *= 1.11;//0.17*1.2;
+					base_jump_pwr += 1.2;// 4.68;
+					//portrait_expression_base = sface_maya_normal;
+					//portrait_expression_hurt = sface_maya_hit;
+				break;
+				case e_char_index.ameli:
+					base_walk_spd *= 0.9;
+					hp_max	= 100;
+					hp		= 100;
+					//portrait_expression_base = sface_ameli_normal;
+					//portrait_expression_hurt = sface_ameli_hit;
+				break;
+			}
 		}
 		
-		if ( TEST_FORCE_CHAR ) {
-			char_index = e_char_index.ameli;
+		//if ( intro_timer < 10 ) {
+			
+		//} else {
+		
+			
+		//	//if ( char_index != e_char_index.maya && KLEFT && KRIGHT && KDOWN && K7 ) {
+		//	//	show_debug_message("a")
+		//	//	char_index = e_char_index.maya;
+		//	//	base_walk_spd += 0.08;//base_walk_spd	= 0.385;
+		//	//	hp_max = 125;
+		//	//	hp = 125;
+		//	//	grav *= 1.1;//0.17*1.2;
+		//	//	base_jump_pwr += 1.25;// 4.68;
+		//	//}
+		//}
+		
+		if ( global.test_enabled && TEST_FORCE_CHAR != -1 ) {
+			char_index = TEST_FORCE_CHAR;
 		}
 		
 		if ( global.training_mode ) {
