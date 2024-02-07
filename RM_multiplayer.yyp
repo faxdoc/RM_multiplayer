@@ -125,11 +125,11 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.1100.0.444",
+    "IDEVersion": "2023.11.1.129",
   },
   "resources": [
     {"id":{"name":"snd_ready","path":"sounds/snd_ready/snd_ready.yy",},},
-    {"id":{"name":"sbossrush_statue_ameli","path":"sprites/sbossrush_statue_ameli/sbossrush_statue_ameli.yy",},},
+    {"id":{"name":"sameli_flying","path":"sprites/sameli_flying/sameli_flying.yy",},},
     {"id":{"name":"straining_active","path":"sprites/straining_active/straining_active.yy",},},
     {"id":{"name":"GMLiveAPI_js","path":"scripts/GMLiveAPI_js/GMLiveAPI_js.yy",},},
     {"id":{"name":"scr_special_ameli","path":"scripts/scr_special_ameli/scr_special_ameli.yy",},},
