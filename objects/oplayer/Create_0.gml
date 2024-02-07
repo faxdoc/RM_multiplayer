@@ -330,15 +330,22 @@ camera_clamp_pos = true;
 //if ( global.test_enabled ) {
 	//meta_state = INIT_TEST_STATE;
 //} else {
+
+#region state init
 if ( !global.inital_select ) {
 	if ( global.training_mode ) {
-		meta_state = e_meta_state.char_select;	
+		if ( global.test_enabled && TEST_FORCE_CHAR != -1 ) {
+			meta_state = e_meta_state.round_start;
+		} else {
+			meta_state = e_meta_state.char_select;	
+		}
 	} else {
 		meta_state = e_meta_state.char_select;
 	}
 } else {
 	meta_state = e_meta_state.round_start;
 }
+#endregion
 
 //}
 

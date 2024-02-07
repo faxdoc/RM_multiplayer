@@ -11,6 +11,9 @@ idle_timer = 0;
 attack_cooldown = 0;
 image_index = 0;
 image_speed = 0;
+depth = -120;
+
+
 
 enum e_ameli_orb_state {
 	idle,
@@ -23,7 +26,10 @@ enum e_ameli_orb_state {
 	beam,
 	strike,
 	
+	trap_triggered,
+	anti_air_triggered,
 }
+triggered_timer = 0;
 target_x = 0;
 target_y = 0;
 init = true;
@@ -43,3 +49,14 @@ target_state = e_ameli_orb_state.time_bomb;
 
 start_moving_x = x;
 start_moving_y = y;
+MX = 0;
+MY = 0;
+gun_len = 0;
+gun_height = 0;
+crouching = false;
+char_index = e_char_index.ameli;
+
+timed_explotion_radius = 116;
+timer_explotion_duration = 140;
+
+spike_trap_size = 48;

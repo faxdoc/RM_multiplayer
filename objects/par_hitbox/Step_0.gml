@@ -1,7 +1,20 @@
+
+// #macro hitscan_check ( !do_hitscan_check || scr_check_hitscan_collision( oplayer.x, player_mid_y,  t ) )
 if ( alt_init ) {
 	spd *= 0.8;
 	duration *= 1.2;
 	alt_init = false;
+	switch(sprite_index) {
+		default:
+		
+		break;
+		case splayer_maya_slash:
+		case splayer_maya_slash_hard:
+		case splayer_maya_slash_heavy:
+		case splayer_maya_slash_long:
+			do_hitscan_check = true;
+		break;
+	}
 }
 
 #region hitfreeze
@@ -86,7 +99,7 @@ repeat(step_number) {
 	}
 	
 	#region Hit enemy
-	if ( t && parent != undefined && t != parent && !t.INVIS && ( !multihit || multihit_cooldown <= 0 ) ) {
+	if ( t && parent != undefined && t != parent && !t.INVIS && ( !multihit || multihit_cooldown <= 0 ) && ( !do_hitscan_check || scr_check_hitscan_collision( oplayer.x, player_mid_y, t ) ) ) {
 		hit_freeze = 4;
 		var pt_ = clamp( 1.1 - dmg / 90, 0.75, 1 )+0.1;
 		var vol_= clamp( 0.3 + dmg / 80, 0.4, 0.9 );

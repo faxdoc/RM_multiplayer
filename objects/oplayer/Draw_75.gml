@@ -394,7 +394,64 @@ if ( player_local ) {
 		#endregion
 		#region ameli
 		case e_char_index.ameli:
+			var i = 0; repeat( 6 ) {
 		
+				myl_ = 1;
+				if ( current_weapon == wep_list[i] ) {
+					myl_ = 0;
+				}
+				//draw_sprite_ext( scooldown_box, 0, ex_+bx+visual_i*mds_, by+myl_,    1.1, 1.1, 0, c_ltgray, 1 );		
+				if ( current_weapon == wep_list[i] ) {
+					draw_sprite_ext( sabilities_ameli,		i, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, merge_colour( c_white, c_orange, 0.1 ), 1 );
+					if ( gun_flash_data[i] > 0 ) {
+						draw_sprite_ext( sreload_flash, gun_flash_data[i], ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, c_white, 0.75 );
+					}
+			
+				} else {
+					draw_sprite_ext( sabilities_ameli,		i, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, merge_color( c_gray, c_dkgray, 0.6 ), 1 );
+				}
+				visual_i++;
+				i++;
+			}
+			
+			myl_ = 3;
+			if ( grenade_cooldown ) {
+				draw_sprite_ext( sabilities_ameli,		6,								ex_+bx+visual_i*mds_, by+myl_, 1.1, 1.1, 0,  merge_colour(c_dkgray,c_red,0.5), 1 );
+				draw_sprite_ext( scooldown,		27-( grenade_cooldown/140 )*26, ex_+bx+visual_i*mds_, by+myl_, 1.1, 1.1, 0, c_white, 0.9 );
+			} else {
+				draw_sprite_ext( sabilities_ameli,		6, ex_+bx+visual_i*mds_, by+myl_,  1.1, 1.1, 0, merge_color( c_gray, c_dkgray, 0.5 ), 1 );	
+			}
+			draw_sprite_ext( snumbers, 6, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, c_gray, 1 );
+	
+			wep_list  = [ 0, 2, 5, 4, 3, 1 ];
+			draw_sprite_ext( scooldown_box_outer,0,  ex_+bx+(wep_list[current_weapon]-3.5)*mds_, by, 1, 1, 0, c_white, 1 );
+	
+			wep_list  = [ 0, 5, 1, 4, 3, 2 ];
+			by += 3;
+			var i = 0; repeat(6) {
+				if ( current_weapon == wep_list[i] ) {
+					draw_sprite_ext( snumbers, i, ex_+bx+(i-3.5)*mds_-2, by+myl_-3-1,  1, 1, 0, c_white, 1 );
+				} else {
+					draw_sprite_ext( snumbers, i, ex_+bx+(i-3.5)*mds_+1, by+myl_+1,  1, 1, 0, c_gray, 1 );
+				}
+				i++;
+			}
+			draw_sprite_ext( sorbs_counter, 0, bx-16, by-32, 0.5, 0.5, 0, merge_color(player_colour, c_gray,0.68), 0.5 );
+			var orbs_left = 0;
+			if ( orbs[0].state == e_ameli_orb_state.idle ) orbs_left++;
+			if ( orbs[1].state == e_ameli_orb_state.idle ) orbs_left++;
+			if ( orbs[2].state == e_ameli_orb_state.idle ) orbs_left++;
+			
+			draw_set_font(global.fnt_number_big);
+				
+			var c = merge_color(player_colour, c_dkgray,0.9);
+			draw_text_transformed_color( bx, by-32+1, orbs_left, 2, 2, 0,  c,c,c,c,1 );	
+			c = merge_color(player_colour, c_gray,0.8);
+			draw_text_transformed_color( bx, by-32, orbs_left, 2, 2, 0, c,c,c,c,1 );
+		
+			draw_set_font(fnt_default);
+			
+			
 		break;
 		#endregion
 	}

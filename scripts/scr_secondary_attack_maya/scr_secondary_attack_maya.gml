@@ -442,8 +442,8 @@ function scr_secondary_attack_maya(){
 						var xx = x + LDX( gun_len, drr );
 						var yy = y - gun_height + LDY( gun_len, drr );
 						
-						var b = bullet_general( 4.25*lerp( 1.1, charge_pwr_, 0.3 )*0.4, 20*charge_pwr_, spr_, 0, ohitbox_saw );
-						b.duration         *= 30;
+						var b = bullet_general( 4.25*lerp( 1.1, charge_pwr_, 0.3 )*0.1, 20*charge_pwr_, spr_, 0, ohitbox_saw );
+						b.duration         *= 15;
 						b.frc               = 0.85;
 						b.fully_charged     = true;
 						b.multihit          = true;
@@ -453,6 +453,7 @@ function scr_secondary_attack_maya(){
 						b.vsp			    = LDY( b.spd*0.25, b.dir );
 						b.alt_movement      = true;
 						b.parent = id;
+						b.base_dmg *= 0.3;
 						scr_set_size( b, charge_pwr_ *1.1 );
 						shoot_delay = 20;
 						

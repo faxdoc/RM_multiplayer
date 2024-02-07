@@ -150,9 +150,9 @@ switch(meta_state) {
 			final_timer = 0;
 			global.display_room_name = "";
 		}
-		if instance_exists( overlet_object ) { IDD( overlet_object	); }
-		if instance_exists( par_hitbox	   ) { IDD( par_hitbox		); }
-		if instance_exists( ohook		   ) { IDD( ohook			); }
+		if( instance_exists( overlet_object ) ) { IDD( overlet_object	); }
+		if( instance_exists( par_hitbox	    ) ) { IDD( par_hitbox		); }
+		if( instance_exists( ohook		    ) ) { IDD( ohook			); }
 	break;
 	
 	#endregion
@@ -162,9 +162,14 @@ switch(meta_state) {
 		opreference_tracker.ready_state[ player_id ] = false;
 		global.training_mode_change_stage = false;
 		
+	
+		
 		#region char apply
 		if ( !char_init ) {
 			char_index = opreference_tracker.char_index[ player_id ];
+				if ( global.test_enabled && TEST_FORCE_CHAR != -1 ) {
+					char_index = TEST_FORCE_CHAR;
+				}
 			char_init = true;
 			switch(char_index) {
 				default:
@@ -215,9 +220,7 @@ switch(meta_state) {
 		//	//}
 		//}
 		
-		if ( global.test_enabled && TEST_FORCE_CHAR != -1 ) {
-			char_index = TEST_FORCE_CHAR;
-		}
+		
 		
 		if ( global.training_mode ) {
 			intro_timer = 130;

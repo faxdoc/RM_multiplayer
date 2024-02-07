@@ -226,7 +226,7 @@ function player_charge_jump() {
 			repeat(4) {
 				spd = 3+random_fixed(1);
 				var dir = random_fixed(360);
-				fx = create_fx( x + LDX(size*1.5,dir) + hsp, y + LDY(size*1.5,dir) + vsp -6, sdot_wave, .3+random_fixed(.4), 0, -110 );
+				var fx = create_fx( x + LDX(size*1.5,dir) + hsp, y + LDY(size*1.5,dir) + vsp -6, sdot_wave, .3+random_fixed(.4), 0, -110 );
 				fx.image_blend = merge_color(bll,c_orange,0.3+random_fixed(0.5));
 				//fx.hsp = LDX(spd,dir);
 				//fx.vsp = LDY(spd,dir);

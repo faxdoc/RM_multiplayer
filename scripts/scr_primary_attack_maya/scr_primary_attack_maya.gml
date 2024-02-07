@@ -1,7 +1,7 @@
 function scr_primary_attack_maya(){
 
 var i = 0; repeat(weapon_number) {
-	if ( RELOAD[i] > 0 ) RELOAD[i] = max( 0, RELOAD[i] - 1 );
+	if ( RELOAD[i] > 0 ) RELOAD[i] = max( 0, RELOAD[i] - 0.75 );
 	i++;
 }
 	
@@ -82,7 +82,7 @@ switch( maya_sword_swing_state ) {
 						b.shake_add *= 1.2;
 						b.image_blend = c_aqua;
 						b.alt_knockback = true;
-							
+						b.stun_mult *= 0.75;
 					}
 					audio_play_sound_pitch( snd_maya_blue_overlay, 0.7, RR( 0.97, 1.1 ), 0 );
 					maya_has_parry = false;
@@ -103,7 +103,7 @@ switch( maya_sword_swing_state ) {
 						b.shake_add *= 1;
 						b.image_blend = c_red;
 						b.alt_knockback = true;
-							
+						b.stun_mult *= 0.75;
 					}
 					// audio_play_sound_pitch( snd_maya_red_overlay, 0.7, RR( 0.97, 1.1 ), 0 );
 					maya_has_parry_red = false;
@@ -122,6 +122,7 @@ switch( maya_sword_swing_state ) {
 						b.lag_add   *= 0.9;
 						b.shake_add *= 0.9;
 						b.alt_knockback = true;
+						b.stun_mult *= 0.75;
 					}
 						
 				}
@@ -240,6 +241,7 @@ switch( maya_sword_swing_state ) {
 						b.shake_add *= 1.5;
 						b.image_blend = c_aqua;
 						b.alt_knockback = true;
+						b.stun_mult *= 0.75;
 					}
 					var ng_ = gen_col(x,y+1);
 					audio_play_sound_pitch( snd_maya_blue_overlay, 0.7, RR( 0.97, 1.1 )*0.95, 0 );
@@ -259,6 +261,7 @@ switch( maya_sword_swing_state ) {
 						b.lag_add   *= 1.2;
 						b.shake_add *= 1.2;
 						b.alt_knockback = true;
+						b.stun_mult *= 0.75;
 					}
 					var ng_ = gen_col( x, y + 1 );
 					// with ( b ) {

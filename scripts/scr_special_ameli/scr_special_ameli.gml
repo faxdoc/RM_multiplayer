@@ -5,15 +5,15 @@ function scr_special_ameli() {
     var hh = KRIGHT-KLEFT; 
     var vv = KDOWN-KUP;
     
-    if ( hh != 0 && vv != 0 ) {
+    if ( hh != 0 || vv != 0 ) {
         dash_dir = point_direction(0,0,hh,vv);  
     }
     
-	hsp += LDX( 3, dash_dir );
-    vsp += LDY( 3, dash_dir );
+	hsp += LDX( 0.4, dash_dir );
+    vsp += LDY( 0.4, dash_dir );
     
-    hsp *= 0.9;
-    vsp *= 0.9;
+    hsp *= 0.94;
+    vsp *= 0.94;
     
 	can_dash = false;
 	sprite_index = sameli_flying;
@@ -25,11 +25,12 @@ function scr_special_ameli() {
         draw_type = e_draw_type.aiming;
 	}
 	if ( parry_timer++ > 3 ) {
-	    var t_ = bullet_general( 2, 1, shitbox_circle, 0 );
+	    var t_ = bullet_general( 2, 0.1, shitbox_circle, 0 );
 	    t_.do_stun        = false;
 	    t_.multihit       = true;
 	    t_.multihits_left = 8;
 	    t_.duration = 120;
+	    t_.dir = 270+hsp*12;
 	    parry_timer = 0;
 	}
 	
