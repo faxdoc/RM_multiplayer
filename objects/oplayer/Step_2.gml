@@ -3,14 +3,20 @@
 switch( meta_state ) {
 	#region char select
 	case e_meta_state.char_select:
-	
 		
+		
+		var lmx_ = MX-camera_x;
+		var lmy_ = MY-camera_y;
+		//if (!instance_exists(opreference_tracker) ) {
+		//	exit;
+		//}
 		if ( !instance_exists(obutton_character) ) {
 			var xx = GW*0.5;
 			var yy = GH*0.4;
-			//ICD( xx-82-32, yy, 0, oplayer_select_fern   );
+			ICD( xx-82-32, yy, 0, oplayer_select_maya   );
 			ICD( xx+00-32, yy, 0, oplayer_select_fern   );
 			//ICD( xx+82-32, yy, 0, oplayer_select_fern  );
+			
 			ICD( xx-96, yy + 128, 0, obutton_ready		);
 			
 			ICD( xx+128-112, yy + 128-12-12, 0, obutton_grapplemode );
@@ -24,14 +30,14 @@ switch( meta_state ) {
 		
 		
 		with ( obutton_character ) {
-			if ( instance_position( device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id ) && other.K1P ) {
-				global.char_index[ other.player_id ] = index;
+			if ( instance_position( lmx_, lmy_, id ) && other.K1P ) {
+				opreference_tracker.char_index[ other.player_id ] = index;
 			}
 			
 		}
 		
 		with ( otoggle_button ) {
-			if ( instance_position( device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id ) && other.K1P ) {
+			if ( instance_position( lmx_, lmy_, id ) && other.K1P ) {
 				execute_function( other.player_id );
 					  
 			}
@@ -44,9 +50,9 @@ switch( meta_state ) {
 		}
 		
 		with (obutton_ready) {
-			if ( instance_position( device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id ) && other.K1P  ) {
-				if ( !global.ready_state[ other.player_id ] ) {
-					global.ready_state[ other.player_id ] = true;
+			if ( instance_position( lmx_, lmy_, id ) && other.K1P  ) {
+				if ( !opreference_tracker.ready_state[ other.player_id ] ) {
+					opreference_tracker.ready_state[ other.player_id ] = true;
 					//
 				}
 			}
@@ -55,13 +61,13 @@ switch( meta_state ) {
 		}
 		
 		if global.training_mode {
-			if global.ready_state[ player_id ] {
+			if opreference_tracker.ready_state[ player_id ] {
 				with oplayer meta_state = e_meta_state.level_select;
 			}
 		} else {
 			var switch_state = true;
 			with ( oplayer ) {
-				if ( !global.ready_state[ player_id ] ) switch_state = false;
+				if ( !opreference_tracker.ready_state[ player_id ] ) switch_state = false;
 			}
 			if ( switch_state ) {
 				with ( oplayer ) {
@@ -144,23 +150,27 @@ switch(meta_state) {
 		if instance_exists( ohook		   ) { IDD( ohook			); }
 	break;
 	case e_meta_state.round_start:
-		global.ready_state[ player_id ] = false;
+		opreference_tracker.ready_state[ player_id ] = false;
 		global.training_mode_change_stage = false;
 		
 		if ( intro_timer < 10 ) {
-			char_index = global.char_index[ player_id ];
+			char_index = opreference_tracker.char_index[ player_id ];
 		} else {
 		
 			
-			if ( char_index != e_char_index.maya && KLEFT && KRIGHT && KDOWN && K7 ) {
-				show_debug_message("a")
-				char_index = e_char_index.maya;
-				base_walk_spd += 0.08;//base_walk_spd	= 0.385;
-				hp_max = 125;
-				hp = 125;
-				grav *= 1.1;//0.17*1.2;
-				base_jump_pwr += 1.25;// 4.68;
-			}
+			//if ( char_index != e_char_index.maya && KLEFT && KRIGHT && KDOWN && K7 ) {
+			//	show_debug_message("a")
+			//	char_index = e_char_index.maya;
+			//	base_walk_spd += 0.08;//base_walk_spd	= 0.385;
+			//	hp_max = 125;
+			//	hp = 125;
+			//	grav *= 1.1;//0.17*1.2;
+			//	base_jump_pwr += 1.25;// 4.68;
+			//}
+		}
+		
+		if ( TEST_FORCE_CHAR ) {
+			char_index = e_char_index.ameli;
 		}
 		
 		if ( global.training_mode ) {
@@ -188,7 +198,7 @@ switch(meta_state) {
 		if ( intro_timer == 75 ) {
 			audio_play_sound_pitch(snd_respawn, RR(0.9,1),  RR(0.9,1), 0 );
 		}
-		
+		//char_index = e_char_index.maya;
 	break;
 	case e_meta_state.respawn:
 		hp = hp_max;
@@ -210,7 +220,7 @@ switch(meta_state) {
 	break;
 	#region main
 	case e_meta_state.main:
-		grapple_mode = global.grapple_mode[player_id];
+		grapple_mode = opreference_tracker.grapple_mode[player_id];
 		player_main_behaviour();
 		if ( can_dodge_cooldown ) can_dodge_cooldown--;
 		

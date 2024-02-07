@@ -21,7 +21,7 @@ function scr_special_maya(){
 			state = e_player.normal;
 			draw_type = e_draw_type.aiming;
 		} else {
-			can_input	= false;
+			can_input = false;
 			
 			if ( parry_duration > 0 ) {
 				//if ( active_timer mod 5 == 4 ) {

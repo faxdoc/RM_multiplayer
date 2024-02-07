@@ -62,6 +62,10 @@ function scr_player_draw_maya(){
 			
 			#endregion
 			
+			
+			
+			
+			
 			#region arm inner
 			var recoil_x = LDX( recoil, var_dir )*draw_xscale*0.6;
 			var recoil_y = LDY( recoil, var_dir )*0.6;
@@ -104,11 +108,55 @@ function scr_player_draw_maya(){
 					case 23: vl_ = 2; break;
 				}
 				vl_ = (-vl_+2)*draw_xscale;
-				draw_sprite_ext( splayer_maya_sword,  1,
-					xx_-1*draw_xscale+new_arm_x-lengthdir_y(2,aidir*draw_xscale )+LDX(vl_,aidir),
-					yy_-25+new_hand_y+y_off+bwave-(recoil_y*0.25)+lengthdir_y( 5,aidir )+LDY(vl_,aidir), 
-					draw_xscale*0.8, 1, 
-				  aidir * draw_xscale, c_white, draw_alpha );
+				
+				
+				switch(current_weapon) {
+					case 0:
+						draw_sprite_ext( splayer_maya_sword,  1,
+							xx_-1*draw_xscale+new_arm_x-lengthdir_y(2,aidir*draw_xscale )+LDX(vl_,aidir),
+							yy_-25+new_hand_y+y_off+bwave-(recoil_y*0.25)+lengthdir_y( 5,aidir )+LDY(vl_,aidir), 
+							draw_xscale*0.8, 1, 
+						  aidir * draw_xscale, c_white, draw_alpha );
+					break;
+					case 5:
+						draw_sprite_ext( splayer_maya_sword_saw,  1,
+							xx_-1*draw_xscale+new_arm_x-lengthdir_y(2,aidir*draw_xscale )+LDX(vl_,aidir),
+							yy_-25+new_hand_y+y_off+bwave-(recoil_y*0.25)+lengthdir_y( 5,aidir )+LDY(vl_,aidir), 
+							draw_xscale*0.8, 1, 
+						  aidir * draw_xscale, c_white, draw_alpha );
+					break;
+					case 1:
+						draw_sprite_ext( splayer_maya_sword_dash,  1,
+							xx_-1*draw_xscale+new_arm_x-lengthdir_y(2,aidir*draw_xscale )+LDX(vl_,aidir),
+							yy_-25+new_hand_y+y_off+bwave-(recoil_y*0.25)+lengthdir_y( 5,aidir )+LDY(vl_,aidir), 
+							draw_xscale*0.8, 1, 
+						  aidir * draw_xscale, c_white, draw_alpha );
+					break;
+					case 4:
+						draw_sprite_ext( splayer_maya_sword_star,  1,
+							xx_-1*draw_xscale+new_arm_x-lengthdir_y(2,aidir*draw_xscale )+LDX(vl_,aidir),
+							yy_-25+new_hand_y+y_off+bwave-(recoil_y*0.25)+lengthdir_y( 5,aidir )+LDY(vl_,aidir), 
+							draw_xscale*0.8, 1, 
+						  aidir * draw_xscale, c_white, draw_alpha );
+					break;
+					case 3:
+						draw_sprite_ext( splayer_maya_sword_long,  1,
+							xx_-1*draw_xscale+new_arm_x-lengthdir_y(2,aidir*draw_xscale )+LDX(vl_,aidir),
+							yy_-25+new_hand_y+y_off+bwave-(recoil_y*0.25)+lengthdir_y( 5,aidir )+LDY(vl_,aidir), 
+							draw_xscale*0.8, 1, 
+						  aidir * draw_xscale, c_white, draw_alpha );
+					break;
+					case 2:
+						draw_sprite_ext( splayer_maya_sword_big,  1,
+							xx_-1*draw_xscale+new_arm_x-lengthdir_y(2,aidir*draw_xscale )+LDX(vl_,aidir),
+							yy_-25+new_hand_y+y_off+bwave-(recoil_y*0.25)+lengthdir_y( 5,aidir )+LDY(vl_,aidir), 
+							draw_xscale*0.8, 1, 
+						  aidir * draw_xscale, c_white, draw_alpha );
+					break;
+				}
+			
+			
+				
 				
 				draw_sprite_ext( splayer_maya_sword,  2,
 					xx_-1*draw_xscale+new_arm_x-lengthdir_y(2,aidir*draw_xscale )+LDX(vl_,aidir),
@@ -192,11 +240,51 @@ function scr_player_draw_maya(){
 			bwave = round( wave( bmax, bmin, bdur, 0.88 ) );
 			
 			if ( !show_swing ) {
-				draw_sprite_ext( splayer_maya_sword,  1,
-					xx_-4*draw_xscale+new_arm_x+LDX(14,arm_dir_*draw_xscale + -90 ),
-					yy_-22+						new_hand_y+y_off+bwave-(recoil_y*0.25)+LDY(14,arm_dir_*draw_xscale + -90 ), 
-					draw_xscale, 1, 
-				(  arm_dir_ * draw_xscale * ( arm_dir_ > 0 ? 1 : 0.4 ) ) - ( 60 * draw_xscale )+( min(hsp*.1,5)* 10 ), c_gray, draw_alpha );
+				switch(current_weapon) {
+					case 0:
+						draw_sprite_ext( splayer_maya_sword,  1,
+							xx_-4*draw_xscale+new_arm_x+LDX(14,arm_dir_*draw_xscale + -90 ),
+							yy_-22+						new_hand_y+y_off+bwave-(recoil_y*0.25)+LDY(14,arm_dir_*draw_xscale + -90 ), 
+							draw_xscale, 1, 
+						(  arm_dir_ * draw_xscale * ( arm_dir_ > 0 ? 1 : 0.4 ) ) - ( 60 * draw_xscale )+( min(hsp*.1,5)* 10 ), c_gray, draw_alpha );
+					break;
+					case 5:
+						draw_sprite_ext( splayer_maya_sword_saw,  1,
+							xx_-4*draw_xscale+new_arm_x+LDX(14,arm_dir_*draw_xscale + -90 ),
+							yy_-22+						new_hand_y+y_off+bwave-(recoil_y*0.25)+LDY(14,arm_dir_*draw_xscale + -90 ), 
+							draw_xscale, 1, 
+						(  arm_dir_ * draw_xscale * ( arm_dir_ > 0 ? 1 : 0.4 ) ) - ( 60 * draw_xscale )+( min(hsp*.1,5)* 10 ), c_gray, draw_alpha );
+					break;
+					case 1:
+						draw_sprite_ext( splayer_maya_sword_dash,  1,
+							xx_-4*draw_xscale+new_arm_x+LDX(14,arm_dir_*draw_xscale + -90 ),
+							yy_-22+						new_hand_y+y_off+bwave-(recoil_y*0.25)+LDY(14,arm_dir_*draw_xscale + -90 ), 
+							draw_xscale, 1, 
+						(  arm_dir_ * draw_xscale * ( arm_dir_ > 0 ? 1 : 0.4 ) ) - ( 60 * draw_xscale )+( min(hsp*.1,5)* 10 ), c_gray, draw_alpha );
+					break;
+					case 4:
+						draw_sprite_ext( splayer_maya_sword_star,  1,
+							xx_-4*draw_xscale+new_arm_x+LDX(14,arm_dir_*draw_xscale + -90 ),
+							yy_-22+						new_hand_y+y_off+bwave-(recoil_y*0.25)+LDY(14,arm_dir_*draw_xscale + -90 ), 
+							draw_xscale, 1, 
+						(  arm_dir_ * draw_xscale * ( arm_dir_ > 0 ? 1 : 0.4 ) ) - ( 60 * draw_xscale )+( min(hsp*.1,5)* 10 ), c_gray, draw_alpha );
+					break;
+					case 3:
+						draw_sprite_ext( splayer_maya_sword_long,  1,
+							xx_-4*draw_xscale+new_arm_x+LDX(14,arm_dir_*draw_xscale + -90 ),
+							yy_-22+						new_hand_y+y_off+bwave-(recoil_y*0.25)+LDY(14,arm_dir_*draw_xscale + -90 ), 
+							draw_xscale, 1, 
+						(  arm_dir_ * draw_xscale * ( arm_dir_ > 0 ? 1 : 0.4 ) ) - ( 60 * draw_xscale )+( min(hsp*.1,5)* 10 ), c_gray, draw_alpha );
+					break;
+					case 2:
+						draw_sprite_ext( splayer_maya_sword_big,  1,
+							xx_-4*draw_xscale+new_arm_x+LDX(14,arm_dir_*draw_xscale + -90 ),
+							yy_-22+						new_hand_y+y_off+bwave-(recoil_y*0.25)+LDY(14,arm_dir_*draw_xscale + -90 ), 
+							draw_xscale, 1, 
+						(  arm_dir_ * draw_xscale * ( arm_dir_ > 0 ? 1 : 0.4 ) ) - ( 60 * draw_xscale )+( min(hsp*.1,5)* 10 ), c_gray, draw_alpha );
+					break;
+					
+				}
 				
 				draw_sprite_ext( splayer_maya_sword,  2,
 					xx_-4*draw_xscale+new_arm_x+LDX(14,arm_dir_*draw_xscale + -90 ),
@@ -217,11 +305,52 @@ function scr_player_draw_maya(){
 			} else {
 				bwave = round( wave( bmax, bmin, bdur, 0.9 ) );
 				if ( maya_show_outside_swing ) {
-						draw_sprite_ext( splayer_maya_sword,  1,
-						xx_ -  4 * draw_xscale+new_arm_x+LDX( 14, arm_dir_ * draw_xscale + -90 ),
-						yy_ - 22 + new_hand_y+y_off+bwave-(recoil_y*0.25)+LDY(14,arm_dir_*draw_xscale + -90 ), 
-						draw_xscale, 1, 
-					(  arm_dir_ * draw_xscale * ( arm_dir_ > 0 ? 1 : 0.4 ) ) - ( 60 * draw_xscale )+( min(hsp*.1,5)* 10 ), c_gray, draw_alpha );
+					
+					switch(current_weapon) {
+						case 0:
+							draw_sprite_ext( splayer_maya_sword,  1,
+							xx_ -  4 * draw_xscale+new_arm_x+LDX( 14, arm_dir_ * draw_xscale + -90 ),
+							yy_ - 22 + new_hand_y+y_off+bwave-(recoil_y*0.25)+LDY(14,arm_dir_*draw_xscale + -90 ), 
+							draw_xscale, 1, 
+						(  arm_dir_ * draw_xscale * ( arm_dir_ > 0 ? 1 : 0.4 ) ) - ( 60 * draw_xscale )+( min(hsp*.1,5)* 10 ), c_gray, draw_alpha );
+						break;
+						case 5:
+							draw_sprite_ext( splayer_maya_sword_saw,  1,
+							xx_ -  4 * draw_xscale+new_arm_x+LDX( 14, arm_dir_ * draw_xscale + -90 ),
+							yy_ - 22 + new_hand_y+y_off+bwave-(recoil_y*0.25)+LDY(14,arm_dir_*draw_xscale + -90 ), 
+							draw_xscale, 1, 
+						(  arm_dir_ * draw_xscale * ( arm_dir_ > 0 ? 1 : 0.4 ) ) - ( 60 * draw_xscale )+( min(hsp*.1,5)* 10 ), c_gray, draw_alpha );
+						break;
+						case 1:
+							draw_sprite_ext( splayer_maya_sword_dash,  1,
+							xx_ -  4 * draw_xscale+new_arm_x+LDX( 14, arm_dir_ * draw_xscale + -90 ),
+							yy_ - 22 + new_hand_y+y_off+bwave-(recoil_y*0.25)+LDY(14,arm_dir_*draw_xscale + -90 ), 
+							draw_xscale, 1, 
+						(  arm_dir_ * draw_xscale * ( arm_dir_ > 0 ? 1 : 0.4 ) ) - ( 60 * draw_xscale )+( min(hsp*.1,5)* 10 ), c_gray, draw_alpha );
+						break;
+						case 4:
+							draw_sprite_ext( splayer_maya_sword_star,  1,
+							xx_ -  4 * draw_xscale+new_arm_x+LDX( 14, arm_dir_ * draw_xscale + -90 ),
+							yy_ - 22 + new_hand_y+y_off+bwave-(recoil_y*0.25)+LDY(14,arm_dir_*draw_xscale + -90 ), 
+							draw_xscale, 1, 
+						(  arm_dir_ * draw_xscale * ( arm_dir_ > 0 ? 1 : 0.4 ) ) - ( 60 * draw_xscale )+( min(hsp*.1,5)* 10 ), c_gray, draw_alpha );
+						break;
+						case 3:
+							draw_sprite_ext( splayer_maya_sword_long,  1,
+							xx_ -  4 * draw_xscale+new_arm_x+LDX( 14, arm_dir_ * draw_xscale + -90 ),
+							yy_ - 22 + new_hand_y+y_off+bwave-(recoil_y*0.25)+LDY(14,arm_dir_*draw_xscale + -90 ), 
+							draw_xscale, 1, 
+						(  arm_dir_ * draw_xscale * ( arm_dir_ > 0 ? 1 : 0.4 ) ) - ( 60 * draw_xscale )+( min(hsp*.1,5)* 10 ), c_gray, draw_alpha );
+						break;
+						case 2:
+							draw_sprite_ext( splayer_maya_sword_big,  1,
+							xx_ -  4 * draw_xscale+new_arm_x+LDX( 14, arm_dir_ * draw_xscale + -90 ),
+							yy_ - 22 + new_hand_y+y_off+bwave-(recoil_y*0.25)+LDY(14,arm_dir_*draw_xscale + -90 ), 
+							draw_xscale, 1, 
+						(  arm_dir_ * draw_xscale * ( arm_dir_ > 0 ? 1 : 0.4 ) ) - ( 60 * draw_xscale )+( min(hsp*.1,5)* 10 ), c_gray, draw_alpha );
+						break;
+						
+					}
 					
 					draw_sprite_ext( splayer_maya_sword,  2,
 						xx_-4*draw_xscale+new_arm_x+LDX(14,arm_dir_*draw_xscale + -90 ),

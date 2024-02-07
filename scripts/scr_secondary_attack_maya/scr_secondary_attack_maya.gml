@@ -298,6 +298,7 @@ function scr_secondary_attack_maya(){
 							b.ghost = true;
 							b.lag_add   *= 1.2*charge_pwr_;
 							b.shake_add *= 1.2*charge_pwr_;
+							b.stun_mult = 0.1;
 							b.alt_knockback = true;
 							b.image_blend = ex_ ? c_aqua : c_white;
 						}
@@ -340,7 +341,7 @@ function scr_secondary_attack_maya(){
 						var nmult_ = 1.4;
 						SHAKE += ex_ ? 3 : 2;
 						repeat( 2 ) {
-							var b = bullet_general( 14*charge_pwr_, 0.1, splayer_maya_slash_long, 0, , 0.5 );
+							var b = bullet_general( 10*charge_pwr_, 0.1, splayer_maya_slash_long, 0, , 0.5 );
 							
 							b.knockback *=  0.95*charge_pwr_;
 							b.duration  = 16;
@@ -354,6 +355,8 @@ function scr_secondary_attack_maya(){
 							b.shake_add *= 1.2*charge_pwr_;
 							b.alt_knockback = true;
 							b.image_blend = ex_ ? c_aqua : c_white;
+							b.stun_mult = 0.3;
+							
 						}
 						if (!gen_col(x,y+1)) {
 							vsp = min( -4, vsp - 1 );

@@ -1,7 +1,7 @@
-#macro TEST_DEFAULT false
+#macro TEST_DEFAULT true
 #macro LIVE_DEFAULT false
 #macro INIT_TEST_STATE e_meta_state.char_select
-
+#macro TEST_FORCE_CHAR e_char_index.ameli
 
 global.test_enabled			= TEST_DEFAULT;
 global.live_turned_on		= LIVE_DEFAULT;
@@ -58,6 +58,9 @@ if ( global.test_enabled ) {
 	game_has_started = false;
 } else {
 	game_has_started = true;
+	with ( obutton ) {
+		IDD();
+	}
 }
 intimer = 0;
 window_set_cursor( cr_none );
@@ -86,11 +89,5 @@ global.training_stun_render = false;
 global.training_display_hitboxes = false;
 global.training_mode_change_stage = false;
 global.speed_render = false;
-
-global.grapple_mode	= [ 0, 0, 0, 0 ];
-global.tap_jump		= [ 0, 0, 0, 0 ];
-global.char_index	= [ e_char_index.fern, e_char_index.fern, e_char_index.fern, e_char_index.fern ];
-global.ready_state	= [ false, false, false, false ];
-
 
 

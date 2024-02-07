@@ -442,7 +442,7 @@ if ( player_local ) {
 				
 				draw_self();
 				
-				if ( global.char_index[ other.player_id ] == index ) {
+				if ( opreference_tracker.char_index[ other.player_id ] == index ) {
 					draw_sprite_ext( schar_select_frame_selected, 0, x-cxoffset_, y-cyoffset_, 2, 2, 0, c_white, 1 );
 				}
 				
@@ -469,7 +469,7 @@ if ( player_local ) {
 				//draw_self();
 				draw_sprite_ext(
 					sprite_index,
-					global.ready_state[ other.player_id ] ? 2 : 0,
+					opreference_tracker.ready_state[ other.player_id ] ? 2 : 0,
 					x,
 					y,
 					1,

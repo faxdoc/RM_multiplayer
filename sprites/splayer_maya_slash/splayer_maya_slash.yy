@@ -4,7 +4,7 @@
   "name": "splayer_maya_slash",
   "bbox_bottom": 38,
   "bbox_left": 1,
-  "bbox_right": 60,
+  "bbox_right": 62,
   "bbox_top": 23,
   "bboxMode": 2,
   "collisionKind": 5,

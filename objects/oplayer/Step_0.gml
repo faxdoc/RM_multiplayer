@@ -10,6 +10,10 @@ if (!random_inited ) {
 		}
 	}
 	
+	if ( !instance_exists(opreference_tracker) ) {
+		MAKES(opreference_tracker);
+	}
+	
 	random_inited = true;
 	if ( !instance_exists(orandom) ) {
 		MAKES(orandom);
@@ -57,7 +61,7 @@ KPLEFT	= _input.KLEFT_pressed;
 KPRIGHT	= _input.KRIGHT_pressed;
 K1P		= _input.K1_pressed;	
 K2P		= _input.K2_pressed;	
-K3P		= _input.K3_pressed || (global.tap_jump[player_id] ?  _input.KUP_pressed : 0);	
+K3P		= _input.K3_pressed || (opreference_tracker.tap_jump[player_id] ?  _input.KUP_pressed : 0);	
 K4P		= _input.K4_pressed;	
 K5P		= _input.K5_pressed;	
 K6P		= _input.K6_pressed;	

@@ -55,7 +55,7 @@ switch( maya_sword_swing_state ) {
 				maya_sword_blink_alpha  = max( 50, maya_sword_blink_alpha + 10 );
 				maya_sword_blink_colour = c_red;
 				maya_animation_swing_timer = 25;
-				gun_len		= 36;
+				gun_len		= 40;
 				gun_height  = 20;
 				// gun_general( 10, 60, 9 );
 					
@@ -213,7 +213,7 @@ switch( maya_sword_swing_state ) {
 				audio_play_sound_pitch( snd_maya_charged_cut, 0.8,  (0.96 + random( 0.1 ))*0.9, 1 );
 				audio_play_sound_pitch( snd_maya_swing_2,	 0.20, 1.05 + random( 0.1 ), 1 );
 					
-				gun_len		= 26;
+				gun_len		= 30;
 				gun_height  = 20;
 				// gun_general( 10, 60, 9 );
 				var do_ver_spd = true;

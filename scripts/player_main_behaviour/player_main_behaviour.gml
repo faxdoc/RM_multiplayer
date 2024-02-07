@@ -120,12 +120,18 @@ function player_main_behaviour(){
 				active_timer = 0;
 			}
 			air_combo = false;
+			if ( char_index = e_char_index.maya ) {
+				can_input = true;
+			}
 		break;
 		#endregion
 		
 		#region normal
 		case e_player.normal:
 			
+			if ( char_index = e_char_index.maya ) {
+				can_input = true;
+			}
 			hit_substate = 0;
 			skip_draw = false;
 			pre_hook_state = state;
