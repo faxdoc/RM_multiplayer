@@ -389,3 +389,36 @@ if ( global.training_mode ) {
 
 	
 }
+
+
+
+#region char specfic 
+switch(char_index) {
+	case e_char_index.ameli:
+		ameli_book_x	= lerp(	ameli_book_x, x+( draw_xscale*23 )+hsp*3, 0.2 );
+		ameli_book_y	= lerp(	ameli_book_y, y-27+vsp*3+sin(ameli_book_sin/27)*3, 0.2 );
+		ameli_book_sin++;
+		if ( !ameli_trail_cooldown-- ) {
+			var amult_ = 3
+			var duration_ = 6;
+			with ( create_fx( 
+					ameli_book_x, 
+					ameli_book_y,
+					sameli_book, 0,
+					0,
+					depth+1 ) ) {
+						image_index = 0;
+						image_xscale = -other.draw_xscale;
+						type = e_fx.fade;
+						alpha_mult = amult_;
+						duration   = duration_;
+			}
+			ameli_trail_cooldown = 3;
+		}
+				
+	break;
+}
+
+
+#endregion
+

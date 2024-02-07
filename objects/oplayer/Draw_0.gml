@@ -39,11 +39,12 @@ if (!grenade_cooldown && knife_state == 0 ) {
 	draw_sprite_ext( splayer_grenade_silhouete, 0, fx_+12, fy_-48, 1, 1, 0, intcol_, 1 );
 }
 var intcol_ =  merge_colour(c_ltgray, player_colour, 0.5 );
-draw_circle_colour(x-draw_xscale*2,y-29, 7, intcol_,intcol_, false );
-draw_circle_colour(x-draw_xscale*2,y-29, 9, intcol_,intcol_, true );
+DSA(0.5);
+draw_circle_colour(x-draw_xscale*2,y-29, 7, intcol_,intcol_,  false );
+draw_circle_colour(x-draw_xscale*2,y-29, 9, intcol_,intcol_,  true );
 draw_circle_colour(x-draw_xscale*2,y-29, 9.5, intcol_,intcol_, true );
 draw_circle_colour(x-draw_xscale*2,y-29, 10, intcol_,intcol_, true );
-
+DSA(1);
 
 shader_set(shd_palette);
 	shader_set_uniform_f( main_shader_pal_index_pointer, player_id );

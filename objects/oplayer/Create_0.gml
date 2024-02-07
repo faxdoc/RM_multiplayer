@@ -485,3 +485,10 @@ maya_sword_blink_colour = 0;
 char_init = false;
 pre_hp = hp;
 damage_taken = 0;
+
+
+ameli_book_x = 0;
+ameli_book_y = 0;
+ameli_trail_cooldown = 0;
+ameli_book_sin = 0;
+

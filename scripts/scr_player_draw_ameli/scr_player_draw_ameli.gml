@@ -25,10 +25,10 @@ switch( draw_type ) {
 		//shader_set( shd_palette );
 		if ( knife_state == 0 ) {
 			//scr_player_draw_guns_inner( var_dir, recoil_x, bwave, y_off-bly_, recoil_y );
-			//draw_sprite_ext( sameli_arm_inner, knife_timer < 21 ? min(11,knife_timer/1):12,x-0*draw_xscale-recoil_x,yl_-24+bwave+y_off-recoil_y+1-3, -draw_xscale, 1, 0, image_blend, draw_alpha );
+			draw_sprite_ext( sameli_arm_inner, knife_timer < 21 ? min(11,knife_timer/1):12,x-0*draw_xscale-recoil_x,yl_-24+bwave+y_off-recoil_y+1-5, -draw_xscale, 1, 0, image_blend, draw_alpha );
 		} else {
 			//player_throw_grenade();
-			//draw_sprite_ext( sameli_arm_inner, knife_timer < 21 ? min(11,knife_timer/1):12,x-0*draw_xscale-recoil_x,yl_-24+bwave+y_off-recoil_y+1-3, -draw_xscale, 1, 0, image_blend, draw_alpha );
+			draw_sprite_ext( sameli_arm_inner, knife_timer < 21 ? min(11,knife_timer/1):12,x-0*draw_xscale-recoil_x,yl_-24+bwave+y_off-recoil_y+1-5, -draw_xscale, 1, 0, image_blend, draw_alpha );
 		}
 		
 		
@@ -40,12 +40,12 @@ switch( draw_type ) {
 		//legs
 		if ( on_ground ) {
 			if ( round(hsp) == 0 ) {
-				draw_sprite_ext( sameli_legs_idle, legs_index,  x, yl_+bly_,-draw_xscale,1,0,image_blend,draw_alpha);
+				draw_sprite_ext( sameli_legs_idle,  legs_index,			x, yl_+bly_, -draw_xscale,1,0,image_blend,draw_alpha);
 			} else {
-				draw_sprite_ext( splayer_legs_run, legs_running_index*draw_xscale,  x, yl_+bly_, draw_xscale,1,0,image_blend,draw_alpha);
+				draw_sprite_ext( sameli_legs_idle,  legs_running_index, x, yl_+bly_, -draw_xscale,1,0,image_blend,draw_alpha);
 			}
 		} else {
-			draw_sprite_ext( sameli_legs_idle, legs_index,  x, yl_+bly_,  draw_xscale,1,0,image_blend,draw_alpha);
+			draw_sprite_ext( sameli_legs_idle,		legs_index,			x, yl_+bly_, -draw_xscale,1,0,image_blend,draw_alpha);
 		}
 
 		//body
@@ -55,41 +55,41 @@ switch( draw_type ) {
 		//draw_sprite_ext( splayer_body, ind,x+ex,yl_-10+y_off*0.5+bwave,draw_xscale,1,0,image_blend,draw_alpha);
 		
 		
-		yl_ -= 2;
+		yl_ -= 3;
 		//head
 		bwave = round( wave( bmax, bmin, bdur, 0.92 ) );
 		var xx = var_dir > 0 ? var_dir/10 : var_dir/50;
-		var head_x = x-1*draw_xscale-xx*draw_xscale+hh;
+		var head_x = x-2*draw_xscale-xx*draw_xscale+hh;
 		var head_y = yl_-25+y_off+bwave + (crouching ? 1 : 0);
 		var hair_x = head_x;
 		var hair_y = head_y;
 		
 		if ( shoot_delay ) {
-			draw_sprite_ext( sameli_head,var_dir > -40 ? (var_dir < 25 ? 1 : ( var_dir < 55 ? 2 : 3 )  ) : 0,			round(head_x), round(head_y), -draw_xscale, 1, 0, image_blend, draw_alpha );
-			//var eyes = var_dir > -40 ? (var_dir < 25 ? splayer_eyes_mid : ( var_dir < 55 ? splayer_eyes_mid_up : splayer_eyes_up )  ) : splayer_eyes_down;
-			//draw_sprite_ext( eyes, blink_state, round(head_x), round(head_y), draw_xscale, 1, 0, image_blend, draw_alpha );
+			//draw_sprite_ext( sameli_head, var_dir > -40 ? (var_dir < 25 ? 1 : ( var_dir < 55 ? 2 : 3 )  ) : 0,			round(head_x), round(head_y), -draw_xscale, 1, 0, image_blend, draw_alpha );
+			////var eyes = var_dir > -40 ? (var_dir < 25 ? splayer_eyes_mid : ( var_dir < 55 ? splayer_eyes_mid_up : splayer_eyes_up )  ) : splayer_eyes_down;
+			////draw_sprite_ext( eyes, blink_state, round(head_x), round(head_y), draw_xscale, 1, 0, image_blend, draw_alpha );
 
-			head_y -= 10;
-			head_x -= 7 * draw_xscale + 1; 
-			var hair_dir = var_dir > -40 ? (var_dir < 25 ? 1 : ( var_dir < 55 ? 2 : 3 )  ) : 0;
-			switch(hair_dir) {
-				case 0:
-					hair_x = lerp( hair_x, head_x+hsp,   0.6 );
-					hair_y = lerp( hair_y, head_y+vsp-2, 0.6 );
-				break;
-				case 1:
-					hair_x = lerp( hair_x, head_x+hsp, 0.6 );
-					hair_y = lerp( hair_y, head_y+vsp, 0.6);
-				break;
-				case 2:
-					hair_x = lerp( hair_x, head_x + hsp + 2*draw_xscale, 0.6 );
-					hair_y = lerp( hair_y, head_y + vsp + 2,			 0.6 );
-				break;
-				case 3:
-					hair_x = lerp( hair_x, head_x + hsp + 7*draw_xscale, 0.6 );
-					hair_y = lerp( hair_y, head_y + vsp + 5,			 0.6 );
-				break;
-			}
+			//head_y -= 10;
+			//head_x -= 7 * draw_xscale + 1; 
+			//var hair_dir = var_dir > -40 ? (var_dir < 25 ? 1 : ( var_dir < 55 ? 2 : 3 )  ) : 0;
+			//switch(hair_dir) {
+			//	case 0:
+			//		hair_x = lerp( hair_x, head_x+hsp,   0.6 );
+			//		hair_y = lerp( hair_y, head_y+vsp-2, 0.6 );
+			//	break;
+			//	case 1:
+			//		hair_x = lerp( hair_x, head_x+hsp, 0.6 );
+			//		hair_y = lerp( hair_y, head_y+vsp, 0.6);
+			//	break;
+			//	case 2:
+			//		hair_x = lerp( hair_x, head_x + hsp + 2*draw_xscale, 0.6 );
+			//		hair_y = lerp( hair_y, head_y + vsp + 2,			 0.6 );
+			//	break;
+			//	case 3:
+			//		hair_x = lerp( hair_x, head_x + hsp + 7*draw_xscale, 0.6 );
+			//		hair_y = lerp( hair_y, head_y + vsp + 5,			 0.6 );
+			//	break;
+			//}
 		} else {
 			draw_sprite_ext( sameli_head,     1,			round(head_x), round(head_y)-4, -draw_xscale, 1, 0, image_blend, draw_alpha );
 			//draw_sprite_ext( splayer_eyes_mid, blink_state,	round(head_x), round(head_y), draw_xscale, 1, 0, image_blend, draw_alpha );
@@ -104,7 +104,8 @@ switch( draw_type ) {
 		
 		draw_sprite_ext( sameli_maya_body, 0,x + 0*draw_xscale-xx*draw_xscale,		yl_-8+y_off+bwave		-22,-draw_xscale,1,0,image_blend,draw_alpha);
 		
-		
+		draw_sprite_ext( sameli_hoodie, 0,    x -1*draw_xscale-xx*1.5*draw_xscale,  yl_-8+y_off*1.4+bwave-19,-draw_xscale,1,0,image_blend,draw_alpha);
+			
 		if ( switching_weapon ) {
 			//shader_set( shd_palette );
 			draw_sprite_ext( sameli_arm_outer, switch_timer/3,x-0*draw_xscale, yl_-26+bwave+y_off, -draw_xscale, 1, 0, image_blend, draw_alpha );
@@ -120,7 +121,7 @@ switch( draw_type ) {
 		}
 		shader_reset();
 		
-		draw_sprite_ext( sameli_hoodie,0,    x + 0*draw_xscale-xx*1.5*draw_xscale,  yl_-8+y_off*1.4+bwave  -19,-draw_xscale,1,0,image_blend,draw_alpha);
+		draw_sprite_ext(sameli_book,0,ameli_book_x,ameli_book_y, -draw_xscale, 1, 0, c_white, 1 );
 		
 		//if ( current_weapon == e_gun.sniper && gun_charge > 0 && state != e_player.cutscene ) {
 		//	var drr = point_direction(x,y-gun_height,MX,MY);

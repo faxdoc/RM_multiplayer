@@ -1,7 +1,7 @@
-#macro TEST_DEFAULT false
+#macro TEST_DEFAULT true
 #macro LIVE_DEFAULT false
 #macro INIT_TEST_STATE e_meta_state.char_select
-#macro TEST_FORCE_CHAR e_char_index.maya
+#macro TEST_FORCE_CHAR e_char_index.ameli
 
 global.test_enabled			= TEST_DEFAULT;
 global.live_turned_on		= LIVE_DEFAULT;
