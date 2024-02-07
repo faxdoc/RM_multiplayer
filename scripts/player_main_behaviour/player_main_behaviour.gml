@@ -737,5 +737,14 @@ legs_running_index = legs_index;
 
 if ( INVIS ) INVIS--;
 draw_alpha = !( INVIS mod 4 > 1 );
-	
+
+#region Ameli code
+if ( char_index == e_char_index.ameli ) {
+	var i = 0; repeat(3) {
+		
+	}
+}
+
+#endregion
+
 }

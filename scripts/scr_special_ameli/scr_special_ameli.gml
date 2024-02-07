@@ -1,3 +1,3 @@
-function scr_special_ameli(){
+function scr_special_ameli() {
 
 }

@@ -16,6 +16,7 @@
     {"name":"meta","order":2,"path":"folders/Objects/meta.yy",},
     {"name":"old","order":9,"path":"folders/Objects/old.yy",},
     {"name":"parents","order":10,"path":"folders/Objects/parents.yy",},
+    {"name":"ameli","order":8,"path":"folders/Objects/player/ameli.yy",},
     {"name":"maya","order":6,"path":"folders/Objects/player/maya.yy",},
     {"name":"ui","order":11,"path":"folders/Objects/ui.yy",},
     {"name":"Rooms","order":16,"path":"folders/Rooms.yy",},
@@ -89,7 +90,6 @@
     {"name":"Particle Systems","order":6,"path":"folders/unused/Particle Systems.yy",},
     {"name":"Sequences","order":2,"path":"folders/unused/Sequences.yy",},
     {"name":"Timelines","order":1,"path":"folders/unused/Timelines.yy",},
-    {"name":"ameli","order":8,"path":"folders/Objects/player/ameli.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"snd_ready","order":17,"path":"sounds/snd_ready/snd_ready.yy",},
@@ -174,6 +174,7 @@
     {"name":"snd_explotion_2","order":2,"path":"sounds/snd_explotion_2/snd_explotion_2.yy",},
     {"name":"GMLive_vm_init","order":7,"path":"scripts/GMLive_vm_init/GMLive_vm_init.yy",},
     {"name":"rceiling","order":6,"path":"rooms/rceiling/rceiling.yy",},
+    {"name":"sabilities_ameli","order":12,"path":"sprites/sabilities_ameli/sabilities_ameli.yy",},
     {"name":"ohook","order":3,"path":"objects/ohook/ohook.yy",},
     {"name":"splayer_legs_jump","order":2,"path":"sprites/splayer_legs_jump/splayer_legs_jump.yy",},
     {"name":"sameli_trap_spike","order":2,"path":"sprites/sameli_trap_spike/sameli_trap_spike.yy",},

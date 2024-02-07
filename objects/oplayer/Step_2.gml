@@ -60,7 +60,7 @@ switch( meta_state ) {
 			
 		}
 		
-		if global.training_mode {
+		if ( global.training_mode ) {
 			if opreference_tracker.ready_state[ player_id ] {
 				with oplayer meta_state = e_meta_state.level_select;
 			}
@@ -120,8 +120,9 @@ switch( meta_state ) {
 
 #endregion
 
-
+#region meta states
 switch(meta_state) {
+	#region level select
 	case e_meta_state.level_select:
 		if ( !instance_exists( obutton_levels ) ) {
 			var d_ = 1/10, i = 0; repeat(9) {
@@ -136,6 +137,10 @@ switch(meta_state) {
 		
 		
 	break;
+	
+	#endregion
+	
+	#region round end
 	case e_meta_state.round_end:
 		final_effect_speed *= 0.96;
 		final_effect_speed = max(0.03,final_effect_speed);
@@ -149,11 +154,15 @@ switch(meta_state) {
 		if instance_exists( par_hitbox	   ) { IDD( par_hitbox		); }
 		if instance_exists( ohook		   ) { IDD( ohook			); }
 	break;
+	
+	#endregion
+	
+	#region round start
 	case e_meta_state.round_start:
 		opreference_tracker.ready_state[ player_id ] = false;
 		global.training_mode_change_stage = false;
 		
-		
+		#region char apply
 		if ( !char_init ) {
 			char_index = opreference_tracker.char_index[ player_id ];
 			char_init = true;
@@ -176,12 +185,20 @@ switch(meta_state) {
 					base_walk_spd *= 0.9;
 					hp_max	= 100;
 					hp		= 100;
-					//portrait_expression_base = sface_ameli_normal;
-					//portrait_expression_hurt = sface_ameli_hit;
+					orbs = [ MAKES( oameli_orb ), MAKES( oameli_orb ), MAKES( oameli_orb ) ];
+					orbs[0].parent = id;
+					orbs[1].parent = id;
+					orbs[2].parent = id;
+					
+					orbs[1].idle_timer = 120;
+					orbs[2].idle_timer = 240;
+					
 				break;
 			}
+			#endregion
 		}
 		
+		#endregion
 		//if ( intro_timer < 10 ) {
 			
 		//} else {
@@ -303,6 +320,8 @@ switch(meta_state) {
 	#endregion
 	
 }
+
+#endregion
 
 if ( meta_state != e_meta_state.main ) {
 	var lddd_ = id;

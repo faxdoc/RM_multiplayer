@@ -365,6 +365,32 @@ function scr_player_draw_maya(){
 				}
 			}
 			#endregion
+			
+			
+			
+			if ( current_weapon == e_gun.sniper && knife_state > 0 ) {
+				var drr = point_direction(x,y-gun_height,MX,MY);
+				var sx_ = x+			LDX( 42, drr );
+				var sy_ = yl_-gun_height+ LDY( 42, drr )+( crouching ? 4 : 0 )-1;
+				
+				var xx_ = sx_;
+				var yy_ = sy_;
+				var blend_ = gun_fully_charged;
+				var i = 112; while(i-- && !gen_col(x,y)) {
+					if( blend_ ){
+						DSA( 0.3 );
+					} else {
+						DSA( 0.2 );
+					}
+					
+					var draw_len_ = 7 + ( gun_charge mod 9 );
+					draw_line_width_color(xx_,yy_,xx_+LDX(draw_len_,drr),yy_+LDY(draw_len_,drr),2.1, blend_ ? merge_color(c_white,c_aqua,.9) : c_red, blend_ ? c_aqua : c_orange );
+					xx_ += LDX( 7, drr );
+					yy_ += LDY( 7, drr );
+				}
+				DSA(1);
+			}
+		
 		break;
 		#endregion
 		

@@ -30,6 +30,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"old","folderPath":"folders/Objects/old.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"parents","folderPath":"folders/Objects/parents.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"player","folderPath":"folders/Objects/player.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"ameli","folderPath":"folders/Objects/player/ameli.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"maya","folderPath":"folders/Objects/player/maya.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"ui","folderPath":"folders/Objects/ui.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Rooms","folderPath":"folders/Rooms.yy",},
@@ -109,7 +110,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Paths","folderPath":"folders/unused/Paths.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sequences","folderPath":"folders/unused/Sequences.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/unused/Timelines.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"ameli","folderPath":"folders/Objects/player/ameli.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"gcmt-dll.dll","CopyToMask":0,"filePath":"datafiles/GMLive",},
@@ -125,7 +125,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.11.1.129",
+    "IDEVersion": "2023.1100.0.444",
   },
   "resources": [
     {"id":{"name":"snd_ready","path":"sounds/snd_ready/snd_ready.yy",},},
@@ -234,6 +234,7 @@
     {"id":{"name":"snd_explotion_2","path":"sounds/snd_explotion_2/snd_explotion_2.yy",},},
     {"id":{"name":"GMLive_vm_init","path":"scripts/GMLive_vm_init/GMLive_vm_init.yy",},},
     {"id":{"name":"rceiling","path":"rooms/rceiling/rceiling.yy",},},
+    {"id":{"name":"sabilities_ameli","path":"sprites/sabilities_ameli/sabilities_ameli.yy",},},
     {"id":{"name":"ohook","path":"objects/ohook/ohook.yy",},},
     {"id":{"name":"splayer_legs_jump","path":"sprites/splayer_legs_jump/splayer_legs_jump.yy",},},
     {"id":{"name":"sameli_trap_spike","path":"sprites/sameli_trap_spike/sameli_trap_spike.yy",},},
