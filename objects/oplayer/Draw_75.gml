@@ -450,8 +450,10 @@ if ( player_local ) {
 			draw_text_transformed_color( bx, by-32, orbs_left, 2, 2, 0, c,c,c,c,1 );
 		
 			draw_set_font(fnt_default);
-			
-			
+			bx -= 16;
+			by += 12;
+			draw_rectangle( bx-78, by-64+8, bx-78+flying_charge,by+12-64+8,false );
+				
 		break;
 		#endregion
 	}

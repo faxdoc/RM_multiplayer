@@ -263,6 +263,7 @@
     {"name":"oblood","order":2,"path":"objects/oblood/oblood.yy",},
     {"name":"sameli_trap_spear","order":3,"path":"sprites/sameli_trap_spear/sameli_trap_spear.yy",},
     {"name":"sstart_bg_rep","order":6,"path":"sprites/sstart_bg_rep/sstart_bg_rep.yy",},
+    {"name":"sameli_hit","order":15,"path":"sprites/sameli_hit/sameli_hit.yy",},
     {"name":"scr_init","order":5,"path":"scripts/scr_init/scr_init.yy",},
     {"name":"splayer_maya_hand_outer_pistol","order":19,"path":"sprites/splayer_maya_hand_outer_pistol/splayer_maya_hand_outer_pistol.yy",},
     {"name":"splayer_legs_run","order":1,"path":"sprites/splayer_legs_run/splayer_legs_run.yy",},

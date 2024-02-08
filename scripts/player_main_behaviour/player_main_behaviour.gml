@@ -280,7 +280,7 @@ function player_main_behaviour(){
 					sprite_index = splayer_maya_hit;
 				break;
 				case e_char_index.ameli:
-					sprite_index = splayer_hit;
+					sprite_index = sameli_hit;
 				break;
 			}
 			

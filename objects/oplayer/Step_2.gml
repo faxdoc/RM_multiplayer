@@ -187,13 +187,14 @@ switch(meta_state) {
 					//portrait_expression_hurt = sface_maya_hit;
 				break;
 				case e_char_index.ameli:
-					base_walk_spd *= 0.9;
+					base_walk_spd *= 1.03;
 					hp_max	= 100;
 					hp		= 100;
 					orbs = [ MAKES( oameli_orb ), MAKES( oameli_orb ), MAKES( oameli_orb ) ];
 					orbs[0].parent = id;
 					orbs[1].parent = id;
 					orbs[2].parent = id;
+					grav *= 0.9;
 					
 					orbs[1].idle_timer = 120;
 					orbs[2].idle_timer = 240;
@@ -209,16 +210,25 @@ switch(meta_state) {
 		//} else {
 		
 			
-		//	//if ( char_index != e_char_index.maya && KLEFT && KRIGHT && KDOWN && K7 ) {
-		//	//	show_debug_message("a")
-		//	//	char_index = e_char_index.maya;
-		//	//	base_walk_spd += 0.08;//base_walk_spd	= 0.385;
-		//	//	hp_max = 125;
-		//	//	hp = 125;
-		//	//	grav *= 1.1;//0.17*1.2;
-		//	//	base_jump_pwr += 1.25;// 4.68;
-		//	//}
-		//}
+		if ( char_index != e_char_index.ameli && KLEFT && KRIGHT && KDOWN && K7 ) {
+				//show_debug_message("a")
+				char_index = e_char_index.ameli;
+				//base_walk_spd += 0.08;//base_walk_spd	= 0.385;
+				hp_max = 100;
+				hp = 100;
+				base_walk_spd *= 0.9;
+				
+				orbs = [ MAKES( oameli_orb ), MAKES( oameli_orb ), MAKES( oameli_orb ) ];
+					orbs[0].parent = id;
+					orbs[1].parent = id;
+					orbs[2].parent = id;
+					
+					orbs[1].idle_timer = 120;
+					orbs[2].idle_timer = 240;
+					
+				//grav *= 1.1;//0.17*1.2;
+				//base_jump_pwr += 1.25;
+		}
 		
 		
 		
@@ -417,10 +427,16 @@ if ( global.training_mode ) {
 #region char specfic 
 switch(char_index) {
 	case e_char_index.ameli:
+		if ( state == e_meta_state.dead|| state == e_meta_state.dying ) {
+			orbs[0].state = e_ameli_orb_state.idle;
+			orbs[1].state = e_ameli_orb_state.idle;
+			orbs[2].state = e_ameli_orb_state.idle;
+		}
+		flying_charge = min( flying_charge+0.1, 60 );
 		ameli_book_x	= lerp(	ameli_book_x, x+( draw_xscale*23 )+hsp*3, 0.2 );
 		ameli_book_y	= lerp(	ameli_book_y, y-27+vsp*3+sin(ameli_book_sin/27)*3, 0.2 );
 		ameli_book_sin++;
-		if ( !ameli_trail_cooldown-- &&  knife_state == 0 && grenade_cooldown <= 0 ) {
+		if ( !ameli_trail_cooldown-- &&  knife_state == 0 && grenade_cooldown <= 0 && state != e_player.hit ) {
 			var amult_ = 3;
 			var duration_ = 6;
 			with ( create_fx( 

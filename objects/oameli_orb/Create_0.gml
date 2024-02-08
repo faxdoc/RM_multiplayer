@@ -18,6 +18,8 @@ laser_dir = 0;
 own_hitbox = -1;
 intro_timer = 0;
 saw_dir = 0;
+sticky_target = undefined;
+saw_spd = 2;
 
 enum e_ameli_orb_state {
 	idle,
@@ -50,7 +52,8 @@ gen_col_sort		   = tile_sort_collision;
 move_timer = 0;
 
 target_state = e_ameli_orb_state.time_bomb;
-
+trap_max_timer_cap = 120;
+trap_max_timer = 0;
 start_moving_x = x;
 start_moving_y = y;
 MX = 0;
@@ -61,7 +64,8 @@ crouching = false;
 char_index = e_char_index.ameli;
 
 timed_explotion_radius = 116;
-timer_explotion_duration = 140;
+timer_explotion_duration = 60;
 
 spike_trap_size = 68;
 trail_cooldown = 0;
+spike_init_speed = 1.5;

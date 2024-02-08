@@ -2,6 +2,9 @@ function scr_special_ameli() {
     
     can_dodge_cooldown = 16;
     
+	if ( parry_timer == 0 ) {
+		INVIS = 6;
+	}
     var hh = KRIGHT-KLEFT; 
     var vv = KDOWN-KUP;
     
@@ -18,20 +21,22 @@ function scr_special_ameli() {
 	can_dash = false;
 	sprite_index = sameli_flying;
 	draw_type = e_draw_type.animation;
+	flying_charge -= 0.75;
 	
-	if ( KDASHP ) {
+	if ( KDASHP || flying_charge <= 0 ) {
+		flying_charge -= 5;
 	    state = e_player.normal;
         skip_draw = false;
         draw_type = e_draw_type.aiming;
 	}
-	if ( parry_timer++ > 3 ) {
+	if ( parry_timer++ mod 4 == 3 ) {
 	    var t_ = bullet_general( 2, 0.1, shitbox_circle, 0 );
 	    t_.do_stun        = false;
 	    t_.multihit       = true;
 	    t_.multihits_left = 8;
 	    t_.duration = 120;
 	    t_.dir = 270+hsp*12;
-	    parry_timer = 0;
+	    //parry_timer = 0;
 	}
 	
 	

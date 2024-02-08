@@ -64,6 +64,13 @@ if (state == 0) {
 	image_xscale = 4.5;
 	image_yscale = 4.5;
 	
+	if place_meeting(x,y,oameli_orb) {
+		var t_ = instance_place(x,y,oameli_orb);
+		if t_.parent == parent {
+			t_.state = e_ameli_orb_state.idle;
+		}
+	}
+	
 	if ( place_meeting(x,y,oplayer) ) {
 		
 		var t = instance_place(x,y,oplayer);
