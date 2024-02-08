@@ -9,7 +9,7 @@ function player_main_behaviour(){
 		grenade_cooldown--;
 		if (!grenade_cooldown) {
 			audio_play_sound_pitch( snd_grenade_gotten, RR(0.9,1), RR(0.9,1), 0 );
-			with ICD(x,bbox_top-8,5,otext_up) {
+			with ( ICD( x, bbox_top-8, 5, otext_up ) ) {
 				type = 9;
 				blend = other.player_colour;
 			}
