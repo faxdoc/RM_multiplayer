@@ -42,10 +42,10 @@ switch( draw_type ) {
 			if ( round(hsp) == 0 ) {
 				draw_sprite_ext( sameli_legs_idle,  legs_index,			x, yl_+bly_, -draw_xscale,1,0,image_blend,draw_alpha);
 			} else {
-				draw_sprite_ext( sameli_legs_idle,  legs_running_index, x, yl_+bly_, -draw_xscale,1,0,image_blend,draw_alpha);
+				draw_sprite_ext( sameli_legs_run,  legs_running_index, x, yl_+bly_, -draw_xscale,1,0,image_blend,draw_alpha);
 			}
 		} else {
-			draw_sprite_ext( sameli_legs_idle,		legs_index,			x, yl_+bly_, -draw_xscale,1,0,image_blend,draw_alpha);
+			draw_sprite_ext( sameli_legs_jump,		legs_index,			x, yl_+bly_, -draw_xscale,1,0,image_blend,draw_alpha);
 		}
 
 		//body

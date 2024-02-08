@@ -669,7 +669,7 @@ if ( on_ground ) {
 if (!crouching) {
 	var hs = abs(hsp);
 	if ( hs > 0 ) {
-		if (hh > 0 ) {
+		if ( sign(hh) == sign(hsp) ) {
 			legs_index += (hs/14);// * draw_xscale;
 			if( legs_index < 0	 ) legs_index = 7.9;
 			if( legs_index > 7.9 ) legs_index = 0;
