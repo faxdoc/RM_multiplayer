@@ -104,7 +104,7 @@ switch( draw_type ) {
 		
 		draw_sprite_ext( sameli_maya_body, 0,x + 0*draw_xscale-xx*draw_xscale,		yl_-8+y_off+bwave		-22,-draw_xscale,1,0,image_blend,draw_alpha);
 		
-		draw_sprite_ext( sameli_hoodie, 0,    x -1*draw_xscale-xx*1.5*draw_xscale,  yl_-8+y_off*1.4+bwave-19,-draw_xscale,1,0,image_blend,draw_alpha);
+		draw_sprite_ext( sameli_hoodie,   0,    x -1*draw_xscale-xx*1.5*draw_xscale,  yl_-8+y_off*1.4+bwave-19,-draw_xscale,1,0,image_blend,draw_alpha);
 			
 		if ( switching_weapon ) {
 			//shader_set( shd_palette );
@@ -121,7 +121,9 @@ switch( draw_type ) {
 		}
 		shader_reset();
 		
-		draw_sprite_ext(sameli_book,0,ameli_book_x,ameli_book_y, -draw_xscale, 1, 0, c_white, 1 );
+		if ( knife_state == 0 && grenade_cooldown <= 0 ) {
+			draw_sprite_ext(sameli_book,0,ameli_book_x,ameli_book_y, -draw_xscale, 1, 0, c_white, 1 );
+		}
 		
 		//if ( current_weapon == e_gun.sniper && gun_charge > 0 && state != e_player.cutscene ) {
 		//	var drr = point_direction(x,y-gun_height,MX,MY);

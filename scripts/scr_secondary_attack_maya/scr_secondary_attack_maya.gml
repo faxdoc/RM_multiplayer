@@ -249,7 +249,7 @@ function scr_secondary_attack_maya(){
 							space_buffer = true;
 						}
 					}
-					if ( knife_timer > tm_+10+100+5 ) {
+					if ( knife_timer > tm_+100+10 ) {
 						knife_state = 0;
 						knife_timer = 0;
 						maya_grenade_charge = 0;
@@ -287,19 +287,19 @@ function scr_secondary_attack_maya(){
 						SHAKE += ex_ ? 3 : 2;
 						draw_xscale = sign(x-MX) == 1 ? -1 :  1;
 						repeat( 2 ) {
-							var b = bullet_general( 30*charge_pwr_, 0.1, splayer_maya_slash_hard, 0, , 0.5 );
+							var b = bullet_general( 31*charge_pwr_, 0.1, splayer_maya_slash_hard, 0, , 0.5 );
 							// b.y;
-							b.knockback *=  0.15*charge_pwr_;
+							b.knockback *=  0.2*charge_pwr_;
 							b.duration  = 26;
 							b.piercing  = true;
-							b.image_xscale *= 2.0 * lerp( 1, 1.2, charge_level );
-							b.image_yscale *= 2.5 * lerp( 1, 1.2, charge_level )*-draw_xscale;
+							b.image_xscale *= 2.0 * lerp( 1, 1.2, charge_level )*1.2;
+							b.image_yscale *= 2.5 * lerp( 1, 1.2, charge_level )*1.2*-draw_xscale;
 							b.image_speed = 3;
 							b.depth = depth-1;
 							b.ghost = true;
 							b.lag_add   *= 1.2*charge_pwr_;
 							b.shake_add *= 1.2*charge_pwr_;
-							b.stun_mult = 0.1;
+							b.stun_mult = 0.4;
 							b.alt_knockback = true;
 							b.image_blend = ex_ ? c_aqua : c_white;
 						}

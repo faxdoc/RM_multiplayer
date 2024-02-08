@@ -13,6 +13,8 @@ if ( alt_init ) {
 		case splayer_maya_slash_heavy:
 		case splayer_maya_slash_long:
 			do_hitscan_check = true;
+			stun_mult *= 1.25;
+			bonus_vsp = -1;
 		break;
 	}
 }
@@ -131,7 +133,7 @@ repeat(step_number) {
 				var snd_ = dmg >= 55 ? snd_hit_extra : choose( snd_hit_0, snd_hit_1, snd_hit_4 );
 				t.hit_freeze = floor( max(4,dmg/6) );
 				damage_mult *= 0.8;
-				if dmg >= 55 {
+				if ( dmg >= 55 ) {
 					audio_play_sound_pitch( snd_, RR(0.75,0.8)*vol_, RR(0.95,1.05)*pt_, 0, 0.1 );
 				} else {
 					audio_play_sound_pitch( snd_, RR(0.75,0.8)*vol_, RR(0.95,1.05)*pt_, 0 );

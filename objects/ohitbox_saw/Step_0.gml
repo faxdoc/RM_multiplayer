@@ -28,6 +28,7 @@ switch(move_state) {
 				can_push_cooldown = 20;
 				hit_freeze = max( hit_freeze, 2 );
 			}
+			
 			switch(t_.sprite_index ) {
 				case splayer_grenade_blue:
 				case splayer_grenade_green:
@@ -58,12 +59,6 @@ switch(move_state) {
 					}
 				break;
 			}
-			//if ( t_.sprite_index == splayer_grenade ) {
-				
-			//} else if ( t_.object_index != object_index ) {
-				
-				
-			//}
 		}
 		if ( PLC( x, y, ogrenade ) && !can_push_cooldown ) {
 			can_push_cooldown = 3;	
@@ -78,6 +73,7 @@ switch(move_state) {
 		//	multihits_left = 12;
 		//	hit_freeze = 4;
 		//} 
+		
 		
 		if ( !alt_movement ) {
 			if ( hit_freeze <= 0 ) {
@@ -136,6 +132,9 @@ switch(move_state) {
 			}
 		#region alt movement
 		} else {
+			if ( parent.state == e_player.hit ) {
+				IDD(); 
+			}
 			if ( instance_exists( parent ) ) {
 				var drr_ =  point_direction(x,y,parent.x,parent.y);
 				var _ds =  point_distance(x,y,parent.x,parent.y);

@@ -11,13 +11,13 @@ function scr_secondary_attack_ameli() {
 		var dr	= point_direction( x, y, MX, MY );
 		var t	= ICD( x + draw_xscale * 16, y - 17, 0, par_hitbox );
 		t.move_type = e_movetype.hvsp;
-		t.hsp = LDX( 6, dr ) * 1.1;
-		t.vsp = LDY( 8, dr ) * 1.1;
+		t.hsp = LDX( 6, dr ) * 0.9;
+		t.vsp = LDY( 8, dr ) * 0.9;
 		t.custom_user = 0;
 // 		t.destroy_index = 1;
 		
 		t.bounces = true;
-		t.grav = 0.21;
+		t.grav = 0.31;
 		
 // 		switch(player_id) {
 // 			case 0: t.sprite_index = splayer_grenade_blue;  break;
@@ -28,10 +28,10 @@ function scr_secondary_attack_ameli() {
 		//t.sprite_index = player_id == 0 ? splayer_grenade_blue : splayer_grenade_red;
 		
 		t.sprite_index = sameli_book;
-		t.duration = 12;
+		t.duration = 17;
 		t.angle_spin = ( 2 + random_fixed( 4 ) ) * choose_fixed( -1, 1 );
 		t.draw_angle = random_fixed( 360 );
-		t.dmg = 24;
+		t.dmg = 15;
 		t.size_mult = 1;
 		t.knockback *= 2.5;
 		t.lag_add 	*= 4;
@@ -40,7 +40,12 @@ function scr_secondary_attack_ameli() {
 		t.is_bullet = false;
 		t.parent = id;
 		t.stun_mult = 0.25;
-		t.dir = -90;
+		t.dir = point_direction(x,y,MX,MY);//-90;
+		t.multihit = true;
+		t.multihits_left = 6;
+		t.image_xscale = 1.5;
+		t.image_yscale = 1.5;
+		
 		
 		with(t) {
 			var i = 32;

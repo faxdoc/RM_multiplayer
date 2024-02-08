@@ -199,15 +199,15 @@ if (state == 0) {
 				case e_char_index.maya:
 					if ( pull_input ) {
 						var _dr = point_direction( parent.x, parent.y-22, x, y );
-						parent.hsp = lerp( parent.hsp, LDX( 8, _dr ), 0.3 );
-						parent.vsp = lerp( parent.vsp, LDY( 8, _dr ), 0.3 );
+						parent.hsp = lerp( parent.hsp, LDX( 10, _dr ), 0.4 );
+						parent.vsp = lerp( parent.vsp, LDY( 10, _dr ), 0.4 );
 						if (!trail_cooldown--) {
 							//with ( oplayer ) {
 							//	scr_player_maya_trail();
 							//}
 							trail_cooldown = 1;
 						}
-						if ( point_distance( parent.x, parent.y-22, x, y ) <= 32 ) {
+						if ( point_distance( parent.x, parent.y-22, x, y ) <= 42 ) {
 							audio_play_sound_pitch( snd_shoot_1,		0.35, 0.95 + random( 0.1 ), 1 );
 							audio_play_sound_pitch(snd_railgun_shooting, 0.7, 1.05 + random( 0.1 ), 1 );
 							audio_play_sound_pitch( snd_maya_swing_2,	0.40, 1.05 + random( 0.1 ), 1 );

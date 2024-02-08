@@ -1,13 +1,11 @@
 #macro TEST_DEFAULT true
-#macro LIVE_DEFAULT false
+#macro LIVE_DEFAULT true
 #macro INIT_TEST_STATE e_meta_state.round_start
 #macro TEST_FORCE_CHAR e_char_index.ameli
 
 global.test_enabled			= TEST_DEFAULT;
 global.live_turned_on		= LIVE_DEFAULT;
 global.training_mode		= false;
-
-
 
 rollback_define_player(oplayer);
 rollback_define_input({
@@ -78,8 +76,6 @@ global.inital_select		= false;
 
 rollback_use_random_input( false );
 audio_channel_num(32);
-
-
 
 global.training_mode_visible = true;
 global.frame_by_frame_mode   = false;

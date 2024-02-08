@@ -19,6 +19,8 @@ spd 		= 0;
 SHAKE = 0;
 parent = -1;
 
+deleted_by_bullets = true;
+
 layer_col = layer_get_id("Tiles_1");
 gen_col = tplace_meeting_walls_general;
 

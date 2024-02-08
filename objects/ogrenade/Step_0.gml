@@ -47,7 +47,8 @@ if ( do_smoke && random_fixed(1) < .8 ) ICD(x,y,0,osmoke);
 //		//}
 //	//}
 //}
-if place_meeting(x,y,par_hitbox) {
+
+if ( place_meeting(x,y,par_hitbox) && deleted_by_bullets ) {
 	var t_ = instance_place(x,y,par_hitbox);
 	
 	if ( t_.object_index != ohitbox_saw ) { 

@@ -219,7 +219,7 @@ switch( maya_sword_swing_state ) {
 				// gun_general( 10, 60, 9 );
 				var do_ver_spd = true;
 				var can_wallbounce = true;
-				RELOAD[ 0 ] = 35;
+				RELOAD[ 0 ] = 25;
 				var nmult_ = 1.4;
 				var second_swing_size_mult = 0.9;
 					

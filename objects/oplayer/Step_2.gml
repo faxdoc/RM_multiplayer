@@ -420,8 +420,8 @@ switch(char_index) {
 		ameli_book_x	= lerp(	ameli_book_x, x+( draw_xscale*23 )+hsp*3, 0.2 );
 		ameli_book_y	= lerp(	ameli_book_y, y-27+vsp*3+sin(ameli_book_sin/27)*3, 0.2 );
 		ameli_book_sin++;
-		if ( !ameli_trail_cooldown-- ) {
-			var amult_ = 3
+		if ( !ameli_trail_cooldown-- &&  knife_state == 0 && grenade_cooldown <= 0 ) {
+			var amult_ = 3;
 			var duration_ = 6;
 			with ( create_fx( 
 					ameli_book_x, 

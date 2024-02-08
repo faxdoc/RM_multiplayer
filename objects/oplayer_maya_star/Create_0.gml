@@ -1,6 +1,8 @@
 hsp = 0;
 vsp = 0;
 frc = 0.8;
+deleted_by_bullets = false;
+
 
 draw_angle = 0;
 angle_spin = choose( -2, -1, 1, 2, 3 );

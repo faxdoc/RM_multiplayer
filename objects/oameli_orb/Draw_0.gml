@@ -2,16 +2,27 @@
 var dr_ = point_direction( x, y, xprevious, yprevious );
 switch( state ) {
 	
+	#region init/idle
 	case e_ameli_orb_state.init: 
-		draw_sprite_ext( sprite_index, 5, target_x, target_y+1, 1, 1, 0, secondary_blend, 1 );
-		draw_sprite_ext( sprite_index, 5, target_x, target_y, 1, 1, 0,   secondary_blend, 1 );
+		//draw_sprite_ext( sprite_index, 5, target_x, target_y+1, 1, 1, 0, secondary_blend, 1 );
+		//draw_sprite_ext( sprite_index, 5, target_x, target_y, 1, 1, 0,   secondary_blend, 1 );
 		
 	case e_ameli_orb_state.idle:
 		
-		draw_self();
-		draw_sprite_ext( sprite_index, 1, x-LDX( 3, dr_ ), y-LDY( 3, dr_ ), 1, 1, 0, secondary_blend, 1 );
+		if ( hitfreeze ) {
+			fog_ltgray
+			draw_self();
+			fog_off
+		} else {
+			draw_self();
+			draw_sprite_ext( sprite_index, 1, x-LDX( 3, dr_ ), y-LDY( 3, dr_ ), 1, 1, 0, secondary_blend, 1 );
+		}
+		
 	
 	break;
+	#endregion
+	
+	#region time bomb
 	case e_ameli_orb_state.time_bomb: 
 		
 		var cx_ = x-1;
@@ -41,6 +52,9 @@ switch( state ) {
 		draw_sprite_ext( sprite_index, 2, x, y, 1, 1, attack_timer, secondary_blend, 1 );
 		
 	break;
+	#endregion
+	
+	#region trap
 	case e_ameli_orb_state.trap: 
 		if ( init_timer <= 60 ) {
 			DSA(0.3);
@@ -74,6 +88,9 @@ switch( state ) {
 			DSA(1);
 		}
 	break;
+	#endregion
+	
+	#region trap triggered
 	case e_ameli_orb_state.trap_triggered: 
 		draw_sprite_ext( sameli_trap_spike, 0, x, y, 1, 1.0,   0, secondary_blend, 1 );
 		draw_sprite_ext( sameli_trap_spike, 0, x, y, 1, 1.0,  90, secondary_blend, 1 );
@@ -87,6 +104,9 @@ switch( state ) {
 		draw_self();
 		draw_sprite_ext( sprite_index, 4, x, y, 1, 1, attack_timer, secondary_blend, 1 );
 	break;
+	#endregion
+	
+	#region bomb
 	case e_ameli_orb_state.bomb: 
 		// if ( init_timer <= 10 ) {
 		// 	init_timer++;
@@ -98,6 +118,9 @@ switch( state ) {
 		// 	vsp += grav;
 		// }
 	break;
+	#endregion
+	
+	#region anti_air
 	case e_ameli_orb_state.anti_air: 
 		// if ( place_meeting( x, y, oplayer ) ) {
 		// 	bullet_general( 20, 0, sameli_trap_spear, 0 ).dir -= 15;
@@ -116,14 +139,19 @@ switch( state ) {
 			draw_sprite_ext( sameli_trap_spear, 0, x, y, 1, 0.3,  0, main_blend, 0.76 );
 			draw_sprite_ext( sameli_trap_spear, 0, x, y, 1, 0.3,-15, main_blend, 0.76 );
 			draw_sprite_ext( sameli_trap_spear, 0, x, y, 1, 0.3, 15, main_blend, 0.76 );
-			draw_sprite_ext( sprite_index, 4, x, y, 1, 1, attack_timer, main_blend, 1 );	
+			draw_sprite_ext( sprite_index, 4, x, y, 1.6, 1.7, attack_timer, main_blend, 1 );	
 		}
 		
 		
 	break;
+	#endregion
+	#region ani_air trigger
 	case e_ameli_orb_state.anti_air_triggered:
 	
 	break;
+	#endregion
+	
+	#region beam
 	case e_ameli_orb_state.beam: 
 		// if ( attack_timer++ > 120 ) {
 			
@@ -170,6 +198,8 @@ switch( state ) {
 		
 		
 	break;
+	#endregion
+	
 	
 	#region strike
 	case e_ameli_orb_state.strike: 

@@ -12,7 +12,8 @@ attack_cooldown = 0;
 image_index = 0;
 image_speed = 0;
 depth = -120;
-
+last_knockbox = -1;
+hitfreeze = 0;
 
 
 enum e_ameli_orb_state {
@@ -59,4 +60,5 @@ char_index = e_char_index.ameli;
 timed_explotion_radius = 116;
 timer_explotion_duration = 140;
 
-spike_trap_size = 48;
+spike_trap_size = 68;
+trail_cooldown = 0;
