@@ -35,8 +35,10 @@ function scr_primary_attack_ameli() {
                 case e_gun.sniper:  target_attack_ = e_ameli_orb_state.beam;        break;
                 case e_gun.rail:    target_attack_ = e_ameli_orb_state.strike;      break;
             }
+            
             if ( target_attack_ != undefined ) {
                 target_.state = e_ameli_orb_state.init;
+                target_.attack_state = e_ameli_orb_attack_state.active;
                 target_.target_x = MX;
                 target_.target_y = MY;
                 target_.target_state = target_attack_;

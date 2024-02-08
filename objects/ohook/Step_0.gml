@@ -40,7 +40,7 @@ if (state == 0) {
 			x -= LDX(1,dir);
 			y -= LDY(1,dir);
 			var tl = tile_sort_genre(gen_col_index(x,y,layer_type));
-			if tl == 1 dl = false;
+			if ( tl == 1 ) dl = false;
 		}
 		if ( dl ) {
 			state = 2;
@@ -64,10 +64,11 @@ if (state == 0) {
 	image_xscale = 4.5;
 	image_yscale = 4.5;
 	
-	if place_meeting(x,y,oameli_orb) {
+	if ( place_meeting( x, y, oameli_orb ) ) {
 		var t_ = instance_place(x,y,oameli_orb);
-		if t_.parent == parent {
+		if ( t_.parent == parent ) {
 			t_.state = e_ameli_orb_state.idle;
+			t_.attack_state = e_ameli_orb_attack_state.idle;
 		}
 	}
 	

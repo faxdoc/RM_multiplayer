@@ -4,6 +4,8 @@ vsp = 0;
 frc = 0.85;
 grav = WORLD_GRAV;
 state = e_ameli_orb_state.idle;
+attack_state = e_ameli_orb_attack_state.idle;
+
 attack_timer = 0;
 init_timer = 0;
 parent = undefined;
@@ -35,6 +37,13 @@ enum e_ameli_orb_state {
 	trap_triggered,
 	anti_air_triggered,
 }
+
+enum e_ameli_orb_attack_state {
+	idle,
+	active,
+	passive,
+}
+
 triggered_timer = 0;
 target_x = 0;
 target_y = 0;
