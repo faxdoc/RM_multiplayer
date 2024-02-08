@@ -24,8 +24,9 @@ switch( state ) {
 		start_moving_y = y;
 		move_timer = 0;
 		image_alpha = 1;
-		 hsp = 0;
-		 vsp = 0;
+		hsp = 0;
+		vsp = 0;
+		
 	break;
 	#endregion
 	
@@ -136,8 +137,23 @@ switch( state ) {
 							last_knockbox = t_;
 							hitfreeze = 3;
 						}
+						
 					}
+					if ( place_meeting( x, y, oplayer ) ) {
+						state = e_ameli_orb_state.idle;
+						image_xscale = 1;
+						image_yscale = 1;
+						sprite_index = sameli_orb;
+						with ( bullet_general( 16, 0, shitbox, 0 ) ) {
+							parent = other.parent;
+							duration = 4;
+							dir = 90;
+						}
+					}
+					
+					
 				}
+				
 			break;
 			
 			case e_ameli_orb_state.anti_air:
@@ -161,10 +177,12 @@ switch( state ) {
 							state = target_state;
 						}
 						depth = -220;
-						// move_timer = 0;
 					}
 					
-				}// else {
+					
+				}
+				
+				// else {
 				//	x += hsp;
 				//	y += vsp;
 				//	vsp += grav*0.3;
@@ -214,10 +232,10 @@ switch( state ) {
 			}
 			repeat(12) {
         		var spd = 4+random_fixed(2);
-        		var dir = random_fixed(360);
+        		var dir_ = random_fixed(360);
         		var sz_ = random_fixed(timed_explotion_radius/2);
         		var size_ = choose(1,2,3);
-        		var fx = create_fx( x + LDX( sz_,dir) + hsp, y + LDY( sz_,dir) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
+        		var fx = create_fx( x + LDX( sz_,dir_) + hsp, y + LDY( sz_,dir_) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
         		fx.image_blend = main_blend;
         		fx.image_xscale = size_;
 				fx.image_yscale = size_;
@@ -239,10 +257,10 @@ switch( state ) {
 			if ( init_timer >= 60 ) {
 				repeat(6) {
 		        	var spd = 4+random_fixed(2);
-		        	var dir = random_fixed(360);
+		        	var dir_ = random_fixed(360);
 		        	var sz_ = random_fixed(timed_explotion_radius/2);
 		        	var size_ = choose(1,2,3);
-		        	var fx = create_fx( x + LDX( sz_,dir) + hsp, y + LDY( sz_,dir) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
+		        	var fx = create_fx( x + LDX( sz_,dir_) + hsp, y + LDY( sz_,dir_) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
 		        	fx.image_blend = main_blend;
 		        	fx.image_xscale = size_;
 					fx.image_yscale = size_;
@@ -267,10 +285,10 @@ switch( state ) {
 			}
 			repeat(12) {
         		var spd = 4+random_fixed(2);
-        		var dir = random_fixed(360);
+        		var dir_ = random_fixed(360);
         		var sz_ = random_fixed(timed_explotion_radius/2);
         		var size_ = choose(1,2,3);
-        		var fx = create_fx( x + LDX( sz_,dir) + hsp, y + LDY( sz_,dir) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
+        		var fx = create_fx( x + LDX( sz_,dir_) + hsp, y + LDY( sz_,dir_) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
         		fx.image_blend = main_blend;
         		fx.image_xscale = size_;
 				fx.image_yscale = size_;
@@ -336,10 +354,10 @@ switch( state ) {
 				sprite_index = sameli_orb_anti_air;
 				repeat(6) {
 		        	var spd = 4+random_fixed(2);
-		        	var dir = random_fixed(360);
+		        	var dir_ = random_fixed(360);
 		        	var sz_ = random_fixed(timed_explotion_radius/2);
 		        	var size_ = choose(1,2,3);
-		        	var fx = create_fx( x + LDX( sz_,dir) + hsp, y + LDY( sz_,dir) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
+		        	var fx = create_fx( x + LDX( sz_,dir_) + hsp, y + LDY( sz_,dir_) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
 		        	fx.image_blend = main_blend;
 		        	fx.image_xscale = size_;
 					fx.image_yscale = size_;
@@ -385,10 +403,10 @@ switch( state ) {
 				
 				repeat(12) {
 		        	var spd = 4+random_fixed(2);
-		        	var dir = random_fixed(360);
+		        	var dir_ = random_fixed(360);
 		        	var sz_ = random_fixed(timed_explotion_radius/2);
 		        	var size_ = choose(1,2,3);
-		        	var fx = create_fx( x + LDX( sz_,dir) + hsp, y + LDY( sz_,dir) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
+		        	var fx = create_fx( x + LDX( sz_,dir_) + hsp, y + LDY( sz_,dir_) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
 		        	fx.image_blend = main_blend;
 		        	fx.image_xscale = size_;
 					fx.image_yscale = size_;
@@ -421,14 +439,14 @@ switch( state ) {
 		if ( attack_timer++ > 120 ) {
 			
 			var i = 0; 
-			var dir = 0;
+			var dir_ = 0;
 			var x_ = x;
 			var y_ = y;
 			repeat( 32 ) {
 				bullet_general( 10, 0, ssameli_beam, 0 ).duration = 60;
 				i++;
-				x += LDX( 128, dir );
-				y += LDY( 128, dir );
+				x += LDX( 128, dir_ );
+				y += LDY( 128, dir_ );
 				
 			}
 			
@@ -447,14 +465,14 @@ switch( state ) {
 		if ( attack_timer++ > 120 ) {
 			
 			var i = 0; 
-			var dir = 0;
+			var dir_ = 0;
 			var x_ = x;
 			var y_ = y;
 			repeat( 32 ) {
 				bullet_general( 30, 0, sameli_fist, 0 ).duration = 60;
 				i++;
-				x += LDX( 16, dir );
-				y += LDY( 16, dir );
+				x += LDX( 16, dir_ );
+				y += LDY( 16, dir_ );
 				
 			}
 			x = x_;

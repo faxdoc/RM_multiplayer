@@ -206,14 +206,14 @@ switch( state ) {
 		if ( attack_timer++ > 120 ) {
 			
 			var i = 0; 
-			var dir = 0;
+			var dir_ = 0;
 			var x_ = x;
 			var y_ = y;
 			repeat( 32 ) {
 				bullet_general( 30, 0, sameli_fist, 0 ).duration = 60;
 				i++;
-				x += LDX( 16, dir );
-				y += LDY( 16, dir );
+				x += LDX( 16, dir_ );
+				y += LDY( 16, dir_ );
 				
 			}
 			x = x_;
