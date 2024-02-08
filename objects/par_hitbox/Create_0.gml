@@ -22,7 +22,7 @@ is_bullet = true;
 
 can_switch_cooldown = 1;
 do_stun = true;
-
+piercing_cancel = false;
 
 //hvsp
 hsp = 0;

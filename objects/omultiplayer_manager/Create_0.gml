@@ -1,5 +1,5 @@
 #macro TEST_DEFAULT true
-#macro LIVE_DEFAULT true
+#macro LIVE_DEFAULT false
 #macro INIT_TEST_STATE e_meta_state.round_start
 #macro TEST_FORCE_CHAR e_char_index.ameli
 

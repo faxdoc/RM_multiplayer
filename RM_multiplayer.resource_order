@@ -250,6 +250,7 @@
     {"name":"splayer_grenade_silhouete","order":10,"path":"sprites/splayer_grenade_silhouete/splayer_grenade_silhouete.yy",},
     {"name":"GMLive_thread","order":4,"path":"scripts/GMLive_thread/GMLive_thread.yy",},
     {"name":"snd_grenade_parry","order":28,"path":"sounds/snd_grenade_parry/snd_grenade_parry.yy",},
+    {"name":"sbullet_saw_ameli","order":4,"path":"sprites/sbullet_saw_ameli/sbullet_saw_ameli.yy",},
     {"name":"splayer_hit","order":2,"path":"sprites/splayer_hit/splayer_hit.yy",},
     {"name":"splayer_eyes_up","order":4,"path":"sprites/splayer_eyes_up/splayer_eyes_up.yy",},
     {"name":"oobsticale_old","order":2,"path":"objects/oobsticale_old/oobsticale_old.yy",},

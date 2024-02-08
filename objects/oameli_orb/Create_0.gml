@@ -14,7 +14,10 @@ image_speed = 0;
 depth = -120;
 last_knockbox = -1;
 hitfreeze = 0;
-
+laser_dir = 0;
+own_hitbox = -1;
+intro_timer = 0;
+saw_dir = 0;
 
 enum e_ameli_orb_state {
 	idle,

@@ -26,7 +26,7 @@ switch( state ) {
 		image_alpha = 1;
 		hsp = 0;
 		vsp = 0;
-		
+		intro_timer = 0;
 	break;
 	#endregion
 	
@@ -53,6 +53,7 @@ switch( state ) {
 		}
 		
 		switch(target_state) {
+			#region Init time bomb
 			case e_ameli_orb_state.time_bomb:
 				if ( move_timer == 0 ) {
 					var dr_ = point_direction( x, y, parent.MX, parent.MY );
@@ -69,6 +70,8 @@ switch( state ) {
 					state = target_state;
 				}
 			break;
+			#endregion
+			#region Init trap
 			case e_ameli_orb_state.trap:
 				var alt_col = gen_col_sort( x, y+2+vsp, layer_col, 2 ) && !gen_col_sort( x, y, layer_col, 2 );
 				depth = -220;	
@@ -94,6 +97,9 @@ switch( state ) {
 				if ( y > room_height ) state = e_ameli_orb_state.idle;
 				
 			break;
+			#endregion
+			
+			#region Init bomb
 			case e_ameli_orb_state.bomb:
 				depth = 20;
 				if ( move_timer < 1 ) {
@@ -158,12 +164,12 @@ switch( state ) {
 						}
 						
 					}
-					
-					
 				}
 				
 			break;
+			#endregion
 			
+			#region Init anti air
 			case e_ameli_orb_state.anti_air:
 				depth = 50;
 				if ( move_timer == 0 ) {
@@ -177,50 +183,65 @@ switch( state ) {
 						y += vsp;
 					} else {
 						vsp = 0;
-						hsp += sign(x-parent.x)*0.2;
-						hsp *= lerp(frc,1,0.8);
+						hsp += sign( parent.MX - parent.x )*0.2;
+						hsp *= lerp( frc, 1, 0.8 );
 						x += hsp;
-						//rc *= 0.96;
+						
 						if ( !parent.K1 ) {
 							state = target_state;
 						}
 						depth = -220;
 					}
-					
-					
 				}
-				
-				// else {
-				//	x += hsp;
-				//	y += vsp;
-				//	vsp += grav*0.3;
-				//	if ( gen_col(x,y+1) ) {
-				//		state = target_state;
-				//	}
-				//
-				
-					
-					
-				// x = parent.x;
-				// y = parent.bbox_top-26;
-				// move_timer = min( move_timer + 1, 60 );
-				// var dr_ = point_direction( x, y, parent.MX, parent.MY );
-				// hsp = LDX( move_timer/6, dr_ );
-				//vsp -= 2;
-				// vsp = LDY( move_timer/6, dr_ );
 					
 				if ( y > room_height ) state = e_ameli_orb_state.idle;
 			break;
+			#endregion
+			#region Init laser
+			case e_ameli_orb_state.beam:
+				if ( parent.K1 ) {
+					if ( intro_timer++ > 30 ) {
+						// state = e_ameli_orb_state.idle;
+						state = target_state;
+					}
+				} else {
+					intro_timer = 0;
+					state = e_ameli_orb_state.idle;
+				}
+				
+				laser_dir = point_direction( x, y, parent.MX, parent.MY );
+					
+			break;
+			#endregion
+			#region init saw
+			case e_ameli_orb_state.strike:
+				
+				if ( intro_timer > 20 ) {
+					if ( own_hitbox == -1 || !instance_exists( own_hitbox ) ) {
+						own_hitbox = bullet_general(2,0,shitbox,0);
+						own_hitbox.dir = saw_dir;
+						own_hitbox.duration = 8;
+						own_hitbox.parent = parent;
+					}
+					
+					saw_dir = angle_approach(saw_dir, point_direction( x, y, parent.MX, parent.MY ),2 );
+					
+					x += LDX( 1.5,saw_dir );
+					y += LDY( 1.5,saw_dir );
+					image_angle += 3;
+					sprite_index = sbullet_saw_ameli;
+					if ( !parent.K1 ) {
+						state = target_state;
+					}
+				} else {
+					intro_timer++;
+					saw_dir = point_direction( x, y, parent.MX, parent.MY ); 
+				}
+			break;
+			#endregion
 		}
+		
 		attack_timer = 0;
-		
-		// x = lerp( start_moving_x, target_x, move_timer/15 );
-		// y = lerp( start_moving_y, target_y, move_timer/15 );
-		
-		// if ( move_timer > 10 ) {
-		// 	state = target_state;
-		// }
-		
 	break;
 	#endregion
 	
@@ -444,25 +465,48 @@ switch( state ) {
 	
 	#region beam
 	case e_ameli_orb_state.beam: 
-		if ( attack_timer++ > 120 ) {
-			
-			var i = 0; 
-			var dir_ = 0;
-			var x_ = x;
-			var y_ = y;
-			repeat( 32 ) {
-				bullet_general( 10, 0, ssameli_beam, 0 ).duration = 60;
-				i++;
-				x += LDX( 128, dir_ );
-				y += LDY( 128, dir_ );
-				
+	
+		if ( parent.K1 ) {
+			if ( attack_timer >= 60 ) {
+				laser_dir = angle_approach( laser_dir, point_direction( x, y, parent.MX, parent.MY ), 1 );
+			} else {
+				laser_dir = angle_approach( laser_dir, point_direction( x, y, parent.MX, parent.MY ), 2 );
 			}
 			
-			x = x_;
-			y = y_;
+		}
+		if ( attack_timer >= 60 ) {
 			
-			attack_timer = 0;
-			state = e_ameli_orb_state.idle;
+			if ( !parent.K1 ) {
+				var i = 0; 
+				var dir_ = laser_dir;
+				var x_ = x;
+				var y_ = y;
+				repeat( 12 ) {
+					var bl_ = bullet_general( 10, 0, ssameli_beam, 0 );
+					bl_.duration = 30;
+					bl_.parent = other.parent;
+					bl_.dir = dir_;
+					bl_.ghost = true;
+					bl_.piercing = true;
+					bl_.image_blend = main_blend;
+					bl_.image_yscale = 0.5;
+					bl_.knockback = 5;
+					
+					x += LDX( 128, dir_ );
+					y += LDY( 128, dir_ );
+					i++;
+				}
+				x = x_;
+				y = y_;
+				attack_timer = 0;
+				state = e_ameli_orb_state.idle;
+				with ( oplayer ) {
+					SHAKE += 2;
+				}
+				
+			}
+		} else {
+			attack_timer++;
 		}
 		
 	break;
@@ -470,25 +514,33 @@ switch( state ) {
 	
 	#region strike
 	case e_ameli_orb_state.strike: 
-		if ( attack_timer++ > 120 ) {
+		if ( attack_timer++ > 90 ) {
 			
-			var i = 0; 
-			var dir_ = 0;
-			var x_ = x;
-			var y_ = y;
-			repeat( 32 ) {
-				bullet_general( 30, 0, sameli_fist, 0 ).duration = 60;
-				i++;
-				x += LDX( 16, dir_ );
-				y += LDY( 16, dir_ );
+			// var i = 0; 
+			// var dir_ = 0;
+			// var x_ = x;
+			// var y_ = y;
+			// repeat( 32 ) {
+			// 	bullet_general( 30, 0, sameli_fist, 0 ).duration = 60;
+			// 	i++;
+			// 	x += LDX( 16, dir_ );
+			// 	y += LDY( 16, dir_ );
 				
-			}
-			x = x_;
-			y = y_;
-			attack_timer = 0;
+			// }
+			// x = x_;
+			// y = y_;
+			// attack_timer = 0;
 			state = e_ameli_orb_state.idle;
-			
+			sprite_index = sbullet_saw_ameli;
 		}
+		if ( own_hitbox == -1 || !instance_exists( own_hitbox ) ) {
+			own_hitbox = bullet_general(4,0,shitbox,0);
+			own_hitbox.dir = saw_dir;
+			own_hitbox.duration = 4;
+			own_hitbox.parent = parent;
+		}
+		x += LDX( (90-attack_timer)/45,saw_dir );
+		y += LDY( (90-attack_timer)/45,saw_dir );
 	break;
 	#endregion
 	

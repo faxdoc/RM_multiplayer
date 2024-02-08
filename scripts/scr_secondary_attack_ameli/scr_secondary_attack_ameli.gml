@@ -1,6 +1,6 @@
 function scr_secondary_attack_ameli() {
 	var mx_charge = 60;
-	switch( maya_grenade_state ) {
+switch( maya_grenade_state ) {
 		case 0:
 			if ( !K7 ) {
 				maya_grenade_state = 1;
