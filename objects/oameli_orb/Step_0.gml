@@ -131,8 +131,8 @@ switch( state ) {
 					if ( place_meeting(x,y,par_hitbox) ) {
 						var t_ = instance_place(x,y,par_hitbox);
 						if ( t_ != last_knockbox ) {
-							hsp += LDX( t_.knockback*0.9, t_.dir );
-							vsp += LDY( t_.knockback*0.9, t_.dir );
+							hsp += LDX( t_.knockback*1.1, t_.dir );
+							vsp += LDY( t_.knockback*1.1, t_.dir );
 							vsp -= 1;
 							last_knockbox = t_;
 							hitfreeze = 3;
@@ -140,15 +140,23 @@ switch( state ) {
 						
 					}
 					if ( place_meeting( x, y, oplayer ) ) {
-						state = e_ameli_orb_state.idle;
-						image_xscale = 1;
-						image_yscale = 1;
-						sprite_index = sameli_orb;
-						with ( bullet_general( 16, 0, shitbox, 0 ) ) {
-							parent = other.parent;
-							duration = 4;
-							dir = 90;
+						
+						var tl__ = instance_place( x, y, oplayer );
+						
+						if ( tl__ != parent ) {
+							state = e_ameli_orb_state.idle;
+							
+							image_xscale = 1;
+							image_yscale = 1;
+							sprite_index = sameli_orb;
+							with ( bullet_general( 20 , 0, shitbox, 0 ) ) {
+								parent = other.parent;
+								knockback *= 1.5;
+								duration = 4;
+								dir = 90;
+							}
 						}
+						
 					}
 					
 					
