@@ -560,6 +560,7 @@
     {"id":{"name":"GMLive_nodeTools","path":"scripts/GMLive_nodeTools/GMLive_nodeTools.yy",},},
     {"id":{"name":"sammo_red","path":"sprites/sammo_red/sammo_red.yy",},},
     {"id":{"name":"splayer_maya_head","path":"sprites/splayer_maya_head/splayer_maya_head.yy",},},
+    {"id":{"name":"sameli_trap_spear_init","path":"sprites/sameli_trap_spear_init/sameli_trap_spear_init.yy",},},
     {"id":{"name":"snd_hit_1","path":"sounds/snd_hit_1/snd_hit_1.yy",},},
     {"id":{"name":"sameli_book_range","path":"sprites/sameli_book_range/sameli_book_range.yy",},},
     {"id":{"name":"GMLive_noDeactivate","path":"scripts/GMLive_noDeactivate/GMLive_noDeactivate.yy",},},

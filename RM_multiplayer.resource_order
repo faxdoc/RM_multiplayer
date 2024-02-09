@@ -463,6 +463,7 @@
     {"name":"GMLive_nodeTools","order":3,"path":"scripts/GMLive_nodeTools/GMLive_nodeTools.yy",},
     {"name":"sammo_red","order":2,"path":"sprites/sammo_red/sammo_red.yy",},
     {"name":"splayer_maya_head","order":13,"path":"sprites/splayer_maya_head/splayer_maya_head.yy",},
+    {"name":"sameli_trap_spear_init","order":10,"path":"sprites/sameli_trap_spear_init/sameli_trap_spear_init.yy",},
     {"name":"snd_hit_1","order":9,"path":"sounds/snd_hit_1/snd_hit_1.yy",},
     {"name":"sameli_book_range","order":16,"path":"sprites/sameli_book_range/sameli_book_range.yy",},
     {"name":"GMLive_noDeactivate","order":3,"path":"scripts/GMLive_noDeactivate/GMLive_noDeactivate.yy",},

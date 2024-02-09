@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_ameli_charge_alt.wav",
   "type": 0,
-  "volume": 0.7,
+  "volume": 0.6,
 }
