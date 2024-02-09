@@ -15,30 +15,25 @@ function scr_secondary_attack_ameli() {
 		            i++;
 		        }
 		        if ( target_ != undefined ) {
-		            // var target_attack_ = undefined;
-		            
-		            // if ( target_attack_ != undefined ) {
-		            	shoot_delay = 17;
-		                target_.state			= e_ameli_orb_state.bomb;
-		                target_.attack_state	= e_ameli_orb_attack_state.passive;//ameli_ranged_mode ?  : e_ameli_orb_attack_state.active;
-		                target_.target_x = MX;
-		                target_.target_y = MY;
-		                shoot_press_buffer = 0;
-		                SHAKE++;
-		                
-		                with ( target_ ) {
-		                    repeat(4) {
-		        				var spd = 3+random_fixed(1);
-		        				var dir = random_fixed(360);
-		        				var fx = create_fx( x + LDX( 3,dir) + hsp, y + LDY( 3,dir) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
-		        				fx.image_blend = main_blend;
-		        				fx.image_xscale = 2;
-					            fx.image_yscale = 2;
-		        			}
-		                }
-		            // }
+	            	shoot_delay = 17;
+	                target_.state			= e_ameli_orb_state.bomb;
+	                target_.attack_state	= e_ameli_orb_attack_state.passive;
+	                target_.target_x = MX;
+	                target_.target_y = MY;
+	                shoot_press_buffer = 0;
+	                SHAKE++;
+	                audio_play_sound_pitch( snd_ameli_cast_1, RR( 0.6, 0.7 ), RR(0.95,1.05)*0.9, 0 );
+	                with ( target_ ) {
+	                    repeat(4) {
+	        				var spd = 3+random_fixed(1);
+	        				var dir = random_fixed(360);
+	        				var fx = create_fx( x + LDX( 3,dir) + hsp, y + LDY( 3,dir) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
+	        				fx.image_blend = main_blend;
+	        				fx.image_xscale = 2;
+				            fx.image_yscale = 2;
+	        			}
+	                }
 		        }
-				// grenade_cooldown = 40;
 			}
 			if ( !K7 ) {
 				maya_grenade_state = 1;

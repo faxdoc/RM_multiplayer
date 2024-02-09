@@ -110,7 +110,9 @@ switch( attack_state ) {
 						effect_create_depth( -40, ef_ring, MX, MY, 0, merge_colour( main_blend, c_gray, 0.4 ) );
 						attack_state = e_ameli_orb_attack_state.passive;
 						attack_timer = 0;
+						audio_play_sound_pitch( snd_ameli_activate,    RR(0.8,0.9), RR(0.9,1.1), 0 );
 					} else if ( move_timer > 5 ) {
+						audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.6,0.7), RR(0.95,1.1), 0 );
 						var b_ = bullet_general( 12, 0, shitbox_circle, 0 );
 						b_.image_xscale = timed_explotion_radius/96;
 						b_.image_yscale = timed_explotion_radius/96;
@@ -220,6 +222,7 @@ switch( attack_state ) {
 				shoot_press_buffer = 0;
 				gun_charge = 30;
 				
+				audio_play_sound_pitch( snd_maya_create_star, RR( 0.8, 0.9 ), RR(0.95, 1.1 )*0.85, 0 );
 				var mdr_ = point_direction(parent.x,parent.y-22,parent.MX,parent.MY);
 				var t = ICD( parent.x+LDX(22,mdr_), parent.y-22+LDY(22,mdr_), -1, ogrenade );
 				t.bounce = 0;
@@ -364,19 +367,26 @@ switch( attack_state ) {
 					laser_dir = point_direction( x, y, parent.MX, parent.MY );
 				}
 				if ( move_timer == 0 ){
-						x = parent.x;
+					x = parent.x;
 					y = parent.y-29;
+					audio_play_sound_pitch(snd_maya_blue_overlay, RR(0.8,0.9), RR(0.7,0.75), 1 );
 				}
 				if ( move_timer <= 60 ) {
 					move_timer = min(move_timer+1,60);
 					if ( !parent.K1 ) {
 						move_timer += 70;
+						audio_play_sound_pitch(snd_cute_highpitch, RR(0.8,0.9), RR(0.7,0.75), 1 );
+						audio_play_sound_pitch(snd_ameli_can_deal_damage, RR(0.8,0.9), RR(0.8,0.85), 1 );
 					}
-				} else if ( attack_timer++ > 20 ) {
+				} else if ( attack_timer++ > 25 ) {
 					var dir_ = laser_dir;
 					// var x_ = x;
 					// var y_ = y;
+					
 					var charge_ = 0.2 + ( ( move_timer - 70 ) / 60 );
+					audio_play_sound_pitch( snd_ameli_activate,    RR(0.8,0.9)*min(0.3,charge_*0.8), RR(0.8,0.86), 1 );
+					audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.8,0.9)*min(0.3,charge_*0.8), RR(0.9,1.00), 1 );
+					
 					// repeat( 8 ) {
 						var bl_ = bullet_general( 25*charge_, 0, ssameli_beam, 0 );
 						bl_.duration	= 10*charge_;
@@ -401,9 +411,9 @@ switch( attack_state ) {
 					attack_state = e_ameli_orb_attack_state.idle;
 					state = e_ameli_orb_state.idle;
 					// if ( charge_ >= .0 ) {
-						with ( oplayer ) {
-							SHAKE += charge_+0.5;
-						}
+					with ( oplayer ) {
+						SHAKE += charge_+0.5;
+					}
 					// }
 					
 				}
@@ -515,6 +525,7 @@ switch( attack_state ) {
 						var t__ = instance_place(x,y,oplayer);
 						if ( t__.id != parent ) {
 							sticky_target = t__;
+							audio_play_sound_pitch( snd_ameli_charge_alt, RR(0.6,0.7), RR(0.95,1.1), 0 );
 						}
 					} else if ( instance_exists(sticky_target) ) {
 						x = sticky_target.x;
@@ -530,7 +541,10 @@ switch( attack_state ) {
 						b_.knockback *= 3.1;
 						b_.stun_mult *= 1.5;
 						b_.dir = 90;
-							
+						
+						audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.6,0.7), RR(0.9,1.1)*0.9, 0 );
+						audio_play_sound_pitch( snd_ameli_explotion_0, RR(0.6,0.7), RR(0.9,1.1)*0.9, 0 );
+						
 						state = e_ameli_orb_state.idle;
 						attack_state = e_ameli_orb_attack_state.idle;
 						attack_timer = 0;
@@ -571,31 +585,36 @@ switch( attack_state ) {
 					vsp -= 2;
 					if ( !parent.K1 ) {
 						move_timer = 120;
+						audio_play_sound_pitch( snd_ameli_init_0, RR(0.6,0.7), RR(0.95,1.1)*1.2, 0 );
 					}
 				} else if ( move_timer < 900 ) {
 					
 					if ( ( gen_col(x,y+1) || alt_col ) ) {
 						move_timer = 900;
+						audio_play_sound_pitch( snd_ameli_charge_alt, RR(0.6,0.7), RR(0.95,1.1), 0 );
 					} else {
 						x += hsp;
 						y += vsp;
 						vsp += grav*0.3;
 						// if ( attack_timer++ mod 2 == 0 ) {
-							if ( own_hitbox == -1 || !instance_exists( own_hitbox ) ) {
-								own_hitbox			= bullet_general( 3, 0, shitbox_circle, 0 );
-								own_hitbox.dir		= 90;
-								own_hitbox.duration = 3;
-								own_hitbox.piercing = true;
-								own_hitbox.parent	= parent;
-								own_hitbox.ghost	= true;
-								own_hitbox.piercing = true;
-								own_hitbox.stun_mult = 2;
-							}
+						if ( own_hitbox == -1 || !instance_exists( own_hitbox ) ) {
+							own_hitbox			= bullet_general( 3, 0, shitbox_circle, 0 );
+							own_hitbox.dir		= 90;
+							own_hitbox.duration = 3;
+							own_hitbox.piercing = true;
+							own_hitbox.parent	= parent;
+							own_hitbox.ghost	= true;
+							own_hitbox.piercing = true;
+							own_hitbox.stun_mult = 2;
+						}
 						// }
 					}
 				} else {
 					if ( init_timer < 60 ) {
 						init_timer += 3;
+						if ( init_timer >= 59 ) {
+							audio_play_sound_pitch( snd_ameli_can_deal_damage, RR(0.6,0.7), RR(0.95,1.1), 0 );
+						}
 					} else {
 						// var lt_ = instance_nearest( x, y, oplayer );
 						var ld__ = id, pr_ = parent, r_ = spike_trap_size;
@@ -603,11 +622,14 @@ switch( attack_state ) {
 						with ( oplayer ) if ( id != pr_ && distance_to_object(ld__) <= r_ ) do_explode = true;
 					
 						if ( do_explode ) {
+							audio_play_sound_pitch( snd_ameli_activate,    RR(0.8,0.9), RR(0.9,1.1), 0 );
+							audio_play_sound_pitch( snd_ameli_explotion_0, RR(0.6,0.7), RR(0.95,1.1), 0 );
+							
 							var b_ = bullet_general( 23, 0, shitbox_circle, 0 );
 							b_.parent = parent;
 							b_.ghost = true;
-							b_.image_xscale = spike_trap_size/24;
-							b_.image_yscale = spike_trap_size/24;
+							b_.image_xscale = spike_trap_size/22;
+							b_.image_yscale = spike_trap_size/22;
 							b_.knockback *= 2.5;
 							b_.stun_mult *= 1.2;
 							b_.dir = 90;
@@ -710,6 +732,7 @@ switch( attack_state ) {
 					image_yscale = 2;
 					if ( !parent.K7 ) {
 						move_timer = 1;
+						audio_play_sound_pitch( snd_ameli_init_0, RR(0.6,0.7), RR(0.95,1.1)*1.2, 0 );
 					} //else if ( parent.K7P ) {
 					//	attack_state = e_ameli_orb_attack_state.passive;
 				//	}
@@ -726,12 +749,17 @@ switch( attack_state ) {
 								y--;
 							}
 						}
-						if ( gen_col(x+hsp*2,y) ) {
-							hsp = -hsp*0.9;
-						}
+						audio_play_sound_pitch( snd_grenade_bounce, RR( 0.4, 0.5 ), RR( 0.95, 1.1 ), 0 );
+						
 						vsp = -vsp *0.9;
 						hsp *= 0.8;
 					}
+					
+					if ( gen_col(x+hsp*2,y) ) {
+						hsp = -hsp*0.9;
+						audio_play_sound_pitch( snd_grenade_bounce, RR( 0.4, 0.5 ), RR( 0.95, 1.1 ), 0 );
+					}
+						
 					if ( hitfreeze ) {
 						hitfreeze--;
 					} else {
@@ -746,7 +774,8 @@ switch( attack_state ) {
 						sprite_index = sameli_orb;
 					}
 					if ( place_meeting(x,y,par_hitbox) ) {
-						var t_ = instance_place(x,y,par_hitbox);
+						audio_play_sound_pitch( snd_maya_hit_ball, RR( 0.4, 0.5 ), RR( 0.95, 1.1 ), 0 );
+						var t_ = instance_place( x, y, par_hitbox );
 						if ( t_ != last_knockbox ) {
 							var kn_dir = point_direction(x,y,t_.x,t_.y);
 							hsp += LDX( -t_.knockback*1.3, kn_dir );
@@ -762,6 +791,8 @@ switch( attack_state ) {
 					if ( place_meeting( x, y, oplayer ) ) {
 						var tl__ = instance_place( x, y, oplayer );
 						if ( tl__ != parent ) {
+							audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.6,0.7), RR(0.9,1.1)*0.9, 0 );
+							audio_play_sound_pitch( snd_ameli_explotion_0, RR(0.6,0.7), RR(0.9,1.1)*0.9, 0 );
 							state = e_ameli_orb_state.idle;
 							attack_state = e_ameli_orb_attack_state.idle;
 							image_xscale = 1;
@@ -772,7 +803,8 @@ switch( attack_state ) {
 								knockback *= 2.5;
 								duration = 4;
 								dir = 90;
-								// knockback *= .1;
+								image_xscale = 1.5;
+								image_yscale = 1.5;
 								stun_mult *= 1.1;
 							}
 						}
@@ -841,7 +873,10 @@ switch( attack_state ) {
 				}
 				move_timer++;
 				if ( !parent.K1 ) {
-					move_timer = 300;
+					move_timer = 100;
+					audio_play_sound_pitch( snd_ameli_charge,		irandom_range_fixed(0.8,0.9), irandom_range_fixed(0.95,1.1), 0 );
+					audio_play_sound_pitch( snd_ameli_charge_alt,	irandom_range_fixed(0.8,0.9), irandom_range_fixed(0.95,1.1), 0 );
+					
 				} //else if ( parent.K7P ) {
 				//	attack_state = e_ameli_orb_attack_state.passive;
 				//}
@@ -850,16 +885,19 @@ switch( attack_state ) {
 			} else {
 				
 			sprite_index = sameli_trap_spear;
-			if ( move_timer++ > 330 ) {
+			if ( move_timer++ > 135 ) {
 				image_xscale *= 0.99;
 			}
+			if ( move_timer == 123 ) {
+				audio_play_sound_pitch( snd_ameli_can_deal_damage, RR(0.6,0.7), RR(0.95,1.1), 0 );
+			} 
 			image_angle = 90;
 			if ( image_xscale < 0.15 ) {
 				attack_timer = 0;
 				state = e_ameli_orb_state.idle;
 				attack_state = e_ameli_orb_attack_state.idle;
 				//image_xscale = 1;
-			} else {
+			} else if ( move_timer > 123 ) {
 			
 				var tl_ = instance_place(x,y,oplayer);
 				if ( tl_ ) {
@@ -867,7 +905,9 @@ switch( attack_state ) {
 						parent.vsp = min(-7,parent.vsp-5);
 						parent.space_buffer = true;
 					}
-				
+					audio_play_sound_pitch( snd_ameli_activate,    RR(0.8,0.9), RR(0.9,1.1), 0 );
+					audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.6,0.7), RR(0.95,1.1), 0 );
+							
 					var b_ = bullet_general( 10, 0, sameli_trap_spear, 0 );
 					b_.parent = parent;
 					b_.ghost = true;
@@ -881,7 +921,7 @@ switch( attack_state ) {
 					b_.image_angle = b_.dir;
 					b_.duration *= 3;
 				
-					var b_ =bullet_general( 10, 0, sameli_trap_spear, 0 );
+					var b_ = bullet_general( 10, 0, sameli_trap_spear, 0 );
 					b_.parent = parent;
 					b_.ghost = true;
 					b_.dir  = 90-15;

@@ -12,8 +12,8 @@
   "conversionMode": 0,
   "duration": 0.266594,
   "parent": {
-    "name": "ameli",
-    "path": "folders/Sounds/sound/ameli.yy",
+    "name": "implemented",
+    "path": "folders/Sounds/sound/ameli/implemented.yy",
   },
   "preload": false,
   "sampleRate": 44100,

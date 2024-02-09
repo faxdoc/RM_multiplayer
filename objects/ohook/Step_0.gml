@@ -70,6 +70,7 @@ if (state == 0) {
 			t_.state = e_ameli_orb_state.idle;
 			t_.attack_state = e_ameli_orb_attack_state.idle;
 			t_.attack_alt_cooldown = 0;
+			audio_play_sound_pitch( snd_ameli_retrive, RR(0.7,0.8), RR(0.7,0.8), 0, 1.2 );
 		}
 	}
 	

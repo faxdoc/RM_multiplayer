@@ -18,7 +18,7 @@ function scr_special_fern(alt_col) {
 		if ( parry_timer++ > 13 ) {
 			state = e_player.normal;
 			skip_draw = false;
-			//INVIS = 1;
+			INVIS = 2;
 			parry_timer = 0;
 		}
 		if ( gen_col(x,y+1)||alt_col) hsp *= frc;	
@@ -28,7 +28,7 @@ function scr_special_fern(alt_col) {
 			skip_draw = false;
 				
 			if ( !gen_col(x,y+1) && !alt_col ) {
-				INVIS = 3;
+				INVIS = 4;
 			} else {
 				INVIS = 1;
 			}

@@ -111,6 +111,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sequences","folderPath":"folders/unused/Sequences.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/unused/Timelines.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"ameli","folderPath":"folders/Sounds/sound/ameli.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"implemented","folderPath":"folders/Sounds/sound/ameli/implemented.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"gcmt-dll.dll","CopyToMask":0,"filePath":"datafiles/GMLive",},
@@ -169,6 +170,7 @@
     {"id":{"name":"splayer_gun_shotgun","path":"sprites/splayer_gun_shotgun/splayer_gun_shotgun.yy",},},
     {"id":{"name":"rtower","path":"rooms/rtower/rtower.yy",},},
     {"id":{"name":"smaya_heavy_attack_recover","path":"sprites/smaya_heavy_attack_recover/smaya_heavy_attack_recover.yy",},},
+    {"id":{"name":"snd_ameli_wosh","path":"sounds/snd_ameli_wosh/snd_ameli_wosh.yy",},},
     {"id":{"name":"sreload_flash","path":"sprites/sreload_flash/sreload_flash.yy",},},
     {"id":{"name":"snd_voice_jump_0","path":"sounds/snd_voice_jump_0/snd_voice_jump_0.yy",},},
     {"id":{"name":"sameli_arm_inner_cast","path":"sprites/sameli_arm_inner_cast/sameli_arm_inner_cast.yy",},},
@@ -227,6 +229,7 @@
     {"id":{"name":"tl_moss","path":"tilesets/tl_moss/tl_moss.yy",},},
     {"id":{"name":"snd_voice_dash_0","path":"sounds/snd_voice_dash_0/snd_voice_dash_0.yy",},},
     {"id":{"name":"splayer_maya_hand_inner","path":"sprites/splayer_maya_hand_inner/splayer_maya_hand_inner.yy",},},
+    {"id":{"name":"snd_ameli_can_deal_damage","path":"sounds/snd_ameli_can_deal_damage/snd_ameli_can_deal_damage.yy",},},
     {"id":{"name":"sreadyversus","path":"sprites/sreadyversus/sreadyversus.yy",},},
     {"id":{"name":"smaya_abilites_select","path":"sprites/smaya_abilites_select/smaya_abilites_select.yy",},},
     {"id":{"name":"scursor","path":"sprites/scursor/scursor.yy",},},

@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSound",
   "resourceVersion": "1.0",
-  "name": "snd_ameli_cast_2",
+  "name": "snd_ameli_wosh",
   "audioGroupId": {
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
@@ -10,14 +10,14 @@
   "bitRate": 128,
   "compression": 0,
   "conversionMode": 0,
-  "duration": 0.194906,
+  "duration": 0.0,
   "parent": {
-    "name": "implemented",
-    "path": "folders/Sounds/sound/ameli/implemented.yy",
+    "name": "ameli",
+    "path": "folders/Sounds/sound/ameli.yy",
   },
   "preload": false,
   "sampleRate": 44100,
-  "soundFile": "snd_ameli_cast_2.wav",
+  "soundFile": "snd_ameli_wosh",
   "type": 0,
-  "volume": 0.5,
+  "volume": 1.0,
 }

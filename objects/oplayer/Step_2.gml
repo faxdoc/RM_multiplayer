@@ -194,7 +194,7 @@ switch(meta_state) {
 					orbs[0].parent = id;
 					orbs[1].parent = id;
 					orbs[2].parent = id;
-					grav *= 0.91;
+					grav *= 0.92;
 					base_jump_pwr += 1.1;
 					orbs[1].idle_timer = 120;
 					orbs[2].idle_timer = 240;

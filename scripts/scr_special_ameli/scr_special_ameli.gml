@@ -3,7 +3,8 @@ function scr_special_ameli() {
     can_dodge_cooldown = 16;
     
 	if ( parry_timer == 0 ) {
-		INVIS = 10;
+		INVIS = max(INVIS,14);
+		audio_play_sound_pitch(snd_ameli_wosh, 0.9, RR(0.95,1.05),2,0.9);
 	}
     var hh = KRIGHT-KLEFT; 
     var vv = KDOWN-KUP;
@@ -12,8 +13,8 @@ function scr_special_ameli() {
         dash_dir = point_direction(0,0,hh,vv);  
     }
     
-	hsp += LDX( 0.4, dash_dir );
-    vsp += LDY( 0.4, dash_dir );
+	hsp += LDX( 0.45, dash_dir );
+    vsp += LDY( 0.45, dash_dir );
     
     hsp *= 0.94;
     vsp *= 0.94;
@@ -28,14 +29,17 @@ function scr_special_ameli() {
 	    state = e_player.normal;
         skip_draw = false;
         draw_type = e_draw_type.aiming;
+        INVIS -= 7;
+        audio_play_sound_pitch( snd_ameli_can_deal_damage, RR(0.7,0.8), RR(0.7,0.74), 1, 0 );
 	}
+	
 	if ( parry_timer++ mod 4 == 3 ) {
-	    var t_ = bullet_general( 2, 0.1, shitbox_circle, 0 );
+	    var t_ = bullet_general( 2, 0.1, sameli_ichor_temp, 0 );
 	    t_.do_stun        = false;
 	    t_.multihit       = true;
 	    t_.multihits_left = 8;
-	    t_.duration = 120;
-	    t_.dir = 270+hsp*12;
+	    t_.duration = 110;
+	    t_.dir = 270+hsp*16;
 	    //parry_timer = 0;
 	}
 	
