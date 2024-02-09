@@ -60,7 +60,7 @@ switch( attack_state ) {
 				
 			break;
 			case e_ameli_orb_state.anti_air:
-				draw_sprite_ext( sameli_trap_spear, 0, x, y, 1.5, 1.5, 90, secondary_blend, 0.5 );
+				draw_sprite_ext( sameli_trap_spear, 0, x, y, image_xscale, image_yscale, 90, secondary_blend, 0.5 );
 			break;
 			case e_ameli_orb_state.trap:
 				if ( init_timer <= 60 ) {

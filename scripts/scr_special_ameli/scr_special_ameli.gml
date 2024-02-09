@@ -3,7 +3,7 @@ function scr_special_ameli() {
     can_dodge_cooldown = 16;
     
 	if ( parry_timer == 0 ) {
-		INVIS = 6;
+		INVIS = 10;
 	}
     var hh = KRIGHT-KLEFT; 
     var vv = KDOWN-KUP;

@@ -42,7 +42,7 @@ function scr_primary_attack_ameli() {
             
             if ( target_attack_ != undefined ) {
             	shoot_delay = 30;
-            	RELOAD[current_weapon] = 10;
+            	RELOAD[current_weapon] = 20;
                 target_.state = target_attack_;
                 switch(target_attack_) {
                 	case e_ameli_orb_state.time_bomb:	target_.attack_state = e_ameli_orb_attack_state.active;		break;

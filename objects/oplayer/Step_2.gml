@@ -427,7 +427,7 @@ if ( global.training_mode ) {
 #region char specfic 
 switch(char_index) {
 	case e_char_index.ameli:
-		if ( state == e_meta_state.dead|| state == e_meta_state.dying ) {
+		if ( meta_state == e_meta_state.dead || meta_state == e_meta_state.dying ) {
 			orbs[0].state = e_ameli_orb_state.idle;
 			orbs[1].state = e_ameli_orb_state.idle;
 			orbs[2].state = e_ameli_orb_state.idle;

@@ -4,7 +4,7 @@
   "name": "ssameli_beam",
   "bbox_bottom": 54,
   "bbox_left": 0,
-  "bbox_right": 127,
+  "bbox_right": 255,
   "bbox_top": 10,
   "bboxMode": 2,
   "collisionKind": 5,
