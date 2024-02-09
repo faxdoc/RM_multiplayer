@@ -431,6 +431,9 @@ switch(char_index) {
 			orbs[0].state = e_ameli_orb_state.idle;
 			orbs[1].state = e_ameli_orb_state.idle;
 			orbs[2].state = e_ameli_orb_state.idle;
+			orbs[0].attack_state = e_ameli_orb_attack_state.idle;
+			orbs[1].attack_state = e_ameli_orb_attack_state.idle;
+			orbs[2].attack_state = e_ameli_orb_attack_state.idle;
 		}
 		flying_charge = min( flying_charge+0.1, 60 );
 		ameli_book_x	= lerp(	ameli_book_x, x+( draw_xscale*23 )+hsp*3, 0.2 );

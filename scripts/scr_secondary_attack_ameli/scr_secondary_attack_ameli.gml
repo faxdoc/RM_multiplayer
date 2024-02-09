@@ -2,6 +2,11 @@ function scr_secondary_attack_ameli() {
 	var mx_charge = 60;
 switch( maya_grenade_state ) {
 		case 0:
+			if ( knife_timer == 0 && K1 ) {
+				knife_state = 0;
+				knife_timer = 0;
+				// grenade_cooldown = 40;
+			}
 			if ( !K7 ) {
 				maya_grenade_state = 1;
 				knife_timer = min(floor(maya_grenade_charge),5);

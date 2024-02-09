@@ -388,6 +388,7 @@
     {"name":"chain_maya","order":2,"path":"sprites/chain_maya/chain_maya.yy",},
     {"name":"GMLive_roomLoader","order":2,"path":"scripts/GMLive_roomLoader/GMLive_roomLoader.yy",},
     {"name":"splayer_maya_ref","order":6,"path":"sprites/splayer_maya_ref/splayer_maya_ref.yy",},
+    {"name":"sameli_trap_spear253","order":8,"path":"sprites/sameli_trap_spear253/sameli_trap_spear253.yy",},
     {"name":"sameli_legs_idle","order":9,"path":"sprites/sameli_legs_idle/sameli_legs_idle.yy",},
     {"name":"splayer_gun_pickup_maya","order":5,"path":"sprites/splayer_gun_pickup_maya/splayer_gun_pickup_maya.yy",},
     {"name":"rflat","order":4,"path":"rooms/rflat/rflat.yy",},

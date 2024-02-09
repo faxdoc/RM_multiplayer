@@ -5,6 +5,7 @@ frc = 0.85;
 grav = WORLD_GRAV;
 state = e_ameli_orb_state.idle;
 attack_state = e_ameli_orb_attack_state.idle;
+attack_alt_cooldown = 0;
 
 attack_timer = 0;
 init_timer = 0;
@@ -21,7 +22,7 @@ own_hitbox = -1;
 intro_timer = 0;
 saw_dir = 0;
 sticky_target = undefined;
-saw_spd = 2;
+saw_spd = 1.5;
 
 enum e_ameli_orb_state {
 	idle,
@@ -73,7 +74,7 @@ crouching = false;
 char_index = e_char_index.ameli;
 
 timed_explotion_radius = 116;
-timer_explotion_duration = 60;
+timer_explotion_duration = 70;
 
 spike_trap_size = 68;
 trail_cooldown = 0;

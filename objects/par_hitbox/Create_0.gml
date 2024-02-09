@@ -15,7 +15,7 @@ damage_mult = 1;
 bonus_vsp = 0;
 deal_damage = true;
 anti_knockable = true;
-
+delete_other_bullets = false;
 delete_on_wall_col = true;
 move_type = e_movetype.vector;
 is_bullet = true;

@@ -10,7 +10,9 @@
 
 
 switch( attack_state ) {
-	
+	case 99:
+		draw_sprite_ext(sameli_orb,5,x,y, 1, 1, 0, secondary_blend, 0.8 );
+	break;
 	#region Attack state idle
 	case e_ameli_orb_attack_state.idle: 
 		// if ( target_state == e_ameli_orb_state.beam ) {
@@ -30,13 +32,82 @@ switch( attack_state ) {
 	#region attack state active
 	case e_ameli_orb_attack_state.active:
 		
+		if  (state == e_ameli_orb_state.anti_air ) {
+			draw_sprite_ext( sameli_trap_spear, 0, x, y, 0.5, 0.5, 90, secondary_blend, 0.5 );
+		}
+		
+		var dr_ = point_direction( x, y, xprevious, yprevious );
 		draw_self();
+		draw_sprite_ext( sameli_orb, 1, x-LDX( 3, dr_ ), y-LDY( 3, dr_ ), 1, 1, 0, secondary_blend, 1 );
+		
 	break;
 	#endregion
 	#region attack state idle
 	case e_ameli_orb_attack_state.passive:
+		switch(state) {
+			case e_ameli_orb_state.time_bomb:
+				var cx_ = x-1;
+				var cy_ = y-1;
+				DSA(0.7);
+				var sz__	= timed_explotion_radius/2;
+				var sz_div_ = timer_explotion_duration;
+				DSC( merge_colour( main_blend, c_darkest, 0.8 ) );
+				draw_circle( cx_, cy_+1, ( attack_timer / sz_div_ )*sz__-1, true );
+				draw_circle( cx_, cy_+1, ( attack_timer / sz_div_ )*sz__,   true );
+				// draw_circle( x, y+1, 32-1, true );
+				draw_circle( cx_, cy_+1, sz__, true );
+				DSC( merge_colour( main_blend, c_darkest, 0.4 ) );
+				draw_circle( cx_, cy_, ( attack_timer / sz_div_ )*sz__-1, true );
+				draw_circle( cx_, cy_, ( attack_timer / sz_div_ )*sz__,   true );
+				// draw_circle( x, y, 32-1, true );
+				draw_circle( cx_, cy_, sz__, true );
+				DSC(c_white);
+				DSA(1);
+				draw_self();
+				draw_sprite_ext( sameli_orb, 2, x, y, 1, 1, attack_timer, secondary_blend, 1 );
+				
+			break;
+			case e_ameli_orb_state.anti_air:
+				draw_sprite_ext( sameli_trap_spear, 0, x, y, 1, 1, 90, secondary_blend, 0.5 );
+			break;
+			case e_ameli_orb_state.trap:
+				if ( init_timer <= 60 ) {
+					DSA(0.3);
+					DSC( c_orange );
+					draw_circle( x, y, spike_trap_size-(init_timer/60)*spike_trap_size-1, true );	
+					draw_circle( x, y, spike_trap_size-(init_timer/60)*spike_trap_size, true );
+					
+					draw_circle( x, y, spike_trap_size-1, true );
+					draw_circle( x, y, spike_trap_size, true );
+					DSC( c_white );
+					DSA(1);
+					draw_self();
+				} else {
+					draw_sprite_ext( sameli_trap_spike, 0, x, y, 1, 0.2,   0, secondary_blend, 1 );
+					draw_sprite_ext( sameli_trap_spike, 0, x, y, 1, 0.2,  90, secondary_blend, 1 );
+					draw_sprite_ext( sameli_trap_spike, 0, x, y, 1, 0.2, 180, secondary_blend, 1 );
+					draw_sprite_ext( sameli_trap_spike, 0, x, y, 1, 0.2, 270, secondary_blend, 1 );
+					draw_self();
+					
+					DSA(0.9);
+					DSC( c_darkest );
+					DSA(0.7);
+					draw_circle( x, y+2, spike_trap_size, true );
+					
+					DSC( c_orange );
+					draw_circle( x, y+1, spike_trap_size, true );
+					draw_circle( x, y, spike_trap_size, true );
+					DSC( c_white );
+					DSA(1);
+				}
+				
+			break;
+			default:
+				draw_self();
+				
+			break;
+		}
 		
-		draw_self();
 	break;
 	#endregion
 	
@@ -206,6 +277,31 @@ switch( attack_state ) {
 	// #endregion
 }
 
+
+if ( state == e_ameli_orb_state.beam ) {// && attack_state != e_ameli_orb_attack_state.idle
+	var drr = laser_dir;//point_direction(x,y,MX,MY);
+	var sx_ = x+LDX( 8, drr );
+	var sy_ = y+LDY( 8, drr );
+	var gun_charge = 3;
+	var xx_ = sx_;
+	var yy_ = sy_;
+	var blend_ = attack_timer >= 60;
+	var i = 112; while(i-- && !gen_col( x, y ) ) {
+		if( blend_ ){
+			DSA( 0.4 );
+		} else {
+			DSA( 0.2 );
+		}
+		
+		var draw_len_ = 7 + ( gun_charge mod 9 );
+		draw_line_width_color(xx_,yy_,xx_+LDX(draw_len_,drr),yy_+LDY(draw_len_,drr),16.1, blend_ ? merge_color(c_white,c_aqua,.9) : c_red, blend_ ? c_aqua : c_orange );
+		xx_ += LDX( 7, drr );
+		yy_ += LDY( 7, drr );
+	}
+	DSA(1);
+}
+	
+	
 //
 //if ( attack_timer++ > 120 ) {
 //	

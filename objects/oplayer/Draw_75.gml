@@ -438,9 +438,9 @@ if ( player_local ) {
 			}
 			draw_sprite_ext( sorbs_counter, 0, bx-16, by-32, 0.5, 0.5, 0, merge_color(player_colour, c_gray,0.68), 0.5 );
 			var orbs_left = 0;
-			if ( orbs[0].state == e_ameli_orb_state.idle ) orbs_left++;
-			if ( orbs[1].state == e_ameli_orb_state.idle ) orbs_left++;
-			if ( orbs[2].state == e_ameli_orb_state.idle ) orbs_left++;
+			if ( orbs[0].attack_state == e_ameli_orb_attack_state.idle ) orbs_left++;
+			if ( orbs[1].attack_state == e_ameli_orb_attack_state.idle ) orbs_left++;
+			if ( orbs[2].attack_state == e_ameli_orb_attack_state.idle ) orbs_left++;
 			
 			draw_set_font(global.fnt_number_big);
 				

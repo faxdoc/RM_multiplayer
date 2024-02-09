@@ -220,7 +220,12 @@ repeat(step_number) {
 	
 	#endregion
 	
-	
+	if ( delete_other_bullets ) {
+		var _t = instance_place( x, y, par_hitbox );
+		if ( _t && _t.parent != parent ) {
+			IDD(_t);
+		}
+	}
 	if ( can_be_knocked ) {
 		var _t = instance_place( x, y, par_hitbox );
 		duration += 0.6;
