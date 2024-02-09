@@ -21,14 +21,15 @@ switch( draw_type ) {
 		var xoff = draw_xscale*-2;
 		var recoil_x = LDX( recoil, var_dir ) * draw_xscale * 0.6;
 		var recoil_y = LDY( recoil, var_dir ) * 0.6;
+		var xx = var_dir > 0 ? var_dir/40 : var_dir/80;
 		
 		//shader_set( shd_palette );
 		if ( knife_state == 0 ) {
 			//scr_player_draw_guns_inner( var_dir, recoil_x, bwave, y_off-bly_, recoil_y );
-			draw_sprite_ext( sameli_arm_inner, knife_timer < 21 ? min(11,knife_timer/1):12,x-0*draw_xscale-recoil_x,yl_-24+bwave+y_off-recoil_y+1-5, -draw_xscale, 1, 0, image_blend, draw_alpha );
+			draw_sprite_ext( sameli_arm_inner, knife_timer < 21 ? min(11,knife_timer/1):12,x-0*draw_xscale-recoil_x-(xx*draw_xscale*2),yl_-24+bwave+y_off-recoil_y+1-5, -draw_xscale, 1, 0, image_blend, draw_alpha );
 		} else {
 			//player_throw_grenade();
-			draw_sprite_ext( sameli_arm_inner, knife_timer < 21 ? min(11,knife_timer/1):12,x-0*draw_xscale-recoil_x,yl_-24+bwave+y_off-recoil_y+1-5, -draw_xscale, 1, 0, image_blend, draw_alpha );
+			draw_sprite_ext( sameli_arm_inner, knife_timer < 21 ? min(11,knife_timer/1):12,x-0*draw_xscale-recoil_x-(xx*draw_xscale*2),yl_-24+bwave+y_off-recoil_y+1-5, -draw_xscale, 1, 0, image_blend, draw_alpha );
 		}
 		
 		
@@ -52,15 +53,15 @@ switch( draw_type ) {
 		//bwave = round( wave( bmax, bmin, bdur, 0.88 ) );
 		//var ind = var_dir >= 0 ? var_dir/90 * 13.9 : 0;
 		//var ex = (var_dir < -30) ? -var_dir/80 * draw_xscale : 0;
-		//draw_sprite_ext( splayer_body, ind,x+ex,yl_-10+y_off*0.5+bwave,draw_xscale,1,0,image_blend,draw_alpha);
+		//draw_sprite_ext( sameli_maya_body, ind,x+ex,yl_-10+y_off*0.5+bwave,draw_xscale,1,0,image_blend,draw_alpha);
 		
 		
 		yl_ -= 3;
 		//head
 		bwave = round( wave( bmax, bmin, bdur, 0.92 ) );
 		var xx = var_dir > 0 ? var_dir/10 : var_dir/50;
-		var head_x = x-2*draw_xscale;//-xx*draw_xscale+hh;
-		var head_y = yl_-25;//+y_off+bwave + (crouching ? 1 : 0);
+		var head_x = x-2*draw_xscale-(xx*draw_xscale*0.33)+hh;
+		var head_y = yl_-25+y_off+bwave + (crouching ? 1 : 0);
 		var hair_x = head_x;
 		var hair_y = head_y;
 		
@@ -100,12 +101,22 @@ switch( draw_type ) {
 			hair_y = head_y +	vsp * 0.1;
 		}
 		
-		var xx = 0;//var_dir > 0 ? var_dir/40 : var_dir/80;
-		y_off = 0;
+		var xx = var_dir > 0 ? var_dir/40 : var_dir/80;
+		var ind = var_dir >= 0 ? var_dir/90 * 4.9 : 0;
+		var ex = (var_dir < -30) ? -var_dir/80 * draw_xscale : 0;
 		
-		draw_sprite_ext( sameli_maya_body, 0,x + 0*draw_xscale-xx*draw_xscale,		yl_-8+y_off+bwave		-22,-draw_xscale,1,0,image_blend,draw_alpha);
+		
+		
+		draw_sprite_ext( sameli_body, ind,x+ex,yl_-10+y_off*0.5+bwave-22,-draw_xscale,1,0,image_blend,draw_alpha);
+		
+		
+		//draw_sprite_ext( sameli_body, 0,x + 0*draw_xscale-xx*draw_xscale,		yl_-8+y_off+bwave		-22,-draw_xscale,1,0,image_blend,draw_alpha);
 		
 		draw_sprite_ext( sameli_hoodie,   0,    x -1*draw_xscale-xx*1.5*draw_xscale,  yl_-8+y_off*1.4+bwave-19,-draw_xscale,1,0,image_blend,draw_alpha);
+		
+		//draw_sprite_ext( splayer_hoodie,0,x-8*draw_xscale-xx*1.5*draw_xscale,yl_-22+y_off*1.4+bwave,draw_xscale,1,0,image_blend,draw_alpha);
+		//draw_sprite_ext( splayer_jacket_front, 0,x+1*draw_xscale-xx*draw_xscale,yl_-8+y_off+bwave,draw_xscale,1,0,image_blend,draw_alpha);
+		
 			
 		if ( switching_weapon ) {
 			//shader_set( shd_palette );
@@ -113,9 +124,9 @@ switch( draw_type ) {
 			//shader_reset();
 		} else {
 			
-			draw_sprite_ext( sameli_arm_outer, 0, x-1*draw_xscale, yl_-26+bwave+y_off, -draw_xscale, 1, 0, image_blend, draw_alpha );
-			draw_sprite_ext( sameli_arm_outer, 1, x-1*draw_xscale, yl_-26+bwave+y_off, -draw_xscale, 1, 0, image_blend, draw_alpha );
-			draw_sprite_ext( sameli_arm_outer, 2, x-1*draw_xscale, yl_-26+bwave+y_off, -draw_xscale, 1, 0, image_blend, draw_alpha );
+			draw_sprite_ext( sameli_arm_outer, 0, x-1*draw_xscale-(xx*draw_xscale*2), yl_-26+bwave+y_off*0.9, -draw_xscale, 1, 0, image_blend, draw_alpha );
+			draw_sprite_ext( sameli_arm_outer, 1, x-1*draw_xscale-(xx*draw_xscale*2), yl_-26+bwave+y_off*0.9, -draw_xscale, 1, 0, image_blend, draw_alpha );
+			draw_sprite_ext( sameli_arm_outer, 2, x-1*draw_xscale-(xx*draw_xscale*2), yl_-26+bwave+y_off*0.9, -draw_xscale, 1, 0, image_blend, draw_alpha );
 			
 			//scr_player_draw_guns(var_dir,bdur,bmax,bmin,y_off-body_y);
 			

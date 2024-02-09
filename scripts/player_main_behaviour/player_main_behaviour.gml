@@ -541,56 +541,7 @@ if ( jump_charge_buffer > 0 ) {
 	
 #endregion
 
-#region weapon select
-var wep_select_input_hold  = false;
-var wep_select_input_press = false;
-wep_select_input_hold  = K4;
-wep_select_input_press = K4P;
 
-
-var check_m = char_index != e_char_index.maya || knife_state == 0;
-
-if ( input_skip < 2 && check_m) {
-	#macro KCP keyboard_check_pressed
-	#macro sniper_cost  5
-	
-	#region quick switch
-	if ( KQ0||KQ1||KQ2||KQ3||KQ4||KQ5 ) {
-		var pre_wep = current_weapon;
-		var quick_num_ = undefined;
-			
-		if ( KQ0 ) { quick_num_ = 0; }
-		if ( KQ1 ) { quick_num_ = 5; }
-		if ( KQ2 ) { quick_num_ = 1; }
-		if ( KQ3 ) { quick_num_ = 4; }
-		if ( KQ4 ) { quick_num_ = 3; }
-		if ( KQ5 ) { quick_num_ = 2; }
-			
-			
-		if ( quick_num_ != undefined ) {
-			wep_dir = clamp( quick_num_, 0, 5 );
-			
-			previous_weapon = current_weapon;
-			current_weapon = wep_dir;
-					
-			#region switch general
-			if ( current_weapon != pre_wep ) {
-				shoot_press_buffer = 0;
-				audio_play_sound_pitch(snd_reload_0,.5,.6+random_fixed(0.1),0);
-				switching_weapon = true;
-				gun_charging = false;
-				gun_charge = 0;
-				RELOAD[current_weapon] = max(5,RELOAD[current_weapon]+2);
-			}
-					
-			#endregion
-					
-		}
-		
-	}
-	#endregion		
-}
-#endregion
 	
 #region draw variables
 
