@@ -30,8 +30,8 @@
   "nineSlice": null,
   "origin": 9,
   "parent": {
-    "name": "ghost",
-    "path": "folders/Sprites/boss/ghost.yy",
+    "name": "arm_inner",
+    "path": "folders/Sprites/boss/ghost/arm_inner.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

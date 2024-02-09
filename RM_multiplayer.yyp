@@ -112,6 +112,8 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/unused/Timelines.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"ameli","folderPath":"folders/Sounds/sound/ameli.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"implemented","folderPath":"folders/Sounds/sound/ameli/implemented.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"arm_inner","folderPath":"folders/Sprites/boss/ghost/arm_inner.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"arm_outer","folderPath":"folders/Sprites/boss/ghost/arm_outer.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"gcmt-dll.dll","CopyToMask":0,"filePath":"datafiles/GMLive",},

@@ -23,14 +23,26 @@ switch( draw_type ) {
 		var recoil_y = LDY( recoil, var_dir ) * 0.6;
 		var xx = var_dir > 0 ? var_dir/40 : var_dir/80;
 		
-		//shader_set( shd_palette );
-		if ( knife_state == 0 ) {
-			//scr_player_draw_guns_inner( var_dir, recoil_x, bwave, y_off-bly_, recoil_y );
-			draw_sprite_ext( sameli_arm_inner, knife_timer < 21 ? min(11,knife_timer/1):12,x-0*draw_xscale-recoil_x-(xx*draw_xscale*2),yl_-24+bwave+y_off-recoil_y+1-5, -draw_xscale, 1, 0, image_blend, draw_alpha );
-		} else {
-			//player_throw_grenade();
-			draw_sprite_ext( sameli_arm_inner, knife_timer < 21 ? min(11,knife_timer/1):12,x-0*draw_xscale-recoil_x-(xx*draw_xscale*2),yl_-24+bwave+y_off-recoil_y+1-5, -draw_xscale, 1, 0, image_blend, draw_alpha );
+		switch(ameli_arm_inner_state) {
+			case e_ameli_arm_inner_state.idle:
+				draw_sprite_ext( sameli_arm_inner, knife_timer < 21 ? min(11,knife_timer/1):12,x-0*draw_xscale-recoil_x-(xx*draw_xscale*2),yl_-24+bwave+y_off-recoil_y+1-5, -draw_xscale, 1, 0, image_blend, draw_alpha );
+			break;
+			case e_ameli_arm_inner_state.casting:
+				draw_sprite_ext( sameli_arm_inner_cast, (ameli_arm_inner_timer/10)*2.7,x-0*draw_xscale-recoil_x-(xx*draw_xscale*2),yl_-24+bwave+y_off-recoil_y+1-5, -draw_xscale, 1, 0, image_blend, draw_alpha );
+			break;
+			case e_ameli_arm_inner_state.snap:
+				draw_sprite_ext( sameli_arm_inner_explotion, (ameli_arm_inner_timer/10)*3.7,x-0*draw_xscale-recoil_x-(xx*draw_xscale*2),yl_-24+bwave+y_off-recoil_y+1-5, -draw_xscale, 1, 0, image_blend, draw_alpha );
+			break;
 		}
+		
+		//shader_set( shd_palette );
+		// if ( knife_state == 0 ) {
+			//scr_player_draw_guns_inner( var_dir, recoil_x, bwave, y_off-bly_, recoil_y );
+			// draw_sprite_ext( sameli_arm_inner, knife_timer < 21 ? min(11,knife_timer/1):12,x-0*draw_xscale-recoil_x-(xx*draw_xscale*2),yl_-24+bwave+y_off-recoil_y+1-5, -draw_xscale, 1, 0, image_blend, draw_alpha );
+		// } else {
+			//player_throw_grenade();
+			// draw_sprite_ext( sameli_arm_inner, knife_timer < 21 ? min(11,knife_timer/1):12,x-0*draw_xscale-recoil_x-(xx*draw_xscale*2),yl_-24+bwave+y_off-recoil_y+1-5, -draw_xscale, 1, 0, image_blend, draw_alpha );
+		// }
 		
 		
 		//bwave = round( wave( bmax, bmin, bdur, 0.87 ) );

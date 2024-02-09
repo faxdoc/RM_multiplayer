@@ -1,3 +1,4 @@
+audio_channel_num( 20 );
 #macro TEST_DEFAULT false
 #macro LIVE_DEFAULT false
 #macro INIT_TEST_STATE e_meta_state.round_start
@@ -75,7 +76,7 @@ global.inital_select		= false;
 
 
 rollback_use_random_input( false );
-audio_channel_num(32);
+
 
 global.training_mode_visible = true;
 global.frame_by_frame_mode   = false;

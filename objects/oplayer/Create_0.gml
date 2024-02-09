@@ -490,9 +490,6 @@ KRBACK	= 0;
 maya_body_tilt = 0;
 
 maya_sword_blink_colour = 0;
-
-//portrait_expression_base = sface_fern_normal;
-//portrait_expression_hurt = sface_fern_hit;
 char_init = false;
 pre_hp = hp;
 damage_taken = 0;
@@ -503,3 +500,25 @@ ameli_book_y = 0;
 ameli_trail_cooldown = 0;
 ameli_book_sin = 0;
 orbs = undefined;
+
+ameli_arm_inner_state = e_ameli_arm_inner_state.idle;
+ameli_arm_outer_state = e_ameli_arm_outer_state.idle;
+
+ameli_arm_inner_timer = 0;
+ameli_arm_outer_timer = 0;
+
+enum e_ameli_arm_inner_state {
+	idle,
+	casting,
+	snap,
+}
+
+enum e_ameli_arm_outer_state {
+	idle,
+	holding_up,
+	casting,
+	explode
+}
+
+//portrait_expression_base = sface_fern_normal;
+//portrait_expression_hurt = sface_fern_hit;

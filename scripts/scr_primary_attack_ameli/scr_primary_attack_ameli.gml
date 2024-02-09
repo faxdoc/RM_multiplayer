@@ -48,13 +48,17 @@ function scr_primary_attack_ameli() {
                 switch(target_attack_) {
                 	case e_ameli_orb_state.time_bomb:	target_.attack_state = e_ameli_orb_attack_state.active;	 audio_play_sound_pitch( snd_ameli_cast_0, RR( 0.6, 0.7 ), RR(0.95,1.05), 0 ); break;
 					case e_ameli_orb_state.trap:		target_.attack_state = e_ameli_orb_attack_state.passive; audio_play_sound_pitch( snd_ameli_cast_1, RR( 0.6, 0.7 ), RR(0.95,1.05), 0 ); break;
-					case e_ameli_orb_state.bomb:    	target_.attack_state = e_ameli_orb_attack_state.active;	 audio_play_sound_pitch( snd_ameli_cast_2, RR( 0.6, 0.7 ), RR(0.95,1.05), 0 ); break;
-					case e_ameli_orb_state.anti_air:	target_.attack_state = e_ameli_orb_attack_state.passive; audio_play_sound_pitch( snd_ameli_cast_0, RR( 0.6, 0.7 ), RR(0.95,1.05), 0 ); break;
+					case e_ameli_orb_state.bomb:    	target_.attack_state = e_ameli_orb_attack_state.active;	 audio_play_sound_pitch( snd_ameli_cast_2, RR( 0.6, 0.7 ), RR(0.95,1.05), 0 ); ameli_arm_inner_state = e_ameli_arm_inner_state.snap; ameli_arm_inner_timer = 10; break;
+					case e_ameli_orb_state.anti_air:	target_.attack_state = e_ameli_orb_attack_state.passive; audio_play_sound_pitch( snd_ameli_cast_0, RR( 0.6, 0.7 ), RR(0.95,1.05), 0 ); ameli_arm_inner_state = e_ameli_arm_inner_state.casting; ameli_arm_inner_timer = 10;  break;
 					case e_ameli_orb_state.beam:		target_.attack_state = e_ameli_orb_attack_state.active;	 audio_play_sound_pitch( snd_ameli_cast_1, RR( 0.6, 0.7 ), RR(0.95,1.05), 0 ); break;
 					case e_ameli_orb_state.strike:		target_.attack_state = e_ameli_orb_attack_state.active;	 audio_play_sound_pitch( snd_ameli_cast_2, RR( 0.6, 0.7 ), RR(0.95,1.05), 0 ); break;
-                
                 }
                 
+                
+                	// case : 
+					// if ( ameli_arm_inner_timer-- <= 0 ) ameli_arm_inner_state = e_ameli_arm_inner_state.idle;
+				// break;
+				
                 target_.target_x = MX;
                 target_.target_y = MY;
                 target_.target_state = target_attack_;

@@ -691,9 +691,35 @@ draw_alpha = !( INVIS mod 4 > 1 );
 
 #region Ameli code
 if ( char_index == e_char_index.ameli ) {
-	var i = 0; repeat(3) {
+	// ameli_arm_inner_timer = 0;
+	// ameli_arm_outer_timer = 0;
+	switch(ameli_arm_inner_state) {
+		case e_ameli_arm_inner_state.idle: 
 		
+		break;
+		case e_ameli_arm_inner_state.casting: 
+			if ( ameli_arm_inner_timer-- <= 0 ) ameli_arm_inner_state = e_ameli_arm_inner_state.idle;
+		break;
+		case e_ameli_arm_inner_state.snap: 
+			if ( ameli_arm_inner_timer-- <= 0 ) ameli_arm_inner_state = e_ameli_arm_inner_state.idle;
+		break;
 	}
+	switch(ameli_arm_outer_state) {
+		case e_ameli_arm_outer_state.idle: 
+		
+		break;
+		case e_ameli_arm_outer_state.holding_up: 
+		
+		break;
+		case e_ameli_arm_outer_state.casting: 
+		
+		break;
+		case e_ameli_arm_outer_state.explode: 
+		
+		break;
+	}
+	
+
 }
 
 #endregion
