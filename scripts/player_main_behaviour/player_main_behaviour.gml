@@ -698,7 +698,9 @@ if ( char_index == e_char_index.ameli ) {
 		
 		break;
 		case e_ameli_arm_inner_state.casting: 
-			if ( ameli_arm_inner_timer-- <= 0 ) ameli_arm_inner_state = e_ameli_arm_inner_state.idle;
+			if ( ameli_arm_inner_timer < 10 || !K1 ) {
+				if ( ameli_arm_inner_timer-- <= 0 ) ameli_arm_inner_state = e_ameli_arm_inner_state.idle;
+			}
 		break;
 		case e_ameli_arm_inner_state.snap: 
 			if ( ameli_arm_inner_timer-- <= 0 ) ameli_arm_inner_state = e_ameli_arm_inner_state.idle;
@@ -709,13 +711,19 @@ if ( char_index == e_char_index.ameli ) {
 		
 		break;
 		case e_ameli_arm_outer_state.holding_up: 
-		
+			if ( ameli_arm_inner_timer < 10 || (!K1 && !K7 ) ) {
+				if ( ameli_arm_outer_timer-- <= 0 ) ameli_arm_outer_state = e_ameli_arm_outer_state.idle;
+			}
 		break;
 		case e_ameli_arm_outer_state.casting: 
-		
+			if ( ameli_arm_inner_timer < 10 || !K1 ) {
+				if ( ameli_arm_outer_timer-- <= 0 ) ameli_arm_outer_state = e_ameli_arm_outer_state.idle;
+			}
 		break;
 		case e_ameli_arm_outer_state.explode: 
-		
+			if ( ameli_arm_inner_timer < 10 || !K1 ) {
+				if ( ameli_arm_outer_timer-- <= 0 ) ameli_arm_outer_state = e_ameli_arm_outer_state.idle;
+			}
 		break;
 	}
 	

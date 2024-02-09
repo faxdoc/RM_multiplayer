@@ -15,6 +15,9 @@ function scr_secondary_attack_ameli() {
 		            i++;
 		        }
 		        if ( target_ != undefined ) {
+		        	ameli_arm_outer_state_state = e_ameli_arm_outer_state.holding_up;
+		        	ameli_arm_outer_timer = 10;
+		        	
 	            	shoot_delay = 17;
 	                target_.state			= e_ameli_orb_state.bomb;
 	                target_.attack_state	= e_ameli_orb_attack_state.passive;
