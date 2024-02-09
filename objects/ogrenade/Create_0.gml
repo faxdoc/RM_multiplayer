@@ -10,6 +10,7 @@ explode_on_ground	= false;
 push_player			= false;
 explode_damage		= 2;
 do_explotion_sound = true;
+overide_dir = undefined;
 
 piercing	= false;
 dir 		= 0;
@@ -58,7 +59,12 @@ destroy_function = function() {
 	t.duration = 4;
 	t.knockback *= 3;
 	t.dmg = explode_damage;
-	t.dir = 90;
+	if ( overide_dir != undefined ){
+		t.dir = overide_dir;
+	} else {
+		t.dir = 90;
+		
+	}
 	t.do_init_check = false;
 	t.mp_mult *= mp_mult;
 	t.visible = false;

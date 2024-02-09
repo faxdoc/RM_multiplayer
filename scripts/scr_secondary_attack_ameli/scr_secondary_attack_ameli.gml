@@ -5,9 +5,9 @@ function scr_secondary_attack_ameli() {
 			if ( knife_timer == 0 ) {
 				knife_state = 0;
 				knife_timer = 0;
-				ameli_ranged_mode = !ameli_ranged_mode;
+				// ameli_ranged_mode = !ameli_ranged_mode;
 				
-				 var children = [ orbs[ 0 ], orbs[ 1 ], orbs[ 2 ] ];
+				var children = [ orbs[ 0 ], orbs[ 1 ], orbs[ 2 ] ];
 		        var target_ = undefined;
 		        
 		        var i = 0; repeat( array_length(children) ) {
@@ -15,24 +15,14 @@ function scr_secondary_attack_ameli() {
 		            i++;
 		        }
 		        if ( target_ != undefined ) {
-		            var target_attack_ = undefined;
-		            switch( current_weapon ) {
-		                case e_gun.pistol:  target_attack_ = e_ameli_orb_state.time_bomb;   break;
-		                case e_gun.flame:   target_attack_ = e_ameli_orb_state.trap;        break;
-		                case e_gun.shotgun: target_attack_ = e_ameli_orb_state.bomb;        break;
-		                case e_gun.grenade: target_attack_ = e_ameli_orb_state.anti_air;    break;
-		                case e_gun.sniper:  target_attack_ = e_ameli_orb_state.beam;        break;
-		                case e_gun.rail:    target_attack_ = e_ameli_orb_state.strike;      break;
-		            }
+		            // var target_attack_ = undefined;
 		            
-		            if ( target_attack_ != undefined ) {
+		            // if ( target_attack_ != undefined ) {
 		            	shoot_delay = 17;
-		            	RELOAD[0] = 17;
-		                target_.state = target_attack_;
-		                target_.attack_state = e_ameli_orb_attack_state.active;//ameli_ranged_mode ?  : e_ameli_orb_attack_state.active;
+		                target_.state			= e_ameli_orb_state.bomb;
+		                target_.attack_state	= e_ameli_orb_attack_state.passive;//ameli_ranged_mode ?  : e_ameli_orb_attack_state.active;
 		                target_.target_x = MX;
 		                target_.target_y = MY;
-		                target_.target_state = target_attack_;
 		                shoot_press_buffer = 0;
 		                SHAKE++;
 		                
@@ -46,9 +36,7 @@ function scr_secondary_attack_ameli() {
 					            fx.image_yscale = 2;
 		        			}
 		                }
-		
-		
-		            }
+		            // }
 		        }
 				// grenade_cooldown = 40;
 			}

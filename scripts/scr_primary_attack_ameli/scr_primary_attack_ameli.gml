@@ -15,9 +15,13 @@ function scr_primary_attack_ameli() {
     	
     var k1_ = shoot_hold_buffer > 0;
     var k1p_ = shoot_press_buffer > 0;
-    if ( RELOAD[0] > 0 )RELOAD[0]--;
+    var i = 0; repeat(6) {
+    	if ( RELOAD[i] > 0 )RELOAD[i]--;
+    	i++;
+    }
     
-    if ( k1p_ && RELOAD[0] <= 0 ) {
+    
+    if ( k1p_ && RELOAD[current_weapon] <= 0 ) {
         var children = [ orbs[ 0 ], orbs[ 1 ], orbs[ 2 ] ];
         var target_ = undefined;
         
@@ -37,10 +41,19 @@ function scr_primary_attack_ameli() {
             }
             
             if ( target_attack_ != undefined ) {
-            	shoot_delay = 17;
-            	RELOAD[0] = 17;
+            	shoot_delay = 30;
+            	RELOAD[current_weapon] = 10;
                 target_.state = target_attack_;
-                target_.attack_state = e_ameli_orb_attack_state.passive;//ameli_ranged_mode ?  : e_ameli_orb_attack_state.active;
+                switch(target_attack_) {
+                	case e_ameli_orb_state.time_bomb:	target_.attack_state = e_ameli_orb_attack_state.active;		break;
+					case e_ameli_orb_state.trap:		target_.attack_state = e_ameli_orb_attack_state.passive;	break;
+					case e_ameli_orb_state.bomb:    	target_.attack_state = e_ameli_orb_attack_state.active;		break;
+					case e_ameli_orb_state.anti_air:	target_.attack_state = e_ameli_orb_attack_state.passive;	break;
+					case e_ameli_orb_state.beam:		target_.attack_state = e_ameli_orb_attack_state.active;		break;
+					case e_ameli_orb_state.strike:		target_.attack_state = e_ameli_orb_attack_state.active;		break;
+                
+                }
+                
                 target_.target_x = MX;
                 target_.target_y = MY;
                 target_.target_state = target_attack_;

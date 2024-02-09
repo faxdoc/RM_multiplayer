@@ -187,15 +187,15 @@ switch(meta_state) {
 					//portrait_expression_hurt = sface_maya_hit;
 				break;
 				case e_char_index.ameli:
-					base_walk_spd *= 1.03;
+					base_walk_spd *= 1.1;
 					hp_max	= 100;
 					hp		= 100;
 					orbs = [ MAKES( oameli_orb ), MAKES( oameli_orb ), MAKES( oameli_orb ) ];
 					orbs[0].parent = id;
 					orbs[1].parent = id;
 					orbs[2].parent = id;
-					grav *= 0.9;
-					
+					grav *= 0.91;
+					base_jump_pwr += 1.1;
 					orbs[1].idle_timer = 120;
 					orbs[2].idle_timer = 240;
 					

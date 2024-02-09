@@ -69,6 +69,7 @@ if (state == 0) {
 		if ( t_.parent == parent ) {
 			t_.state = e_ameli_orb_state.idle;
 			t_.attack_state = e_ameli_orb_attack_state.idle;
+			t_.attack_alt_cooldown = 0;
 		}
 	}
 	

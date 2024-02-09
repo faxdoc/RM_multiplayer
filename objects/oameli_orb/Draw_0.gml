@@ -1,12 +1,4 @@
 
-//if ( hitfreeze ) {
-//		fog_ltgray
-//		draw_self();
-//		fog_off
-//	} else {
-//		draw_self();
-//		draw_sprite_ext( sprite_index, 1, x-LDX( 3, dr_ ), y-LDY( 3, dr_ ), 1, 1, 0, secondary_blend, 1 );
-//	}
 
 
 switch( attack_state ) {
@@ -42,7 +34,7 @@ switch( attack_state ) {
 		
 	break;
 	#endregion
-	#region attack state idle
+	#region attack state passive
 	case e_ameli_orb_attack_state.passive:
 		switch(state) {
 			case e_ameli_orb_state.time_bomb:
@@ -68,7 +60,7 @@ switch( attack_state ) {
 				
 			break;
 			case e_ameli_orb_state.anti_air:
-				draw_sprite_ext( sameli_trap_spear, 0, x, y, 1, 1, 90, secondary_blend, 0.5 );
+				draw_sprite_ext( sameli_trap_spear, 0, x, y, 1.5, 1.5, 90, secondary_blend, 0.5 );
 			break;
 			case e_ameli_orb_state.trap:
 				if ( init_timer <= 60 ) {
@@ -101,6 +93,18 @@ switch( attack_state ) {
 					DSA(1);
 				}
 				
+			break;
+			case e_ameli_orb_state.bomb:
+				var dr_ = point_direction( x, y, xprevious, yprevious );
+				if ( hitfreeze ) {
+						fog_ltgray
+						draw_self();
+						fog_off
+				} else {
+					draw_self();
+					draw_sprite_ext( sprite_index, 1, x-LDX( 3, dr_ ), y-LDY( 3, dr_ ), 1, 1, 0, secondary_blend, 1 );
+				}
+
 			break;
 			default:
 				draw_self();
@@ -285,18 +289,25 @@ if ( state == e_ameli_orb_state.beam ) {// && attack_state != e_ameli_orb_attack
 	var gun_charge = 3;
 	var xx_ = sx_;
 	var yy_ = sy_;
-	var blend_ = attack_timer >= 60;
-	var i = 112; while(i-- && !gen_col( x, y ) ) {
+	if  (attack_timer > 0 ) {
+		var charge_ = 0.2 + ( (move_timer-70) / 60 );	 
+	}  else {
+		var charge_ = 0.2 + ( move_timer / 60 );	
+	}
+
+	
+	var blend_ = attack_timer > 0;
+	var i = 64; while(i-- && !gen_col( xx_, yy_ ) ) {
 		if( blend_ ){
 			DSA( 0.4 );
 		} else {
 			DSA( 0.2 );
 		}
 		
-		var draw_len_ = 7 + ( gun_charge mod 9 );
-		draw_line_width_color(xx_,yy_,xx_+LDX(draw_len_,drr),yy_+LDY(draw_len_,drr),16.1, blend_ ? merge_color(c_white,c_aqua,.9) : c_red, blend_ ? c_aqua : c_orange );
-		xx_ += LDX( 7, drr );
-		yy_ += LDY( 7, drr );
+		var draw_len_ = 15 + ( gun_charge mod 9 );
+		draw_line_width_color(xx_,yy_,xx_+LDX(draw_len_,drr),yy_+LDY(draw_len_,drr),22.1*charge_, blend_ ? merge_color(c_white,c_aqua,.9) : c_red, blend_ ? c_aqua : c_orange );
+		xx_ += LDX( 12, drr );
+		yy_ += LDY( 12, drr );
 	}
 	DSA(1);
 }

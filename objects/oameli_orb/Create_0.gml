@@ -22,7 +22,7 @@ own_hitbox = -1;
 intro_timer = 0;
 saw_dir = 0;
 sticky_target = undefined;
-saw_spd = 1.5;
+saw_spd = 2.5;
 
 enum e_ameli_orb_state {
 	idle,
@@ -73,8 +73,8 @@ gun_height = 0;
 crouching = false;
 char_index = e_char_index.ameli;
 
-timed_explotion_radius = 116;
-timer_explotion_duration = 70;
+timed_explotion_radius = 156;
+timer_explotion_duration = 120;
 
 spike_trap_size = 68;
 trail_cooldown = 0;

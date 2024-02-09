@@ -609,8 +609,8 @@ function bullet_general(dmg,spd,sprite, unacc, obj_ = par_hitbox, cb_mult_ = 1, 
 			t.knockback = dmg * dmg_mult * 0.37;
 		break;
 		case e_char_index.ameli:
-			// t.stun_mult *= 1.5;
-			// t.knockback *= 0.9;
+			t.stun_mult *= 0.85;
+			t.knockback *= 1.1;
 			t.vsp_add = -3;
 		break;
 	}
