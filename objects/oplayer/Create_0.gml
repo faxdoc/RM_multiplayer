@@ -12,7 +12,7 @@ own_grapple = undefined;
 can_dodge_cooldown = 0;
 winner = -1;
 air_combo = false;
-gun_flash_data = [0,0,0,0,0,0];
+gun_flash_data = [ 0, 0, 0, 0, 0, 0 ];
 gun_active_pos = 0;
 maya_add_x = 0;
 maya_add_y = 0;
@@ -382,10 +382,13 @@ function start_palette() {
 	shader_set(shd_palette);
 	texture_set_stage( main_shader_palette_pointer, palette_texture );
 }
+
 first_looser = undefined;
 random_inited = false;
 final_effect_speed = 160;
 level_select_timer = 0;
+ameli_ranged_mode = true;
+
 #endregion
 
 switch(player_id) {

@@ -442,10 +442,11 @@ switch(char_index) {
 		if ( !ameli_trail_cooldown-- &&  knife_state == 0 && grenade_cooldown <= 0 && state != e_player.hit ) {
 			var amult_ = 3;
 			var duration_ = 6;
+			var bk_ = ameli_ranged_mode ? sameli_book_range : sameli_book;
 			with ( create_fx( 
 					ameli_book_x, 
 					ameli_book_y,
-					sameli_book, 0,
+					bk_, 0,
 					0,
 					depth+1 ) ) {
 						image_index = 0;

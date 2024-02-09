@@ -402,29 +402,47 @@ if ( player_local ) {
 				}
 				//draw_sprite_ext( scooldown_box, 0, ex_+bx+visual_i*mds_, by+myl_,    1.1, 1.1, 0, c_ltgray, 1 );		
 				if ( current_weapon == wep_list[i] ) {
-					draw_sprite_ext( sabilities_ameli,		i, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, merge_colour( c_white, c_orange, 0.1 ), 1 );
+					
+					if ( ameli_ranged_mode ) {
+						draw_sprite_ext( sabilities_ameli_ranged,		i, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, merge_colour( c_white, c_orange, 0.1 ), 1 );
+					} else {
+						draw_sprite_ext( sabilities_ameli,		i, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, merge_colour( c_white, c_orange, 0.1 ), 1 );
+					}
 					if ( gun_flash_data[i] > 0 ) {
 						draw_sprite_ext( sreload_flash, gun_flash_data[i], ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, c_white, 0.75 );
 					}
 			
 				} else {
-					draw_sprite_ext( sabilities_ameli,		i, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, merge_color( c_gray, c_dkgray, 0.6 ), 1 );
+					if ( ameli_ranged_mode ) {
+						draw_sprite_ext( sabilities_ameli_ranged,		i, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, merge_color( c_gray, c_dkgray, 0.6 ), 1 );
+					} else {
+						draw_sprite_ext( sabilities_ameli,		i, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, merge_color( c_gray, c_dkgray, 0.6 ), 1 );
+					}
 				}
 				visual_i++;
 				i++;
 			}
 			
 			myl_ = 3;
-			if ( grenade_cooldown ) {
-				draw_sprite_ext( sabilities_ameli,		6,								ex_+bx+visual_i*mds_, by+myl_, 1.1, 1.1, 0,  merge_colour(c_dkgray,c_red,0.5), 1 );
-				draw_sprite_ext( scooldown,		27-( grenade_cooldown/140 )*26, ex_+bx+visual_i*mds_, by+myl_, 1.1, 1.1, 0, c_white, 0.9 );
-			} else {
-				draw_sprite_ext( sabilities_ameli,		6, ex_+bx+visual_i*mds_, by+myl_,  1.1, 1.1, 0, merge_color( c_gray, c_dkgray, 0.5 ), 1 );	
-			}
-			draw_sprite_ext( snumbers, 6, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, c_gray, 1 );
-	
+			// if ( grenade_cooldown ) {
+			// 	if ( ameli_ranged_mode ) {
+			// 		draw_sprite_ext( sabilities_ameli,		6,								ex_+bx+visual_i*mds_, by+myl_, 1.1, 1.1, 0,  merge_colour(c_dkgray,c_red,0.5), 1 );
+			// 	} else {
+					
+			// 	}
+			// 	draw_sprite_ext( scooldown,		27-( grenade_cooldown/140 )*26, ex_+bx+visual_i*mds_, by+myl_, 1.1, 1.1, 0, c_white, 0.9 );
+			// } else {
+			// 	draw_sprite_ext( sabilities_ameli,		6, ex_+bx+visual_i*mds_, by+myl_,  1.1, 1.1, 0, merge_color( c_gray, c_dkgray, 0.5 ), 1 );	
+			// }
+			
+			// draw_sprite_ext( snumbers, 6, ex_+bx+visual_i*mds_, by+myl_,  1, 1, 0, c_gray, 1 );
+			
 			wep_list  = [ 0, 2, 5, 4, 3, 1 ];
-			draw_sprite_ext( scooldown_box_outer,0,  ex_+bx+(wep_list[current_weapon]-3.5)*mds_, by, 1, 1, 0, c_white, 1 );
+			if ( ameli_ranged_mode ) {
+				draw_sprite_ext( scooldown_box_outer,0,  ex_+bx+(wep_list[current_weapon]-3.5)*mds_, by, 1, 1, 0, c_white, 1 );
+			} else {
+				draw_sprite_ext( scooldown_box_outer,0,  ex_+bx+(wep_list[current_weapon]-3.5)*mds_, by, 1, 1, 0, c_red, 1 );
+			}
 	
 			wep_list  = [ 0, 5, 1, 4, 3, 2 ];
 			by += 3;

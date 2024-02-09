@@ -103,7 +103,7 @@ switch( attack_state ) {
 					y += vsp;
 				}
 				
-				if ( !parent.K1 && move_timer > 5 ) {
+				if ( !parent.K7 && move_timer > 5 ) {
 					var b_ = bullet_general( 10, 0, shitbox_circle, 0 );
 					b_.image_xscale = timed_explotion_radius/96;
 					b_.image_yscale = timed_explotion_radius/96;
@@ -119,12 +119,12 @@ switch( attack_state ) {
 		        	repeat(4) MAKES(ospark_alt);
 		        	attack_state = e_ameli_orb_attack_state.idle;
 					attack_timer = 0;
-				} else if ( parent.K7P ) {
-					effect_create_depth( -40, ef_ring, MX, MY, 0, merge_colour( main_blend, c_gray, 0.4 ) );
-					attack_state = e_ameli_orb_attack_state.passive;
-					attack_timer = 0;
-					
-				}
+				}// else if ( parent.K7P ) {
+				//	effect_create_depth( -40, ef_ring, MX, MY, 0, merge_colour( main_blend, c_gray, 0.4 ) );
+				//	attack_state = e_ameli_orb_attack_state.passive;
+				//	attack_timer = 0;
+				//	
+				//}
 				
 				
 			break;
@@ -144,11 +144,11 @@ switch( attack_state ) {
 					hsp = LDX( move_timer/8, dr_ );
 					vsp = LDY( move_timer/8, dr_ );
 					vsp -= 2;
-					if ( !parent.K1 ) {
+					if ( !parent.K7 ) {
 						move_timer = 120;
-					} else if ( parent.K7P ) {
-						attack_state = e_ameli_orb_attack_state.passive;
-					}
+					}// else if ( parent.K7P ) {
+						//attack_state = e_ameli_orb_attack_state.passive;
+					//}
 					
 				} else {
 					
@@ -210,11 +210,11 @@ switch( attack_state ) {
 					sprite_index = sameli_bomb; 
 					image_xscale = 1.5;
 					image_yscale = 1.5;
-					if ( !parent.K1 ) {
+					if ( !parent.K7 ) {
 						move_timer = 1;
-					} else if ( parent.K7P ) {
-						attack_state = e_ameli_orb_attack_state.passive;
-					}
+					} //else if ( parent.K7P ) {
+					//	attack_state = e_ameli_orb_attack_state.passive;
+				//	}
 				} else {
 					if ( own_hitbox == -1 || !instance_exists( own_hitbox ) ) {
 						own_hitbox			= bullet_general( 12, 0, shitbox_circle, 0 );
@@ -253,11 +253,11 @@ switch( attack_state ) {
 						x += hsp;
 					}
 					move_timer++;
-					if ( !parent.K1 ) {
+					if ( !parent.K7 ) {
 						move_timer = 300;
-					} else if ( parent.K7P ) {
-						attack_state = e_ameli_orb_attack_state.passive;
-					}
+					} //else if ( parent.K7P ) {
+					//	attack_state = e_ameli_orb_attack_state.passive;
+					//}
 				} else {
 					var b_ = bullet_general( 20, 0, sameli_trap_spear, 0 );
 					b_.parent = parent; b_.ghost = true;
@@ -316,11 +316,11 @@ switch( attack_state ) {
 			
 				if ( move_timer <= 60 ) {
 					move_timer = min(move_timer+1,60);
-					if ( !parent.K1 ) {
+					if ( !parent.K7 ) {
 						move_timer += 70;
-					} else if ( parent.K7P ) {
-						attack_state = e_ameli_orb_attack_state.passive;
-					}
+					}// else if ( parent.K7P ) {
+					//	attack_state = e_ameli_orb_attack_state.passive;
+				//	}
 				} else {
 					var dir_ = laser_dir;
 					var x_ = x;
@@ -375,11 +375,11 @@ switch( attack_state ) {
 						move_timer = 1;
 						saw_dir = point_direction( x, y, parent.MX, parent.MY ); 
 					}
-					if ( !parent.K1 ) {
+					if ( !parent.K7 ) {
 						move_timer = 70;
-					} else if ( parent.K7P ) {
-						attack_state = e_ameli_orb_attack_state.passive;
-					}
+					}// else if ( parent.K7P ) {
+					//	attack_state = e_ameli_orb_attack_state.passive;
+				//	}
 					
 					if ( own_hitbox == -1 || !instance_exists( own_hitbox ) ) {
 						own_hitbox			= bullet_general( 4, 0, shitbox, 0 );
@@ -424,104 +424,198 @@ switch( attack_state ) {
 	#endregion
 	#region attack state passive
 	case e_ameli_orb_attack_state.passive:
+		var mxdr_ = point_direction( parent.x, parent.y, parent.MX, parent.MY );
+		var ms_dx_ = parent.x+LDX( 16, mxdr_ );
+		var ms_dy_ = parent.y+LDY( 16, mxdr_ )-22;
 		switch(state) {
 			
 			#region time bomb
 			case e_ameli_orb_state.time_bomb: 
-				if ( sticky_target == undefined && place_meeting(x,y,oplayer) ) {
-					var t__ = instance_place(x,y,oplayer);
-					if ( t__.id != parent ) {
-						sticky_target = t__;
+				if ( move_timer < 18 ) {
+					if ( move_timer == 0 ) {
+						x = ms_dx_;
+						y = ms_dy_;
+						var dr_ = point_direction( x, y, parent.MX, parent.MY );
+						hsp = LDX( 12, dr_ );
+						vsp = LDY( 12, dr_ );
+						vsp -= 3;
 					}
-				} else if ( instance_exists(sticky_target) ) {
-					x = sticky_target.x;
-					y = sticky_target.y-24;
-				}
-				
-				if ( attack_timer++ > timer_explotion_duration ) {
-					var b_ = bullet_general( 20, 0, shitbox_circle, 0 );
-					b_.image_xscale = timed_explotion_radius/42;
-					b_.image_yscale = timed_explotion_radius/42;
-					b_.parent = parent;
-					b_.ghost = true;
-					b_.knockback *= 1.5;
-					b_.stun_mult *= 2;
-						
-					state = e_ameli_orb_state.idle;
-					attack_state = e_ameli_orb_attack_state.idle;
-					attack_timer = 0;
-					with ( oplayer ) {
-						SHAKE += 2;
+					move_timer++;
+					depth = -220;
+					if ( move_timer < 18 ) {
+						if ( move_timer >= 10 ) {
+							hsp *= 0.8;
+							vsp *= 0.8;
+						} else {
+							vsp += grav*1.2;
+						}
+						x += hsp;
+						y += vsp;
 					}
-					repeat(12) {
-		        		var spd = 4+random_fixed(2);
-		        		var dir_ = random_fixed(360);
-		        		var sz_ = random_fixed(timed_explotion_radius/2);
-		        		var size_ = choose(1,2,3);
-		        		var fx = create_fx( x + LDX( sz_,dir_) + hsp, y + LDY( sz_,dir_) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
-		        		fx.image_blend = main_blend;
-		        		fx.image_xscale = size_;
-						fx.image_yscale = size_;
-		        	}
-		        	
-		        	repeat( 4 ) MAKES(ospark_alt);
-		        	repeat( 3 ) MAKES(osmoke);		
+					
+				} else {
+					if ( sticky_target == undefined && place_meeting(x,y,oplayer) ) {
+						var t__ = instance_place(x,y,oplayer);
+						if ( t__.id != parent ) {
+							sticky_target = t__;
+						}
+					} else if ( instance_exists(sticky_target) ) {
+						x = sticky_target.x;
+						y = sticky_target.y-24;
+					}
+					
+					if ( attack_timer++ > timer_explotion_duration ) {
+						var b_ = bullet_general( 20, 0, shitbox_circle, 0 );
+						b_.image_xscale = timed_explotion_radius/42;
+						b_.image_yscale = timed_explotion_radius/42;
+						b_.parent = parent;
+						b_.ghost = true;
+						b_.knockback *= 1.5;
+						b_.stun_mult *= 2;
+							
+						state = e_ameli_orb_state.idle;
+						attack_state = e_ameli_orb_attack_state.idle;
+						attack_timer = 0;
+						with ( oplayer ) {
+							SHAKE += 2;
+						}
+						repeat(12) {
+			        		var spd = 4+random_fixed(2);
+			        		var dir_ = random_fixed(360);
+			        		var sz_ = random_fixed(timed_explotion_radius/2);
+			        		var size_ = choose(1,2,3);
+			        		var fx = create_fx( x + LDX( sz_,dir_) + hsp, y + LDY( sz_,dir_) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
+			        		fx.image_blend = main_blend;
+			        		fx.image_xscale = size_;
+							fx.image_yscale = size_;
+			        	}
+			        	
+			        	repeat( 4 ) MAKES(ospark_alt);
+			        	repeat( 3 ) MAKES(osmoke);		
+					}
 				}
 			break;
 			#endregion
 			
 			#region trap
 			case e_ameli_orb_state.trap: 
-			
-				if (gen_col(x,y+1)) {
-					if ( init_timer <= 60 ) {
-						init_timer += spike_init_speed;
-						if ( init_timer >= 60 ) {
-							repeat(6) {
-					        	var spd = 4+random_fixed(2);
-					        	var dir_ = random_fixed(360);
-					        	var sz_ = random_fixed(timed_explotion_radius/2);
-					        	var size_ = choose(1,2,3);
-					        	var fx = create_fx( x + LDX( sz_,dir_) + hsp, y + LDY( sz_,dir_) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
-					        	fx.image_blend = main_blend;
-					        	fx.image_xscale = size_;
-								fx.image_yscale = size_;
-					        }
-				        	with ( parent ) SHAKE++;
-						}
+				var alt_col = gen_col_sort( x, y+4+vsp-8, layer_col, 2 ) && !gen_col_sort( x, y-8, layer_col, 2 );
+				depth = -220;
+				move_timer++;
+				//Hold over head
+				if ( move_timer < 120 ) {
+					x = parent.x;
+					y = parent.bbox_top-22;
+					move_timer = min(move_timer+2,60);
+					var dr_ = point_direction( x, y, parent.MX, parent.MY );
+					hsp = LDX( move_timer/8, dr_ );
+					vsp = LDY( move_timer/8, dr_ );
+					vsp -= 2;
+					if ( !parent.K1 ) {
+						move_timer = 120;
+					}
+				} else if ( move_timer < 900 ) {
+					
+					if ( ( gen_col(x,y+1) || alt_col ) ) {
+						move_timer = 900;
 					} else {
-						var lt_ = instance_nearest( x, y, oplayer );
-						if ( distance_to_object( lt_ ) <= spike_trap_size*0.95 ) {
-							var b_ = bullet_general( 20, 0, shitbox_circle, 0 );
-							b_.parent = parent;
-							b_.ghost = true;
-							b_.image_xscale = spike_trap_size/24;
-							b_.image_yscale = spike_trap_size/24;
-							b_.knockback *= 1.5;
-							b_.stun_mult *= 2;
-							b_.dir = 90;
-							
-							attack_state = e_ameli_orb_attack_state.idle;
-							state = e_ameli_orb_state.idle;
-							attack_timer = 0;
-							
-							with ( oplayer ) {SHAKE += 2;}
-							var spd, dir_, sz_, size_, fx;
-							repeat(12) {
-					    		spd = 4+random_fixed(2);dir_ = random_fixed(360);sz_ = random_fixed(timed_explotion_radius/2);size_ = choose(1,2,3);
-					    		fx = create_fx( x + LDX( sz_,dir_) + hsp, y + LDY( sz_,dir_) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
-					    		fx.image_blend = main_blend;fx.image_xscale = size_;fx.image_yscale = size_;
-					    	}
-					    	repeat(3) MAKES(osmoke);
+						x += hsp;
+						y += vsp;
+						vsp += grav*0.3;
+						if ( attack_timer++ mod 4 == 0 ) {
+							if ( own_hitbox == -1 || !instance_exists( own_hitbox ) ) {
+								own_hitbox			= bullet_general( 3, 0, shitbox_circle, 0 );
+								own_hitbox.dir		= saw_dir;
+								own_hitbox.duration = 3;
+								own_hitbox.parent	= parent;
+								own_hitbox.ghost	= true;
+								own_hitbox.piercing = true;
+								own_hitbox.image_xscale *= 0.2;
+								own_hitbox.image_yscale *= 0.2;
+							}
 						}
 					}
 				} else {
-					x += hsp;
-					hsp *= 0.99;
-					vsp = max(-3,vsp);
-					vsp += grav*0.3;
-					y += vsp;
+					init_timer = 60;
+					var lt_ = instance_nearest( x, y, oplayer );
+					if ( distance_to_object( lt_ ) <= spike_trap_size*0.95 && lt_ != parent ) {
+						var b_ = bullet_general( 20, 0, shitbox_circle, 0 );
+						b_.parent = parent;
+						b_.ghost = true;
+						b_.image_xscale = spike_trap_size/24;
+						b_.image_yscale = spike_trap_size/24;
+						b_.knockback *= 1.5;
+						b_.stun_mult *= 2;
+						b_.dir = 90;
+						
+						attack_state = e_ameli_orb_attack_state.idle;
+						state = e_ameli_orb_state.idle;
+						attack_timer = 0;
+						
+						with ( oplayer ) {SHAKE += 2;}
+						var spd, dir_, sz_, size_, fx;
+						repeat(12) {
+				    		spd = 4+random_fixed(2);dir_ = random_fixed(360);sz_ = random_fixed(timed_explotion_radius/2);size_ = choose(1,2,3);
+				    		fx = create_fx( x + LDX( sz_,dir_) + hsp, y + LDY( sz_,dir_) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
+				    		fx.image_blend = main_blend;fx.image_xscale = size_;fx.image_yscale = size_;
+				    	}
+				    	repeat(3) MAKES(osmoke);
+					}
+					
 				}
+				if ( y > room_height ) {
+					attack_state = e_ameli_orb_attack_state.idle;
+				}
+				
+				// if (gen_col(x,y+1)) {
+				// 	if ( init_timer <= 60 ) {
+				// 		init_timer += spike_init_speed;
+				// 		if ( init_timer >= 60 ) {
+				// 			repeat(6) {
+				// 	        	var spd = 4+random_fixed(2);
+				// 	        	var dir_ = random_fixed(360);
+				// 	        	var sz_ = random_fixed(timed_explotion_radius/2);
+				// 	        	var size_ = choose(1,2,3);
+				// 	        	var fx = create_fx( x + LDX( sz_,dir_) + hsp, y + LDY( sz_,dir_) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
+				// 	        	fx.image_blend = main_blend;
+				// 	        	fx.image_xscale = size_;
+				// 				fx.image_yscale = size_;
+				// 	        }
+				//         	with ( parent ) SHAKE++;
+				// 		}
+				// 	} else {
+				// 		var lt_ = instance_nearest( x, y, oplayer );
+				// 		if ( distance_to_object( lt_ ) <= spike_trap_size*0.95 ) {
+				// 			var b_ = bullet_general( 20, 0, shitbox_circle, 0 );
+				// 			b_.parent = parent;
+				// 			b_.ghost = true;
+				// 			b_.image_xscale = spike_trap_size/24;
+				// 			b_.image_yscale = spike_trap_size/24;
+				// 			b_.knockback *= 1.5;
+				// 			b_.stun_mult *= 2;
+				// 			b_.dir = 90;
+							
+				// 			attack_state = e_ameli_orb_attack_state.idle;
+				// 			state = e_ameli_orb_state.idle;
+				// 			attack_timer = 0;
+							
+				// 			with ( oplayer ) {SHAKE += 2;}
+				// 			var spd, dir_, sz_, size_, fx;
+				// 			repeat(12) {
+				// 	    		spd = 4+random_fixed(2);dir_ = random_fixed(360);sz_ = random_fixed(timed_explotion_radius/2);size_ = choose(1,2,3);
+				// 	    		fx = create_fx( x + LDX( sz_,dir_) + hsp, y + LDY( sz_,dir_) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
+				// 	    		fx.image_blend = main_blend;fx.image_xscale = size_;fx.image_yscale = size_;
+				// 	    	}
+				// 	    	repeat(3) MAKES(osmoke);
+				// 		}
+				// 	}
+				// } else {
+				// 	x += hsp;
+				// 	hsp *= 0.99;
+				// 	vsp = max(-3,vsp);
+				// 	vsp += grav*0.3;
+				// 	y += vsp;
+				// }
 				
 			break;
 			#endregion
@@ -537,53 +631,72 @@ switch( attack_state ) {
 			
 			#region bomb
 			case e_ameli_orb_state.bomb: 
-			
-				vsp += grav* 0.25; 
-				if ( gen_col(x,y+vsp*2) ) {
-					vsp = -vsp *0.9;
-					hsp *= 0.8;
-				}
-				if ( hitfreeze ) {
-					hitfreeze--;
-				} else {
-					x += hsp;
-					y += vsp;
-				}
-				if ( move_timer++ > 300 ) {
-					state = e_ameli_orb_state.idle;
-					attack_state = e_ameli_orb_attack_state.idle;
-					image_xscale = 1;
-					image_yscale = 1;
-					sprite_index = sameli_orb;
-				}
-				if ( place_meeting(x,y,par_hitbox) ) {
-					var t_ = instance_place(x,y,par_hitbox);
-					if ( t_ != last_knockbox ) {
-						hsp += LDX( t_.knockback*1.3, t_.dir );
-						vsp += LDY( t_.knockback*1.3, t_.dir );
-						vsp -= 1;
-						last_knockbox = t_;
-						hitfreeze = 3;
-						
-					}
-					
-				}
 				
-				if ( place_meeting( x, y, oplayer ) ) {
-					var tl__ = instance_place( x, y, oplayer );
-					if ( tl__ != parent ) {
+				if ( move_timer == 0 ) {
+					x = parent.x;
+					y = parent.bbox_top-22;
+					var dr_ = point_direction( x, y, parent.MX, parent.MY );
+					hsp = LDX( 2, dr_ );
+					vsp = LDY( 2, dr_ );
+					vsp -= 4;
+					// move_timer = 1;
+					sprite_index = sameli_bomb; 
+					image_xscale = 1.5;
+					image_yscale = 1.5;
+					if ( !parent.K1 ) {
+						move_timer = 1;
+					} //else if ( parent.K7P ) {
+					//	attack_state = e_ameli_orb_attack_state.passive;
+				//	}
+				} else {
+				
+					vsp += grav* 0.25; 
+					if ( gen_col(x,y+vsp*2) ) {
+						vsp = -vsp *0.9;
+						hsp *= 0.8;
+					}
+					if ( hitfreeze ) {
+						hitfreeze--;
+					} else {
+						x += hsp;
+						y += vsp;
+					}
+					if ( move_timer++ > 300 ) {
 						state = e_ameli_orb_state.idle;
 						attack_state = e_ameli_orb_attack_state.idle;
 						image_xscale = 1;
 						image_yscale = 1;
 						sprite_index = sameli_orb;
-						with ( bullet_general( 20 , 0, shitbox, 0 ) ) {
-							parent = other.parent;
-							knockback *= 1.5;
-							duration = 4;
-							dir = 90;
-							knockback *= 1.5;
-							stun_mult *= 2;
+					}
+					if ( place_meeting(x,y,par_hitbox) ) {
+						var t_ = instance_place(x,y,par_hitbox);
+						if ( t_ != last_knockbox ) {
+							hsp += LDX( t_.knockback*1.3, t_.dir );
+							vsp += LDY( t_.knockback*1.3, t_.dir );
+							vsp -= 1;
+							last_knockbox = t_;
+							hitfreeze = 3;
+							
+						}
+						
+					}
+					
+					if ( place_meeting( x, y, oplayer ) ) {
+						var tl__ = instance_place( x, y, oplayer );
+						if ( tl__ != parent ) {
+							state = e_ameli_orb_state.idle;
+							attack_state = e_ameli_orb_attack_state.idle;
+							image_xscale = 1;
+							image_yscale = 1;
+							sprite_index = sameli_orb;
+							with ( bullet_general( 20 , 0, shitbox, 0 ) ) {
+								parent = other.parent;
+								knockback *= 1.5;
+								duration = 4;
+								dir = 90;
+								knockback *= 1.5;
+								stun_mult *= 2;
+							}
 						}
 					}
 				}
@@ -637,11 +750,31 @@ switch( attack_state ) {
 		 //       	with ( parent ) SHAKE++;
 			// 	}
 			// } else {
+			if ( move_timer < 300 ) {
+				if ( move_timer == 0 ) {
+					var szl_ = sign(parent.MX - parent.x);
+					x = parent.x+szl_*16;//lerp( x, parent.x+parent.draw_xscale*16, 1 );
+					y = parent.y-8;//lerp( y, parent.y, 0.95 );
+					hsp = szl_*10;
+				} else {
+					hsp += sign( parent.MX - parent.x )*0.22;
+					hsp *= lerp( frc, 1, 0.55 );
+					x += hsp;
+				}
+				move_timer++;
+				if ( !parent.K1 ) {
+					move_timer = 300;
+				} //else if ( parent.K7P ) {
+				//	attack_state = e_ameli_orb_attack_state.passive;
+				//}
+			} else {
+				
 			sprite_index = sameli_trap_spear;
 			image_angle = 90;
-			if ( place_meeting( x, y, oplayer ) ) {
+			var tl_ = instance_place(x,y,oplayer);
+			if ( tl_ && tl_ != parent ) {
 				
-				var b_ = bullet_general( 20, 0, sameli_trap_spear, 0 );
+				var b_ = bullet_general( 10, 0, sameli_trap_spear, 0 );
 				b_.parent = parent;
 				b_.ghost = true;
 				b_.dir = 90+15;
@@ -652,7 +785,7 @@ switch( attack_state ) {
 				b_.stun_mult *= 2;
 				b_.image_angle = b_.dir;
 			
-				var b_ =bullet_general( 20, 0, sameli_trap_spear, 0 );
+				var b_ =bullet_general( 10, 0, sameli_trap_spear, 0 );
 				b_.parent = parent;
 				b_.ghost = true;
 				b_.dir  = 90-15;
@@ -663,7 +796,7 @@ switch( attack_state ) {
 				b_.stun_mult *= 2;
 				b_.image_angle = b_.dir;
 				
-				var b_ =bullet_general( 20, 0, sameli_trap_spear, 0 );		
+				var b_ =bullet_general( 10, 0, sameli_trap_spear, 0 );		
 				b_.parent = parent;
 				b_.ghost = true;
 				b_.dir = 90;
@@ -696,6 +829,7 @@ switch( attack_state ) {
 		        repeat(4) MAKES(ospark_alt);
 		        repeat(3) MAKES(osmoke);
 			}
+			}
 			
 			
 		break;
@@ -716,16 +850,16 @@ switch( attack_state ) {
 		#region beam
 		case e_ameli_orb_state.beam:
 		
-			// if ( parent.K1 && attack_timer == 0 ) {
+			if ( parent.K1 && attack_timer == 0 ) {
 				//if ( attack_timer >= 60 ) {
 				//	laser_dir = angle_approach( laser_dir, point_direction( x, y, parent.MX, parent.MY ), 1 );
 				//} else {
-					// laser_dir = angle_approach( laser_dir, point_direction( x, y, parent.MX, parent.MY ), 2 );
+					laser_dir = point_direction( x, y, parent.MX, parent.MY );//angle_approach( laser_dir, point_direction( x, y, parent.MX, parent.MY ), 4 );
 				//}
 				
-			// }
+			}
 			
-			if ( attack_timer >= 60 ) {
+			if ( attack_timer >= 120 ) {
 				
 				// if ( !parent.K1 ) {
 					var i = 0; 
@@ -733,7 +867,7 @@ switch( attack_state ) {
 					var x_ = x;
 					var y_ = y;
 					repeat( 12 ) {
-						var bl_ = bullet_general( 15, 0, ssameli_beam, 0 );
+						var bl_ = bullet_general( 12, 0, ssameli_beam, 0 );
 						bl_.duration = 30;
 						bl_.parent = other.parent;
 						bl_.dir = dir_;
@@ -759,7 +893,7 @@ switch( attack_state ) {
 					}
 					
 				// }
-			} else {
+			} else if ( !parent.K1 || attack_timer > 0 ) {
 				attack_timer++;
 			}
 			
@@ -768,6 +902,13 @@ switch( attack_state ) {
 		
 		#region saw
 		case e_ameli_orb_state.strike: 
+			if ( move_timer == 0 ) {
+				x = ms_dx_;
+				y = ms_dy_;
+				move_timer = 1;
+				saw_dir = point_direction( x, y, parent.MX, parent.MY ); 
+			}
+					
 			if ( attack_timer++ > 90 ) {
 				attack_state = e_ameli_orb_attack_state.idle;
 				state = e_ameli_orb_state.idle;
@@ -786,7 +927,7 @@ switch( attack_state ) {
 				}
 			}
 			if ( own_hitbox == -1 || !instance_exists( own_hitbox ) ) {
-				own_hitbox = bullet_general(5,0,shitbox,0);
+				own_hitbox = bullet_general(5,0,sbullet_saw_ameli,0);
 				own_hitbox.dir = saw_dir;
 				own_hitbox.duration = 4;
 				own_hitbox.parent = parent;

@@ -19,6 +19,8 @@ delete_other_bullets = false;
 delete_on_wall_col = true;
 move_type = e_movetype.vector;
 is_bullet = true;
+player_freeze_duration = 0;
+
 
 can_switch_cooldown = 1;
 do_stun = true;

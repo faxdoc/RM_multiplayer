@@ -37,9 +37,10 @@ function scr_primary_attack_ameli() {
             }
             
             if ( target_attack_ != undefined ) {
-            	RELOAD[0] = 10;
+            	shoot_delay = 17;
+            	RELOAD[0] = 17;
                 target_.state = target_attack_;
-                target_.attack_state = e_ameli_orb_attack_state.active;
+                target_.attack_state = e_ameli_orb_attack_state.passive;//ameli_ranged_mode ?  : e_ameli_orb_attack_state.active;
                 target_.target_x = MX;
                 target_.target_y = MY;
                 target_.target_state = target_attack_;
@@ -56,10 +57,11 @@ function scr_primary_attack_ameli() {
 			            fx.image_yscale = 2;
         			}
                 }
-                // effect_create_depth( -40, ef_ring, MX, MY, 0, merge_colour( player_colour, c_gray, 0.4 ) );
-    			
+
+
             }
         }
     }
     
 }
+// effect_create_depth( -40, ef_ring, MX, MY, 0, merge_colour( player_colour, c_gray, 0.4 ) );

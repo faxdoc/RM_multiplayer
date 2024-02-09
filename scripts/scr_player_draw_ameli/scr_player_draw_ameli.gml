@@ -59,13 +59,13 @@ switch( draw_type ) {
 		//head
 		bwave = round( wave( bmax, bmin, bdur, 0.92 ) );
 		var xx = var_dir > 0 ? var_dir/10 : var_dir/50;
-		var head_x = x-2*draw_xscale-xx*draw_xscale+hh;
-		var head_y = yl_-25+y_off+bwave + (crouching ? 1 : 0);
+		var head_x = x-2*draw_xscale;//-xx*draw_xscale+hh;
+		var head_y = yl_-25;//+y_off+bwave + (crouching ? 1 : 0);
 		var hair_x = head_x;
 		var hair_y = head_y;
 		
 		if ( shoot_delay ) {
-			//draw_sprite_ext( sameli_head, var_dir > -40 ? (var_dir < 25 ? 1 : ( var_dir < 55 ? 2 : 3 )  ) : 0,			round(head_x), round(head_y), -draw_xscale, 1, 0, image_blend, draw_alpha );
+			draw_sprite_ext( sameli_head, var_dir > -40 ? (var_dir < 25 ? 1 : ( var_dir < 55 ? 2 : 3 )  ) : 0,	round(head_x), round(head_y)-4, -draw_xscale, 1, 0, image_blend, draw_alpha );
 			////var eyes = var_dir > -40 ? (var_dir < 25 ? splayer_eyes_mid : ( var_dir < 55 ? splayer_eyes_mid_up : splayer_eyes_up )  ) : splayer_eyes_down;
 			////draw_sprite_ext( eyes, blink_state, round(head_x), round(head_y), draw_xscale, 1, 0, image_blend, draw_alpha );
 
@@ -100,7 +100,8 @@ switch( draw_type ) {
 			hair_y = head_y +	vsp * 0.1;
 		}
 		
-		var xx = var_dir > 0 ? var_dir/40 : var_dir/80;
+		var xx = 0;//var_dir > 0 ? var_dir/40 : var_dir/80;
+		y_off = 0;
 		
 		draw_sprite_ext( sameli_maya_body, 0,x + 0*draw_xscale-xx*draw_xscale,		yl_-8+y_off+bwave		-22,-draw_xscale,1,0,image_blend,draw_alpha);
 		
@@ -122,7 +123,12 @@ switch( draw_type ) {
 		shader_reset();
 		
 		// if ( knife_state == 0 && grenade_cooldown <= 0 ) {
-		draw_sprite_ext(sameli_book,0,ameli_book_x,ameli_book_y, -draw_xscale, 1, 0, c_white, 1 );
+		if ( ameli_ranged_mode ) {
+			draw_sprite_ext(sameli_book_range,0,ameli_book_x,ameli_book_y, -draw_xscale, 1, 0, c_white, 1 );
+		} else {
+			draw_sprite_ext(sameli_book,0,ameli_book_x,ameli_book_y, -draw_xscale, 1, 0, c_white, 1 );
+			
+		}
 		// }
 		
 		//if ( current_weapon == e_gun.sniper && gun_charge > 0 && state != e_player.cutscene ) {
