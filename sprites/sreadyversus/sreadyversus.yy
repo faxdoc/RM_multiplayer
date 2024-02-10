@@ -20,13 +20,14 @@
   "height": 94,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"ddfe5b0e-f6d5-4a20-b683-58961135ce42","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"a7ac5e04-4341-40e5-901b-7d052e399043","blendMode":0,"displayName":"default (2)","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"ddfe5b0e-f6d5-4a20-b683-58961135ce42","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":false,},
   ],
   "nineSlice": null,
   "origin": 0,
   "parent": {
-    "name": "ui",
-    "path": "folders/Sprites/ui.yy",
+    "name": "round_start",
+    "path": "folders/Sprites/ui/round_start.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

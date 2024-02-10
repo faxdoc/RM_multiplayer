@@ -1,4 +1,6 @@
-text = "Press to release grapple on";
+//text = "Press to release grapple on";
+text = "";
+
 
 execute_function = function(index_) {
 	opreference_tracker.grapple_mode[ index_ ] = false;

@@ -6,8 +6,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "customize",
-    "path": "folders/Sprites/ui/customize.yy",
+    "name": "charselect",
+    "path": "folders/Sprites/ui/charselect.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -26,8 +26,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "sready_button",
-    "path": "sprites/sready_button/sready_button.yy",
+    "name": "syes",
+    "path": "sprites/syes/syes.yy",
   },
   "spriteMaskId": null,
   "visible": true,

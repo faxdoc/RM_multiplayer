@@ -28,8 +28,8 @@
   "nineSlice": null,
   "origin": 4,
   "parent": {
-    "name": "ui",
-    "path": "folders/Sprites/ui.yy",
+    "name": "round_start",
+    "path": "folders/Sprites/ui/round_start.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

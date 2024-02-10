@@ -8,8 +8,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "customize",
-    "path": "folders/Sprites/ui/customize.yy",
+    "name": "charselect",
+    "path": "folders/Sprites/ui/charselect.yy",
   },
   "parentObjectId": {
     "name": "otoggle_button",
@@ -31,8 +31,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "smenu_extra_option",
-    "path": "sprites/smenu_extra_option/smenu_extra_option.yy",
+    "name": "sjump_off",
+    "path": "sprites/sjump_off/sjump_off.yy",
   },
   "spriteMaskId": null,
   "visible": true,
