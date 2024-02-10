@@ -12,8 +12,8 @@
   "conversionMode": 0,
   "duration": 1.672375,
   "parent": {
-    "name": "import",
-    "path": "folders/Sounds/sound/gameplay/import.yy",
+    "name": "RM_multiplayer",
+    "path": "RM_multiplayer.yyp",
   },
   "preload": false,
   "sampleRate": 44100,

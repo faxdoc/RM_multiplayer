@@ -4,6 +4,9 @@ audio_channel_num( 20 );
 #macro INIT_TEST_STATE e_meta_state.round_start
 #macro TEST_FORCE_CHAR -1
 
+#macro GAME_VERSION_NAME "VERSION "
+#macro GAME_VERSION "B 0.1"
+
 global.test_enabled			= TEST_DEFAULT;
 global.live_turned_on		= LIVE_DEFAULT;
 global.training_mode		= false;

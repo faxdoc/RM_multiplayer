@@ -12,7 +12,9 @@ if ( intimer > 10 ) {
 		shader_set(shd_max_a);
 		draw_surface( application_surface, 0, 0 );
 		shader_reset();
-	
+		
+		draw_text_transformed_color( 8, GH-14, GAME_VERSION_NAME + GAME_VERSION, 1, 1, 0, c_gray, c_gray, c_gray, c_gray, 0.7 );
+		
 		//draw_sprite_tiled_ext(spattern,0,intimer*0.2,intimer*0.2,2,2,c_darkest,0.9);
 		//with ( obutton ) {
 		//	draw_self();

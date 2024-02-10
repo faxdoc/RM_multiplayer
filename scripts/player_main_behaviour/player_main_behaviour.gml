@@ -347,12 +347,13 @@ function player_main_behaviour(){
 				case splayer_wallhug_still:
 				case splayer_maya_wallhug_still:
 				case splayer_maya_wallhug:
+				case splayer_ameli_wallhug_still:
 				
 				break;
 				default:
 					switch(char_index) {
 						case e_char_index.ameli:
-							sprite_index = splayer_maya_wallhug;
+							sprite_index = splayer_ameli_wallhug;
 						break;
 						case e_char_index.fern:
 							sprite_index = splayer_wallhug;
