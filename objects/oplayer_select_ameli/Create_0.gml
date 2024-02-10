@@ -1,6 +1,6 @@
 event_inherited();
 name = "Ameli";
-tagline ="Dorky witch O-O"
+tagline = " Dorky witch O-O";
 
 index = e_char_index.ameli;
 

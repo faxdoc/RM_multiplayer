@@ -132,7 +132,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.1100.0.444",
+    "IDEVersion": "2023.11.1.129",
   },
   "resources": [
     {"id":{"name":"snd_ready","path":"sounds/snd_ready/snd_ready.yy",},},

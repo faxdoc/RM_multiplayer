@@ -542,14 +542,16 @@ if ( player_local ) {
 				var cyoffset_ = 3;
 				
 				if ( instance_position( device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id ) ) {
-					draw_sprite_ext( schar_select_frame, 1, x-cxoffset_, y-cyoffset_, 1, 1, 0, c_white, 1 );
-					draw_sprite_ext( sdark_gradient, 0, GW, 0, 1.5, GH/128, 0, c_black, 0.9 );
+					draw_sprite_ext( schar_select_frame, 1, x-cxoffset_, y-cyoffset_,	1,	 1, 		0, c_white, 1.0 );
+					draw_sprite_ext( sdark_gradient,	 0, GW, 		 0, 			1.5, GH/128,	0, c_black, 0.9 );
 					
 					
 					
-					var inf_x =floor( GW*0.77 ), inf_y = 96, inf_dis = 12;
+					var inf_x =floor( GW*0.77 ) - 2, inf_y = 96, inf_dis = 12;
 					var inf_l_ = array_length(info);
-					draw_text_transformed_color( inf_x, inf_y -48, name, 2, 2, 0, c_orange, c_orange, c_orange, c_orange, 1 );
+					draw_text_transformed_color( inf_x,   inf_y - 58, name,    2, 2, 0, c_orange, c_orange, c_orange, c_orange, 1 );
+					draw_text_transformed_color( inf_x-8,   inf_y - 29, tagline, 1, 1, 0, c_gray,   c_gray,   c_gray,   c_gray,   1 );
+					
 					var i = 0; repeat(inf_l_) {
 						draw_text( inf_x, inf_y + ( i * inf_dis ), info[ i ] );
 						i++; 

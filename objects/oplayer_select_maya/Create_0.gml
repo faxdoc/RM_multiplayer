@@ -1,6 +1,6 @@
 event_inherited();
 name = "Maya";
-tagline = "Tired swordsman";
+tagline = " Tired swordsman";
 
 index = e_char_index.maya;
 
