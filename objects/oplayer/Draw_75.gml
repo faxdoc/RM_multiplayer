@@ -553,7 +553,9 @@ if ( player_local ) {
 			}
 			
 			with ( obutton_ready ) {
-				draw_sprite_ext( sprite_index, opreference_tracker.ready_state[ other.player_id ] ? 2 : 0,x,y,1,1,0,c_white,1);
+				if ( opreference_tracker.char_index_progress[ other.player_id ] != -1 ) {
+					draw_sprite_ext( sprite_index, opreference_tracker.ready_state[ other.player_id ] ? 2 : 0, x, y, 1, 1, 0, c_white, 1 );
+				}
 			}
 			
 			var vld_ = 0;

@@ -63,15 +63,15 @@ switch( meta_state ) {
 			image_index = return_function( other.player_id );
 			
 		}
-		
-		with (obutton_ready) {
-			if ( instance_position( lmx_, lmy_, id ) && other.K1P  ) {
-				if ( !opreference_tracker.ready_state[ other.player_id ] ) {
-					opreference_tracker.ready_state[ other.player_id ] = true;
-					//
+		if ( opreference_tracker.char_index_progress[ player_id ] != -1 ) {
+			with (obutton_ready) {
+				if ( instance_position( lmx_, lmy_, id ) && other.K1P  ) {
+					if ( !opreference_tracker.ready_state[ other.player_id ] ) {
+						opreference_tracker.ready_state[ other.player_id ] = true;
+						//
+					}
 				}
 			}
-			//image_index = global.ready_state[ other.player_id ] ? 0 : 1;
 			
 		}
 		

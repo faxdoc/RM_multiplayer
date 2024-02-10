@@ -217,7 +217,7 @@ if (state == 0) {
 							//}
 							trail_cooldown = 1;
 						}
-						if ( point_distance( parent.x, parent.y-22, x, y ) <= 42 ) {
+						if ( point_distance( parent.x, parent.y-22, x, y ) <= 45 ) {
 							audio_play_sound_pitch( snd_shoot_1,		0.35, 0.95 + random( 0.1 ), 1 );
 							audio_play_sound_pitch(snd_railgun_shooting, 0.7, 1.05 + random( 0.1 ), 1 );
 							audio_play_sound_pitch( snd_maya_swing_2,	0.40, 1.05 + random( 0.1 ), 1 );
@@ -226,15 +226,18 @@ if (state == 0) {
 									var b = bullet_general(  8, 0.1, splayer_maya_slash, 0, , 0.5 );
 									// b.y;
 									b.knockback *= 1.5;
-									b.duration  = 10;
+									b.duration  = 8;
 									b.piercing  = true;
-									b.image_xscale *= 1.85;
-									b.image_yscale *= 1.5;
+									b.image_xscale *= 2.1;
+									b.image_yscale *= 2.1;
 									b.image_speed = 3.4;
 									b.depth = depth-1;
 									b.ghost = true;
 									b.alt_knockback = true;
-									b.dir = 89;
+									b.dir = hsp > 0 ? 100 : 80;
+									b.image_angle = b.dir;
+									b.x = other.hook_object.x;
+									b.y = other.hook_object.y-22;
 								}
 								INVIS = max(INVIS,3);
 								hsp *= 0.75;
