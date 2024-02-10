@@ -517,6 +517,7 @@ if ( player_local ) {
 			draw_sprite_ext( sjump_on_W_UI,		0, 14, 260, 1, 1, 0, c_white, 1 );
 			draw_sprite_ext( sready_UI,			0, 15, 276, 1, 1, 0, c_white, 1 );
 			
+			draw_text( 12,301, display_name );
 			
 			
 			var c = c_aqua;
@@ -532,22 +533,14 @@ if ( player_local ) {
 				var cyoffset_ = 3;
 				
 				if ( instance_position( device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id ) ) {
-					// c = c_ltgray;
-					// draw_set_halign( fa_center );
-					// draw_text_transformed_color( x+26, y-41, name, 1, 1, 0, c, c, c, c, 1 );
-					// draw_set_halign( fa_left );
-					
 					draw_sprite_ext( schar_select_frame, 1, x-cxoffset_, y-cyoffset_, 1, 1, 0, c_white, 1 );
 				} else {
 					draw_sprite_ext( schar_select_frame, 0, x-cxoffset_, y-cyoffset_, 1, 1, 0, c_white, 1 );
 				}
-				
 				draw_self();
-				
 				if ( opreference_tracker.char_index[ other.player_id ] == index ) {
 					draw_sprite_ext( schar_select_frame_selected, 0, x-cxoffset_, y-cyoffset_, 1, 1, 0, c_white, 1 );
 				}
-				
 			}
 			
 			
@@ -580,6 +573,35 @@ if ( player_local ) {
 					c_white,
 					1
 				);
+			}
+			
+			var vld_ = 0;
+			var d__ = id;
+			var ci = 0;
+			var sep_x = 100;
+			with ( oplayer ) {
+				if ( id != d__ ) {
+					vld_ = player_id;
+					switch(opreference_tracker.char_index[ vld_ ]) {
+						case e_char_index.fern:
+							draw_sprite_ext( sready_up_fern, 0,  xx+(sep_x*ci)+8, 36, 1, 1, 0, c_white, 1 );
+							draw_sprite_ext( sfern_nametag,  0,  xx+(sep_x*ci)+8, 18, 1, 1, 0, c_white, 1 );
+						break;
+						case e_char_index.maya:
+							draw_sprite_ext( sready_up_maya, 0,   xx+(sep_x*ci)+8, 36, 1, 1, 0, c_white, 1 );
+							draw_sprite_ext( smaya_name_tag,  0,  xx+(sep_x*ci)+8, 18, 1, 1, 0, c_white, 1 );
+						break;
+						case e_char_index.ameli:
+							draw_sprite_ext( sready_up_ameli, 0,  xx+(sep_x*ci)+8, 36, 1, 1, 0, c_white, 1 );
+							draw_sprite_ext( sameli_name_tag, 0,  xx+(sep_x*ci)+8, 18, 1, 1, 0, c_white, 1 );
+						break;
+					}
+					draw_sprite_ext( sready_UI_text, opreference_tracker.ready_state[  vld_ ] ? 0 : 1, xx+(sep_x*ci)+13, 40, 1, 1, 0, c_white, 1 );//
+					
+					draw_sprite_ext( sready_screen_player_panel, 0, xx+(sep_x*ci)+4, 232, 1, 1, 0, c_white, 1 );
+					draw_text(  xx+(sep_x*ci)+12,301, display_name );
+				}
+				ci++;
 			}
 			
 		break;

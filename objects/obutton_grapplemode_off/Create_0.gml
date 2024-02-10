@@ -7,6 +7,6 @@ execute_function = function(index_) {
 }
 
 return_function = function(index_) {
-	return opreference_tracker.grapple_mode[ index_ ] ? 0 : 1;
+	return opreference_tracker.grapple_mode[ index_ ] ? 1 : 0;
 }
 

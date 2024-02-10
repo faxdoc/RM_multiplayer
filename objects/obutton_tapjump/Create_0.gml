@@ -5,6 +5,6 @@ execute_function = function(index_) {
 }
 
 return_function = function( index_ ) {
-	return opreference_tracker.tap_jump[ index_ ] ? 1 : 0;
+	return opreference_tracker.tap_jump[ index_ ] ? 0 : 1;
 }
 

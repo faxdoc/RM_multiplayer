@@ -23,9 +23,9 @@ switch( meta_state ) {
 			ICD( xx+78, yy  + 274, 0, obutton_ready );
 			// ICD( xx+104, yy + 274, 0, obutton_ready_off );
 
-			ICD( xx+20+00, yy+204-8, 0, oplayer_select_fern   );
-			ICD( xx+20+40, yy+204-8, 0, oplayer_select_maya   );
-			ICD( xx+20+80, yy+204-8, 0, oplayer_select_ameli  );
+			ICD( xx+20+00, yy+203, 0, oplayer_select_fern   );
+			ICD( xx+20+40, yy+203, 0, oplayer_select_maya   );
+			ICD( xx+20+80, yy+203, 0, oplayer_select_ameli  );
 			
 			// ICD( xx-96, yy + 128, 0, obutton_ready		);
 			
