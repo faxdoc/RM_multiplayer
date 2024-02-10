@@ -4,7 +4,7 @@ if ( player_local ) {
 	
 	
 	shader_set(shd_max_a);
-	draw_surface_part(application_surface,frac(camera_x),frac(camera_y),GW*2,GH*2,round(screen_shake_x)-xoffset_, round(screen_shake_y)-yoffset_);
+	draw_surface_part( application_surface, frac(camera_x), frac(camera_y),GW*2,GH*2,round(screen_shake_x)-xoffset_, round(screen_shake_y)-yoffset_);
 	shader_reset();
 	var ii = 0,c = -1;
 	var yl_ = floor( GH*0.91 );
@@ -494,33 +494,58 @@ if ( player_local ) {
 			DSA(1);
 			draw_sprite_tiled_ext(spattern_victory,0, -level_select_timer*0.1, -level_select_timer*0.1, 2, 2, c_purple, 0.35 );
 			
+			draw_sprite_ext( sready_screen_player_panel, 0, 4, 232, 1, 1, 0, c_white, 1 );
+			
+			switch(opreference_tracker.char_index[ other.player_id ]) {
+				case e_char_index.fern:
+					draw_sprite_ext( sready_up_fern, 0,  8, 36, 1, 1, 0, c_white, 1 );
+					draw_sprite_ext( sfern_nametag,  0,  8, 18, 1, 1, 0, c_white, 1 );
+				break;
+				case e_char_index.maya:
+					draw_sprite_ext( sready_up_maya, 0,  8, 36, 1, 1, 0, c_white, 1 );
+					draw_sprite_ext( smaya_name_tag,  0,  8, 18, 1, 1, 0, c_white, 1 );
+				break;
+				case e_char_index.ameli:
+					draw_sprite_ext( sready_up_ameli, 0,  8, 36, 1, 1, 0, c_white, 1 );
+					draw_sprite_ext( sameli_name_tag,  0,  8, 18, 1, 1, 0, c_white, 1 );
+				break;
+			}
+			
+			draw_sprite_ext( sready_UI_text, opreference_tracker.ready_state[ other.player_id ] ? 0 : 1, 13, 40, 1, 1, 0, c_white, 1 );//
+			
+			draw_sprite_ext( sgrapple_mode_UI,	0, 14, 244, 1, 1, 0, c_white, 1 );
+			draw_sprite_ext( sjump_on_W_UI,		0, 14, 260, 1, 1, 0, c_white, 1 );
+			draw_sprite_ext( sready_UI,			0, 15, 276, 1, 1, 0, c_white, 1 );
+			
+			
+			
 			var c = c_aqua;
 			var crx_ = floor(GW*0.5);
 			var cry_ = floor(GH*0.15);
-			draw_set_halign( fa_center );
-			draw_text_transformed_color( crx_,cry_, "Select character", 2, 2, 0, c,c,c,c, 1 );
-			draw_set_halign( fa_left );
+			// draw_set_halign( fa_center );
+			// draw_text_transformed_color( crx_,cry_, "Select character", 2, 2, 0, c,c,c,c, 1 );
+			// draw_set_halign( fa_left );
 			
 			with ( obutton_character ) {
 				
-				var cxoffset_ = 6+2;
-				var cyoffset_ = 6;
+				var cxoffset_ = 2+2;
+				var cyoffset_ = 3;
 				
 				if ( instance_position( device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id ) ) {
-					c = c_ltgray;
-					draw_set_halign( fa_center );
-					draw_text_transformed_color( x+26, y-41, name, 2, 2, 0, c, c, c, c, 1 );
-					draw_set_halign( fa_left );
+					// c = c_ltgray;
+					// draw_set_halign( fa_center );
+					// draw_text_transformed_color( x+26, y-41, name, 1, 1, 0, c, c, c, c, 1 );
+					// draw_set_halign( fa_left );
 					
-					draw_sprite_ext( schar_select_frame, 1, x-cxoffset_, y-cyoffset_, 2, 2, 0, c_white, 1 );
+					draw_sprite_ext( schar_select_frame, 1, x-cxoffset_, y-cyoffset_, 1, 1, 0, c_white, 1 );
 				} else {
-					draw_sprite_ext( schar_select_frame, 0, x-cxoffset_, y-cyoffset_, 2, 2, 0, c_white, 1 );
+					draw_sprite_ext( schar_select_frame, 0, x-cxoffset_, y-cyoffset_, 1, 1, 0, c_white, 1 );
 				}
 				
 				draw_self();
 				
 				if ( opreference_tracker.char_index[ other.player_id ] == index ) {
-					draw_sprite_ext( schar_select_frame_selected, 0, x-cxoffset_, y-cyoffset_, 2, 2, 0, c_white, 1 );
+					draw_sprite_ext( schar_select_frame_selected, 0, x-cxoffset_, y-cyoffset_, 1, 1, 0, c_white, 1 );
 				}
 				
 			}
@@ -549,8 +574,8 @@ if ( player_local ) {
 					opreference_tracker.ready_state[ other.player_id ] ? 2 : 0,
 					x,
 					y,
-					1,
-					1,
+				    1,
+				    1,
 					0,
 					c_white,
 					1
@@ -567,6 +592,7 @@ if ( player_local ) {
 			DSC(c_white);
 			DSA(1);
 			draw_sprite_tiled_ext(spattern_victory,0, -level_select_timer*0.1, -level_select_timer*0.1, 2, 2, c_purple, 0.35 );
+			
 			
 			
 			if ( first_looser != undefined && first_looser.priority_select_timer > 0 ) {

@@ -11,19 +11,29 @@ switch( meta_state ) {
 		//	exit;
 		//}
 		if ( !instance_exists( obutton_character ) ) {
-			var xx = GW*0.5;
-			var yy = GH*0.4;
-			ICD( xx-82-32, yy, 0, oplayer_select_maya   );
-			ICD( xx+00-32, yy, 0, oplayer_select_fern   );
-			ICD( xx+82-32, yy, 0, oplayer_select_ameli  );
+			var xx = 0;//GW*0.0;
+			var yy = 0;//GH*0.0;
 			
-			ICD( xx-96, yy + 128, 0, obutton_ready		);
+			ICD( xx+100, yy + 241, 0, obutton_grapplemode );
+			ICD( xx+118, yy + 241, 0, obutton_grapplemode_off );
+
+			ICD( xx+78, yy  + 258, 0, obutton_tapjump );
+			ICD( xx+104, yy + 258, 0, obutton_tapjump_off );
 			
-			ICD( xx+128-112, yy + 128-12-12, 0, obutton_grapplemode );
-			ICD( xx+128-112, yy + 128+12-12, 0, obutton_grapplemode_off );
+			ICD( xx+78, yy  + 274, 0, obutton_ready );
+			// ICD( xx+104, yy + 274, 0, obutton_ready_off );
+
+			ICD( xx+20+00, yy+204-8, 0, oplayer_select_fern   );
+			ICD( xx+20+40, yy+204-8, 0, oplayer_select_maya   );
+			ICD( xx+20+80, yy+204-8, 0, oplayer_select_ameli  );
 			
-			ICD( xx+128-112, yy + 128+32,   0, obutton_tapjump	   );
-			ICD( xx+128-112, yy + 128+32+24,0, obutton_tapjump_off );
+			// ICD( xx-96, yy + 128, 0, obutton_ready		);
+			
+			// ICD( xx+128-112, yy + 128-12-12, 0, obutton_grapplemode );
+			// ICD( xx+128-112, yy + 128+12-12, 0, obutton_grapplemode_off );
+			
+			// ICD( xx+128-112, yy + 128+32,   0, obutton_tapjump	   );
+			// ICD( xx+128-112, yy + 128+32+24,0, obutton_tapjump_off );
 		}
 		
 		level_select_timer++;

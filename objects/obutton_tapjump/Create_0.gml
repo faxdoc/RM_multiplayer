@@ -1,4 +1,5 @@
-text = "Jump with up key on";
+//text = "Jump with up key on";
+text = "";
 execute_function = function(index_) {
 	opreference_tracker.tap_jump[index_] = true;
 }

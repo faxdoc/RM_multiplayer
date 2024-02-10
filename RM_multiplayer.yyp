@@ -292,7 +292,7 @@
     {"id":{"name":"sameli_victory","path":"sprites/sameli_victory/sameli_victory.yy",},},
     {"id":{"name":"sface_fern_normal","path":"sprites/sface_fern_normal/sface_fern_normal.yy",},},
     {"id":{"name":"omenu_bg_render","path":"objects/omenu_bg_render/omenu_bg_render.yy",},},
-    {"id":{"name":"sreadyupameli","path":"sprites/sreadyupameli/sreadyupameli.yy",},},
+    {"id":{"name":"sready_up_ameli","path":"sprites/sready_up_ameli/sready_up_ameli.yy",},},
     {"id":{"name":"sface_ameli_normal","path":"sprites/sface_ameli_normal/sface_ameli_normal.yy",},},
     {"id":{"name":"splayer_gun_pistol","path":"sprites/splayer_gun_pistol/splayer_gun_pistol.yy",},},
     {"id":{"name":"rplatform","path":"rooms/rplatform/rplatform.yy",},},
