@@ -2,7 +2,7 @@
 if ( attack_state != e_ameli_orb_attack_state.idle && attack_state != 99 ) {
 	
 	if ( attack_state == e_ameli_orb_attack_state.active ) {
-		attack_alt_cooldown = 80;
+		attack_alt_cooldown = 90;
 	} else {
 		attack_alt_cooldown = 40;
 	}
@@ -119,7 +119,7 @@ switch( attack_state ) {
 						b_.parent = parent; b_.ghost = true;
 						b_.dir = 90;
 						b_.knockback *= 1.9;
-						with ( oplayer ) { SHAKE += 1; }
+						with ( parent ) { SHAKE += 1.5; }
 						var spd,  dir_, sz_, size_, fx;
 						repeat(5) {
 			        		spd = 4+random_fixed(2); dir_ = random_fixed(360); sz_ = random_fixed(timed_explotion_radius/2); size_ = choose(1,2,3);
@@ -128,6 +128,8 @@ switch( attack_state ) {
 			        	repeat(4) MAKES(ospark_alt);
 			        	attack_state = e_ameli_orb_attack_state.idle;
 						attack_timer = 0;
+						fnc_general_explode( 0.75, 0.75 );
+						
 					}
 					
 				}
@@ -382,6 +384,7 @@ switch( attack_state ) {
 					var dir_ = laser_dir;
 					// var x_ = x;
 					// var y_ = y;
+					fnc_general_explode( 0.75, 0.75 );
 					
 					var charge_ = 0.2 + ( ( move_timer - 70 ) / 60 );
 					audio_play_sound_pitch( snd_ameli_activate,    RR(0.8,0.9)*min(1,charge_*2), RR(0.8,0.86)*0.9, 1, 0.9 );
@@ -515,7 +518,7 @@ switch( attack_state ) {
 					depth = -220;
 					if ( move_timer < 18 ) {
 						if ( move_timer >= 10 ) {
-							hsp *= 0.8;
+						hsp *= 0.8;
 							vsp *= 0.8;
 						} else {
 							vsp += grav*1.2;
@@ -552,10 +555,11 @@ switch( attack_state ) {
 						state = e_ameli_orb_state.idle;
 						attack_state = e_ameli_orb_attack_state.idle;
 						attack_timer = 0;
-						with ( oplayer ) {
+						with ( parent ) {
 							SHAKE += 2;
 						}
-						repeat(12) {
+						fnc_general_explode( 1, 1 );
+						repeat( 12 ) {
 			        		var spd = 4+random_fixed(2);
 			        		var dir_ = random_fixed(360);
 			        		var sz_ = random_fixed(timed_explotion_radius/2);
@@ -1072,10 +1076,11 @@ switch( attack_state ) {
 				own_hitbox.delete_other_bullets = true;
 				own_hitbox.dir = 90;
 				audio_play_sound_pitch(snd_ameli_explotion_1, RR(0.7,0.9), RR(0.8,0.9),0 );
-				with ( parent ) SHAKE++;
+				with ( parent ) SHAKE += 2;
 				with ( oplayer ) {
 					SHAKE++;
 				}
+				fnc_general_explode( 1.00, 1.00 );
 			}
 			if ( own_hitbox == -1 || !instance_exists( own_hitbox ) ) {
 				own_hitbox = bullet_general(4,0,sbullet_saw_ameli,0);

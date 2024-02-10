@@ -271,6 +271,7 @@
     {"name":"snd_ameli_init_1","order":6,"path":"sounds/snd_ameli_init_1/snd_ameli_init_1.yy",},
     {"name":"sgame","order":7,"path":"sprites/sgame/sgame.yy",},
     {"name":"splayer_gun_small_silhouette","order":1,"path":"sprites/splayer_gun_small_silhouette/splayer_gun_small_silhouette.yy",},
+    {"name":"sdark_gradient","order":26,"path":"sprites/sdark_gradient/sdark_gradient.yy",},
     {"name":"splayer_jacket_back","order":2,"path":"sprites/splayer_jacket_back/splayer_jacket_back.yy",},
     {"name":"splayer_hand_switch_wep","order":7,"path":"sprites/splayer_hand_switch_wep/splayer_hand_switch_wep.yy",},
     {"name":"logomaybe","order":23,"path":"sprites/logomaybe/logomaybe.yy",},

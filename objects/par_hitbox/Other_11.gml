@@ -114,7 +114,7 @@ if( do_hit ){
 				image_blend = parent.player_colour;
 			}
 				
-			audio_play_sound_pitch_falloff(snd_shoot_bullet_alt,.5+random_fixed(.1),.9+random_fixed(.1),0);
+			audio_play_sound_pitch_falloff(snd_shoot_bullet_alt,.5+random_fixed(.1),.9+random_fixed(.1),-10);
 		}
 			
 	} else {

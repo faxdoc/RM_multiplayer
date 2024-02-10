@@ -132,7 +132,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.11.1.129",
+    "IDEVersion": "2023.1100.0.444",
   },
   "resources": [
     {"id":{"name":"snd_ready","path":"sounds/snd_ready/snd_ready.yy",},},
@@ -346,6 +346,7 @@
     {"id":{"name":"snd_ameli_init_1","path":"sounds/snd_ameli_init_1/snd_ameli_init_1.yy",},},
     {"id":{"name":"sgame","path":"sprites/sgame/sgame.yy",},},
     {"id":{"name":"splayer_gun_small_silhouette","path":"sprites/splayer_gun_small_silhouette/splayer_gun_small_silhouette.yy",},},
+    {"id":{"name":"sdark_gradient","path":"sprites/sdark_gradient/sdark_gradient.yy",},},
     {"id":{"name":"splayer_jacket_back","path":"sprites/splayer_jacket_back/splayer_jacket_back.yy",},},
     {"id":{"name":"splayer_hand_switch_wep","path":"sprites/splayer_hand_switch_wep/splayer_hand_switch_wep.yy",},},
     {"id":{"name":"logomaybe","path":"sprites/logomaybe/logomaybe.yy",},},

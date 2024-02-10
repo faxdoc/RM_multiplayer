@@ -543,9 +543,21 @@ if ( player_local ) {
 				
 				if ( instance_position( device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id ) ) {
 					draw_sprite_ext( schar_select_frame, 1, x-cxoffset_, y-cyoffset_, 1, 1, 0, c_white, 1 );
+					draw_sprite_ext( sdark_gradient, 0, GW, 0, 1.5, GH/128, 0, c_black, 0.9 );
+					
+					
+					
+					var inf_x =floor( GW*0.77 ), inf_y = 96, inf_dis = 12;
+					var inf_l_ = array_length(info);
+					draw_text_transformed_color( inf_x, inf_y -48, name, 2, 2, 0, c_orange, c_orange, c_orange, c_orange, 1 );
+					var i = 0; repeat(inf_l_) {
+						draw_text( inf_x, inf_y + ( i * inf_dis ), info[ i ] );
+						i++; 
+					}
 				} else {
 					draw_sprite_ext( schar_select_frame, 0, x-cxoffset_, y-cyoffset_, 1, 1, 0, c_white, 1 );
 				}
+				
 				draw_self();
 				if ( opreference_tracker.char_index[ other.player_id ] == index ) {
 					draw_sprite_ext( schar_select_frame_selected, 0, x-cxoffset_, y-cyoffset_, 1, 1, 0, c_white, 1 );
@@ -694,7 +706,7 @@ if ( player_local ) {
 				draw_sprite_ext( sstart, 0, GW/2-4, GH/2+4, 1, 1, 0, c_blue, 0.4 );
 				draw_sprite_ext( sstart, 0, GW/2,	GH/2,	1, 1, 0, c_white, 1 );
 				
-				// draw_sprite_ext( sstart_bg_rep, 0, -580 + ( ( intro_timer * 40 ) mod 580 ), GH/2, 1, 1, 0, c_white, 1 );
+				
 			} else {
 				draw_sprite_ext( sstart_bg_rep, 0,  0   + ( ( intro_timer * 40 ) mod 580 ), GH/2, 1, 1, 0, c_white, 1 );
 				draw_sprite_ext( sstart_bg_rep, 0, -580 + ( ( intro_timer * 40 ) mod 580 ), GH/2, 1, 1, 0, c_white, 1 );

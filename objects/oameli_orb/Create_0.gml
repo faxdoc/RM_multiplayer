@@ -79,3 +79,14 @@ timer_explotion_duration = 120;
 spike_trap_size = 68;
 trail_cooldown = 0;
 spike_init_speed = 1.5;
+
+fnc_general_explode = function(explode_number_mult = 1, explode_range_mult = 1 ) {
+	var n = 3+irandom_fixed(2);
+	var r = 20;
+	repeat(n) {
+		var xx = x+random_range_fixed( -r, r );
+		var yy = y+random_range_fixed( -r, r );
+		var f = create_fx(xx,yy,sexplotion,( 0.9 + random_fixed( 1.7 ) ) * 0.7,0,-10);
+		f.image_alpha = .5+random_fixed(1);
+	}
+}
