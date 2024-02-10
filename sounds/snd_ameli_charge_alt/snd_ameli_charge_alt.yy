@@ -8,7 +8,7 @@
   },
   "bitDepth": 1,
   "bitRate": 128,
-  "compression": 0,
+  "compression": 1,
   "conversionMode": 0,
   "duration": 0.2865,
   "parent": {
@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_ameli_charge_alt.wav",
   "type": 0,
-  "volume": 0.6,
+  "volume": 0.7,
 }

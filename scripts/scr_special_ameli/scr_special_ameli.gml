@@ -30,7 +30,7 @@ function scr_special_ameli() {
         skip_draw = false;
         draw_type = e_draw_type.aiming;
         INVIS -= 7;
-        audio_play_sound_pitch( snd_ameli_can_deal_damage, RR(0.7,0.8), RR(0.7,0.74), 1, 0 );
+        audio_play_sound_pitch( snd_ameli_can_deal_damage, RR(0.7,0.8)*0.7, RR(0.7,0.74), 1, 0 );
 	}
 	
 	if ( parry_timer++ mod 4 == 3 ) {

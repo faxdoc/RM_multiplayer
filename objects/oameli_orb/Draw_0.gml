@@ -60,7 +60,15 @@ switch( attack_state ) {
 				
 			break;
 			case e_ameli_orb_state.anti_air:
-				draw_sprite_ext( sameli_trap_spear, 0, x, y, image_xscale, image_yscale, 90, secondary_blend, 0.5 );
+				if ( move_timer < 100 ) {
+					draw_sprite_ext( sameli_trap_spear_init, 0, x+(1)*5, y, image_xscale, image_yscale, 90, secondary_blend, 0.4 );
+					draw_sprite_ext( sameli_trap_spear_init, 1, x-(1)*5, y, image_xscale, image_yscale, 90, secondary_blend, 0.4 );
+				} else if ( move_timer < 123 ) {
+						draw_sprite_ext( sameli_trap_spear_init, 0, x+(1-(move_timer-100)/23)*5, y, image_xscale, image_yscale, 90, secondary_blend, 0.4 );
+						draw_sprite_ext( sameli_trap_spear_init, 1, x-(1-(move_timer-100)/23)*5, y, image_xscale, image_yscale, 90, secondary_blend, 0.4 );
+				} else {
+					draw_sprite_ext( sameli_trap_spear, 1, x, y, image_xscale, image_yscale, 90, merge_color(secondary_blend,c_darkest,0.5), 0.95 );
+				}
 			break;
 			case e_ameli_orb_state.trap:
 				if ( init_timer <= 60 ) {

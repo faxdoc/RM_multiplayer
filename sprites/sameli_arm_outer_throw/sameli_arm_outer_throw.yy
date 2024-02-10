@@ -13,10 +13,10 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"e3094aae-73a9-499e-b0fe-2a92386f8500",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"36126a72-f805-4e09-9070-6f7be7691919",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"182bec6b-23f7-4ec0-898e-712762bffc51",},
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"64ff3fd6-0863-4dea-b1f0-699a8e6518fd",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"182bec6b-23f7-4ec0-898e-712762bffc51",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"36126a72-f805-4e09-9070-6f7be7691919",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"e3094aae-73a9-499e-b0fe-2a92386f8500",},
   ],
   "gridX": 0,
   "gridY": 0,
@@ -58,10 +58,10 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"e3094aae-73a9-499e-b0fe-2a92386f8500","path":"sprites/sameli_arm_outer_throw/sameli_arm_outer_throw.yy",},},},"Disabled":false,"id":"79a376b9-e4a2-4b36-b07f-495946021173","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"36126a72-f805-4e09-9070-6f7be7691919","path":"sprites/sameli_arm_outer_throw/sameli_arm_outer_throw.yy",},},},"Disabled":false,"id":"1f75cc81-ccf0-438d-9e39-e7acdd61743b","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"182bec6b-23f7-4ec0-898e-712762bffc51","path":"sprites/sameli_arm_outer_throw/sameli_arm_outer_throw.yy",},},},"Disabled":false,"id":"f62b1758-0da2-407c-a90b-5dadcabec7f2","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"64ff3fd6-0863-4dea-b1f0-699a8e6518fd","path":"sprites/sameli_arm_outer_throw/sameli_arm_outer_throw.yy",},},},"Disabled":false,"id":"bd6c47cf-a64a-4586-b63c-5fa872c9cb1c","IsCreationKey":false,"Key":3.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"64ff3fd6-0863-4dea-b1f0-699a8e6518fd","path":"sprites/sameli_arm_outer_throw/sameli_arm_outer_throw.yy",},},},"Disabled":false,"id":"bd6c47cf-a64a-4586-b63c-5fa872c9cb1c","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"182bec6b-23f7-4ec0-898e-712762bffc51","path":"sprites/sameli_arm_outer_throw/sameli_arm_outer_throw.yy",},},},"Disabled":false,"id":"f62b1758-0da2-407c-a90b-5dadcabec7f2","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"36126a72-f805-4e09-9070-6f7be7691919","path":"sprites/sameli_arm_outer_throw/sameli_arm_outer_throw.yy",},},},"Disabled":false,"id":"1f75cc81-ccf0-438d-9e39-e7acdd61743b","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"e3094aae-73a9-499e-b0fe-2a92386f8500","path":"sprites/sameli_arm_outer_throw/sameli_arm_outer_throw.yy",},},},"Disabled":false,"id":"79a376b9-e4a2-4b36-b07f-495946021173","IsCreationKey":false,"Key":3.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

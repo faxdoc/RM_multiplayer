@@ -66,11 +66,11 @@ if (state == 0) {
 	
 	if ( place_meeting( x, y, oameli_orb ) ) {
 		var t_ = instance_place(x,y,oameli_orb);
-		if ( t_.parent == parent ) {
+		if ( t_.parent == parent && t_.attack_state != e_ameli_orb_attack_state.idle ) {
 			t_.state = e_ameli_orb_state.idle;
 			t_.attack_state = e_ameli_orb_attack_state.idle;
 			t_.attack_alt_cooldown = 0;
-			audio_play_sound_pitch( snd_ameli_retrive, RR(0.7,0.8), RR(0.7,0.8), 0, 1.2 );
+			audio_play_sound_pitch( snd_ameli_retrive, RR(0.7,0.8)*0.8, RR(0.7,0.8)*0.75, 0, 1.2 );
 		}
 	}
 	

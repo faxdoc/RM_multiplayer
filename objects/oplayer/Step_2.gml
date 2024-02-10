@@ -15,7 +15,7 @@ switch( meta_state ) {
 			var yy = GH*0.4;
 			ICD( xx-82-32, yy, 0, oplayer_select_maya   );
 			ICD( xx+00-32, yy, 0, oplayer_select_fern   );
-			//ICD( xx+82-32, yy, 0, oplayer_select_fern  );
+			ICD( xx+82-32, yy, 0, oplayer_select_ameli  );
 			
 			ICD( xx-96, yy + 128, 0, obutton_ready		);
 			
@@ -187,15 +187,15 @@ switch(meta_state) {
 					//portrait_expression_hurt = sface_maya_hit;
 				break;
 				case e_char_index.ameli:
-					base_walk_spd *= 1.1;
+					base_walk_spd *= 0.92;
 					hp_max	= 100;
 					hp		= 100;
 					orbs = [ MAKES( oameli_orb ), MAKES( oameli_orb ), MAKES( oameli_orb ) ];
 					orbs[0].parent = id;
 					orbs[1].parent = id;
 					orbs[2].parent = id;
-					grav *= 0.92;
-					base_jump_pwr += 1.1;
+					grav *= 0.96;
+					base_jump_pwr += 0.5;
 					orbs[1].idle_timer = 120;
 					orbs[2].idle_timer = 240;
 					
@@ -210,25 +210,25 @@ switch(meta_state) {
 		//} else {
 		
 			
-		if ( char_index != e_char_index.ameli && KLEFT && KRIGHT && KDOWN && K7 ) {
-				//show_debug_message("a")
-				char_index = e_char_index.ameli;
-				//base_walk_spd += 0.08;//base_walk_spd	= 0.385;
-				hp_max = 100;
-				hp = 100;
-				base_walk_spd *= 0.9;
+		// if ( char_index != e_char_index.ameli && KLEFT && KRIGHT && KDOWN && K7 ) {
+		// 		//show_debug_message("a")
+		// 		char_index = e_char_index.ameli;
+		// 		//base_walk_spd += 0.08;//base_walk_spd	= 0.385;
+		// 		hp_max = 100;
+		// 		hp = 100;
+		// 		base_walk_spd *= 0.9;
 				
-				orbs = [ MAKES( oameli_orb ), MAKES( oameli_orb ), MAKES( oameli_orb ) ];
-					orbs[0].parent = id;
-					orbs[1].parent = id;
-					orbs[2].parent = id;
+		// 		orbs = [ MAKES( oameli_orb ), MAKES( oameli_orb ), MAKES( oameli_orb ) ];
+		// 			orbs[0].parent = id;
+		// 			orbs[1].parent = id;
+		// 			orbs[2].parent = id;
 					
-					orbs[1].idle_timer = 120;
-					orbs[2].idle_timer = 240;
+		// 			orbs[1].idle_timer = 120;
+		// 			orbs[2].idle_timer = 240;
 					
-				//grav *= 1.1;//0.17*1.2;
-				//base_jump_pwr += 1.25;
-		}
+		// 		//grav *= 1.1;//0.17*1.2;
+		// 		//base_jump_pwr += 1.25;
+		// }
 		
 		
 		

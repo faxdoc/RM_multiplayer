@@ -24,14 +24,14 @@ switch( draw_type ) {
 		var xx = var_dir > 0 ? var_dir/40 : var_dir/80;
 		
 		switch(ameli_arm_inner_state) {
-			case e_ameli_arm_inner_state.idle:
-				draw_sprite_ext( sameli_arm_inner, knife_timer < 21 ? min(11,knife_timer/1):12,x-0*draw_xscale-recoil_x-(xx*draw_xscale*2),yl_-24+bwave+y_off-recoil_y+1-5, -draw_xscale, 1, 0, image_blend, draw_alpha );
+			case e_ameli_arm_inner_state.idle://knife_timer < 21 ? min(11,knife_timer/1):12,
+				draw_sprite_ext( sameli_arm_inner, 0,x-0*draw_xscale-recoil_x-(xx*draw_xscale*2),yl_-24+bwave+y_off-recoil_y+1-5, -draw_xscale, 1, 0, image_blend, draw_alpha );
 			break;
 			case e_ameli_arm_inner_state.casting:
 				draw_sprite_ext( sameli_arm_inner_cast, (ameli_arm_inner_timer/10)*2.7,x-0*draw_xscale-recoil_x-(xx*draw_xscale*2),yl_-24+bwave+y_off-recoil_y+1-5, -draw_xscale, 1, 0, image_blend, draw_alpha );
 			break;
 			case e_ameli_arm_inner_state.snap:
-				draw_sprite_ext( sameli_arm_inner_explotion, (ameli_arm_inner_timer/10)*3.7,x-0*draw_xscale-recoil_x-(xx*draw_xscale*2),yl_-24+bwave+y_off-recoil_y+1-5, -draw_xscale, 1, 0, image_blend, draw_alpha );
+				draw_sprite_ext( sameli_arm_inner_explotion, (ameli_arm_inner_timer/11)*2.5,x-0*draw_xscale-recoil_x-(xx*draw_xscale*2),yl_-24+bwave+y_off-recoil_y+1-5, -draw_xscale, 1, 0, image_blend, draw_alpha );
 			break;
 		}
 		
@@ -85,11 +85,11 @@ switch( draw_type ) {
 				draw_sprite_ext( sameli_arm_outer, 2, x-1*draw_xscale-(xx*draw_xscale*2), yl_-26+bwave+y_off*0.9, -draw_xscale, 1, 0, image_blend, draw_alpha );
 			break;
 			case e_ameli_arm_outer_state.holding_up: 
-				draw_sprite_ext( sameli_arm_outer_throw, ( ameli_arm_outer_timer/ 10 )*3.7, x-1*draw_xscale-(xx*draw_xscale*2), yl_-26+bwave+y_off*0.9, -draw_xscale, 1, 0, image_blend, draw_alpha );
+				draw_sprite_ext( sameli_arm_outer_throw, ( ameli_arm_outer_timer/ 11 )*3.7, x-1*draw_xscale-(xx*draw_xscale*2), yl_-26+bwave+y_off*0.9, -draw_xscale, 1, 0, image_blend, draw_alpha );
 				
 			break;
 			case e_ameli_arm_outer_state.casting: 
-				draw_sprite_ext( sameli_arm_outer_beam, ( ameli_arm_outer_timer/ 10 )*2.7, x-1*draw_xscale-(xx*draw_xscale*2), yl_-26+bwave+y_off*0.9, -draw_xscale, 1, 0, image_blend, draw_alpha );
+				draw_sprite_ext( sameli_arm_outer_beam, ( ameli_arm_outer_timer/ 11 )*5.7, x-1*draw_xscale-(xx*draw_xscale*2), yl_-26+bwave+y_off*0.9, -draw_xscale, 1, 0, image_blend, draw_alpha );
 			break;
 			case e_ameli_arm_outer_state.explode: 
 				draw_sprite_ext( sameli_arm_outer_ball, ( ameli_arm_outer_timer/ 10 )*2.7, x-1*draw_xscale-(xx*draw_xscale*2), yl_-26+bwave+y_off*0.9, -draw_xscale, 1, 0, image_blend, draw_alpha );

@@ -375,8 +375,8 @@ switch( attack_state ) {
 					move_timer = min(move_timer+1,60);
 					if ( !parent.K1 ) {
 						move_timer += 70;
-						audio_play_sound_pitch(snd_cute_highpitch, RR(0.8,0.9), RR(0.7,0.75), 1 );
-						audio_play_sound_pitch(snd_ameli_can_deal_damage, RR(0.8,0.9), RR(0.8,0.85), 1 );
+						audio_play_sound_pitch(snd_cute_highpitch, RR(0.8,0.9)*0.3, RR(0.7,0.75)*0.5, 1 );
+						audio_play_sound_pitch(snd_ameli_can_deal_damage, RR(0.8,0.9), RR(0.9,0.95), 1 );
 					}
 				} else if ( attack_timer++ > 25 ) {
 					var dir_ = laser_dir;
@@ -384,8 +384,10 @@ switch( attack_state ) {
 					// var y_ = y;
 					
 					var charge_ = 0.2 + ( ( move_timer - 70 ) / 60 );
-					audio_play_sound_pitch( snd_ameli_activate,    RR(0.8,0.9)*min(0.3,charge_*0.8), RR(0.8,0.86), 1 );
-					audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.8,0.9)*min(0.3,charge_*0.8), RR(0.9,1.00), 1 );
+					audio_play_sound_pitch( snd_ameli_activate,    RR(0.8,0.9)*min(1,charge_*2), RR(0.8,0.86)*0.9, 1, 0.9 );
+					audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.8,0.9)*min(1,charge_*2), RR(0.9,1.00)*0.6, 1, 0.9 );
+					audio_play_sound_pitch( snd_ameli_explotion_0, RR(0.8,0.9)*min(1,charge_*2), RR(0.9,1.00)*1.1, 1, 0.9 );
+					audio_play_sound_pitch( snd_shoot_0, RR(0.8,0.9)*min(0.5,charge_), RR(0.9,1.00), 1, 0.9 );
 					
 					// repeat( 8 ) {
 						var bl_ = bullet_general( 25*charge_, 0, ssameli_beam, 0 );
@@ -437,10 +439,12 @@ switch( attack_state ) {
 						x = ms_dx_;
 						y = ms_dy_;
 						saw_dir = point_direction( x, y, parent.MX, parent.MY ); 
+						audio_play_sound_pitch(snd_ameli_init_0, RR(0.7,0.9), RR(0.8,0.9),0 );
 					}
 					move_timer++;
 					if ( !parent.K1 ) {
 						attack_state = e_ameli_orb_attack_state.passive;
+						audio_play_sound_pitch(snd_ameli_init_1, RR(0.7,0.9), RR(0.8,0.9),0 );
 						// move_timer = 70;
 					}// else if ( parent.K7P ) {
 					//	attack_state = e_ameli_orb_attack_state.passive;
@@ -885,14 +889,16 @@ switch( attack_state ) {
 			} else {
 				
 			sprite_index = sameli_trap_spear;
-			if ( move_timer++ > 135 ) {
-				image_xscale *= 0.99;
+			if ( move_timer++ > 195 ) {
+				image_xscale *= 0.95;
+				image_yscale *= 0.8;
 			}
 			if ( move_timer == 123 ) {
 				audio_play_sound_pitch( snd_ameli_can_deal_damage, RR(0.6,0.7), RR(0.95,1.1), 0 );
+				with ( parent ) SHAKE++;
 			} 
 			image_angle = 90;
-			if ( image_xscale < 0.15 ) {
+			if ( image_yscale < 0.15 ) {
 				attack_timer = 0;
 				state = e_ameli_orb_state.idle;
 				attack_state = e_ameli_orb_attack_state.idle;
@@ -905,8 +911,8 @@ switch( attack_state ) {
 						parent.vsp = min(-7,parent.vsp-5);
 						parent.space_buffer = true;
 					}
-					audio_play_sound_pitch( snd_ameli_activate,    RR(0.8,0.9), RR(0.9,1.1), 0 );
-					audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.6,0.7), RR(0.95,1.1), 0 );
+					audio_play_sound_pitch( snd_ameli_activate,    RR(0.8,0.9), RR(0.9,1.1),  2 );
+					audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.6,0.7), RR(0.95,1.1), 2 );
 							
 					var b_ = bullet_general( 10, 0, sameli_trap_spear, 0 );
 					b_.parent = parent;
@@ -1065,6 +1071,8 @@ switch( attack_state ) {
 				own_hitbox.image_yscale = 2;
 				own_hitbox.delete_other_bullets = true;
 				own_hitbox.dir = 90;
+				audio_play_sound_pitch(snd_ameli_explotion_1, RR(0.7,0.9), RR(0.8,0.9),0 );
+				with ( parent ) SHAKE++;
 				with ( oplayer ) {
 					SHAKE++;
 				}

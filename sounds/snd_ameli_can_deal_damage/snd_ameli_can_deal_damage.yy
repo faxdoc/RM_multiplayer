@@ -8,7 +8,7 @@
   },
   "bitDepth": 1,
   "bitRate": 128,
-  "compression": 3,
+  "compression": 1,
   "conversionMode": 0,
   "duration": 0.356682,
   "parent": {
@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_ameli_can_deal_damage.wav",
   "type": 0,
-  "volume": 0.7,
+  "volume": 0.8,
 }
