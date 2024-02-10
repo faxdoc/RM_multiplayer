@@ -513,7 +513,14 @@ if ( player_local ) {
 					break;
 				}
 			}
-			draw_sprite_ext( sready_screen_player_panel, 0, 4, 232, 1, 1, 0, c_white, 1 );
+			
+			if ( player_colour == c_red ) {
+				draw_sprite_ext( sready_screen_player_panel,	0, 4, 232, 1, 1, 0, c_white, 1 );
+			} else {
+				draw_sprite_ext( sready_screen_player_panel_bw, 0, 4, 232, 1, 1, 0, merge_color( c_white, player_colour, 0.4 ), 1 );
+			}
+			
+			
 			draw_sprite_ext( sready_UI_text, opreference_tracker.ready_state[ other.player_id ] ? 0 : 1, 13, 40, 1, 1, 0, c_white, 1 );//
 			draw_sprite_ext( sgrapple_mode_UI,	0, 14, 244, 1, 1, 0, c_white, 1 );
 			draw_sprite_ext( sjump_on_W_UI,		0, 14, 260, 1, 1, 0, c_white, 1 );
@@ -560,8 +567,9 @@ if ( player_local ) {
 			
 			var vld_ = 0;
 			var d__ = id;
-			var ci = 0;
-			var sep_x = 100;
+			var ci = 1;
+			var sep_x = 142;
+			var xx = 0;
 			with ( oplayer ) {
 				if ( id != d__ ) {
 					vld_ = player_id;
@@ -586,10 +594,15 @@ if ( player_local ) {
 					
 					draw_sprite_ext( sready_UI_text, opreference_tracker.ready_state[  vld_ ] ? 0 : 1, xx+(sep_x*ci)+13, 40, 1, 1, 0, c_white, 1 );//
 					
-					draw_sprite_ext( sready_screen_player_panel_bw, 0, xx+(sep_x*ci)+4, 232, 1, 1, 0, merge_color( c_white, player_colour, 0.4 ), 1 );
+					if ( player_colour == c_red ) {
+						draw_sprite_ext( sready_screen_player_panel,	0, xx+(sep_x*ci)+4, 232, 1, 1, 0, c_white, 1 );
+					} else {
+						draw_sprite_ext( sready_screen_player_panel_bw, 0, xx+(sep_x*ci)+4, 232, 1, 1, 0, merge_color( c_white, player_colour, 0.4 ), 1 );
+					}
 					draw_text(  xx + ( sep_x * ci ) + 12, 300, display_name );
+					ci++;
 				}
-				ci++;
+				
 			}
 			
 		break;
