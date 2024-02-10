@@ -42,8 +42,13 @@ switch( meta_state ) {
 		with ( obutton_character ) {
 			if ( instance_position( lmx_, lmy_, id ) && other.K1P ) {
 				opreference_tracker.char_index[ other.player_id ] = index;
+				opreference_tracker.char_index_progress[ other.player_id ] = 256;
+				
 			}
 			
+		}
+		if ( opreference_tracker.char_index_progress[ other.player_id ] > 0.1 ) {
+			opreference_tracker.char_index_progress[ other.player_id ] = lerp( opreference_tracker.char_index_progress[ other.player_id ], 0, 0.15 );
 		}
 		
 		with ( otoggle_button ) {
@@ -71,8 +76,8 @@ switch( meta_state ) {
 		}
 		
 		if ( global.training_mode ) {
-			if opreference_tracker.ready_state[ player_id ] {
-				with oplayer meta_state = e_meta_state.level_select;
+			if ( opreference_tracker.ready_state[ player_id ] ){
+				with (oplayer) meta_state = e_meta_state.level_select;
 			}
 		} else {
 			var switch_state = true;
@@ -243,7 +248,7 @@ switch(meta_state) {
 		
 		
 		if ( global.training_mode ) {
-			intro_timer = 130;
+			// intro_timer = 130;
 		}
 		hp = hp_max;
 		INVIS = 30; 
