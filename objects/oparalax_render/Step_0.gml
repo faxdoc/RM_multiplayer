@@ -19,7 +19,8 @@ if ( visible ) {
 
 
 
-
+//x_off = RR(-1,1);
+//y_off = RR(-1,1);
 
 
 
