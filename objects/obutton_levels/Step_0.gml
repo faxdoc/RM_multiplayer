@@ -31,10 +31,12 @@ if ( controller != undefined ) {
 			case 2: st_ = "Ceiling";			break;
 			case 3: st_ = "Inital Sendoff";		break;
 			case 4: st_ = "Friendship Area";	break;
-			case 5: st_ = "Floating islands";	break;
+			case 5: st_ = "Floating Islands";	break;
 			case 6: st_ = "Dilapidated Bridge"; break;
 			case 7: st_ = "Vines";				break;
-			case 8: st_ = "City ruins";			break;
+			case 8: st_ = "City Ruins";			break;
+			case 9: st_ = "Cup";				break;
+			case 10: st_ = "Hill";				break;
 		}
 		
 		if ( st_ != "" ) {
@@ -51,7 +53,7 @@ if ( controller != undefined ) {
 	
 		if ( instance_position(mx_,my_,id) ) {
 			//randomize();
-			var rl_ = [rtest,rtower,rceiling,rflat,rplatform,ropen,rbridge,rempty,rcity];
+			var rl_ = [rtest,rtower,rceiling,rflat,rplatform,ropen,rbridge,rempty,rcity,rcup,rhill];
 			audio_play_sound_pitch( choose( snd_menu_select_0, snd_menu_select_1), RR(0.95,1.05),  RR(0.95,1.05), 0 );
 			var rm__ = rl_[ image_index ];
 			switch(image_index) {
@@ -76,7 +78,7 @@ if ( controller != undefined ) {
 	
 				if ( instance_position(mx_,my_,id) ) {
 					//randomize();
-					var rl_ = [rtest,rtower,rceiling,rflat,rplatform,ropen,rbridge,rempty,rcity];
+					var rl_ = [rtest,rtower,rceiling,rflat,rplatform,ropen,rbridge,rempty,rcity,rcup,rhill];
 					audio_play_sound_pitch( choose( snd_menu_select_0, snd_menu_select_1), RR(0.95,1.05),  RR(0.95,1.05), 0 );
 					var rm__ = rl_[ image_index ];
 					switch(image_index) {
