@@ -636,7 +636,7 @@ if ( player_local ) {
 				with ( first_looser ) {
 					var _c_ = player_colour;
 					draw_set_halign(fa_center);
-					draw_text_transformed_color( GW*0.5, floor(GH*0.28), display_name + " is choosing stage", 2, 2, 0, _c_, _c_, _c_, _c_, 1 );
+					draw_text_transformed_color( GW*0.5, floor(GH*0.18), display_name + " is choosing stage", 2, 2, 0, _c_, _c_, _c_, _c_, 1 );
 					draw_set_halign(fa_left);
 					var mdx_ = GW*0.5, mdy_ = GH*0.4;
 					var ww_ = priority_select_timer/2;
@@ -647,7 +647,7 @@ if ( player_local ) {
 			} else {
 				var _c_ = player_colour;
 				draw_set_halign(fa_center);
-				draw_text_transformed_color( GW*0.5, floor(GH*0.28), "Anyone can choose stage", 2, 2, 0, _c_, _c_, _c_, _c_, 1 );
+				draw_text_transformed_color( GW*0.5, floor(GH*0.18), "Anyone can choose stage", 2, 2, 0, _c_, _c_, _c_, _c_, 1 );
 				draw_set_halign(fa_left);
 			}
 			

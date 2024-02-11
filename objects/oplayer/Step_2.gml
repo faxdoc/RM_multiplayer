@@ -140,8 +140,8 @@ switch(meta_state) {
 	#region level select
 	case e_meta_state.level_select:
 		if ( !instance_exists( obutton_levels ) ) {
-			var d_ = 1/12, i = 0; repeat(11) {
-				ICD( GW*(d_+(d_*i)),GH*0.55,0,obutton_levels).image_index = i;
+			var d_ = 1/7, i = 0; repeat(11) {
+				ICD( GW*(d_+(d_ *(i mod 6))),GH*0.41 + (i div 6) * 64,0,obutton_levels).image_index = i;
 				i++;
 			}
 		}

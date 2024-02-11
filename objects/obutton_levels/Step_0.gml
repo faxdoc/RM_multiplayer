@@ -111,6 +111,8 @@ if ( controller != undefined ) {
 			case 6: st_ = "Dilapidated Bridge"; break;
 			case 7: st_ = "Vines";				break;
 			case 8: st_ = "City ruins";			break;
+			case 9: st_ = "Cup";				break;
+			case 10: st_ = "Hill";				break;
 		}
 		
 		if ( st_ != "" ) {
