@@ -2,7 +2,7 @@
 if ( attack_state != e_ameli_orb_attack_state.idle && attack_state != 99 ) {
 	
 	if ( attack_state == e_ameli_orb_attack_state.active ) {
-		attack_alt_cooldown = 90;
+		attack_alt_cooldown = 105;
 	} else {
 		attack_alt_cooldown = 40;
 	}
@@ -118,7 +118,9 @@ switch( attack_state ) {
 						b_.image_yscale = timed_explotion_radius/96;
 						b_.parent = parent; b_.ghost = true;
 						b_.dir = 90;
-						b_.knockback *= 1.9;
+						b_.knockback *= 2.1;
+						b_.stun_mult = 0.5;
+						
 						with ( parent ) { SHAKE += 1.5; }
 						var spd,  dir_, sz_, size_, fx;
 						repeat(5) {
@@ -387,7 +389,7 @@ switch( attack_state ) {
 					fnc_general_explode( 0.75, 0.75 );
 					
 					var charge_ = 0.2 + ( ( move_timer - 70 ) / 60 );
-					audio_play_sound_pitch( snd_ameli_activate,    RR(0.8,0.9)*min(1,charge_*2), RR(0.8,0.86)*0.9, 1, 0.9 );
+					//audio_play_sound_pitch( snd_ameli_activate,    RR(0.8,0.9)*min(1,charge_*2), RR(0.8,0.86)*0.9, 1, 0.9 );
 					audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.8,0.9)*min(1,charge_*2), RR(0.9,1.00)*0.6, 1, 0.9 );
 					audio_play_sound_pitch( snd_ameli_explotion_0, RR(0.8,0.9)*min(1,charge_*2), RR(0.9,1.00)*1.1, 1, 0.9 );
 					audio_play_sound_pitch( snd_shoot_0, RR(0.8,0.9)*min(0.5,charge_), RR(0.9,1.00), 1, 0.9 );
@@ -403,8 +405,19 @@ switch( attack_state ) {
 						bl_.image_yscale = 0.7*charge_;
 						bl_.knockback = charge_*3.5;
 						bl_.image_angle = dir_;
-						bl_.image_xscale = 3;
-						bl_.stun_mult = 0.5;
+						bl_.image_xscale = 0.2;
+						bl_.stun_mult = 0.3;
+						
+						with ( bl_ ) {
+							repeat(16) {
+								if (!gen_col(x,y)) {
+									bl_.image_xscale += 0.1;
+								} else {
+									break;
+								}
+							}
+						}
+						
 						// x += LDX( 128, dir_ );
 						// y += LDY( 128, dir_ );
 					// }
@@ -454,9 +467,9 @@ switch( attack_state ) {
 				//	}
 					
 					if ( own_hitbox == -1 || !instance_exists( own_hitbox ) ) {
-						own_hitbox			= bullet_general( 4, 0, shitbox, 0 );
+						own_hitbox			= bullet_general( 4, 0, sbullet_saw_ameli, 0 );
 						own_hitbox.dir		= saw_dir;
-						own_hitbox.duration = 4;
+						own_hitbox.duration = 10;
 						own_hitbox.parent	= parent;
 						own_hitbox.ghost	= true;
 						own_hitbox.piercing = true;
@@ -639,7 +652,7 @@ switch( attack_state ) {
 							b_.image_xscale = spike_trap_size/22;
 							b_.image_yscale = spike_trap_size/22;
 							b_.knockback *= 2.5;
-							b_.stun_mult *= 1.2;
+							b_.stun_mult *= 0.6;
 							b_.dir = 90;
 						
 							attack_state = e_ameli_orb_attack_state.idle;
@@ -897,7 +910,7 @@ switch( attack_state ) {
 				image_xscale *= 0.95;
 				image_yscale *= 0.8;
 			}
-			if ( move_timer == 123 ) {
+			if ( move_timer == 118 ) {
 				audio_play_sound_pitch( snd_ameli_can_deal_damage, RR(0.6,0.7), RR(0.95,1.1), 0 );
 				with ( parent ) SHAKE++;
 			} 
@@ -907,7 +920,7 @@ switch( attack_state ) {
 				state = e_ameli_orb_state.idle;
 				attack_state = e_ameli_orb_attack_state.idle;
 				//image_xscale = 1;
-			} else if ( move_timer > 123 ) {
+			} else if ( move_timer > 118 ) {
 			
 				var tl_ = instance_place(x,y,oplayer);
 				if ( tl_ ) {
@@ -1085,7 +1098,7 @@ switch( attack_state ) {
 			if ( own_hitbox == -1 || !instance_exists( own_hitbox ) ) {
 				own_hitbox = bullet_general(4,0,sbullet_saw_ameli,0);
 				own_hitbox.dir = saw_dir;
-				own_hitbox.duration = 6;
+				own_hitbox.duration = 9;
 				own_hitbox.parent = parent;
 				own_hitbox.ghost = true;
 				own_hitbox.piercing = true;

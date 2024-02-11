@@ -1,4 +1,4 @@
-audio_channel_num( 20 );
+audio_channel_num( 32 );
 #macro TEST_DEFAULT false
 #macro LIVE_DEFAULT false
 #macro INIT_TEST_STATE e_meta_state.round_start
@@ -81,13 +81,13 @@ global.inital_select		= false;
 rollback_use_random_input( false );
 
 
-global.training_mode_visible = true;
-global.frame_by_frame_mode   = false;
-global.training_nocooldown   = false;
-global.training_infinite_hp  = false;
-global.training_stun_render = false;
-global.training_display_hitboxes = false;
-global.training_mode_change_stage = false;
-global.speed_render = false;
+global.training_mode_visible		= true;
+global.frame_by_frame_mode  		= false;
+global.training_nocooldown  		= false;
+global.training_infinite_hp 		= false;
+global.training_stun_render 		= false;
+global.training_display_hitboxes	= false;
+global.training_mode_change_stage	= false;
+global.speed_render 				= false;
 
 

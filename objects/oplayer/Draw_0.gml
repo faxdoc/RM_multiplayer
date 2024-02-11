@@ -3,6 +3,13 @@ var vv =  KDOWN-KUP;
 
 #region general effects
 
+
+if ( x < 0 || y < 0 || y > room_height || x > room_width ) {
+	var dx_ = clamp(x,24,room_width -24 );
+	var dy_ = clamp(y,24,room_height-24 );
+	var drr_ = point_direction(x,y,dx_,dy_);
+	draw_sprite_ext( splayer_offscreen, 0, dx_, dy_, 1, 1, drr_, c_white, 1 );
+}
 if ( !self_draw ) { exit; }
 if ( state == e_player.hit ) {
 	if ( hh != 0 || vv != 0 ) {

@@ -470,7 +470,14 @@ if (state == 0) {
 		}
 	}
 	
-	
+	if ( duration < 60 ) {
+		wire.start_col = merge_color(c_orange,c_red, 0.5 + sin( duration/3 )*0.9 );
+	} else if ( duration < 140 ) {
+		wire.start_col = merge_color(c_orange,c_red, 0.5 + sin( duration/4 )*0.5 );
+	}
+	if ( !duration-- ) {
+		state = 2;
+	}
 	#endregion
 	
 #endregion

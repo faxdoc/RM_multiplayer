@@ -242,7 +242,20 @@ function player_jump() {
 		vsp = -jump_pwr*lerp( WORLD_GRAV, 1, .3 );
 		land_y = 0;
 		audio_play_sound_pitch(snd_jump,.35,RR(.95,1.05),0);
-		audio_play_sound_pitch( choose(snd_voice_jump_0,snd_voice_jump_1), RR(0.95,1.05)*0.22,  RR(0.95,1.05), 0 );
+		
+		switch(char_index) {
+			case e_char_index.fern:
+				audio_play_sound_pitch( choose(snd_voice_jump_0,snd_voice_jump_1), RR(0.95,1.05)*0.22,  RR(0.95,1.05), 0 );
+			break;
+			case e_char_index.maya:
+				audio_play_sound_pitch( snd_voice_maya_jump_0, RR( 0.95, 1.05 )*0.22,RR(0.95,1.05),0);
+			break;
+			case e_char_index.ameli:
+				audio_play_sound_pitch( snd_voice_ameli_jump_0, RR( 0.95, 1.05 )*0.22,RR(0.95,1.05),0);
+			break;
+		}
+				
+		
 	} else {
 		vsp = -( jump_pwr + 3 );
 		land_y = 0;
@@ -252,8 +265,19 @@ function player_jump() {
 		//repeat(4) ICD( x, y, -1, ospark_alt );
 		//repeat(2) ICD( x, y, -1,     osmoke );
 		SHAKE++;
+		switch(char_index) {
+			case e_char_index.fern:
+				audio_play_sound_pitch( snd_jump_charge, RR(0.95,1.05),  RR(0.95,1.05), 0 );
+			break;
+			case e_char_index.maya:
+				audio_play_sound_pitch( snd_voice_maya_jump_0, RR( 0.95, 1.05 )*0.22,RR(0.95,1.05),0);
+			break;
+			case e_char_index.ameli:
+				audio_play_sound_pitch( snd_voice_ameli_jump_0, RR( 0.95, 1.05 )*0.22,RR(0.95,1.05),0);
+			break;
+		}
 		audio_play_sound_pitch(snd_charged_jump,				0.75,RR(.9,1.1),0);
-		audio_play_sound_pitch( snd_jump_charge, RR(0.95,1.05),  RR(0.95,1.05), 0 );
+		
 		
 		
 	}

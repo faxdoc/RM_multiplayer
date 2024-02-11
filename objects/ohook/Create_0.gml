@@ -16,7 +16,6 @@ wire = instance_create_depth( x, y, 1, overlet_object );
 wire.core_parent = id;
 parent = undefined;
 
-
 wire.ynum = 9;
 wire.line_len = 900;
 wire.universal_frc = 0.97;
@@ -27,6 +26,9 @@ wire.end_col = merge_color( c_dkgray, c_black, 0.4 );
 wire.start_col = c_orange;
 with( wire ) event_perform( ev_step, 0 );
 rep_number = 2;
+
+duration = 300;
+
 
 image_speed = 0;
 image_index = 3;

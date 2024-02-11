@@ -112,17 +112,17 @@ function player_main_behaviour(){
 					vsp = 0;
 				}
 				
-				if hh == 0 && vv == 0 dash_dir = -1;
+				if ( hh == 0 && vv == 0 ) dash_dir = -1;
 				state = e_player.parry;
 				INVIS = 20;
 				effect_create_depth(  40, ef_flare, x, y-22, 0, merge_colour(c_aqua,c_dkgray,0.8) );
-				audio_play_sound_pitch( snd_jump, 0.9,  RR(1.1,1.25), 0 );
-				audio_play_sound_pitch( snd_voice_dash_0,RR(0.95,1.05)*0.7,RR(0.95,1.05),0);
+				audio_play_sound_pitch( snd_jump,  0.9,  RR( 1.10, 1.25 ), 0 );
+				audio_play_sound_pitch( snd_voice_dash_0,RR( 0.95, 1.05 )*0.7,RR(0.95,1.05),0);
 				parry_timer = 0;
 				active_timer = 0;
 			}
 			air_combo = false;
-			if ( char_index = e_char_index.maya ) {
+			if ( char_index == e_char_index.maya ) {
 				can_input = true;
 			}
 		break;
@@ -131,7 +131,7 @@ function player_main_behaviour(){
 		#region normal
 		case e_player.normal:
 			
-			if ( char_index = e_char_index.maya ) {
+			if ( char_index == e_char_index.maya ) {
 				can_input = true;
 			}
 			hit_substate = 0;
