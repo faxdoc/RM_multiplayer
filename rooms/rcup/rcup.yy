@@ -6,10 +6,21 @@
   "inheritCode": false,
   "inheritCreationOrder": false,
   "inheritLayers": false,
-  "instanceCreationOrder": [],
+  "instanceCreationOrder": [
+    {"name":"inst_4270F970","path":"rooms/rcup/rcup.yy",},
+  ],
   "isDnd": false,
   "layers": [
-    {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Instances","depth":0,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
+    {"resourceType":"GMRTileLayer","resourceVersion":"1.1","name":"Tiles_1","depth":-100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[],"tiles":{"SerialiseHeight":48,"SerialiseWidth":78,"TileCompressedData":[
+-895,-2147483648,4,4,5,5,6,-74,-2147483648,4,7,8,8,9,-74,-2147483648,4,10,11,11,12,-128,-2147483648,5,4,5,6,0,0,-44,-2147483648,3,4,5,6,-26,-2147483648,5,7,8,9,0,0,-44,-2147483648,3,7,8,9,-26,-2147483648,5,10,11,12,0,0,-44,-2147483648,3,10,11,12,-281,-2147483648,1,4,-8,5,1,6,-68,-2147483648,1,7,-8,8,1,
+9,-68,-2147483648,1,10,-8,11,1,12,-202,-2147483648,3,4,5,6,-48,-2147483648,3,4,5,6,-24,-2147483648,4,7,8,15,6,-12,-2147483648,-3,0,-5,-2147483648,-8,0,-3,-2147483648,-3,0,-12,-2147483648,4,4,16,8,9,-12,-2147483648,-6,0,-6,-2147483648,5,10,14,8,9,4,-3,5,1,6,-7,-2147483648,-3,0,-5,-2147483648,-8,0,-3,-2147483648,-3,0,-7,-2147483648,1,
+4,-3,5,5,6,7,8,13,12,-12,-2147483648,-6,0,-7,-2147483648,4,10,11,12,7,-3,8,8,9,4,5,6,4,5,6,-2147483648,-3,0,-5,-2147483648,-15,0,7,4,5,6,4,5,6,7,-3,8,4,9,10,11,12,-13,-2147483648,6,0,4,5,6,0,0,-10,-2147483648,1,10,-3,11,11,12,7,8,9,7,8,9,4,5,6,
+4,-10,5,-6,268435461,11,6,4,5,6,7,8,9,7,8,9,10,-3,11,1,12,-12,-2147483648,10,268435462,268435461,268435460,-2147483648,0,7,8,9,0,0,-15,-2147483648,10,10,11,12,10,11,12,7,8,9,7,-10,8,-6,268435464,10,9,7,8,9,10,11,12,10,11,12,-17,-2147483648,10,268435465,268435464,268435463,-2147483648,0,10,11,12,0,0,-21,-2147483648,4,
+10,11,12,10,-10,11,-6,268435467,4,12,10,11,12,-4,0,-19,-2147483648,4,268435468,268435467,268435466,-2147483648,-6,0,-31,-2147483648,4,4,5,5,6,-14,0,-23,-2147483648,-6,0,-31,-2147483648,4,7,8,8,9,-14,0,-23,-2147483648,-6,0,-31,-2147483648,4,7,8,8,9,-14,0,-23,-2147483648,-6,0,-31,-2147483648,4,7,8,8,9,-14,0,-60,-2147483648,4,7,8,8,
+9,-14,0,-60,-2147483648,4,7,8,8,9,-74,-2147483648,4,7,8,8,9,-74,-2147483648,4,7,8,8,9,-74,-2147483648,4,7,8,8,9,-74,-2147483648,4,7,8,8,9,-74,-2147483648,4,7,8,8,9,-74,-2147483648,4,7,8,8,9,-74,-2147483648,4,7,8,8,9,-74,-2147483648,4,7,8,8,9,-74,-2147483648,4,7,8,8,9,-37,-2147483648,],"TileDataFormat":1,},"tilesetId":{"name":"tl_moss","path":"tilesets/tl_moss/tl_moss.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
+    {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Instances","depth":0,"effectEnabled":true,"effectType":null,"gridX":8,"gridY":8,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_4270F970","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"ospawn_box","path":"objects/ospawn_box/ospawn_box.yy",},"properties":[],"rotation":0.0,"scaleX":9.0,"scaleY":2.0,"x":624.0,"y":448.0,},
+      ],"layers":[],"properties":[],"userdefinedDepth":true,"visible":true,},
     {"resourceType":"GMRBackgroundLayer","resourceVersion":"1.0","name":"Background","animationFPS":15.0,"animationSpeedType":0,"colour":4278190080,"depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[],"spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
   ],
   "parent": {
@@ -28,7 +39,7 @@
     "Height": 768,
     "inheritRoomSettings": false,
     "persistent": false,
-    "Width": 1366,
+    "Width": 1244,
   },
   "sequenceId": null,
   "views": [
