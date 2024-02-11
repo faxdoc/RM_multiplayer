@@ -11,3 +11,8 @@ background_max_x = 0;
 background_max_y = 0;
 background_mid_x = 0;
 background_mid_y = 0;
+type = 0;
+switch(room) {
+	case rplatform: type = 1; break;
+	default: type = 0; break;
+}
