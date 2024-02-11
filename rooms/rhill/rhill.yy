@@ -25,6 +25,7 @@
     {"name":"inst_17101564","path":"rooms/rhill/rhill.yy",},
     {"name":"inst_12412CCB","path":"rooms/rhill/rhill.yy",},
     {"name":"inst_7B670C0C","path":"rooms/rhill/rhill.yy",},
+    {"name":"inst_2F8006A9","path":"rooms/rhill/rhill.yy",},
   ],
   "isDnd": false,
   "layers": [
@@ -74,6 +75,7 @@
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_17101564","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"odelete_box_stun","path":"objects/odelete_box_stun/odelete_box_stun.yy",},"properties":[],"rotation":0.0,"scaleX":39.5,"scaleY":8.25,"x":576.0,"y":-220.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_12412CCB","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"ohook_dragger_still","path":"objects/ohook_dragger_still/ohook_dragger_still.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":352.0,"y":312.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_7B670C0C","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"ohook_dragger_still","path":"objects/ohook_dragger_still/ohook_dragger_still.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":784.0,"y":312.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_2F8006A9","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"orespawn_box","path":"objects/orespawn_box/orespawn_box.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":576.0,"y":240.0,},
       ],"layers":[],"properties":[],"userdefinedDepth":true,"visible":true,},
     {"resourceType":"GMRAssetLayer","resourceVersion":"1.0","name":"Assets_2","assets":[
         {"resourceType":"GMRSpriteGraphic","resourceVersion":"1.0","name":"graphic_3AAB72D4","animationSpeed":1.0,"colour":4294967295,"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"stree_chimney","path":"sprites/stree_chimney/stree_chimney.yy",},"x":373.0,"y":214.0,},
