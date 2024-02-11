@@ -9,8 +9,9 @@
   "instanceCreationOrder": [],
   "isDnd": false,
   "layers": [
-    {"resourceType":"GMRTileLayer","resourceVersion":"1.1","name":"Tiles_1","depth":-100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[],"tiles":{"SerialiseHeight":49,"SerialiseWidth":72,"TileCompressedData":[
--3528,-2147483648,],"TileDataFormat":1,},"tilesetId":{"name":"tl_moss","path":"tilesets/tl_moss/tl_moss.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
+    {"resourceType":"GMRTileLayer","resourceVersion":"1.1","name":"Tiles_1","depth":-100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[],"tiles":{"SerialiseHeight":49,"SerialiseWidth":71,"TileCompressedData":[
+-2088,-2147483648,-16,0,-55,-2147483648,-17,0,-25,-2147483648,-2,5,3,6,0,0,-24,-2147483648,-2,0,3,4,5,5,-5,268435461,1,268435460,-6,0,-22,-2147483648,6,268435462,268435461,268435461,8,8,9,-6,0,-22,-2147483648,3,7,8,8,-5,268435464,1,268435463,-6,0,-22,-2147483648,6,268435465,268435464,268435464,11,11,12,-7,0,-21,-2147483648,3,10,11,11,-5,
+268435467,1,268435466,-6,0,-22,-2147483648,5,268435468,268435467,268435467,-2147483648,-2147483648,-8,0,-26,-2147483648,-8,0,-33,-2147483648,-4,0,-26,-2147483648,-4,0,-217,-2147483648,-4,0,-67,-2147483648,-4,0,-67,-2147483648,-4,0,-591,-2147483648,],"TileDataFormat":1,},"tilesetId":{"name":"tl_moss","path":"tilesets/tl_moss/tl_moss.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Instances","depth":0,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[],"layers":[],"properties":[],"userdefinedDepth":true,"visible":true,},
     {"resourceType":"GMRBackgroundLayer","resourceVersion":"1.0","name":"Background","animationFPS":15.0,"animationSpeedType":0,"colour":4278190080,"depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[],"spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
   ],
@@ -30,7 +31,7 @@
     "Height": 775,
     "inheritRoomSettings": false,
     "persistent": false,
-    "Width": 1144,
+    "Width": 1136,
   },
   "sequenceId": null,
   "views": [
