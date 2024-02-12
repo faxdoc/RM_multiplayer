@@ -25,12 +25,12 @@ if ( mouse_check_button_pressed(mb_left) ) {
 		audio_stop_sound( snd_music_menu_loop );
 		
 		switch(sprite_index) {
-			case stutorial_active:		  rollback_create_game( 2, true  ); room_goto(rtutorial); break;
+			case stutorial_active:						 rollback_create_game( 2, true  ); room_goto(rtutorial); break;
 			case s_2playermainmenuactive: rollback_create_game( 2, false ); break;
 			case s_3playermainmenuactive: rollback_create_game( 3, false ); break;
 			case s_4playermainmenuactive: rollback_create_game( 4, false ); break;
-			case strainingactive:		  rollback_create_game( 2, true  ); global.training_mode = true; room_goto(rplatform); break;
-			case strainingactive:		  room_goto( rcredits ); break;
+			case strainingactive:						rollback_create_game( 2, true  ); global.training_mode = true; room_goto(rplatform); break;
+			case scredits_active:						room_goto( rcredits ); break;
 		}
 		
 		with ( obutton ) {
