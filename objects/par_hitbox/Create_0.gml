@@ -73,6 +73,7 @@ shake_add	= 0.8;//.7
 hit_fx = sgun_blink;
 angle_spin = 0;
 draw_angle = 0;
+alt_t_knockback = true;
 
 destroy_index = 0;
 bounces = false;

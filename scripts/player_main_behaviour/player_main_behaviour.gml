@@ -54,6 +54,9 @@ function player_main_behaviour(){
 
 #region main
 	switch( state ) {
+		case 485:
+			player_unactive_general(alt_col);
+		break;
 		#region hook
 		case e_player.hook:
 			pre_hook_state = state;
@@ -274,7 +277,11 @@ function player_main_behaviour(){
 			
 			switch(char_index) {
 				case e_char_index.fern:
-					sprite_index = splayer_hit;
+					if ( draw_sandbag ) {
+						sprite_index = ssandbag_hit;
+					} else {
+						sprite_index = splayer_hit;
+					}
 				break;
 				case e_char_index.maya:
 					sprite_index = splayer_maya_hit;

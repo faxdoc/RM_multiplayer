@@ -1,4 +1,10 @@
 event_inherited();
+//if ( room == rtutorial ) {
+//	player_local = true;
+//	player_id = 0;
+//	player_name = "Fern";
+	
+//}
 can_input			= true;
 #macro WORLD_GRAV 1
 on_ground = false;
@@ -333,18 +339,23 @@ camera_clamp_pos = true;
 //} else {
 
 #region state init
-if ( !global.inital_select ) {
-	if ( global.training_mode ) {
-		if ( global.test_enabled && TEST_FORCE_CHAR != -1 ) {
-			meta_state = e_meta_state.round_start;
+
+if room == rtutorial {
+	meta_state = e_meta_state.round_start;
+} else {
+	if ( !global.inital_select ) {
+		if ( global.training_mode ) {
+			if ( global.test_enabled && TEST_FORCE_CHAR != -1 ) {
+				meta_state = e_meta_state.round_start;
+			} else {
+				meta_state = e_meta_state.char_select;	
+			}
 		} else {
-			meta_state = e_meta_state.char_select;	
+			meta_state = e_meta_state.char_select;
 		}
 	} else {
-		meta_state = e_meta_state.char_select;
+		meta_state = e_meta_state.round_start;
 	}
-} else {
-	meta_state = e_meta_state.round_start;
 }
 #endregion
 
@@ -519,6 +530,8 @@ enum e_ameli_arm_outer_state {
 	casting,
 	explode
 }
+
+draw_sandbag = false;
 
 //portrait_expression_base = sface_fern_normal;
 //portrait_expression_hurt = sface_fern_hit;

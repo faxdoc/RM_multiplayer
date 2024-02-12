@@ -1,0 +1,1 @@
+//ICD(ospawn_box.x,ospawn_box.y,0,oplayer);

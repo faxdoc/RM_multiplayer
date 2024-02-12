@@ -203,7 +203,7 @@ repeat(step_number) {
 			t.hsp *= 0.05;
 			t.vsp *= 0.05;
 			
-			if ( abs(LDX(1,dir) ) < 0.5 ) {
+			if ( abs(LDX(1,dir) ) < 0.5 && alt_t_knockback ) {
 				t.hsp += LDX( knockback*0.6, point_direction( 0, 0, -sign( parent.x - x )*10, 0 ) );
 			} else {
 				t.hsp += LDX( knockback*1.4, dir );

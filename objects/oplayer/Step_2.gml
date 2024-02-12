@@ -248,7 +248,7 @@ switch(meta_state) {
 		
 		
 		if ( global.training_mode ) {
-			// intro_timer = 130;
+			intro_timer = 130;
 		}
 		hp = hp_max;
 		INVIS = 30; 
