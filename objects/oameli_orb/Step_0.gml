@@ -114,8 +114,8 @@ switch( attack_state ) {
 					} else if ( move_timer > 5 ) {
 						audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.6,0.7), RR(0.95,1.1), 0 );
 						var b_ = bullet_general( 12, 0, shitbox_circle, 0 );
-						b_.image_xscale = timed_explotion_radius/96;
-						b_.image_yscale = timed_explotion_radius/96;
+						b_.image_xscale = (timed_explotion_radius/96)*0.7;
+						b_.image_yscale = (timed_explotion_radius/96)*0.7;
 						b_.parent = parent; b_.ghost = true;
 						b_.dir = 90;
 						b_.knockback *= 2.1;
@@ -124,7 +124,7 @@ switch( attack_state ) {
 						with ( parent ) { SHAKE += 1.5; }
 						var spd,  dir_, sz_, size_, fx;
 						repeat(5) {
-			        		spd = 4+random_fixed(2); dir_ = random_fixed(360); sz_ = random_fixed(timed_explotion_radius/2); size_ = choose(1,2,3);
+			        		spd = 4+random_fixed(2); dir_ = random_fixed(360); sz_ = random_fixed((timed_explotion_radius/4)*0.7); size_ = choose(1,2,3);
 			        		fx = create_fx( x + LDX( sz_,dir_) + hsp, y + LDY( sz_,dir_) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
 			        		fx.image_blend = main_blend; }
 			        	repeat(4) MAKES(ospark_alt);
@@ -402,22 +402,29 @@ switch( attack_state ) {
 						bl_.ghost		= true;
 						bl_.piercing	= true;
 						bl_.image_blend  = main_blend;
-						bl_.image_yscale = 0.7*charge_;
+						bl_.image_yscale = 0.3;
 						bl_.knockback = charge_*3.5;
 						bl_.image_angle = dir_;
-						bl_.image_xscale = 0.2;
+						bl_.image_xscale = 0.05;
 						bl_.stun_mult = 0.3;
+						bl_.sprite_index = ssameli_beam;
 						
+						var ww_ = 0;
 						with ( bl_ ) {
-							repeat(16) {
-								if (!gen_col(x,y)) {
-									bl_.image_xscale += 0.1;
+							var xx_ = x;
+							var yy_ = y;
+							repeat(64) {
+								if ( !gen_col( xx_, yy_ ) ) {
+									ww_++;
+									xx_ += LDX(8,dir_);
+									yy_ += LDY(8,dir_);
 								} else {
 									break;
 								}
 							}
 						}
-						
+						bl_.image_xscale = (ww_/256) * 8;
+						bl_.image_yscale = 0.7*charge_;
 						// x += LDX( 128, dir_ );
 						// y += LDY( 128, dir_ );
 					// }
@@ -752,6 +759,11 @@ switch( attack_state ) {
 					image_xscale = 2;
 					image_yscale = 2;
 					if ( !parent.K7 ) {
+						var dr__ = point_direction(x, y, parent.x, parent.y-22);
+						var ii = 32; while ( gen_col(x,y+1) && ii-- ) {
+							x += LDX(3,dr__);
+							y += LDY(1,dr__);
+						}
 						move_timer = 1;
 						audio_play_sound_pitch( snd_ameli_init_0, RR(0.6,0.7), RR(0.95,1.1)*1.2, 0 );
 					} //else if ( parent.K7P ) {
