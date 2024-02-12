@@ -493,7 +493,7 @@ if ( input_skip < 2 && check_m) {
 	#macro sniper_cost  5
 	
 	#region quick switch
-	if ( KQ0||KQ1||KQ2||KQ3||KQ4||KQ5 ) {
+	if ( KQ0||KQ1||KQ2||KQ3||KQ4||KQ5||SC_DOWN||SC_UP ) {
 		var pre_wep = current_weapon;
 		var quick_num_ = undefined;
 			
@@ -503,8 +503,18 @@ if ( input_skip < 2 && check_m) {
 		if ( KQ3 ) { quick_num_ = 4; }
 		if ( KQ4 ) { quick_num_ = 3; }
 		if ( KQ5 ) { quick_num_ = 2; }
+		
+		if ( SC_DOWN || SC_UP ) {
+			show_debug_message("a")
+			var wp_list_in  = [ 0, 2, 5, 4, 3, 1 ];
 			
+			var wp_list_out = [ 0, 5, 1, 4, 3, 2 ];
+			var val_ = loopclamp(  wp_list_in[current_weapon]+SC_DOWN-SC_UP,0,5);
 			
+			quick_num_ = wp_list_out[ val_ ];
+			
+		}
+		
 		if ( quick_num_ != undefined ) {
 			wep_dir = clamp( quick_num_, 0, 5 );
 			

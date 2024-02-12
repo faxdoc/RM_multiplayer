@@ -77,6 +77,10 @@ KQ3 = _input.quickswap_3;
 KQ4 = _input.quickswap_4;
 KQ5 = _input.quickswap_5;
 
+SC_DOWN = _input.wep_down;
+SC_UP   = _input.wep_up;
+
+
 KRUP	= false;
 KRDOWN	= false;
 KRLEFT	= false;

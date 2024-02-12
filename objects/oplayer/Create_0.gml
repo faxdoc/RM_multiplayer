@@ -54,6 +54,9 @@ INVIS = 0;
 intro_timer = 0;
 hit_substate = 0;
 
+SC_DOWN = false;
+SC_UP   = false;
+
 enum e_char_index {
 	fern,
 	maya,

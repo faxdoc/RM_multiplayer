@@ -114,8 +114,8 @@ switch( attack_state ) {
 					} else if ( move_timer > 5 ) {
 						audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.6,0.7), RR(0.95,1.1), 0 );
 						var b_ = bullet_general( 12, 0, shitbox_circle, 0 );
-						b_.image_xscale = (timed_explotion_radius/96)*0.7;
-						b_.image_yscale = (timed_explotion_radius/96)*0.7;
+						b_.image_xscale = (timed_explotion_radius/96)*0.65;
+						b_.image_yscale = (timed_explotion_radius/96)*0.65;
 						b_.parent = parent; b_.ghost = true;
 						b_.dir = 90;
 						b_.knockback *= 2.1;
@@ -124,7 +124,7 @@ switch( attack_state ) {
 						with ( parent ) { SHAKE += 1.5; }
 						var spd,  dir_, sz_, size_, fx;
 						repeat(5) {
-			        		spd = 4+random_fixed(2); dir_ = random_fixed(360); sz_ = random_fixed((timed_explotion_radius/4)*0.7); size_ = choose(1,2,3);
+			        		spd = 4+random_fixed(2); dir_ = random_fixed(360); sz_ = random_fixed((timed_explotion_radius/4)*0.65); size_ = choose(1,2,3);
 			        		fx = create_fx( x + LDX( sz_,dir_) + hsp, y + LDY( sz_,dir_) + vsp -6, sdot_wave, 0.3+random_fixed(0.4), 0, -110 );
 			        		fx.image_blend = main_blend; }
 			        	repeat(4) MAKES(ospark_alt);

@@ -32,6 +32,9 @@ if (!variable_global_exists("rollback_defined")) {
 		KBACK:	vk_enter,
 		mx:		m_axisx,
 		my:		m_axisy,
+		
+		wep_down:	m_scroll_down,
+		wep_up:		m_scroll_up,
 	
 		quickswap_0: ord( "1" ),
 		quickswap_1: ord( "2" ),

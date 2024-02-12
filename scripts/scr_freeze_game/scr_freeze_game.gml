@@ -5,6 +5,9 @@
 //		}
 //	}
 //}
+function loopclamp(value, low, high) {
+	return value < low ? high : (value > high ? low : value );
+}
 
 function scr_check_hitscan_collision( _start_x, _start_y, target ) {
 	if ( !instance_exists(target) ) {
