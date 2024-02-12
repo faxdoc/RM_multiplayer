@@ -13,6 +13,8 @@ info = [
     "Press Q to",
     "throw grenade",
     "",
+	"Press E to dodge"
+	"",
     "Highly mobile",
     "all-arounder",
     "",
