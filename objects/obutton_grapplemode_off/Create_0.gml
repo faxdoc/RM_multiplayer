@@ -1,5 +1,5 @@
 //text = "Press to release grapple on";
-text = "Grapple detaches when right click is pressed";
+text = [ "Grapple detaches when", "right click is pressed" ];
 
 
 execute_function = function(index_) {

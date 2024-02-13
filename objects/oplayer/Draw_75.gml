@@ -569,7 +569,29 @@ if ( player_local ) {
 					draw_sprite_ext( schar_select_frame_selected, 0, x-cxoffset_, y-cyoffset_, 1, 1, 0, c_white, 1 );
 				}
 			}
+			with ( obutton_grapplemode ) {
+				if ( instance_position( device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id ) ) {
+					draw_sprite_ext( sdark_gradient,	 0, GW, 		 0, 			1.5, GH/128,	0, c_black, 0.9 );
+					var inf_x =floor( GW*0.77 ) - 2, inf_y = 96, inf_dis = 12;
+					var inf_l_ = array_length(text);
+					var i = 0; repeat(inf_l_) {
+						draw_text( inf_x, inf_y + ( i * inf_dis ), text[ i ] );
+						i++; 
+					}
+				}
+			}
 			
+			with ( obutton_grapplemode_off ) {
+				if ( instance_position( device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id ) ) {
+					draw_sprite_ext( sdark_gradient,	 0, GW, 		 0, 			1.5, GH/128,	0, c_black, 0.9 );
+					var inf_x =floor( GW*0.77 ) - 2, inf_y = 96, inf_dis = 12;
+					var inf_l_ = array_length(text);
+					var i = 0; repeat(inf_l_) {
+						draw_text( inf_x, inf_y + ( i * inf_dis ), text[ i ] );
+						i++; 
+					}
+				}
+			}
 			
 			with ( otoggle_button ) {
 				c = c_gray;

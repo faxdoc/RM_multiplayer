@@ -760,10 +760,14 @@ switch( attack_state ) {
 					image_yscale = 2;
 					if ( !parent.K7 ) {
 						var dr__ = point_direction(x, y, parent.x, parent.y-22);
+						image_xscale = 2.5;
+						image_yscale = 2.5;
 						var ii = 32; while ( gen_col(x,y+1) && ii-- ) {
-							x += LDX(3,dr__);
-							y += LDY(1,dr__);
+							x += LDX( 5, dr__ );
+							y += LDY( 2, dr__ );
 						}
+						image_xscale = 2;
+						image_yscale = 2;
 						move_timer = 1;
 						audio_play_sound_pitch( snd_ameli_init_0, RR(0.6,0.7), RR(0.95,1.1)*1.2, 0 );
 					} //else if ( parent.K7P ) {
