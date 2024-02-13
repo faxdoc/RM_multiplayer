@@ -578,6 +578,13 @@ if ( player_local ) {
 					draw_sprite_ext( sprite_index, opreference_tracker.ready_state[ other.player_id ] ? 2 : 0, x, y, 1, 1, 0, c_white, 1 );
 				}
 			}
+			with (obutton_rollback ) {
+				event_perform( ev_draw, 0 );
+			}
+			
+			with ( obutton_rollback_text ) {
+				event_perform( ev_draw, 0 );
+			}
 			
 			var vld_ = 0;
 			var d__ = id;

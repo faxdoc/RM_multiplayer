@@ -11,8 +11,12 @@ global.test_enabled			= TEST_DEFAULT;
 global.live_turned_on		= LIVE_DEFAULT;
 global.training_mode		= false;
 
-
+if (!instance_exists(orollback_holder)) {
+	MAKES(orollback_holder);
+}
 if (!variable_global_exists("rollback_defined")) {
+	global.rollback_value = -1;
+	rollback_define_input_frame_delay( global.rollback_value );
 	global.rollback_defined = true; 
 	rollback_define_player(oplayer);
 	rollback_define_input({

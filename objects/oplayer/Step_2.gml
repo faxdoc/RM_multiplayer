@@ -27,6 +27,16 @@ switch( meta_state ) {
 			ICD( xx+20+40, yy+203, 0, oplayer_select_maya   );
 			ICD( xx+20+80, yy+203, 0, oplayer_select_ameli  );
 			
+			ICD( 8, 324+1, 0, obutton_rollback_text );
+			
+			ICD(100,324+4,0,obutton_rollback);
+			
+			var ii = 0; repeat(10) {
+				ICD( 140+ ( ii * 16 ), 324+4, 0, obutton_rollback ).amount_index = ii;
+				ii++;
+			}
+			
+			
 			// ICD( xx-96, yy + 128, 0, obutton_ready		);
 			
 			// ICD( xx+128-112, yy + 128-12-12, 0, obutton_grapplemode );
