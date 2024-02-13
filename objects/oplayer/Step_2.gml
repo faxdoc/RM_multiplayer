@@ -41,6 +41,9 @@ switch( meta_state ) {
 			ICD( 516, 322, 0, obutton_flicker_on   );
 			ICD( 544, 322, 0, obutton_flicker_off );
 			
+			ICD( 528, 16, 0, obutton_music_on  );
+			ICD( 560, 16, 0, obutton_music_off );
+			
 			
 			// ICD( xx-96, yy + 128, 0, obutton_ready		);
 			

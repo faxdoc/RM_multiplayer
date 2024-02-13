@@ -35,8 +35,8 @@
   "nineSlice": null,
   "origin": 4,
   "parent": {
-    "name": "ui",
-    "path": "folders/Objects/ui.yy",
+    "name": "charselect",
+    "path": "folders/Sprites/ui/charselect.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

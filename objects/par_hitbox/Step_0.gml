@@ -107,6 +107,17 @@ repeat(step_number) {
 		var vol_= clamp( 0.3 + dmg / 80, 0.4, 0.9 );
 		
 		if ( do_stun ) {
+			if ( parent.char_index == e_char_index.ameli && random_fixed(1) > 0.9 ) {
+				with ( parent ) {
+					if ( random_fixed(1) > 0.5 ) {
+						audio_play_sound_pitch( snd_voice_ameli_laugh_0, RR(0.7,0.9), 1, 0 );
+					} else {
+						audio_play_sound_pitch( snd_voice_ameli_laugh_1, RR(0.7,0.9), 1, 0 );
+					}
+					
+				}
+			}
+			
 			if ( t.state != e_player.hit ) {
 				effect_create_depth( -40, ef_ring, t.x, t.y-22, 0, merge_colour( c_red, c_ltgray, 0.6 ) );
 				t.hit_freeze = floor( max( 8, dmg / 6 ) );

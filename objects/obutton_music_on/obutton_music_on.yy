@@ -1,10 +1,11 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obutton_levels",
+  "name": "obutton_music_on",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
@@ -12,10 +13,7 @@
     "name": "charselect",
     "path": "folders/Sprites/ui/charselect.yy",
   },
-  "parentObjectId": {
-    "name": "par_game",
-    "path": "objects/par_game/par_game.yy",
-  },
+  "parentObjectId": null,
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -32,9 +30,9 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "sbutton_levels",
-    "path": "sprites/sbutton_levels/sbutton_levels.yy",
+    "name": "smusic_on",
+    "path": "sprites/smusic_on/smusic_on.yy",
   },
   "spriteMaskId": null,
-  "visible": false,
+  "visible": true,
 }

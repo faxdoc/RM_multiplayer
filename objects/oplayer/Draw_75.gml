@@ -540,6 +540,17 @@ if ( player_local ) {
 			// draw_text_transformed_color( crx_,cry_, "Select character", 2, 2, 0, c,c,c,c, 1 );
 			// draw_set_halign( fa_left );
 			
+			with ( obutton_rollback_text ) {
+				event_perform( ev_draw, 0 );
+			}
+			
+			with ( obutton_flicker_test ) event_perform( ev_draw, 0 );
+			with ( obutton_flicker_on   ) event_perform( ev_draw, 0 );
+			with ( obutton_flicker_off  ) event_perform( ev_draw, 0 );
+			
+			with ( obutton_music_on   ) event_perform( ev_draw, 0 );
+			with ( obutton_music_off  ) event_perform( ev_draw, 0 );
+			
 			with ( obutton_character ) {
 				
 				var cxoffset_ = 2+2;
@@ -609,13 +620,7 @@ if ( player_local ) {
 				event_perform( ev_draw, 0 );
 			}
 			
-			with ( obutton_rollback_text ) {
-				event_perform( ev_draw, 0 );
-			}
-			
-			with ( obutton_flicker_test ) event_perform( ev_draw, 0 );
-			with ( obutton_flicker_on   ) event_perform( ev_draw, 0 );
-			with ( obutton_flicker_off  ) event_perform( ev_draw, 0 );
+		
 			
 			
 			var vld_ = 0;

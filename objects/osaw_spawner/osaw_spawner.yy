@@ -10,8 +10,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "ui",
-    "path": "folders/Objects/ui.yy",
+    "name": "charselect",
+    "path": "folders/Sprites/ui/charselect.yy",
   },
   "parentObjectId": null,
   "persistent": false,
