@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_voice_maya_swing_0.ogg",
   "type": 0,
-  "volume": 0.65,
+  "volume": 0.4,
 }

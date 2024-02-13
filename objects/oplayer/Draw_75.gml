@@ -573,9 +573,9 @@ if ( player_local ) {
 				if ( instance_position( device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id ) ) {
 					draw_sprite_ext( sdark_gradient,	 0, GW, 		 0, 			1.5, GH/128,	0, c_black, 0.9 );
 					var inf_x =floor( GW*0.77 ) - 2, inf_y = 96, inf_dis = 12;
-					var inf_l_ = array_length(text);
+					var inf_l_ = array_length(text_alt);
 					var i = 0; repeat(inf_l_) {
-						draw_text( inf_x, inf_y + ( i * inf_dis ), text[ i ] );
+						draw_text( inf_x, inf_y + ( i * inf_dis ), text_alt[ i ] );
 						i++; 
 					}
 				}
@@ -585,9 +585,9 @@ if ( player_local ) {
 				if ( instance_position( device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id ) ) {
 					draw_sprite_ext( sdark_gradient,	 0, GW, 		 0, 			1.5, GH/128,	0, c_black, 0.9 );
 					var inf_x =floor( GW*0.77 ) - 2, inf_y = 96, inf_dis = 12;
-					var inf_l_ = array_length(text);
+					var inf_l_ = array_length(text_alt);
 					var i = 0; repeat(inf_l_) {
-						draw_text( inf_x, inf_y + ( i * inf_dis ), text[ i ] );
+						draw_text( inf_x, inf_y + ( i * inf_dis ), text_alt[ i ] );
 						i++; 
 					}
 				}
@@ -604,6 +604,7 @@ if ( player_local ) {
 					draw_sprite_ext( sprite_index, opreference_tracker.ready_state[ other.player_id ] ? 2 : 0, x, y, 1, 1, 0, c_white, 1 );
 				}
 			}
+			
 			with (obutton_rollback ) {
 				event_perform( ev_draw, 0 );
 			}

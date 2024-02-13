@@ -462,7 +462,7 @@ switch( attack_state ) {
 						x = ms_dx_;
 						y = ms_dy_;
 						saw_dir = point_direction( x, y, parent.MX, parent.MY ); 
-						audio_play_sound_pitch(snd_ameli_init_0, RR(0.7,0.9), RR(0.8,0.9),0 );
+						//audio_play_sound_pitch(snd_ameli_init_0, RR(0.7,0.9), RR(0.8,0.9),0 );
 					}
 					move_timer++;
 					if ( !parent.K1 ) {

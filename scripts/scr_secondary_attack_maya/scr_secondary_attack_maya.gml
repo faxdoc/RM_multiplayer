@@ -25,6 +25,8 @@ function scr_secondary_attack_maya(){
 				}
 				knife_timer = min(floor(maya_grenade_charge),5);
 				//maya_grenade_charge *= 0.3;
+				audio_play_sound_pitch( snd_voice_maya_swing_1,	 RR( 0.9, 1.0 ) * 0.9, 1, 1 );
+				
 			} else {
 				shoot_delay = 5;
 				var pre_charge = maya_grenade_charge;

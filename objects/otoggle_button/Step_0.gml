@@ -22,16 +22,9 @@ if ( d_ != undefined ) {
 		}
 		if ( k1p_ ) {
 			audio_play_menu_press_small_sound();
-			opreference_tracker.player_rollback_amount[d_] = amount_index;
-			rollback_define_input_frame_delay(amount_index);
-			
 		}
 	} else {
 		hovered = false;
 	}
-	get_value = opreference_tracker.player_rollback_amount[d_];// = amount_index;
-}
-
-if ( amount_index == -1 ) {
-	mask_index = srollback_adaptive;
+	
 }

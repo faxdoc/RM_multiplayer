@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_voice_ameli_laugh_1.ogg",
   "type": 0,
-  "volume": 0.7,
+  "volume": 0.8,
 }

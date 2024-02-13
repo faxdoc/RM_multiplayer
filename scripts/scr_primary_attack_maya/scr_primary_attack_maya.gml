@@ -59,8 +59,11 @@ switch( maya_sword_swing_state ) {
 				gun_height  = 20;
 				// gun_general( 10, 60, 9 );
 					
-				audio_play_sound_pitch(snd_maya_normal_cut, 0.8,  0.96 + random( 0.1 ), 1 );
-				audio_play_sound_pitch(snd_maya_swing_0,	0.35, 0.96 + random( 0.1 ), 1 );
+				audio_play_sound_pitch(snd_maya_normal_cut, 0.8,  0.96 + random( 0.1 ), -1 );
+				//audio_play_sound_pitch(snd_maya_swing_0,	0.35, 0.96 + random( 0.1 ), 1 );
+				audio_play_sound_pitch( snd_voice_maya_swing_0,	 RR( 0.9, 1.0 ) * 0.9, 1, 1 );
+				
+				
 					
 				var can_wallbounce = true;
 				RELOAD[ 0 ] = 30;
@@ -167,7 +170,7 @@ switch( maya_sword_swing_state ) {
 				
 			var max_charge = 60;
 			var pre_charge = maya_sword_swing_charge;
-			maya_sword_swing_charge = min( max_charge, maya_sword_swing_charge + 1.5 );
+			maya_sword_swing_charge = min( max_charge, maya_sword_swing_charge + 2.5 );
 			maya_animation_swing_timer = max( 3, maya_animation_swing_timer );
 			if ( maya_sword_swing_charge == 22.5 ) {
 				// swing_charge_sound = audio_play_sound_pitch( snd_maya_heart_alt, 0.4, 0.35, false );
@@ -212,7 +215,7 @@ switch( maya_sword_swing_state ) {
 				shoot_press_buffer = 0;
 					
 				audio_play_sound_pitch( snd_maya_charged_cut, 0.8,  (0.96 + random( 0.1 ))*0.9, 1 );
-				audio_play_sound_pitch( snd_maya_swing_2,	 0.20, 1.05 + random( 0.1 ), 1 );
+				audio_play_sound_pitch( snd_voice_maya_swing_1,	 RR( 0.9, 1.0 ) * 0.9, 1, 1 );
 					
 				gun_len		= 30;
 				gun_height  = 20;
@@ -295,8 +298,8 @@ switch( maya_sword_swing_state ) {
 					} else {
 						hsp  = hspd_*0.6;
 					}
-					if (sign(vsp) == sign(vspd_) ) {
-						vsp = min(vsp+(vspd_*0.3),vspd_);
+					if ( sign( vsp ) == sign( vspd_ ) ) {
+						vsp = min( vsp+( vspd_*0.3 ), vspd_ );
 					} else {
 						vsp = vspd_;
 					}

@@ -12,12 +12,12 @@
   "conversionMode": 0,
   "duration": 0.749138,
   "parent": {
-    "name": "import",
-    "path": "folders/Sounds/sound/gameplay/import.yy",
+    "name": "replaced",
+    "path": "folders/Sounds/sound/gameplay/import/replaced.yy",
   },
   "preload": false,
   "sampleRate": 44100,
   "soundFile": "snd_menu_hover.ogg",
   "type": 0,
-  "volume": 0.7,
+  "volume": 0.3,
 }

@@ -17,7 +17,8 @@ if ( controller != undefined ) {
 	if ( instance_position(mx_,my_,id) ) {
 		if ( !hovered ) {
 			hovered = true;
-			audio_play_sound_pitch(snd_menu_hover, random_fixed(0.9), RR(0.9,1.05),0);
+			//audio_play_sound_pitch(snd_menu_hover, RR(0.9,1.0), RR(0.9,1.05),0);
+			audio_play_menu_sound_hover();
 		}
 	
 		image_blend = c_white;
@@ -83,7 +84,7 @@ if ( controller != undefined ) {
 				if ( instance_position(mx_,my_,id) ) {
 					//randomize();
 					var rl_ = [rtest,rtower,rceiling,rflat,rplatform,ropen,rbridge,rempty,rcity,rcup,rhill];
-					if ( instance_exists(orandom) ) {
+					if ( instance_exists( orandom ) ) {
 						audio_play_menu_press_big_sound();
 					}
 			
@@ -102,7 +103,7 @@ if ( controller != undefined ) {
 	if ( do_hover_ ) {
 		if ( !hovered ) {
 			hovered = true;
-			audio_play_sound_pitch(snd_menu_hover, random_fixed(0.9), RR(0.9,1.05),0);
+			audio_play_menu_sound_hover();
 		}
 		
 		image_blend = c_white;

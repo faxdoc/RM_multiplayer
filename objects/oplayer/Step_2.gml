@@ -162,7 +162,20 @@ switch(meta_state) {
 		}
 		level_select_timer++;
 		if (level_select_timer > 2 ) {
-			 global.training_mode_change_stage = false;
+			if instance_exists(otoggle_button) {
+				with ( otoggle_button ) IDD();
+			}
+			if ( instance_exists( obutton_character ) ) {
+				with ( obutton_character ) IDD();
+			}
+			
+			if ( instance_exists( obutton_flicker_on ) ) {
+				with ( obutton_flicker_on ) IDD();
+			}
+			if ( instance_exists( obutton_flicker_off ) ) {
+				with ( obutton_flicker_off ) IDD();
+			}
+			global.training_mode_change_stage = false;
 		}
 		
 		

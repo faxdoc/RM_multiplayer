@@ -131,6 +131,8 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Paths","folderPath":"folders/unused/Paths.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sequences","folderPath":"folders/unused/Sequences.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/unused/Timelines.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"replaced","folderPath":"folders/Sounds/sound/gameplay/import/replaced.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sscrap","folderPath":"folders/Sounds/sound/ameli/Sscrap.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"gcmt-dll.dll","CopyToMask":0,"filePath":"datafiles/GMLive",},
@@ -348,7 +350,6 @@
     {"id":{"name":"snd_hook_upgrade_activate","path":"sounds/snd_hook_upgrade_activate/snd_hook_upgrade_activate.yy",},},
     {"id":{"name":"splayer_maya_dead","path":"sprites/splayer_maya_dead/splayer_maya_dead.yy",},},
     {"id":{"name":"snd_hit_3","path":"sounds/snd_hit_3/snd_hit_3.yy",},},
-    {"id":{"name":"Sound113","path":"sounds/Sound113/Sound113.yy",},},
     {"id":{"name":"scooldown_box","path":"sprites/scooldown_box/scooldown_box.yy",},},
     {"id":{"name":"spalette_player_1","path":"sprites/spalette_player_1/spalette_player_1.yy",},},
     {"id":{"name":"s_2playermainmenuactive","path":"sprites/s_2playermainmenuactive/s_2playermainmenuactive.yy",},},

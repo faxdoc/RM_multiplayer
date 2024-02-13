@@ -12,8 +12,8 @@
   "conversionMode": 0,
   "duration": 0.181469,
   "parent": {
-    "name": "ameli",
-    "path": "folders/Sounds/sound/ameli.yy",
+    "name": "Sscrap",
+    "path": "folders/Sounds/sound/ameli/Sscrap.yy",
   },
   "preload": false,
   "sampleRate": 44100,
