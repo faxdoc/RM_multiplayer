@@ -590,6 +590,11 @@ if ( player_local ) {
 				event_perform( ev_draw, 0 );
 			}
 			
+			with ( obutton_flicker_test ) event_perform( ev_draw, 0 );
+			with ( obutton_flicker_on   ) event_perform( ev_draw, 0 );
+			with ( obutton_flicker_off  ) event_perform( ev_draw, 0 );
+			
+			
 			var vld_ = 0;
 			var d__ = id;
 			var ci = 1;

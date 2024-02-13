@@ -37,6 +37,11 @@ switch( meta_state ) {
 			}
 			
 			
+			ICD( 394, 322, 0, obutton_flicker_test );
+			ICD( 516, 322, 0, obutton_flicker_on   );
+			ICD( 544, 322, 0, obutton_flicker_off );
+			
+			
 			// ICD( xx-96, yy + 128, 0, obutton_ready		);
 			
 			// ICD( xx+128-112, yy + 128-12-12, 0, obutton_grapplemode );
@@ -564,13 +569,13 @@ if ( input_skip < 2 && check_m) {
 }
 #endregion
 
-if ( opreference_tracker.player_anti_flicker[player_id] ) {
-	if (!application_surface_is_enabled()) {
-		application_surface_enable(true);
-	}
-} else {
-	if (application_surface_is_enabled()) {
-		application_surface_enable(false);
+if ( player_local ) {
+	if ( !update_cooldown-- ) {
+		if ( opreference_tracker.player_anti_flicker[player_id] ) {
+			application_surface_draw_enable( true );
+		} else {
+			application_surface_draw_enable( false );
+		}//application_surface_draw_enable()
+		update_cooldown = 60;
 	}
 }
-

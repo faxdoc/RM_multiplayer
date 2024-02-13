@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_music_gameplay.wav",
   "type": 0,
-  "volume": 0.0,
+  "volume": 0.37,
 }

@@ -2,9 +2,9 @@
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
   "name": "santi_flicker",
-  "bbox_bottom": 39,
+  "bbox_bottom": 7,
   "bbox_left": 0,
-  "bbox_right": 112,
+  "bbox_right": 115,
   "bbox_top": 0,
   "bboxMode": 0,
   "collisionKind": 1,
@@ -17,7 +17,7 @@
   ],
   "gridX": 0,
   "gridY": 0,
-  "height": 180,
+  "height": 8,
   "HTile": false,
   "layers": [
     {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"8b4db5e4-e1e1-4e9d-85f9-f92efa1a1c16","blendMode":0,"displayName":"Layer 1 (2)","isLocked":false,"opacity":100.0,"visible":true,},
@@ -73,5 +73,5 @@
   },
   "type": 0,
   "VTile": false,
-  "width": 180,
+  "width": 116,
 }
