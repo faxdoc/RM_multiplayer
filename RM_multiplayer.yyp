@@ -146,7 +146,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.1100.0.444",
+    "IDEVersion": "2023.11.1.129",
   },
   "resources": [
     {"id":{"name":"snd_ready","path":"sounds/snd_ready/snd_ready.yy",},},
@@ -682,6 +682,7 @@
     {"id":{"name":"splayer_gun_reload","path":"sprites/splayer_gun_reload/splayer_gun_reload.yy",},},
     {"id":{"name":"_4playermainmenudisabled","path":"sprites/_4playermainmenudisabled/_4playermainmenudisabled.yy",},},
     {"id":{"name":"GMLive_compiler","path":"scripts/GMLive_compiler/GMLive_compiler.yy",},},
+    {"id":{"name":"santi_flicker","path":"sprites/santi_flicker/santi_flicker.yy",},},
     {"id":{"name":"splayer_maya_sword_big","path":"sprites/splayer_maya_sword_big/splayer_maya_sword_big.yy",},},
     {"id":{"name":"otutorial_trigger","path":"objects/otutorial_trigger/otutorial_trigger.yy",},},
     {"id":{"name":"stiles_hell","path":"sprites/stiles_hell/stiles_hell.yy",},},

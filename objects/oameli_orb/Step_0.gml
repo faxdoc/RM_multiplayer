@@ -569,8 +569,8 @@ switch( attack_state ) {
 						b_.stun_mult *= 1.5;
 						b_.dir = 90;
 						
-						audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.6,0.7), RR(0.9,1.1)*0.9, 0 );
-						audio_play_sound_pitch( snd_ameli_explotion_0, RR(0.6,0.7), RR(0.9,1.1)*0.9, 0 );
+						//audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.6,0.7), RR(0.9,1.1)*0.9, 0 );
+						//audio_play_sound_pitch( snd_ameli_explotion_0, RR(0.6,0.7), RR(0.9,1.1)*0.9, 0 );
 						
 						state = e_ameli_orb_state.idle;
 						attack_state = e_ameli_orb_attack_state.idle;

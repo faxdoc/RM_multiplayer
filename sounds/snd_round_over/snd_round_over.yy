@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_round_over.wav",
   "type": 0,
-  "volume": 0.9,
+  "volume": 1.0,
 }

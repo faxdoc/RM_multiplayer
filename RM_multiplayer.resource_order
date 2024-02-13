@@ -569,6 +569,7 @@
     {"name":"splayer_gun_reload","order":1,"path":"sprites/splayer_gun_reload/splayer_gun_reload.yy",},
     {"name":"_4playermainmenudisabled","order":9,"path":"sprites/_4playermainmenudisabled/_4playermainmenudisabled.yy",},
     {"name":"GMLive_compiler","order":1,"path":"scripts/GMLive_compiler/GMLive_compiler.yy",},
+    {"name":"santi_flicker","order":32,"path":"sprites/santi_flicker/santi_flicker.yy",},
     {"name":"splayer_maya_sword_big","order":39,"path":"sprites/splayer_maya_sword_big/splayer_maya_sword_big.yy",},
     {"name":"otutorial_trigger","order":8,"path":"objects/otutorial_trigger/otutorial_trigger.yy",},
     {"name":"splayer_eyes_down","order":1,"path":"sprites/splayer_eyes_down/splayer_eyes_down.yy",},

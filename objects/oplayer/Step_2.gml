@@ -172,10 +172,10 @@ switch(meta_state) {
 		if ( final_timer >= 150 && !victory_voice_played ) {
 			switch( winner.char_index ) {
 					case e_char_index.fern:
-						audio_play_sound( snd_fern_win, 0, true );
+						audio_play_sound( snd_fern_win, 0, false );
 					break;
 					case e_char_index.maya:
-						audio_play_sound( snd_maya_win, 0, true );
+						audio_play_sound( snd_maya_win, 0, false );
 					break;
 					case e_char_index.ameli:
 						//audio_play_sound();
@@ -563,4 +563,14 @@ if ( input_skip < 2 && check_m) {
 	#endregion		
 }
 #endregion
+
+if ( opreference_tracker.player_anti_flicker[player_id] ) {
+	if (!application_surface_is_enabled()) {
+		application_surface_enable(true);
+	}
+} else {
+	if (application_surface_is_enabled()) {
+		application_surface_enable(false);
+	}
+}
 
