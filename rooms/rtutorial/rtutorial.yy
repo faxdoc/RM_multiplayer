@@ -27,6 +27,7 @@
     {"name":"inst_20DF0AB3","path":"rooms/rtutorial/rtutorial.yy",},
     {"name":"inst_FC062D3","path":"rooms/rtutorial/rtutorial.yy",},
     {"name":"inst_72ECCF01","path":"rooms/rtutorial/rtutorial.yy",},
+    {"name":"inst_189E82D6","path":"rooms/rtutorial/rtutorial.yy",},
   ],
   "isDnd": false,
   "layers": [
@@ -94,6 +95,7 @@
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_20DF0AB3","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"osaw_spawner","path":"objects/osaw_spawner/osaw_spawner.yy",},"properties":[],"rotation":0.0,"scaleX":2.0,"scaleY":2.0,"x":2544.0,"y":202.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_FC062D3","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"otutorial_controller","path":"objects/otutorial_controller/otutorial_controller.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1124.0,"y":-27.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_72ECCF01","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"osaw_spawner","path":"objects/osaw_spawner/osaw_spawner.yy",},"properties":[],"rotation":0.0,"scaleX":2.0,"scaleY":2.0,"x":2496.0,"y":304.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_189E82D6","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"ohook_dragger_still","path":"objects/ohook_dragger_still/ohook_dragger_still.yy",},"properties":[],"rotation":0.0,"scaleX":1.4999999,"scaleY":1.4999999,"x":1160.0,"y":72.0,},
       ],"layers":[],"properties":[],"userdefinedDepth":true,"visible":true,},
     {"resourceType":"GMRAssetLayer","resourceVersion":"1.0","name":"Assets_4","assets":[
         {"resourceType":"GMRSpriteGraphic","resourceVersion":"1.0","name":"graphic_532B1B05","animationSpeed":1.0,"colour":4294967295,"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"stree_yellow_test","path":"sprites/stree_yellow_test/stree_yellow_test.yy",},"x":3016.0,"y":240.0,},
