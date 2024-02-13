@@ -169,6 +169,20 @@ switch(meta_state) {
 	case e_meta_state.round_end:
 		final_effect_speed *= 0.96;
 		final_effect_speed = max(0.03,final_effect_speed);
+		if ( final_timer >= 150 && !victory_voice_played ) {
+			switch( winner.char_index ) {
+					case e_char_index.fern:
+						audio_play_sound( snd_fern_win, 0, true );
+					break;
+					case e_char_index.maya:
+						audio_play_sound( snd_maya_win, 0, true );
+					break;
+					case e_char_index.ameli:
+						//audio_play_sound();
+					break;
+				}
+			victory_voice_played = true;
+		}
 		final_timer += 0.95;
 		if ( final_timer > 340 ) {
 			meta_state = e_meta_state.char_select;

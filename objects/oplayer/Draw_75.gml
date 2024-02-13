@@ -788,7 +788,7 @@ if ( player_local ) {
 						draw_sprite( smaya_victory,  0, -va_pos*6, GH );
 					break;
 					case e_char_index.ameli:
-						draw_sprite( sameli_victory, 0, -va_pos*6, GH );
+						draw_sprite( sameli_victory,  0, -va_pos*6, GH );
 					break;
 				}
 				

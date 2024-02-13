@@ -5,6 +5,8 @@ event_inherited();
 //	player_name = "Fern";
 	
 //}
+
+victory_voice_played = false;
 can_input			= true;
 #macro WORLD_GRAV 1
 on_ground = false;
