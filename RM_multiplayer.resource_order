@@ -381,6 +381,7 @@
     {"name":"snd_voice_jump_1","order":1,"path":"sounds/snd_voice_jump_1/snd_voice_jump_1.yy",},
     {"name":"splayer_turnaround_nail","order":9,"path":"sprites/splayer_turnaround_nail/splayer_turnaround_nail.yy",},
     {"name":"ophy_dot_stone","order":4,"path":"objects/ophy_dot_stone/ophy_dot_stone.yy",},
+    {"name":"audio_functions","order":11,"path":"scripts/audio_functions/audio_functions.yy",},
     {"name":"scr_primary_attack_maya","order":1,"path":"scripts/scr_primary_attack_maya/scr_primary_attack_maya.yy",},
     {"name":"scooldown_box_outer","order":7,"path":"sprites/scooldown_box_outer/scooldown_box_outer.yy",},
     {"name":"splayer_maya_jacket_front","order":12,"path":"sprites/splayer_maya_jacket_front/splayer_maya_jacket_front.yy",},

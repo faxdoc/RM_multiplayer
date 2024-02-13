@@ -54,7 +54,11 @@ if ( controller != undefined ) {
 		if ( instance_position(mx_,my_,id) ) {
 			//randomize();
 			var rl_ = [rtest,rtower,rceiling,rflat,rplatform,ropen,rbridge,rempty,rcity,rcup,rhill];
-			audio_play_sound_pitch( choose( snd_menu_select_0, snd_menu_select_1), RR(0.95,1.05),  RR(0.95,1.05), 0 );
+			if ( instance_exists(orandom) ) {
+				audio_play_menu_press_big_sound();
+			}
+		
+			//audio_play_sound_pitch( choose( snd_menu_select_0, snd_menu_select_1), RR(0.95,1.05),  RR(0.95,1.05), 0 );
 			var rm__ = rl_[ image_index ];
 			switch(image_index) {
 				default: room_goto(rm__); break;
@@ -79,7 +83,11 @@ if ( controller != undefined ) {
 				if ( instance_position(mx_,my_,id) ) {
 					//randomize();
 					var rl_ = [rtest,rtower,rceiling,rflat,rplatform,ropen,rbridge,rempty,rcity,rcup,rhill];
-					audio_play_sound_pitch( choose( snd_menu_select_0, snd_menu_select_1), RR(0.95,1.05),  RR(0.95,1.05), 0 );
+					if ( instance_exists(orandom) ) {
+						audio_play_menu_press_big_sound();
+					}
+			
+					//audio_play_sound_pitch( choose( snd_menu_select_0, snd_menu_select_1), RR(0.95,1.05),  RR(0.95,1.05), 0 );
 					var rm__ = rl_[ image_index ];
 					switch(image_index) {
 						default: room_goto(rm__); global.inital_select = true; break;
