@@ -10,14 +10,14 @@
   "bitRate": 128,
   "compression": 1,
   "conversionMode": 0,
-  "duration": 0.074938,
+  "duration": 0.659478,
   "parent": {
     "name": "ameli",
     "path": "folders/Sounds/sound/gameplay/voice/ameli.yy",
   },
   "preload": false,
   "sampleRate": 44100,
-  "soundFile": "snd_voice_ameli_hit_0.wav",
+  "soundFile": "snd_voice_ameli_hit_0.ogg",
   "type": 0,
   "volume": 0.6,
 }

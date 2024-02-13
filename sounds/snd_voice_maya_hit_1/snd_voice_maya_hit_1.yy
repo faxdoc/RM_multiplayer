@@ -10,14 +10,14 @@
   "bitRate": 128,
   "compression": 1,
   "conversionMode": 0,
-  "duration": 0.356594,
+  "duration": 0.413968,
   "parent": {
     "name": "maya",
     "path": "folders/Sounds/sound/gameplay/voice/maya.yy",
   },
   "preload": false,
   "sampleRate": 44100,
-  "soundFile": "snd_voice_maya_hit_1.wav",
+  "soundFile": "snd_voice_maya_hit_1.ogg",
   "type": 0,
   "volume": 0.6,
 }

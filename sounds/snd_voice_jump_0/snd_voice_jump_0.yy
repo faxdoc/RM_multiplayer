@@ -10,14 +10,14 @@
   "bitRate": 128,
   "compression": 0,
   "conversionMode": 0,
-  "duration": 0.121625,
+  "duration": 0.184399,
   "parent": {
     "name": "import",
     "path": "folders/Sounds/sound/gameplay/import.yy",
   },
   "preload": false,
   "sampleRate": 44100,
-  "soundFile": "snd_voice_jump_0.wav",
+  "soundFile": "snd_voice_jump_0.ogg",
   "type": 0,
   "volume": 0.6,
 }

@@ -10,14 +10,14 @@
   "bitRate": 128,
   "compression": 1,
   "conversionMode": 0,
-  "duration": 0.381594,
+  "duration": 0.548503,
   "parent": {
     "name": "import",
     "path": "folders/Sounds/sound/gameplay/import.yy",
   },
   "preload": false,
   "sampleRate": 44100,
-  "soundFile": "snd_take_damage.wav",
+  "soundFile": "snd_take_damage.ogg",
   "type": 0,
   "volume": 0.6,
 }

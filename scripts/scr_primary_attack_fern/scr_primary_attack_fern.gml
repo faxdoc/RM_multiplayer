@@ -288,8 +288,8 @@ switch(current_weapon) {
 			t.parent = id;
 			
 				
-			audio_play_sound_pitch( snd_railgun_shooting,0.8,  0.85 + random_fixed( 0.1 ), 1 );
-			audio_play_sound_pitch( 		 snd_shoot_1,0.25, 0.75 + random_fixed( 0.1 ), 1 );
+			//audio_play_sound_pitch( snd_railgun_shooting,0.8,  0.85 + random_fixed( 0.1 ), 1 );
+			audio_play_sound_pitch( 		 snd_shoot_rocket,0.25, 0.75 + random_fixed( 0.1 ), 1 );
 						
 			CLIP[cg]--;
 			RELOAD[cg] = 135;

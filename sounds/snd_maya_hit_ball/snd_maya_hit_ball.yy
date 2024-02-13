@@ -10,7 +10,7 @@
   "bitRate": 128,
   "compression": 1,
   "conversionMode": 0,
-  "duration": 2.978254,
+  "duration": 0.749138,
   "parent": {
     "name": "checked",
     "path": "folders/Sounds/new_import/checked.yy",
@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_maya_hit_ball.ogg",
   "type": 0,
-  "volume": 0.95,
+  "volume": 0.9,
 }
