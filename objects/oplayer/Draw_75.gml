@@ -5,11 +5,11 @@ if ( player_local ) {
 	var yoffset_ = 0;
 	
 	
-	if !( opreference_tracker.player_anti_flicker[player_id] ) {
-		shader_set(shd_max_a);
-		draw_surface_part( application_surface, frac(camera_x), frac(camera_y),GW*2,GH*2,round(screen_shake_x)-xoffset_, round(screen_shake_y)-yoffset_);
-		shader_reset();
-	}
+	//if !( opreference_tracker.player_anti_flicker[player_id] ) {
+	//	shader_set(shd_max_a);
+	//	draw_surface_part( application_surface, frac(camera_x), frac(camera_y),GW*2,GH*2,round(screen_shake_x)-xoffset_, round(screen_shake_y)-yoffset_);
+	//	shader_reset();
+	//}
 	var ii = 0,c = -1;
 	var yl_ = floor( GH*0.91 );
 	var xx  = floor( GW*0.08 );
