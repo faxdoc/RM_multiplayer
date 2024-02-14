@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSound",
   "resourceVersion": "1.0",
-  "name": "snd_respawn",
+  "name": "snd_ameli_win",
   "audioGroupId": {
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
@@ -10,14 +10,14 @@
   "bitRate": 128,
   "compression": 0,
   "conversionMode": 0,
-  "duration": 0.749138,
+  "duration": 2.245193,
   "parent": {
-    "name": "import",
-    "path": "folders/Sounds/sound/gameplay/import.yy",
+    "name": "replaced",
+    "path": "folders/Sounds/sound/gameplay/import/replaced.yy",
   },
   "preload": false,
   "sampleRate": 44100,
-  "soundFile": "snd_respawn.ogg",
+  "soundFile": "snd_ameli_win.wav",
   "type": 0,
-  "volume": 0.2,
+  "volume": 0.7,
 }

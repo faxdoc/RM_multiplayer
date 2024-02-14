@@ -11,5 +11,9 @@ function audio_play_menu_sound_hover() {
 	audio_play_sound( snd_menu_hover, 0, false, RR( 0.95, 1.10 ) * 0.8, 0, RR( 0.95, 1.10 ) *0.75 );
 	
 }
+function audio_play_menu_sound_hover_small() {
+	audio_play_sound( snd_menu_hover_small, 0, false, RR( 0.95, 1.10 ) * 0.3, 0, RR( 0.95, 1.10 ) * 0.85 );
+}
+
 
 

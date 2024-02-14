@@ -304,7 +304,7 @@ switch(meta_state) {
 		if ( intro_timer > 105 ) {
 			if ( player_local ) {
 				with ( music_player ) {
-					start_playing_music();
+					start_playing_music( other.player_id );
 				}
 			}
 			audio_play_sound_pitch( snd_round_start, 1, 1, 0 );

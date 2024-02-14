@@ -16,7 +16,7 @@ if ( d_ != undefined ) {
 		
 		if (!hovered ) {
 			if instance_exists(orandom) {
-				audio_play_menu_sound_hover();
+				audio_play_menu_sound_hover_small();
 			}
 			hovered = true;
 		}

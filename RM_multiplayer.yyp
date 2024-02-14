@@ -151,6 +151,7 @@
     "IDEVersion": "2023.11.1.129",
   },
   "resources": [
+    {"id":{"name":"snd_ameli_win","path":"sounds/snd_ameli_win/snd_ameli_win.yy",},},
     {"id":{"name":"snd_ready","path":"sounds/snd_ready/snd_ready.yy",},},
     {"id":{"name":"sameli_flying","path":"sprites/sameli_flying/sameli_flying.yy",},},
     {"id":{"name":"stiles_forest","path":"sprites/stiles_forest/stiles_forest.yy",},},

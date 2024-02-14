@@ -10,7 +10,7 @@
   "bitRate": 128,
   "compression": 0,
   "conversionMode": 0,
-  "duration": 1.850952,
+  "duration": 1.804626,
   "parent": {
     "name": "replaced",
     "path": "folders/Sounds/sound/gameplay/import/replaced.yy",
@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_fern_win.wav",
   "type": 0,
-  "volume": 0.8,
+  "volume": 0.7,
 }
