@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_ameli_cast_1.ogg",
   "type": 0,
-  "volume": 0.65,
+  "volume": 0.68,
 }

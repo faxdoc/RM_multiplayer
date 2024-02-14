@@ -379,7 +379,7 @@ switch( attack_state ) {
 					move_timer = min(move_timer+1,60);
 					if ( !parent.K1 ) {
 						move_timer += 70;
-						audio_play_sound_pitch(snd_cute_highpitch, RR(0.8,0.9)*0.3, RR(0.7,0.75)*0.5, 1 );
+						//audio_play_sound_pitch(snd_cute_highpitch, RR(0.8,0.9)*0.3, RR(0.7,0.75)*0.5, 1 );
 						audio_play_sound_pitch(snd_ameli_charge, RR(0.8,0.9), RR(0.9,0.95), 1 );
 					}
 				} else if ( attack_timer++ > 25 ) {
@@ -389,10 +389,10 @@ switch( attack_state ) {
 					fnc_general_explode( 0.75, 0.75 );
 					
 					var charge_ = 0.2 + ( ( move_timer - 70 ) / 60 );
-					//audio_play_sound_pitch( snd_ameli_activate,    RR(0.8,0.9)*min(1,charge_*2), RR(0.8,0.86)*0.9, 1, 0.9 );
-					audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.8,0.9)*min(1,charge_*2), RR(0.9,1.00)*0.6, 1, 0.9 );
+					audio_play_sound_pitch( snd_ameli_activate,    RR(0.8,0.9)*min(1,charge_*2), RR(0.95,1.1), 1, 0.7 );
+					audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.8,0.9)*min(1,charge_*2), RR(0.9,1.00)*0.95, 1, 0.7 );
 					//audio_play_sound_pitch( snd_ameli_explotion_0, RR(0.8,0.9)*min(1,charge_*2), RR(0.9,1.00)*1.1, 1, 0.9 );
-					audio_play_sound_pitch( snd_shoot_0, RR(0.8,0.9)*min(0.5,charge_), RR(0.9,1.00), 1, 0.9 );
+					//audio_play_sound_pitch( snd_shoot_0, RR(0.8,0.9)*min(0.5,charge_), RR(0.9,1.00), 1, 0.9 );
 					
 					// repeat( 8 ) {
 						var bl_ = bullet_general( 25*charge_, 0, ssameli_beam, 0 );
@@ -481,6 +481,7 @@ switch( attack_state ) {
 						own_hitbox.ghost	= true;
 						own_hitbox.piercing = true;
 						own_hitbox.delete_other_bullets = true;
+						own_hitbox.depth = -400;
 					}
 					
 					saw_dir = angle_approach(saw_dir, point_direction( x, y, parent.MX, parent.MY ), 1.5 );
@@ -502,6 +503,7 @@ switch( attack_state ) {
 					own_hitbox.image_xscale = 2;
 					own_hitbox.image_yscale = 2;
 					own_hitbox.delete_other_bullets = true;
+					own_hitbox.depth = -400;
 					
 					with ( oplayer ) {
 						SHAKE++;
@@ -1104,6 +1106,8 @@ switch( attack_state ) {
 				own_hitbox.image_yscale = 2;
 				own_hitbox.delete_other_bullets = true;
 				own_hitbox.dir = 90;
+				own_hitbox.depth = -400;
+				
 				audio_play_sound_pitch(snd_ameli_explotion_1, RR(0.7,0.9), RR(0.8,0.9),0 );
 				with ( parent ) SHAKE += 2;
 				with ( oplayer ) {
@@ -1120,7 +1124,8 @@ switch( attack_state ) {
 				own_hitbox.piercing = true;
 				own_hitbox.delete_other_bullets = true;
 				own_hitbox.dir = 90;
-					
+				own_hitbox.depth = -400;
+				
 				
 			}
 			x += LDX( (( 30-attack_timer ) / 45)*saw_spd, saw_dir );
