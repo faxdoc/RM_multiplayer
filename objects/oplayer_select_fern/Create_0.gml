@@ -1,24 +1,27 @@
 event_inherited();
 name = "Fern";
-tagline = "Versetile Gunslinger";
+tagline = "VERSATILE GUNSLINGER";
 
 index = e_char_index.fern;
 
 info = [
-    "Difficulty: Easy",
+    "Difficulty:",
+	"EASY",
     "",
+	"------------------",
     "Uses 6 different",
     "guns to fight",
+	"------------------",
     "",
-    "Press Q to",
-    "throw grenade",
+    "Q:",
+    "Throw grenade",
     "",
-	"Press E to dodge",
+	"SHIFT/E:",
+	"Dodge",
 	"",
-    "Highly mobile",
-    "all-arounder",
-    "",
-    "Good for beginners"
+    "+ Highly mobile",
+    "+ All-rounder",
+    "+ Beginner friendly",
     
 ];
 

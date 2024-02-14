@@ -28,9 +28,9 @@ if ( controller != undefined ) {
 		var st_ = "";
 		switch(image_index) {
 			case 0: st_ = "Arena";				break;
-			case 1: st_ = "Twr";				break;
+			case 1: st_ = "TWWWR";				break;
 			case 2: st_ = "Ceiling";			break;
-			case 3: st_ = "Inital Sendoff";		break;
+			case 3: st_ = "Initial Sendoff";	break;
 			case 4: st_ = "Friendship Area";	break;
 			case 5: st_ = "Floating Islands";	break;
 			case 6: st_ = "Dilapidated Bridge"; break;
@@ -112,14 +112,14 @@ if ( controller != undefined ) {
 		var st_ = "";
 		switch(image_index) {
 			case 0: st_ = "Arena";				break;
-			case 1: st_ = "Twr";				break;
+			case 1: st_ = "TWWWR";				break;
 			case 2: st_ = "Ceiling";			break;
-			case 3: st_ = "Inital Sendoff";		break;
+			case 3: st_ = "Initial Sendoff";	break;
 			case 4: st_ = "Friendship Area";	break;
-			case 5: st_ = "Floating islands";	break;
+			case 5: st_ = "Floating Islands";	break;
 			case 6: st_ = "Dilapidated Bridge"; break;
 			case 7: st_ = "Vines";				break;
-			case 8: st_ = "City ruins";			break;
+			case 8: st_ = "City Ruins";			break;
 			case 9: st_ = "Cup";				break;
 			case 10: st_ = "Hill";				break;
 		}

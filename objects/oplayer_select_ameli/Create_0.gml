@@ -1,25 +1,28 @@
 event_inherited();
 name = "Ameli";
-tagline = " Dorky witch O-O";
+tagline = " DORKY WITCH O-O";
 
 index = e_char_index.ameli;
 
 
 info = [
-    "Difficulty: Hard",
+    "Difficulty:",
+	"HARD",
     "",
+	"------------------",
     "Commands her pets",
     "to attack and",
     "make traps",
+	"------------------",
     "",
-    "Grapple your pets",
-    "to retrive them",
+    "GRAPPLE:",
+    "Also retrieves pets",
     "",
-    "Press shift/E to",
-    "fly on your broom",
+    "SHIFT/E:",
+    "Fly on broom",
     "",
-    "Slow and fragile",
-    "zoner",
+    "+ Slow and fragile",
+    "+ Zoner",
     
 ];
 

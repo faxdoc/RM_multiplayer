@@ -1,26 +1,28 @@
 event_inherited();
 name = "Maya";
-tagline = " Tired swordsman";
+tagline = " TIRED SWORDSMAN";
 
 index = e_char_index.maya;
 
 
 info = [
-    "Difficulty: Medium",
+    "Difficulty:",
+	"MEDIUM",
     "",
+	"------------------",
     "Uses sword and",
     "techiques to fight",
+	"------------------",
     "",
-    "Press Q to ",
-    "execute technique",
+    "Q:",
+    "Executes technique",
     "",
-    "Press shift/E to",
-    "parry your",
-    "opponents attack",
+    "SHIFT/E:",
+	"Parry attack",
+   
     "",
-    "aggressive", 
-    "close-quarter",
-    "combatant",
+    "+ Aggressive", 
+    "+ Close-quarters",
     
 ];
 
