@@ -26,6 +26,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"new_climb","folderPath":"folders/new_climb.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"dump","folderPath":"folders/new_climb/dump.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"layer_3","folderPath":"folders/new_climb/layer_3.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"new_plants","folderPath":"folders/new_climb/new_plants.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Objects","folderPath":"folders/Objects.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"fx","folderPath":"folders/Objects/fx.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"level_design","folderPath":"folders/Objects/level_design.yy",},
@@ -133,7 +134,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Paths","folderPath":"folders/unused/Paths.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sequences","folderPath":"folders/unused/Sequences.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/unused/Timelines.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"new_plants","folderPath":"folders/new_climb/new_plants.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"gcmt-dll.dll","CopyToMask":0,"filePath":"datafiles/GMLive",},

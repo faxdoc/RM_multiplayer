@@ -138,18 +138,22 @@ repeat(step_number) {
 				} else {
 					audio_play_sound_pitch( snd_hit_extra, RR(0.9,0.96), RR(0.95,1.05), 0, 0.1 );
 				}
-				switch(t.char_index) {//
-					case e_char_index.fern:
-						snd_ = choose( snd_take_damage, snd_take_damage_alt, snd_take_damage_3 );
-					break;
-					case e_char_index.maya:
-						snd_ = snd_voice_maya_hit_0;
-					break;
-					case e_char_index.ameli:
-						snd_ = snd_voice_ameli_hit_0;
-					break;
+				
+				if ( !t.draw_sandbag ) {
+					switch(t.char_index) {//
+						case e_char_index.fern:
+							snd_ = snd_take_damage;//choose( snd_take_damage, snd_take_damage_alt, snd_take_damage_3 );
+						break;
+						case e_char_index.maya:
+							snd_ = snd_voice_maya_hit_0;
+						break;
+						case e_char_index.ameli:
+							snd_ = snd_voice_ameli_hit_0;
+						break;
+					}
+					audio_play_sound_pitch( snd_, RR(0.75,0.8)*vol_, RR(0.95,1.05), 0 );
 				}
-				audio_play_sound_pitch( snd_, RR(0.75,0.8)*vol_, RR(0.95,1.05), 0 );
+				
 			} else {
 				var snd_ = dmg >= 55 ? snd_hit_extra : choose( snd_hit_0, snd_hit_1, snd_hit_4 );
 				t.hit_freeze = floor( max(4,dmg/6) );
@@ -159,20 +163,21 @@ repeat(step_number) {
 				} else {
 					audio_play_sound_pitch( snd_, RR(0.75,0.8)*vol_, RR(0.95,1.05)*pt_, 0 );
 				}
-				
-				switch(t.char_index) {//
-					case e_char_index.fern:
-						snd_ = snd_hit_alt;//choose( snd_take_damage, snd_take_damage_alt, snd_take_damage_3 );
-					break;
-					case e_char_index.maya:
-						snd_ = snd_voice_maya_hit_1;
-					break;
-					case e_char_index.ameli:
-						snd_ = snd_voice_ameli_hit_1;
-					break;
+				if ( !t.draw_sandbag ) {
+					switch(t.char_index) {//
+						case e_char_index.fern:
+							snd_ = snd_take_damage;//choose( snd_take_damage, snd_take_damage_alt, snd_take_damage_3 );
+						break;
+						case e_char_index.maya:
+							snd_ = snd_voice_maya_hit_1;
+						break;
+						case e_char_index.ameli:
+							snd_ = snd_voice_ameli_hit_1;
+						break;
+					}
 				}
 				
-				audio_play_sound_pitch( snd_hit_alt, RR(0.75,0.8)*vol_, RR(0.95,1.05), 0 );
+				audio_play_sound_pitch( snd_, RR(0.75,0.8)*vol_, RR(0.95,1.05), 0 );
 			}
 		}
 		

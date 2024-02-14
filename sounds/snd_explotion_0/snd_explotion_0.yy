@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_explotion_0.mp3",
   "type": 0,
-  "volume": 0.55,
+  "volume": 0.5,
 }

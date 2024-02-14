@@ -13,6 +13,7 @@
     {"name":"new_climb","order":14,"path":"folders/new_climb.yy",},
     {"name":"dump","order":2,"path":"folders/new_climb/dump.yy",},
     {"name":"layer_3","order":1,"path":"folders/new_climb/layer_3.yy",},
+    {"name":"new_plants","order":3,"path":"folders/new_climb/new_plants.yy",},
     {"name":"Objects","order":1,"path":"folders/Objects.yy",},
     {"name":"fx","order":1,"path":"folders/Objects/fx.yy",},
     {"name":"level_design","order":3,"path":"folders/Objects/level_design.yy",},
@@ -113,7 +114,6 @@
     {"name":"Particle Systems","order":6,"path":"folders/unused/Particle Systems.yy",},
     {"name":"Sequences","order":2,"path":"folders/unused/Sequences.yy",},
     {"name":"Timelines","order":1,"path":"folders/unused/Timelines.yy",},
-    {"name":"new_plants","order":3,"path":"folders/new_climb/new_plants.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"snd_ameli_win","order":4,"path":"sounds/snd_ameli_win/snd_ameli_win.yy",},

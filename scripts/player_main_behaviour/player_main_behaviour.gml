@@ -234,16 +234,18 @@ function player_main_behaviour(){
 			gun_charging = false;
 			gun_fully_charged = false;
 			if ( !hit_timer-- ) {
-				switch(char_index) {
-					case e_char_index.fern:
-						audio_play_sound_pitch( snd_combo_end_fern,		   RR(0.95,1.05)*0.6, RR(0.95,1.05), 0, 0.8 );
-					break;
-					case e_char_index.maya:
-						audio_play_sound_pitch( snd_combo_end_maya,		   RR(0.95,1.05)*0.6, RR(0.95,1.05), 0, 0.8 );
-					break;
-					case e_char_index.ameli:
-						audio_play_sound_pitch( snd_combo_end_ameli,	   RR(0.95,1.05)*0.6, RR(0.95,1.05), 0, 0.8 );
-					break;
+				if ( !draw_sandbag ) {
+					switch(char_index) {
+						case e_char_index.fern:
+							audio_play_sound_pitch( snd_combo_end_fern,		   RR(0.95,1.05)*0.6, RR(0.95,1.05), 0, 0.8 );
+						break;
+						case e_char_index.maya:
+							audio_play_sound_pitch( snd_combo_end_maya,		   RR(0.95,1.05)*0.6, RR(0.95,1.05), 0, 0.8 );
+						break;
+						case e_char_index.ameli:
+							audio_play_sound_pitch( snd_combo_end_ameli,	   RR(0.95,1.05)*0.6, RR(0.95,1.05), 0, 0.8 );
+						break;
+					}
 				}
 				
 				audio_play_sound_pitch( snd_combo_over_effect, RR(0.95,1.05)*0.5, RR(0.95,1.05)*1.22, 0 );
