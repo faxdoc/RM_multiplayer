@@ -398,8 +398,11 @@ if ( player_local ) {
 		#endregion
 		#region ameli
 		case e_char_index.ameli:
+			var mds_ = 18;
+			by--;
+			
 			var i = 0; repeat( 6 ) {
-		
+				
 				myl_ = 1;
 				if ( current_weapon == wep_list[i] ) {
 					myl_ = 0;
@@ -458,7 +461,7 @@ if ( player_local ) {
 				}
 				i++;
 			}
-			draw_sprite_ext( sorbs_counter, 0, bx-16, by-32, 0.5, 0.5, 0, merge_color(player_colour, c_gray,0.68), 0.5 );
+			draw_sprite_ext( sorbs_counter, 0, bx-16-18, by-32, 0.5, 0.5, 0, merge_color( player_colour, c_gray, 0.68 ), 0.5 );
 			var orbs_left = 0;
 			if ( orbs[0].attack_state == e_ameli_orb_attack_state.idle ) orbs_left++;
 			if ( orbs[1].attack_state == e_ameli_orb_attack_state.idle ) orbs_left++;
@@ -466,16 +469,22 @@ if ( player_local ) {
 			
 			draw_set_font(global.fnt_number_big);
 				
-			var c = merge_color(player_colour, c_dkgray,0.9);
-			draw_text_transformed_color( bx, by-32+1, orbs_left, 2, 2, 0,  c,c,c,c,1 );	
+			var c = merge_color( player_colour, c_dkgray, 0.9 );
+			draw_text_transformed_color( bx-18, by-38+1, orbs_left, 2, 2, 0,  c,c,c,c,1 );	
 			c = merge_color(player_colour, c_gray,0.8);
-			draw_text_transformed_color( bx, by-32, orbs_left, 2, 2, 0, c,c,c,c,1 );
+			if ( orbs_left > 0 ) {
+				draw_text_transformed_color( bx-18, by-38,   orbs_left, 2, 2, 0, c,c,c,c,1 );
+			}
 		
 			draw_set_font(fnt_default);
-			bx -= 16;
-			by += 12;
-			draw_rectangle( bx-78, by-64+8, bx-78+flying_charge,by+12-64+8,false );
-				
+			bx += 3;
+			by += 32;
+			by = floor(by);
+			draw_sprite( sbroomstick, 0, bx-78, by-54 );
+			DSC(#D29C3D);
+			draw_rectangle( bx-78, by-54, bx-78+floor( flying_charge*1.85 ), by+1-54, false );
+			DSC(c_white);
+			
 		break;
 		#endregion
 	}

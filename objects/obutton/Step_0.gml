@@ -27,6 +27,7 @@ if ( mouse_check_button_pressed(mb_left) ) {
 			audio_play_menu_press_big_sound();
 		}
 		//audio_play_sound_pitch( choose( snd_menu_select_0, snd_menu_select_1), RR(0.95,1.05),  RR(0.95,1.05), 0 );
+		IDD( obutton_steam );
 		IDD( orandom );
 		IDD( omenu_bg_render );
 		omultiplayer_manager.game_has_started = true; 

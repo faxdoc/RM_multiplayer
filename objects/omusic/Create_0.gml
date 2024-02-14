@@ -16,7 +16,7 @@ function start_playing_music( id_ = 0 ) {
 			audio_play_sound( snd_music_menu_loop, 999, false );
 		} else {
 			if ( opreference_tracker.music_on[ id_ ] ) {
-				audio_play_sound( snd_music_gameplay_intro, 999, true );
+				audio_play_sound( snd_music_gameplay, 999, true );
 			} else {
 				state = 999;
 			}
