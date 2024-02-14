@@ -1,4 +1,4 @@
-/*
+
 switch(type) {
 	case 2:
 		var sp_ = 1.3;

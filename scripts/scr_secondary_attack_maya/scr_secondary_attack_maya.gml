@@ -335,8 +335,8 @@ function scr_secondary_attack_maya(){
 					var ex_ = charge_level == 1;
 					var charge_pwr_ = lerp( 0.6, 1.3, charge_level ) + ( ex_ ? 0.6 : 0 );
 					if ( knife_timer == 6 ) {
-				        audio_play_sound_pitch( snd_maya_quick_draw, 0.9, 0.95 + random( 0.1 ), 1 );
-						audio_play_sound_pitch(snd_maya_charged_cut, 0.9, 0.95 + random( 0.1 ), 1 );
+				        audio_play_sound_pitch( snd_maya_quick_draw, 0.75, 0.95 + random( 0.1 ), 1 );
+						audio_play_sound_pitch(snd_maya_charged_cut, 0.75, 0.95 + random( 0.1 ), 1 );
 						gun_len		= 16;
 						gun_height  = 20;
 						var do_ver_spd = true;

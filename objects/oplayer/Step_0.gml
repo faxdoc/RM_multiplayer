@@ -19,10 +19,10 @@ if (!random_inited ) {
 		MAKES(orandom);
 	}
 	if ( player_local ) {
-		//with ( MAKES(oparalax_render) ) {
-		//	visible = true;
-		//	parent = other;
-		//}
+		with ( MAKES(oparalax_render) ) {
+			visible = true;
+			parent = other;
+		}
 		
 	}
 	//if ( !instance_exists(oparticle_spawner) ) {

@@ -1,4 +1,4 @@
-/*
+
 switch(type) {
 	case 0:
 		draw_sprite_ext( scloud_bg,0,background_cloud_x-paralax_timer,room_height-450+background_cloud_y,(room_width/128)+1, 3, 0, c_white, 0.2 );

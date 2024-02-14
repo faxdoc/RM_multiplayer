@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_respawn.ogg",
   "type": 0,
-  "volume": 0.2,
+  "volume": 0.6,
 }

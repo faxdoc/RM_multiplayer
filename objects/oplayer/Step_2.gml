@@ -3,7 +3,9 @@
 switch( meta_state ) {
 	#region char select
 	case e_meta_state.char_select:
-		
+		if ( !audio_is_playing(snd_ambient_character_select) ) {
+			audio_play_sound(snd_ambient_character_select,0,0);
+		}
 		
 		var lmx_ = MX-camera_x;
 		var lmy_ = MY-camera_y;
@@ -61,6 +63,17 @@ switch( meta_state ) {
 			if ( instance_position( lmx_, lmy_, id ) && other.K1P ) {
 				opreference_tracker.char_index[ other.player_id ] = index;
 				opreference_tracker.char_index_progress[ other.player_id ] = 256;
+				switch(index) {
+					case e_char_index.fern:
+						audio_play_sound_pitch( snd_fern_win, 1, 1, 0 );
+					break;
+					case e_char_index.maya:
+						audio_play_sound_pitch( snd_maya_win, 1, 1, 0 );
+					break;
+					case e_char_index.ameli:
+						audio_play_sound_pitch( snd_ameli_win, 1, 1, 0 );
+					break;
+				}
 				
 			}
 			
@@ -147,7 +160,7 @@ switch( meta_state ) {
 	break;
 	case e_meta_state.level_select:
 	case e_meta_state.round_end:
-	
+		
 	break;
 }
 
@@ -219,6 +232,10 @@ switch(meta_state) {
 	
 	#region round start
 	case e_meta_state.round_start:
+		if ( audio_is_playing(snd_ambient_character_select) ) {
+			audio_stop_sound(snd_ambient_character_select);
+		}
+		
 		opreference_tracker.ready_state[ player_id ] = false;
 		global.training_mode_change_stage = false;
 		

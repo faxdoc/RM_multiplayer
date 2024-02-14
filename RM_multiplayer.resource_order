@@ -157,6 +157,7 @@
     {"name":"ogrenade","order":5,"path":"objects/ogrenade/ogrenade.yy",},
     {"name":"sface_maya_normal","order":6,"path":"sprites/sface_maya_normal/sface_maya_normal.yy",},
     {"name":"obutton_ready","order":23,"path":"objects/obutton_ready/obutton_ready.yy",},
+    {"name":"snd_ambient_character_select","order":15,"path":"sounds/snd_ambient_character_select/snd_ambient_character_select.yy",},
     {"name":"rtower","order":3,"path":"rooms/rtower/rtower.yy",},
     {"name":"snd_ameli_wosh","order":9,"path":"sounds/snd_ameli_wosh/snd_ameli_wosh.yy",},
     {"name":"snd_voice_ameli_hit_1","order":3,"path":"sounds/snd_voice_ameli_hit_1/snd_voice_ameli_hit_1.yy",},

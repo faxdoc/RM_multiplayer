@@ -1,4 +1,4 @@
-/*
+
 var ld_ = layer_get_id("Background");
 var dp_ = layer_get_depth(ld_);
 depth = dp_ - 50;

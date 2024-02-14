@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_combo_end_fern.ogg",
   "type": 0,
-  "volume": 0.5,
+  "volume": 0.6,
 }

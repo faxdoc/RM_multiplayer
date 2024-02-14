@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_hit_0.ogg",
   "type": 0,
-  "volume": 0.6,
+  "volume": 0.7,
 }

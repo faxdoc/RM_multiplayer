@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSound",
   "resourceVersion": "1.0",
-  "name": "snd_music_gameplay_intro",
+  "name": "snd_ambient_character_select",
   "audioGroupId": {
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
@@ -10,14 +10,14 @@
   "bitRate": 128,
   "compression": 1,
   "conversionMode": 0,
-  "duration": 14.126621,
+  "duration": 9.351859,
   "parent": {
-    "name": "music",
-    "path": "folders/Sounds/music.yy",
+    "name": "RM_multiplayer",
+    "path": "RM_multiplayer.yyp",
   },
   "preload": false,
   "sampleRate": 44100,
-  "soundFile": "snd_music_gameplay_intro.ogg",
+  "soundFile": "snd_ambient_character_select.ogg",
   "type": 0,
-  "volume": 0.23,
+  "volume": 0.45,
 }

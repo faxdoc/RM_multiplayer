@@ -1,4 +1,4 @@
-/*
+
 if ( visible ) {
 	if ( parent != undefined && instance_exists(parent) ) {
 		var lx_ = parent.camera_x;

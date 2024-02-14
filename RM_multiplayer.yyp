@@ -202,6 +202,7 @@
     {"id":{"name":"obutton_ready","path":"objects/obutton_ready/obutton_ready.yy",},},
     {"id":{"name":"stiles_chimney","path":"sprites/stiles_chimney/stiles_chimney.yy",},},
     {"id":{"name":"splayer_gun_shotgun","path":"sprites/splayer_gun_shotgun/splayer_gun_shotgun.yy",},},
+    {"id":{"name":"snd_ambient_character_select","path":"sounds/snd_ambient_character_select/snd_ambient_character_select.yy",},},
     {"id":{"name":"rtower","path":"rooms/rtower/rtower.yy",},},
     {"id":{"name":"smaya_heavy_attack_recover","path":"sprites/smaya_heavy_attack_recover/smaya_heavy_attack_recover.yy",},},
     {"id":{"name":"snd_ameli_wosh","path":"sounds/snd_ameli_wosh/snd_ameli_wosh.yy",},},
