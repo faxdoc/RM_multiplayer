@@ -121,13 +121,13 @@ if ( player_local ) {
 		
 		var commands = [
 			"I: Toggle game speed"						,
-			"O: change map"								,
+			"O: Change map"								,
 			"P: Toggle debug visibility"				,
-			"K: frame by frame (broken atm)"	,
+			"K: Frame by frame (broken atm)"	,
 			"L: Increase frame by one"					,
 			"N: No cooldowns"							+ (global.training_nocooldown	? " On" : " Off"),
-			"M: Infinite hp"							+ (global.training_infinite_hp	? " On" : " Off"),
-			"B: Display stunframes/invis"				,
+			"M: Infinite HP"							+ (global.training_infinite_hp	? " On" : " Off"),
+			"B: Display stun frames/invis"				,
 			"C: Display speed"							,
 			"V: Display hitboxes"
 		];
