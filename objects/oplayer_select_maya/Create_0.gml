@@ -6,7 +6,7 @@ index = e_char_index.maya;
 
 
 info = [
-    "Difficulty: medium",
+    "Difficulty: Medium",
     "",
     "Uses sword and",
     "techiques to fight",

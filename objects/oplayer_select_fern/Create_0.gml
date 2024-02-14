@@ -5,7 +5,7 @@ tagline = "Versetile Gunslinger";
 index = e_char_index.fern;
 
 info = [
-    "Difficulty: easy",
+    "Difficulty: Easy",
     "",
     "Uses 6 different",
     "guns to fight",

@@ -6,7 +6,7 @@ index = e_char_index.ameli;
 
 
 info = [
-    "Difficulty: hard",
+    "Difficulty: Hard",
     "",
     "Commands her pets",
     "to attack and",

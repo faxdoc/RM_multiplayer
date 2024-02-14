@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_charging_jump_new.ogg",
   "type": 0,
-  "volume": 0.68,
+  "volume": 0.78,
 }

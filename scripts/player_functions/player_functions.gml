@@ -267,7 +267,7 @@ function player_jump() {
 		SHAKE++;
 		switch(char_index) {
 			case e_char_index.fern:
-				audio_play_sound_pitch( snd_jump_charge, RR(0.95,1.05),  RR(0.95,1.05), 0 );
+				audio_play_sound_pitch( snd_voice_jump_0, RR(0.95,1.05),  RR(0.95,1.05), 0 );
 			break;
 			case e_char_index.maya:
 				audio_play_sound_pitch( snd_voice_maya_jump_0, RR( 0.95, 1.05 )*0.22,RR(0.95,1.05),0);
@@ -276,7 +276,7 @@ function player_jump() {
 				audio_play_sound_pitch( snd_voice_ameli_jump_0, RR( 0.95, 1.05 )*0.22,RR(0.95,1.05),0);
 			break;
 		}
-		audio_play_sound_pitch(snd_charged_jump,				0.75,RR(.9,1.1),0);
+		audio_play_sound_pitch(snd_charged_jump,				0.85,RR(.9,1.1),0);
 		
 		
 		
