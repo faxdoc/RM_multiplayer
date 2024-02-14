@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSound",
   "resourceVersion": "1.0",
-  "name": "snd_ameli_retrive",
+  "name": "snd_combo_end_fern",
   "audioGroupId": {
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
@@ -10,14 +10,14 @@
   "bitRate": 128,
   "compression": 1,
   "conversionMode": 0,
-  "duration": 0.971179,
+  "duration": 0.749138,
   "parent": {
-    "name": "ameli",
-    "path": "folders/Sounds/sound/ameli.yy",
+    "name": "import",
+    "path": "folders/Sounds/sound/gameplay/import.yy",
   },
   "preload": false,
   "sampleRate": 44100,
-  "soundFile": "snd_ameli_retrive.ogg",
+  "soundFile": "snd_combo_end_fern.ogg",
   "type": 0,
-  "volume": 0.6,
+  "volume": 0.5,
 }

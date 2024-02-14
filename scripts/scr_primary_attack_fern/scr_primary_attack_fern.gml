@@ -455,7 +455,7 @@ switch(current_weapon) {
 				
 			//audio_play_sound_pitch( snd_railgun_shooting, 0.8, 0.85 + random_fixed(0.1), 1 );
 			audio_play_sound_pitch( snd_railgun_shooting, 0.8, 0.85 + random_fixed(0.1), 1 );
-			audio_play_sound_pitch( choose(snd_pistol_shot_0,snd_pistol_shot_1), RR(0.85,0.95), 0.95 + random_fixed( 0.1 ), 1 );
+			audio_play_sound_pitch( snd_maya_summon_saw, RR(0.85,0.95), 0.95 + random_fixed( 0.1 ), 1 );
 						
 			CLIP[cg]--;
 			effect_general(3,12,6);
