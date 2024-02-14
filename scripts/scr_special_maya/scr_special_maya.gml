@@ -14,7 +14,7 @@ function scr_special_maya(){
 		}
 		active_timer++;
 		
-		if ( active_timer >= 30 ) {
+		if ( active_timer >= 35 ) {
 			can_input	 = true;
 			doing_active = false;
 			audio_play_sound_pitch( snd_blob_hit_wall, 0.7, 0.7 + random( 0.1 ), 0 );

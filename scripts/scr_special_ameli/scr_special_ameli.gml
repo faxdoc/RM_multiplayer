@@ -25,7 +25,7 @@ function scr_special_ameli() {
 	flying_charge -= 0.75;
 	
 	if ( KDASHP || flying_charge <= 0 ) {
-		flying_charge -= 5;
+		flying_charge -= 3;
 	    state = e_player.normal;
         skip_draw = false;
         draw_type = e_draw_type.aiming;

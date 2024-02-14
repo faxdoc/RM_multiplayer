@@ -6,9 +6,9 @@ if ( player_local ) {
 	
 	
 	//if !( opreference_tracker.player_anti_flicker[player_id] ) {
-	//	shader_set(shd_max_a);
-	//	draw_surface_part( application_surface, frac(camera_x), frac(camera_y),GW*2,GH*2,round(screen_shake_x)-xoffset_, round(screen_shake_y)-yoffset_);
-	//	shader_reset();
+	shader_set(shd_max_a);
+	draw_surface_part( application_surface, frac(camera_x), frac(camera_y),GW*2,GH*2,round(screen_shake_x)-xoffset_, round(screen_shake_y)-yoffset_);
+	shader_reset();
 	//}
 	var ii = 0,c = -1;
 	var yl_ = floor( GH*0.91 );

@@ -4,11 +4,11 @@ var _input = rollback_get_input();
 
 		
 if (!random_inited ) {
-	if ( global.live_turned_on ) {
-		if ( !instance_exists( obj_gmlive ) ) {
-			MAKES( obj_gmlive );
-		}
-	}
+	//if ( global.live_turned_on ) {
+	//	if ( !instance_exists( obj_gmlive ) ) {
+	//		MAKES( obj_gmlive );
+	//	}
+	//}
 	
 	if ( !instance_exists(opreference_tracker) ) {
 		MAKES(opreference_tracker);
@@ -32,6 +32,7 @@ if (!random_inited ) {
 	if ( player_local ) {
 		music_player = instance_create_depth( 0,0,0,omusic );
 	}
+	
 	switch(instance_number(oplayer)) {
 		default: lives_left = 3; break;
 		case 3:  lives_left = 3; break;

@@ -6,10 +6,10 @@ switch( state ) {
 		
 	break;
 	case e_music.playing_music:
-		if (!audio_is_playing( snd_music_gameplay_intro ) ) {
-			audio_play_sound( snd_music_gameplay, 999, true );
-			state = e_music.music_looping;
-		}
+		//if (!audio_is_playing( snd_music_gameplay_intro ) ) {
+		//	audio_play_sound( snd_music_gameplay, 999, true );
+		//	state = e_music.music_looping;
+		//}
 		
 	break;
 	case e_music.stop_music:

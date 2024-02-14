@@ -3,9 +3,9 @@
 switch( meta_state ) {
 	#region char select
 	case e_meta_state.char_select:
-		if ( !audio_is_playing(snd_ambient_character_select) ) {
-			audio_play_sound(snd_ambient_character_select,0,0);
-		}
+		//if ( !audio_is_playing(snd_ambient_character_select) ) {
+		//	audio_play_sound(snd_ambient_character_select,0,0);
+		//}
 		
 		var lmx_ = MX-camera_x;
 		var lmy_ = MY-camera_y;
@@ -98,6 +98,7 @@ switch( meta_state ) {
 			with (obutton_ready) {
 				if ( instance_position( lmx_, lmy_, id ) && other.K1P  ) {
 					if ( !opreference_tracker.ready_state[ other.player_id ] ) {
+						//audio_play_sound_pitch( snd_menu_ready, RR(0.8,0.9), RR( 0.97, 1.06 ), 0  );
 						opreference_tracker.ready_state[ other.player_id ] = true;
 						//
 					}
@@ -206,12 +207,13 @@ switch(meta_state) {
 		if ( final_timer >= 150 && !victory_voice_played ) {
 			switch( winner.char_index ) {
 					case e_char_index.fern:
-						audio_play_sound( snd_fern_win, 0, false );
+						audio_play_sound_pitch( snd_fern_win, 1, 1, false );
 					break;
 					case e_char_index.maya:
-						audio_play_sound( snd_maya_win, 0, false );
+						audio_play_sound_pitch( snd_maya_win, 1, 1, false );
 					break;
 					case e_char_index.ameli:
+						audio_play_sound_pitch(		snd_ameli_win, 1, 1, false );
 						//audio_play_sound();
 					break;
 				}
@@ -232,9 +234,9 @@ switch(meta_state) {
 	
 	#region round start
 	case e_meta_state.round_start:
-		if ( audio_is_playing(snd_ambient_character_select) ) {
-			audio_stop_sound(snd_ambient_character_select);
-		}
+		//if ( audio_is_playing(snd_ambient_character_select) ) {
+		//	audio_stop_sound(snd_ambient_character_select);
+		//}
 		
 		opreference_tracker.ready_state[ player_id ] = false;
 		global.training_mode_change_stage = false;
@@ -320,8 +322,9 @@ switch(meta_state) {
 		}
 		if ( intro_timer > 105 ) {
 			if ( player_local ) {
+				var d__ = player_id;
 				with ( music_player ) {
-					start_playing_music( other.player_id );
+					start_playing_music(d__);
 				}
 			}
 			audio_play_sound_pitch( snd_round_start, 1, 1, 0 );
@@ -535,7 +538,7 @@ switch(char_index) {
 			orbs[1].attack_state = e_ameli_orb_attack_state.idle;
 			orbs[2].attack_state = e_ameli_orb_attack_state.idle;
 		}
-		flying_charge = min( flying_charge+0.1, 60 );
+		flying_charge = min( flying_charge, 60 );
 		ameli_book_x	= lerp(	ameli_book_x, x+( draw_xscale*23 )+hsp*3, 0.2 );
 		ameli_book_y	= lerp(	ameli_book_y, y-27+vsp*3+sin(ameli_book_sin/27)*3, 0.2 );
 		ameli_book_sin++;

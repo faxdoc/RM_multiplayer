@@ -149,7 +149,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.11.0.121",
+    "IDEVersion": "2023.11.1.129",
   },
   "resources": [
     {"id":{"name":"snd_ameli_win","path":"sounds/snd_ameli_win/snd_ameli_win.yy",},},

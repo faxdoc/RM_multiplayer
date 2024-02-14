@@ -107,15 +107,19 @@ repeat(step_number) {
 		var vol_= clamp( 0.3 + dmg / 80, 0.4, 0.9 );
 		
 		if ( do_stun ) {
-			if ( parent.char_index == e_char_index.ameli && random_fixed(1) > 0.9 ) {
-				with ( parent ) {
-					if ( random_fixed(1) > 0.5 ) {
-						audio_play_sound_pitch( snd_voice_ameli_laugh_0, RR(0.7,0.9), 1, 0 );
-					} else {
-						audio_play_sound_pitch( snd_voice_ameli_laugh_1, RR(0.7,0.9), 1, 0 );
-					}
+			if ( parent.char_index == e_char_index.ameli ) {
+				parent.flying_charge = min( parent.flying_charge + 12, 60 );
+				if ( random_fixed(1) > 0.9 ) {
+					with ( parent ) {
+						if ( random_fixed(1) > 0.5 ) {
+							audio_play_sound_pitch( snd_voice_ameli_laugh_0, RR(0.7,0.9), 1, 0 );
+						} else {
+							audio_play_sound_pitch( snd_voice_ameli_laugh_1, RR(0.7,0.9), 1, 0 );
+						}
 					
+					}
 				}
+				
 			}
 			
 			if ( t.state != e_player.hit ) {

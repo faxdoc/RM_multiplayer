@@ -5,6 +5,6 @@ ready_state	= [ false, false, false, false ];
 char_index_progress	= [ -1, -1, -1, -1 ];
 player_rollback_amount	= [ -1, -1, -1, -1 ];
 
-player_anti_flicker		= [ false, false, false, false ];
+//player_anti_flicker		= [ false, false, false, false ];
 music_on				= [ true, true, true, true ];
 
