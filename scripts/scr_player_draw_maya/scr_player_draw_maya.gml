@@ -25,7 +25,7 @@ function scr_player_draw_maya(){
 			var bly_ = floor( body_y - land_y );
 			var extra_leg_y = ( hh != 0 && on_ground ) ? 4 : 2;
 			var xx_ = x;
-			var yy_ = y-extra_leg_y;
+			var yy_ = y-extra_leg_y+2;
 			//draw_sprite( splayer_maya_bow, 0, head_x+( draw_xscale * 6 )+1+hsp, head_y+10 );
 			#region general calculate 
 			

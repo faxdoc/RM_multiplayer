@@ -292,12 +292,14 @@ function player_jump() {
 
 function play_walk_sound(vol_,pt_) {
 	
-	switch(floor_type) {
-		case e_floor.none:  audio_play_sound_pitch_falloff( snd_walk_stone, .6*vol_, 0.3 + random_fixed( 0.1 )*pt_, 0 ); break;
-		case e_floor.grass: audio_play_sound_pitch_falloff( snd_walk_dirt,  .5*vol_,0.85 + random_fixed( 0.1 )*pt_, 0 ); break;
-		case e_floor.stone: audio_play_sound_pitch_falloff( snd_walk_stone, .6*vol_, 0.3 + random_fixed( 0.1 )*pt_, 0 ); break;
-		case e_floor.wood:  audio_play_sound_pitch_falloff( snd_walk_wood,  .8*vol_, 0.5 + random_fixed( 0.2 )*pt_, 0 ); break;
-		case e_floor.metal: audio_play_sound_pitch_falloff( snd_walk_metal, .8*vol_, 0.6 + random_fixed( 0.2 )*pt_, 0 ); break;
+	if (random_fixed(1) > 0.5 ) {
+		switch(floor_type) {
+			case e_floor.none:  audio_play_sound_pitch_falloff( snd_walk_stone, .6*vol_, 0.3 + random_fixed( 0.1 )*pt_, 0 ); break;
+			case e_floor.grass: audio_play_sound_pitch_falloff( snd_walk_dirt,  .5*vol_,0.85 + random_fixed( 0.1 )*pt_, 0 ); break;
+			case e_floor.stone: audio_play_sound_pitch_falloff( snd_walk_stone, .6*vol_, 0.3 + random_fixed( 0.1 )*pt_, 0 ); break;
+			case e_floor.wood:  audio_play_sound_pitch_falloff( snd_walk_wood,  .8*vol_, 0.5 + random_fixed( 0.2 )*pt_, 0 ); break;
+			case e_floor.metal: audio_play_sound_pitch_falloff( snd_walk_metal, .8*vol_, 0.6 + random_fixed( 0.2 )*pt_, 0 ); break;
+		}
 	}
 }
 

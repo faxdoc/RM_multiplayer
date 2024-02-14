@@ -170,7 +170,7 @@ switch( maya_sword_swing_state ) {
 				
 			var max_charge = 60;
 			var pre_charge = maya_sword_swing_charge;
-			maya_sword_swing_charge = min( max_charge, maya_sword_swing_charge + 2.5 );
+			maya_sword_swing_charge = min( max_charge, maya_sword_swing_charge + 2 );
 			maya_animation_swing_timer = max( 3, maya_animation_swing_timer );
 			if ( maya_sword_swing_charge == 22.5 ) {
 				// swing_charge_sound = audio_play_sound_pitch( snd_maya_heart_alt, 0.4, 0.35, false );

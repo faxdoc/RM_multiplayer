@@ -355,9 +355,9 @@ switch(meta_state) {
 			audio_play_sound_pitch(snd_explotion_1, 0.4, RR( 0.5, 0.6 ), 0 );
 			//audio_play_sound_pitch(snd_explotion_1, 0.7, RR( 0.7, 0.8 ), 0 );
 			if ( random_fixed(1) > 0.5 ) {
-				audio_play_sound_pitch( snd_fallout_0, 0.9, RR( 0.95, 1.05 ), 0, 0.3 );
+				audio_play_sound_pitch( snd_fallout_0, 0.9, RR( 0.95, 1.05 ), 0, 0.15 );
 			} else {
-				audio_play_sound_pitch( snd_fallout_1, 0.9, RR( 0.95, 1.05 ), 0, 0.3 );
+				audio_play_sound_pitch( snd_fallout_1, 0.9, RR( 0.95, 1.05 ), 0, 0.15 );
 			}
 			
 			var num = RR( 16, 24 );

@@ -8,7 +8,7 @@
   },
   "bitDepth": 1,
   "bitRate": 128,
-  "compression": 0,
+  "compression": 1,
   "conversionMode": 0,
   "duration": 0.30839,
   "parent": {
@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_voice_maya_swing_0.ogg",
   "type": 0,
-  "volume": 0.4,
+  "volume": 0.5,
 }

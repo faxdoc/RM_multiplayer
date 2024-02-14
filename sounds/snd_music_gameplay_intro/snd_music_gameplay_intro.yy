@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snd_music_gameplay_intro.ogg",
   "type": 0,
-  "volume": 0.37,
+  "volume": 0.26,
 }

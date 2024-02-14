@@ -110,9 +110,9 @@ switch( attack_state ) {
 						effect_create_depth( -40, ef_ring, MX, MY, 0, merge_colour( main_blend, c_gray, 0.4 ) );
 						attack_state = e_ameli_orb_attack_state.passive;
 						attack_timer = 0;
-						audio_play_sound_pitch( snd_ameli_activate,    RR(0.8,0.9), RR(0.9,1.1), 0 );
+						audio_play_sound_pitch( snd_ameli_activate,    RR(0.8,0.9), RR(0.9,1.1), 0, 0.8 );
 					} else if ( move_timer > 5 ) {
-						audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.6,0.7), RR(0.95,1.1), 0 );
+						audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.6,0.7), RR(0.95,1.1), 0, 0.8 );
 						var b_ = bullet_general( 12, 0, shitbox_circle, 0 );
 						b_.image_xscale = (timed_explotion_radius/96)*0.65;
 						b_.image_yscale = (timed_explotion_radius/96)*0.65;
@@ -391,7 +391,7 @@ switch( attack_state ) {
 					var charge_ = 0.2 + ( ( move_timer - 70 ) / 60 );
 					//audio_play_sound_pitch( snd_ameli_activate,    RR(0.8,0.9)*min(1,charge_*2), RR(0.8,0.86)*0.9, 1, 0.9 );
 					audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.8,0.9)*min(1,charge_*2), RR(0.9,1.00)*0.6, 1, 0.9 );
-					audio_play_sound_pitch( snd_ameli_explotion_0, RR(0.8,0.9)*min(1,charge_*2), RR(0.9,1.00)*1.1, 1, 0.9 );
+					//audio_play_sound_pitch( snd_ameli_explotion_0, RR(0.8,0.9)*min(1,charge_*2), RR(0.9,1.00)*1.1, 1, 0.9 );
 					audio_play_sound_pitch( snd_shoot_0, RR(0.8,0.9)*min(0.5,charge_), RR(0.9,1.00), 1, 0.9 );
 					
 					// repeat( 8 ) {
@@ -944,8 +944,8 @@ switch( attack_state ) {
 						parent.vsp = min(-7,parent.vsp-5);
 						parent.space_buffer = true;
 					}
-					audio_play_sound_pitch( snd_ameli_activate,    RR(0.8,0.9), RR(0.9,1.1),  2 );
-					audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.6,0.7), RR(0.95,1.1), 2 );
+					audio_play_sound_pitch( snd_ameli_activate,    RR(0.8,0.9), RR(0.95,1.1),  2 );
+					//audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.6,0.7)*0.3, RR(0.95,1.1), 2 );
 							
 					var b_ = bullet_general( 10, 0, sameli_trap_spear, 0 );
 					b_.parent = parent;
