@@ -236,13 +236,13 @@ function player_main_behaviour(){
 			if ( !hit_timer-- ) {
 				switch(char_index) {
 					case e_char_index.fern:
-						audio_play_sound_pitch( snd_combo_end_fern,		   RR(0.95,1.05)*0.7, RR(0.95,1.05), 0, 0.6 );
+						audio_play_sound_pitch( snd_combo_end_fern,		   RR(0.95,1.05)*0.6, RR(0.95,1.05), 0, 0.8 );
 					break;
 					case e_char_index.maya:
-						audio_play_sound_pitch( snd_combo_end_maya,		   RR(0.95,1.05)*0.7, RR(0.95,1.05), 0, 0.6 );
+						audio_play_sound_pitch( snd_combo_end_maya,		   RR(0.95,1.05)*0.6, RR(0.95,1.05), 0, 0.8 );
 					break;
 					case e_char_index.ameli:
-						audio_play_sound_pitch( snd_combo_end_ameli,	   RR(0.95,1.05)*0.7, RR(0.95,1.05), 0, 0.6 );
+						audio_play_sound_pitch( snd_combo_end_ameli,	   RR(0.95,1.05)*0.6, RR(0.95,1.05), 0, 0.8 );
 					break;
 				}
 				
@@ -436,27 +436,42 @@ if ( place_meeting(x,y,odelete_box) || hp <= 0 || ( state == e_player.hit && pla
 	var y_ = y-22;
 	var tx_ = room_width /2;
 	var ty_ = room_height/3;
+	var t;
 	if ( place_meeting( x, y, odelete_box ) || ( state == e_player.hit && place_meeting(x,y,odelete_box_stun) ) ) {
 		repeat(32) {
 			random_fixed(1);
 			if ( random_fixed(1) < 0.8 ) {
 				effect_create_depth(  irandom_range_fixed(-300,100), ef_smoke, x_+irandom_range_fixed(-64,64), y_+irandom_range_fixed(-64,64), irandom_fixed(2), merge_colour(plc_,c_gray,random_fixed(0.7)+0.3) );
+				t = ICD(  x_+irandom_range_fixed(-64,64), y_+irandom_range_fixed(-64,64), RR(-50,50), osmoke_fx );
+				t.spd *= RR(1,5);
+				t.image_blend   = merge_color( c_orange, c_white, RR( 0.8, 1 ) );
+				t.sprite_index  = choose( sflower_extra_0, sflower_extra_2, sflower_extra_3, sflower_extra_5, sflower_extra_6 );
+				t.do_size		= false;
+				t.duration		= 100 + ( random( 560 ) * RR( 0.5, 1.1 ) );
+				t.size_mult		= RR( 0.1, 1 );
+				t.duration *= 0.2;
+				
 			} else {
 				effect_create_depth(  irandom_range_fixed(-300,100), ef_cloud, x_+irandom_range_fixed(-64,64), y_+irandom_range_fixed(-64,64), irandom_fixed(2),  merge_colour(plc_,c_gray,random_fixed(0.7)+0.3) );
+				
+			
 			}
-			effect_create_depth(  irandom_range_fixed(-300,100), ef_flare,  x_+irandom_range_fixed(-32,32), y_+irandom_range_fixed(-32,32), irandom_fixed(2), merge_colour(c_orange,c_gray,random_fixed(1)) );
+			
+			
+				
+			//effect_create_depth(  irandom_range_fixed(-300,100), ef_flare,  x_+irandom_range_fixed(-32,32), y_+irandom_range_fixed(-32,32), irandom_fixed(2), merge_colour(c_orange,c_gray,random_fixed(1)) );
 			
 			x_ = lerp(x_,tx_,0.027);
 			y_ = lerp(y_,ty_,0.027);
 		}
 	} else {
-		repeat(8) {
-			random_fixed(1);
-			if ( random_fixed(1) < 0.9 ) {
-				effect_create_depth(  irandom_range_fixed(-300,100), ef_smoke, x_+irandom_range_fixed(-64,64), y_+irandom_range_fixed(-64,64), irandom_fixed(2), merge_colour(plc_,c_gray,random_fixed(0.7)+0.3) );
-			} else {
-				effect_create_depth(  irandom_range_fixed(-300,100), ef_cloud, x_+irandom_range_fixed(-64,64), y_+irandom_range_fixed(-64,64), irandom_fixed(1),  merge_colour(plc_,c_gray,random_fixed(0.7)+0.3) );
-			}
+		repeat(5) {
+			//random_fixed(1);
+			//if ( random_fixed(1) < 0.9 ) {
+			//	effect_create_depth(  irandom_range_fixed(-300,100), ef_smoke, x_+irandom_range_fixed(-64,64), y_+irandom_range_fixed(-64,64), irandom_fixed(2), merge_colour(plc_,c_gray,random_fixed(0.7)+0.3) );
+			//} else {
+			//	effect_create_depth(  irandom_range_fixed(-300,100), ef_cloud, x_+irandom_range_fixed(-64,64), y_+irandom_range_fixed(-64,64), irandom_fixed(1),  merge_colour(plc_,c_gray,random_fixed(0.7)+0.3) );
+			//}
 			effect_create_depth(  irandom_range_fixed(-300,100), ef_flare,  x_+irandom_range_fixed(-32,32), y_+irandom_range_fixed(-32,32), irandom_fixed(2), merge_colour(c_orange,c_gray,random_fixed(1)) );
 		}
 	}

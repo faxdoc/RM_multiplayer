@@ -6,8 +6,8 @@ frc = .85+random_fixed(.05);
 dir = random_fixed(360);
 
 size = (.4+random_fixed(.6) )*.8;
-spin = (6+random_fixed(9))*choose_fixed(-1,1);
-spn_frc = .97+random_fixed(.02);
+spin = (6+random_fixed(9))*choose_fixed(-1,1)*2;
+spn_frc = .985+random_fixed(.01);
 image_xscale = 0;
 image_yscale = 0;
 size_mult = 1;

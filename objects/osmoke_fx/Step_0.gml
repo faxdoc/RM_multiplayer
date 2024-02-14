@@ -13,7 +13,7 @@ if ( do_size ) {
 	image_xscale = sz * size_mult;
 	image_yscale = sz * size_mult;
 	dir  = angle_approach( dir, 270 + wave( -20, 20, 3, offset ), 2 );
-	image_angle = clamp( dir, 260, 280 );
+	//image_angle = clamp( dir, 260, 280 );
 	spin = 0;
 	spd = max( 0.2, spd );
 }

@@ -360,6 +360,26 @@ switch(meta_state) {
 				audio_play_sound_pitch( snd_fallout_1, 0.9, RR( 0.95, 1.05 ), 0, 0.3 );
 			}
 			
+			var num = RR( 16, 24 );
+			var ldir_; 
+			var llen_; 
+			repeat( num ) {
+				var sz= 8 + random(32);
+				ldir_	= random(360);
+				llen_	= random_range(8,sz);
+				var t = ICD( x+LDX( llen_, ldir_ ), bbox_top+LDY( llen_, ldir_ )-4, RR(-50,50), osmoke_fx );
+				t.spd *= RR(1,5);
+				t.image_blend   = merge_color( c_orange, c_white, RR( 0.8, 1 ) );
+				t.sprite_index  = choose( sflower_extra_0, sflower_extra_2, sflower_extra_3, sflower_extra_5, sflower_extra_6 );
+				t.do_size		= false;
+				t.duration		= 100 + ( random( 560 ) * RR( 0.5, 1.1 ) );
+				t.size_mult		= RR( 0.1, 1 );
+				t.duration *= RR(0.3,0.65);
+							
+			}
+						
+			
+			
 			if ( instance_exists(orespawn_box) ) {
 				x = orespawn_box.x;
 				y = orespawn_box.y;
@@ -472,12 +492,12 @@ if ( global.training_mode ) {
 	}
 	if (  global.training_mode_change_stage ) {
 		with (oplayer) {
-			if player_local {
-				with omusic {
+			if ( player_local ) {
+				with ( omusic ) {
 					stop_playing_music();
 				}
 			}
-			meta_state	= e_meta_state.level_select;
+			meta_state = e_meta_state.level_select;
 		}
 		
 	}

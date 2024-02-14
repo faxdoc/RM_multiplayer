@@ -21,11 +21,12 @@ function start_playing_music( id_ = 0 ) {
 
 
 function stop_playing_music() {
-	if ( state == e_music.playing_music ) {
+	if ( state != e_music.music_stopped ) {
 		state = e_music.music_stopped;
 		audio_stop_sound( snd_music_gameplay_intro	);
 		audio_stop_sound( snd_music_gameplay		);
-	}//audio_play_sound( snd_music_gameplay, 999, true );
+	}
+	//audio_play_sound( snd_music_gameplay, 999, true );
 }
 
 
