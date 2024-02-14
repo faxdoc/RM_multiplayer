@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSound",
   "resourceVersion": "1.0",
-  "name": "snd_pistol_shot_1",
+  "name": "snd_menu_ready",
   "audioGroupId": {
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
@@ -10,14 +10,14 @@
   "bitRate": 128,
   "compression": 0,
   "conversionMode": 0,
-  "duration": 0.51825,
+  "duration": 0.600317,
   "parent": {
-    "name": "import",
-    "path": "folders/Sounds/sound/gameplay/import.yy",
+    "name": "replaced",
+    "path": "folders/Sounds/sound/gameplay/import/replaced.yy",
   },
   "preload": false,
   "sampleRate": 44100,
-  "soundFile": "snd_pistol_shot_1.wav",
+  "soundFile": "snd_menu_ready.ogg",
   "type": 0,
-  "volume": 0.4,
+  "volume": 0.6,
 }
