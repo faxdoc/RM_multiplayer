@@ -71,16 +71,16 @@ K8P		= _input.K8_pressed;
 KDASHP	= _input.dash_pressed;
 KPBACK  = _input.KBACK_pressed;	
 
-KQ0 = _input.quickswap_0;
-KQ1 = _input.quickswap_1;
-KQ2 = _input.quickswap_2;
-KQ3 = _input.quickswap_3;
-KQ4 = _input.quickswap_4;
-KQ5 = _input.quickswap_5;
+KQ0 = _input.quickswap_0_pressed;
+KQ1 = _input.quickswap_1_pressed;
+KQ2 = _input.quickswap_2_pressed;
+KQ3 = _input.quickswap_3_pressed;
+KQ4 = _input.quickswap_4_pressed;
+KQ5 = _input.quickswap_5_pressed;
 
 SC_DOWN = _input.wep_down;
 SC_UP   = _input.wep_up;
-
+emote_pressed  = _input.emote_pressed;
 
 KRUP	= false;
 KRDOWN	= false;
@@ -188,3 +188,27 @@ if ( palette_init ) {
 }
 
 #endregion
+switch(emote_state) {
+	case 0:
+		if ( emote_pressed ) {
+			emote_state = 1;
+		}
+	break;
+	case 1:
+		if  ( KQ0) {emote_state = 2; KQ0 = false; emote_timer = 0; audio_play_sound_pitch(snd_cute_highpitch,RR(0.8,0.9), RR(0.95,1.1),-2,0.7);}
+		if  ( KQ1) {emote_state = 3; KQ1 = false; emote_timer = 0; audio_play_sound_pitch(snd_cute_highpitch,RR(0.8,0.9), RR(0.95,1.1),-2,0.7);}
+		if  ( KQ2) {emote_state = 4; KQ2 = false; emote_timer = 0; audio_play_sound_pitch(snd_cute_highpitch,RR(0.8,0.9), RR(0.95,1.1),-2,0.7);}
+		if  ( KQ3) {emote_state = 5; KQ3 = false; emote_timer = 0; audio_play_sound_pitch(snd_cute_highpitch,RR(0.8,0.9), RR(0.95,1.1),-2,0.7);}
+		if  ( KQ4) {emote_state = 6; KQ4 = false; emote_timer = 0; audio_play_sound_pitch(snd_cute_highpitch,RR(0.8,0.9), RR(0.95,1.1),-2,0.7);}
+		if  ( KQ5) {emote_state = 7; KQ5 = false; emote_timer = 0; audio_play_sound_pitch(snd_cute_highpitch,RR(0.8,0.9), RR(0.95,1.1),-2,0.7);}
+		if ( emote_state == 1 && emote_pressed ) emote_state = 0;
+	break;
+	default:
+		if ( emote_pressed ) emote_state = 1;
+		if ( emote_timer++ > 80 ) {
+			emote_state = 0;
+		}
+	break;
+}
+
+

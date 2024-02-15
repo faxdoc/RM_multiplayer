@@ -244,6 +244,7 @@
     {"name":"sreadyversus_bg","order":7,"path":"sprites/sreadyversus_bg/sreadyversus_bg.yy",},
     {"name":"splayer_gun_pistol_silhouette","order":4,"path":"sprites/splayer_gun_pistol_silhouette/splayer_gun_pistol_silhouette.yy",},
     {"name":"smaya_heavy_attack_start","order":3,"path":"sprites/smaya_heavy_attack_start/smaya_heavy_attack_start.yy",},
+    {"name":"stext_icons","order":8,"path":"sprites/stext_icons/stext_icons.yy",},
     {"name":"ropen","order":7,"path":"rooms/ropen/ropen.yy",},
     {"name":"snd_maya_parry","order":2,"path":"sounds/snd_maya_parry/snd_maya_parry.yy",},
     {"name":"sobsticale_old","order":6,"path":"sprites/sobsticale_old/sobsticale_old.yy",},

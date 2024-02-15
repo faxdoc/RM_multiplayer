@@ -36,6 +36,7 @@ if (!variable_global_exists("rollback_defined")) {
 		KBACK:	vk_enter,
 		mx:		m_axisx,
 		my:		m_axisy,
+		emote: ord("X"),
 		
 		wep_down:	m_scroll_down,
 		wep_up:		m_scroll_up,

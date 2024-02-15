@@ -5,6 +5,10 @@ event_inherited();
 //	player_name = "Fern";
 	
 //}
+emote_pressed = false;
+emote_state = 0;
+emote_timer = 0;
+
 update_cooldown = 120;
 victory_voice_played = false;
 can_input			= true;

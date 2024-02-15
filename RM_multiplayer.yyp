@@ -149,7 +149,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.11.1.129",
+    "IDEVersion": "2023.1100.0.444",
   },
   "resources": [
     {"id":{"name":"snd_ameli_win","path":"sounds/snd_ameli_win/snd_ameli_win.yy",},},
@@ -311,6 +311,7 @@
     {"id":{"name":"splayer_gun_pistol_silhouette","path":"sprites/splayer_gun_pistol_silhouette/splayer_gun_pistol_silhouette.yy",},},
     {"id":{"name":"snd_land","path":"sounds/snd_land/snd_land.yy",},},
     {"id":{"name":"smaya_heavy_attack_start","path":"sprites/smaya_heavy_attack_start/smaya_heavy_attack_start.yy",},},
+    {"id":{"name":"stext_icons","path":"sprites/stext_icons/stext_icons.yy",},},
     {"id":{"name":"stree_yellow_test","path":"sprites/stree_yellow_test/stree_yellow_test.yy",},},
     {"id":{"name":"ropen","path":"rooms/ropen/ropen.yy",},},
     {"id":{"name":"snd_maya_parry","path":"sounds/snd_maya_parry/snd_maya_parry.yy",},},
