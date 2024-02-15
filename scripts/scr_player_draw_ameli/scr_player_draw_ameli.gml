@@ -23,6 +23,7 @@ switch( draw_type ) {
 		var recoil_y = LDY( recoil, var_dir ) * 0.6;
 		var xx = var_dir > 0 ? var_dir/40 : var_dir/80;
 		
+		shader_set(shd_palette);
 		switch(ameli_arm_inner_state) {
 			case e_ameli_arm_inner_state.idle://knife_timer < 21 ? min(11,knife_timer/1):12,
 				draw_sprite_ext( sameli_arm_inner, 0,x-0*draw_xscale-recoil_x-(xx*draw_xscale*2),yl_-24+bwave+y_off-recoil_y+1-5, -draw_xscale, 1, 0, image_blend, draw_alpha );
@@ -95,7 +96,7 @@ switch( draw_type ) {
 				draw_sprite_ext( sameli_arm_outer_ball, ( ameli_arm_outer_timer/ 10 )*2.7, x-1*draw_xscale-(xx*draw_xscale*2), yl_-26+bwave+y_off*0.9, -draw_xscale, 1, 0, image_blend, draw_alpha );
 			break;
 		}
-	
+		
 		//if ( switching_weapon ) {
 			// draw_sprite_ext( sameli_arm_outer, switch_timer/3,x-0*draw_xscale, yl_-26+bwave+y_off, -draw_xscale, 1, 0, image_blend, draw_alpha );
 		//} else {
@@ -106,7 +107,7 @@ switch( draw_type ) {
 		
 		// if ( knife_state == 0 && grenade_cooldown <= 0 ) {
 		// if ( ameli_ranged_mode ) {
-			draw_sprite_ext(sameli_book_range,0,ameli_book_x,ameli_book_y, -draw_xscale, 1, 0, c_white, 1 );
+		draw_sprite_ext(sameli_book_range,0,ameli_book_x,ameli_book_y, -draw_xscale, 1, 0, c_white, 1 );
 		// } else {
 		// 	draw_sprite_ext(sameli_book,0,ameli_book_x,ameli_book_y, -draw_xscale, 1, 0, c_white, 1 );
 			

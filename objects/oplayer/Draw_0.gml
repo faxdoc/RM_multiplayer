@@ -54,14 +54,40 @@ draw_circle_colour(x-draw_xscale*2,y-29, 10, intcol_,intcol_, true );
 DSA(1);
 
 shader_set(shd_palette);
-	shader_set_uniform_f( main_shader_pal_index_pointer, player_id );
-	texture_set_stage( shader_get_sampler_index(shd_palette, "palette" ), sprite_get_texture(spalette_player_1,0) );
-if ( palette_init ) {	
-	var palette_sprite = spalette_player_1; var uvs = sprite_get_uvs(spalette_player_1,0);
-	shader_set_uniform_f(	    main_shader_col_num_pointer,   sprite_get_height(palette_sprite)  );
-	shader_set_uniform_f(	    main_shader_pal_num_pointer,   sprite_get_width(palette_sprite) );
-	shader_set_uniform_f_array( main_shader_uvs_pointer,	   [uvs[0],uvs[1],uvs[2]-uvs[0],uvs[3]-uvs[1]]  );
+shader_set_uniform_f( main_shader_pal_index_pointer, player_id );
+switch(char_index) {
+	case e_char_index.fern:
+		texture_set_stage( shader_get_sampler_index(shd_palette, "palette" ), sprite_get_texture(spalette_player_1,0) );
+	break;
+	case e_char_index.maya:
+		texture_set_stage( shader_get_sampler_index(shd_palette, "palette" ), sprite_get_texture( spalette_maya, 0 ) );
+	break;
+	case e_char_index.ameli:
+		texture_set_stage( shader_get_sampler_index(shd_palette, "palette" ), sprite_get_texture( spalette_ameli, 0 ) );
+	break;
 }
+	
+//if ( palette_init ) {
+switch(char_index) {
+	case e_char_index.fern:
+		//texture_set_stage( shader_get_sampler_index(shd_palette, "palette" ), sprite_get_texture(spalette_player_1,0) );
+		var palette_sprite = spalette_player_1; var uvs = sprite_get_uvs( spalette_player_1, 0 );
+	break;
+	case e_char_index.maya:
+		//texture_set_stage( shader_get_sampler_index(shd_palette, "palette" ), sprite_get_texture( spalette_maya, 0 ) );
+		var palette_sprite = spalette_maya; var uvs = sprite_get_uvs( spalette_maya, 0 );
+	break;
+	case e_char_index.ameli:
+		//texture_set_stage( shader_get_sampler_index(shd_palette, "palette" ), sprite_get_texture( spalette_ameli, 0 ) );
+		var palette_sprite = spalette_ameli; var uvs = sprite_get_uvs( spalette_ameli, 0 );
+	break;
+}
+
+//shader_set_uniform_f(	    main_shader_col_num_pointer,   sprite_get_height(palette_sprite)  );
+//shader_set_uniform_f(	    main_shader_pal_num_pointer,   sprite_get_width(palette_sprite) );
+shader_set_uniform_f_array( main_shader_uvs_pointer,	   [uvs[0],uvs[1],uvs[2]-uvs[0],uvs[3]-uvs[1]]  );
+
+//}
 
 shader_reset();
 

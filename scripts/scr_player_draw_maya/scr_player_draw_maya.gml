@@ -63,13 +63,10 @@ function scr_player_draw_maya(){
 			#endregion
 			
 			
-			
-			
-			
 			#region arm inner
 			var recoil_x = LDX( recoil, var_dir )*draw_xscale*0.6;
 			var recoil_y = LDY( recoil, var_dir )*0.6;
-		
+			shader_set( shd_palette );
 			if ( knife_state == 0 || maya_grenade_state == 0 ) {
 				
 				var inner_arm_x 	= xx_ - 4 * draw_xscale - recoil_x + new_arm_x;
@@ -80,6 +77,7 @@ function scr_player_draw_maya(){
 			} else {
 				draw_sprite_ext( splayer_maya_hand_inner_knife, knife_timer < 21 ? min(11,knife_timer/1):12,xx_-1*draw_xscale-recoil_x+new_arm_x,yy_+new_hand_y-24+bwave+y_off-recoil_y+1, draw_xscale, 1, 0, image_blend, draw_alpha );
 			}
+			shader_reset();
 			#endregion
 			
 			#region swing inside
@@ -174,6 +172,7 @@ function scr_player_draw_maya(){
 			var head_x = xx_ - ( 4 * draw_xscale ) - ( xx * draw_xscale * 0.5 ) + ( hhp_ * 6 );
 			var head_y = yy_ - 25 + new_head_y + ( y_off * 0.5 ) + bwave + ( crouching ? 1 : 0 ) - 1;
 			
+			shader_set( shd_palette );
 			if ( going_back  ) head_y += abs( maya_body_tilt );
 			if ( shoot_delay ) {
 				draw_sprite_ext( splayer_maya_head, var_dir > -40 ? (var_dir < 25 ? 1 : ( var_dir < 55 ? 2 : 3 )  ) : 0, round( head_x ), round( head_y ), draw_xscale, 1, 0, image_blend, draw_alpha );
@@ -185,6 +184,7 @@ function scr_player_draw_maya(){
 				draw_sprite_ext( splayer_maya_eyes_mid, blink_state, round(head_x), round(head_y), draw_xscale, 1, 0, image_blend, draw_alpha );
 				
 			}
+			
 			
 			bwave = round(wave(bmax,bmin,bdur,.87));
 			var xx = var_dir > 0 ? var_dir/25 : -var_dir/80;
@@ -219,7 +219,7 @@ function scr_player_draw_maya(){
 					draw_sprite_ext( splayer_maya_body, ind,xx_+ex+hhp_,yy_-10+y_off*0.5+bwave-1,draw_xscale,1,-hhp_*20, image_blend, draw_alpha );
 				}
 			}
-			
+			shader_reset();
 			#endregion
 			
 			// shader_set(shader);
@@ -298,10 +298,11 @@ function scr_player_draw_maya(){
 			
 				// shader_reset();
 				// start_palette();
+				shader_set( shd_palette );
 				bwave = round( wave( bmax, bmin, bdur, 0.9 ) );
 				draw_sprite_ext( splayer_maya_hand_outer, 0, xx_-4*draw_xscale+new_arm_x,yy_-23+new_hand_y+y_off+bwave-recoil_y*.25, draw_xscale, 1,   arm_dir_*draw_xscale, image_blend, draw_alpha );
 			
-				// shader_reset();
+				shader_reset();
 			} else {
 				bwave = round( wave( bmax, bmin, bdur, 0.9 ) );
 				if ( maya_show_outside_swing ) {
@@ -359,9 +360,13 @@ function scr_player_draw_maya(){
 					(  arm_dir_ * draw_xscale * ( arm_dir_ > 0 ? 1 : 0.4 ) ) - ( 60 * draw_xscale )+( min(hsp*.1,5)* 10 ), 
 						maya_sword_blink_colour, ( maya_sword_blink_alpha / 120 ) * 1 );
 						
+					shader_set( shd_palette );
 					draw_sprite_ext( splayer_maya_hand_outer_swing_animation_alt, min( ( 30 - shoot_delay ) / 2, 5 ), xx_-4*draw_xscale+new_arm_x,yy_-23+new_hand_y+y_off+bwave-recoil_y*0.25, draw_xscale, 1,   aidir*draw_xscale, image_blend, draw_alpha );
+					shader_reset();
 				} else {
+					shader_set( shd_palette );
 					draw_sprite_ext( splayer_maya_hand_outer_swing_animation, min( ( 30 - shoot_delay ) / 2, 5 ), xx_-4*draw_xscale+new_arm_x,yy_-23+new_hand_y+y_off+bwave-recoil_y*0.25, draw_xscale, 1,   aidir*draw_xscale, image_blend, draw_alpha );
+					shader_reset();
 				}
 			}
 			#endregion

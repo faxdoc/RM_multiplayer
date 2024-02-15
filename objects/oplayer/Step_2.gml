@@ -260,6 +260,7 @@ switch(meta_state) {
 				case e_char_index.fern:
 					//portrait_expression_base = sface_fern_normal;
 					//portrait_expression_hurt = sface_fern_hit;
+					player_palette = spalette_player_1;
 				break;
 				case e_char_index.maya:
 					base_walk_spd += 0.04;//base_walk_spd	= 0.385;
@@ -269,6 +270,7 @@ switch(meta_state) {
 					base_jump_pwr += 1.2;// 4.68;
 					//portrait_expression_base = sface_maya_normal;
 					//portrait_expression_hurt = sface_maya_hit;
+					player_palette = spalette_maya;
 				break;
 				case e_char_index.ameli:
 					base_walk_spd *= 0.92;
@@ -282,9 +284,36 @@ switch(meta_state) {
 					base_jump_pwr += 0.5;
 					orbs[1].idle_timer = 120;
 					orbs[2].idle_timer = 240;
+					player_palette = spalette_ameli;
 					
 				break;
 			}
+			
+			main_shader = shd_palette;
+			main_shader_col_num_pointer   = shader_get_uniform(shd_palette,       "col_num"     );
+			main_shader_pal_num_pointer   = shader_get_uniform(shd_palette,       "pal_num"     );
+			main_shader_pal_index_pointer = shader_get_uniform(shd_palette,       "pal_index"   );
+			main_shader_palette_pointer	  = shader_get_sampler_index(shd_palette, "palette"     );
+			main_shader_uvs_pointer		  = shader_get_uniform(shd_palette,       "palette_uvs" );
+
+			shader_set(shd_palette);
+				var palette_sprite = player_palette;
+				palette_texture = sprite_get_texture(palette_sprite,0);
+				var uvs = sprite_get_uvs(palette_sprite,0);
+				shader_set_uniform_f(	    main_shader_col_num_pointer,   sprite_get_height(palette_sprite)  );
+				shader_set_uniform_f(	    main_shader_pal_num_pointer,   sprite_get_width(palette_sprite) );
+				shader_set_uniform_f(	    main_shader_pal_index_pointer, 1 );
+				shader_set_uniform_f_array( main_shader_uvs_pointer,	   [uvs[0],uvs[1],uvs[2]-uvs[0],uvs[3]-uvs[1]]  );
+	
+				texture_set_stage( main_shader_palette_pointer, palette_texture );
+			shader_reset();
+		
+		
+			function start_palette() {
+				shader_set(shd_palette);
+				texture_set_stage( main_shader_palette_pointer, palette_texture );
+			}
+
 			#endregion
 		}
 		
