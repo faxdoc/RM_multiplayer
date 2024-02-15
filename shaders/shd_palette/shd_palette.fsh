@@ -21,8 +21,8 @@ void main() {
 	vec4 basecol = texture2D( gm_BaseTexture, v_vTexcoord );
 	
 	float newpos;
-	for( float i = 0.; i < 48.; i += 1. ) {
-		newpos =  palette_top+(i/48.0)*palette_vlen;
+	for( float i = 0.; i < 31.; i += 1. ) {
+		newpos =  palette_top+(i/31.0)*palette_vlen;
 		vec4 test_col = texture2D( palette, vec2( palette_left, newpos ) );
 		if ( basecol == test_col ) {
 			basecol.rgb = texture2D(  palette, vec2( palette_left+((pal_index+1.)/pal_num)*palette_width, newpos ) ).rgb;
