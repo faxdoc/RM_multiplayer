@@ -149,7 +149,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.1100.0.444",
+    "IDEVersion": "2023.11.1.129",
   },
   "resources": [
     {"id":{"name":"snd_ameli_win","path":"sounds/snd_ameli_win/snd_ameli_win.yy",},},
@@ -624,6 +624,7 @@
     {"id":{"name":"chain_maya","path":"sprites/chain_maya/chain_maya.yy",},},
     {"id":{"name":"sflower_extra_5","path":"sprites/sflower_extra_5/sflower_extra_5.yy",},},
     {"id":{"name":"GMLive_roomLoader","path":"scripts/GMLive_roomLoader/GMLive_roomLoader.yy",},},
+    {"id":{"name":"spalette_maya","path":"sprites/spalette_maya/spalette_maya.yy",},},
     {"id":{"name":"splayer_maya_ref","path":"sprites/splayer_maya_ref/splayer_maya_ref.yy",},},
     {"id":{"name":"sameli_trap_spear253","path":"sprites/sameli_trap_spear253/sameli_trap_spear253.yy",},},
     {"id":{"name":"smaya_name_tag","path":"sprites/smaya_name_tag/smaya_name_tag.yy",},},

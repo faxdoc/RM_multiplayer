@@ -516,6 +516,7 @@
     {"name":"chain_maya","order":2,"path":"sprites/chain_maya/chain_maya.yy",},
     {"name":"sflower_extra_5","order":3,"path":"sprites/sflower_extra_5/sflower_extra_5.yy",},
     {"name":"GMLive_roomLoader","order":2,"path":"scripts/GMLive_roomLoader/GMLive_roomLoader.yy",},
+    {"name":"spalette_maya","order":5,"path":"sprites/spalette_maya/spalette_maya.yy",},
     {"name":"splayer_maya_ref","order":6,"path":"sprites/splayer_maya_ref/splayer_maya_ref.yy",},
     {"name":"sameli_trap_spear253","order":7,"path":"sprites/sameli_trap_spear253/sameli_trap_spear253.yy",},
     {"name":"smaya_name_tag","order":17,"path":"sprites/smaya_name_tag/smaya_name_tag.yy",},
