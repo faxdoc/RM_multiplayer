@@ -3,9 +3,14 @@
 switch( meta_state ) {
 	#region char select
 	case e_meta_state.char_select:
+		if instance_exists(oclo) with oclo { IDD(); }
 		//if ( !audio_is_playing(snd_ambient_character_select) ) {
 		//	audio_play_sound(snd_ambient_character_select,0,0);
 		//}
+		if instance_exists(obutton_steam) with (obutton_steam)  { IDD();	 }
+		//if instance_exists() with ()  { IDD( orandom );			 }
+		if instance_exists(omenu_bg_render) with (omenu_bg_render)  { IDD( omenu_bg_render );	 }
+		if instance_exists(obutton) with (obutton)  { IDD();	 }
 		
 		var lmx_ = MX-camera_x;
 		var lmy_ = MY-camera_y;
@@ -204,21 +209,21 @@ switch(meta_state) {
 	case e_meta_state.round_end:
 		final_effect_speed *= 0.96;
 		final_effect_speed = max(0.03,final_effect_speed);
-		if ( final_timer >= 150 && !victory_voice_played ) {
-			switch( winner.char_index ) {
-					case e_char_index.fern:
-						audio_play_sound_pitch( snd_fern_win, 1, 1, false );
-					break;
-					case e_char_index.maya:
-						audio_play_sound_pitch( snd_maya_win, 1, 1, false );
-					break;
-					case e_char_index.ameli:
-						audio_play_sound_pitch(		snd_ameli_win, 1, 1, false );
-						//audio_play_sound();
-					break;
-				}
-			victory_voice_played = true;
-		}
+		//if ( final_timer >= 150 && !victory_voice_played ) {
+		//	switch( winner.char_index ) {
+		//			case e_char_index.fern:
+		//				audio_play_sound_pitch( snd_fern_win, 1, 1, false );
+		//			break;
+		//			case e_char_index.maya:
+		//				audio_play_sound_pitch( snd_maya_win, 1, 1, false );
+		//			break;
+		//			case e_char_index.ameli:
+		//				audio_play_sound_pitch(		snd_ameli_win, 1, 1, false );
+		//				//audio_play_sound();
+		//			break;
+		//		}
+		//	victory_voice_played = true;
+		//}
 		final_timer += 0.95;
 		if ( final_timer > 340 ) {
 			meta_state = e_meta_state.char_select;
@@ -355,7 +360,8 @@ switch(meta_state) {
 		pre_hp = hp;
 		draw_alpha = 1;
 		hit_substate = 0;
-		
+		flying_charge = 60;
+
 	break;
 	#region main
 	case e_meta_state.main:
@@ -629,12 +635,13 @@ if ( input_skip < 2 && check_m) {
 #endregion
 
 //if ( player_local ) {
-//	if ( !update_cooldown-- ) {
-//		if ( opreference_tracker.player_anti_flicker[player_id] ) {
-//			application_surface_draw_enable( true );
-//		} else {
-//			application_surface_draw_enable( false );
-//		}//application_surface_draw_enable()
-//		update_cooldown = 60;
-//	}
+//if ( !update_cooldown-- && update_cooldown > -30 ) {
+////	if ( opreference_tracker.player_anti_flicker[player_id] ) {
+//		application_surface_draw_enable( true );
+////	} else {
+////		application_surface_draw_enable( false );
+////	}//application_surface_draw_enable()
+//	update_cooldown = -60;
+//}
+		//application_surface_draw_enable( true );
 //}

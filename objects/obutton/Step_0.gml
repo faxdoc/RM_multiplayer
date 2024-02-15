@@ -32,7 +32,7 @@ if ( mouse_check_button_pressed(mb_left) ) {
 		IDD( omenu_bg_render );
 		omultiplayer_manager.game_has_started = true; 
 		audio_stop_sound( snd_music_menu_loop );
-		
+		ICD(0,0,-500,oclo);
 		switch(sprite_index) {
 			case stutorial_active:		  rollback_create_game( 2, true  ); room_goto(rtutorial); break;
 			case s_2playermainmenuactive: rollback_create_game( 2, false ); break;

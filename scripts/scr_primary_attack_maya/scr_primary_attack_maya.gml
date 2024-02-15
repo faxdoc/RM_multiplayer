@@ -232,7 +232,7 @@ switch( maya_sword_swing_state ) {
 					repeat( 2 ) {
 
 						var b = bullet_general( 16*dmg_mult*nmult_, 0.1, splayer_maya_slash_heavy, 0, , 0.5 );
-						b.knockback *=  1.7;
+						b.knockback *=  1.3;
 						b.duration  = 16;
 						b.piercing  = true;
 						b.image_xscale *=  3.1*1.4*second_swing_size_mult*0.82;

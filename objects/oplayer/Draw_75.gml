@@ -129,7 +129,8 @@ if ( player_local ) {
 			"M: Infinite HP"							+ (global.training_infinite_hp	? " On" : " Off"),
 			"B: Display stun frames/invis"				,
 			"C: Display speed"							,
-			"V: Display hitboxes"
+			"V: Display hitboxes",
+			"J: Return to menu"
 		];
 		var keys = [
 			ord("I"),
@@ -142,6 +143,7 @@ if ( player_local ) {
 			ord("B"),
 			ord("C"),
 			ord("V"),
+			ord("J"),
 		];
 		var functions = [
 			function() { game_set_speed( game_get_speed(gamespeed_fps) == 60 ? 15 : ( game_get_speed(gamespeed_fps) == 30 ? 60 : 30 ),gamespeed_fps)},
@@ -154,6 +156,7 @@ if ( player_local ) {
 			function() { global.training_stun_render		= !global.training_stun_render		 },
 			function() { global.speed_render		= !global.speed_render		 },
 			function() { global.training_display_hitboxes	= !global.training_display_hitboxes  },
+			function() { game_restart(); rollback_leave_game();  },
 		];
 		var tr_x = floor(GW*0.6);
 		var tr_y = floor(GH*0.05);

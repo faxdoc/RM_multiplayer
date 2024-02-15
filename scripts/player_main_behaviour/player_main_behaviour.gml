@@ -104,7 +104,8 @@ function player_main_behaviour(){
 			if  ( gen_col(x,y+1) || alt_col ) can_dash = true;
 			
 			var check_m = char_index != e_char_index.maya || knife_state == 0;
-			if ( KDASHP && state == e_player.normal && can_dash  && !can_dodge_cooldown && check_m ) {
+			var check_a =  char_index != e_char_index.ameli || flying_charge > 0; 
+			if ( KDASHP && state == e_player.normal && can_dash  && !can_dodge_cooldown && check_m && check_a ) {
 				var hh = KRIGHT-KLEFT;
 				var vv = KDOWN-KUP;
 				
@@ -154,7 +155,8 @@ function player_main_behaviour(){
 			if  ( gen_col(x,y+1) || alt_col ) can_dash = true;
 			
 			var check_m = char_index != e_char_index.maya || knife_state == 0;
-			if ( KDASHP && state == e_player.normal && can_dash  && !can_dodge_cooldown && check_m ) {
+			var check_a =  char_index != e_char_index.ameli || flying_charge > 0; 
+			if ( KDASHP && state == e_player.normal && can_dash  && !can_dodge_cooldown && check_m && check_a ) {
 				var hh = KRIGHT-KLEFT;
 				var vv = KDOWN-KUP;
 				

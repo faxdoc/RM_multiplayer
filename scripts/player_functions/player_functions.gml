@@ -599,7 +599,8 @@ function player_ledge_detect(hh,jump_hold) {
 				}
 				can_hook_delay = 0;
 				if( instance_exists(own_grapple) ){
-					IDD(own_grapple);
+					//IDD(own_grapple);
+					own_grapple.state = 2;
 				}
 				draw_xscale = hh;
 				audio_play_sound_pitch(snd_ledge_grab, 0.85, RR(.9,1.1)+.05, 0);
@@ -611,10 +612,11 @@ function player_ledge_detect(hh,jump_hold) {
 				}
 				can_hook_delay = 0;
 				if( instance_exists(own_grapple) ){
-					IDD(own_grapple);
+					//IDD(own_grapple);
+					own_grapple.state = 2;
 				}
 			} else {
-				if( substate == 1 )pre_hook_state = e_player.normal;
+				if( substate == 1 ) pre_hook_state = e_player.normal;
 				vsp = 0;
 				can_hook_delay = 0;
 				state = e_player.ledge;

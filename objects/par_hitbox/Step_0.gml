@@ -101,7 +101,7 @@ repeat(step_number) {
 	}
 	
 	#region Hit enemy
-	if ( t && parent != undefined && t != parent && !t.INVIS && ( !multihit || multihit_cooldown <= 0 ) && ( !do_hitscan_check || scr_check_hitscan_collision( oplayer.x, player_mid_y, t ) ) && !piercing_cancel ) {
+	if ( t && parent != undefined && t != parent && !t.INVIS && ( !multihit || multihit_cooldown <= 0 ) && ( !do_hitscan_check || scr_check_hitscan_collision( parent.x, parent.y-22, t ) ) && !piercing_cancel ) {
 		hit_freeze = 4;
 		var pt_ = clamp( 1.1 - dmg / 90, 0.75, 1 )+0.1;
 		var vol_= clamp( 0.3 + dmg / 80, 0.4, 0.9 );
@@ -241,6 +241,9 @@ repeat(step_number) {
 			}
 			t.SHAKE += shake_add * 0.5;
 			parent.SHAKE += shake_add;
+		} else {
+			t.hit_timer = floor(dmg*7.5*stun_mult);
+			
 		}
 		
 		

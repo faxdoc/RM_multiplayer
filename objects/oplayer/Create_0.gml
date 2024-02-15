@@ -5,7 +5,7 @@ event_inherited();
 //	player_name = "Fern";
 	
 //}
-update_cooldown = 60;
+update_cooldown = 120;
 victory_voice_played = false;
 can_input			= true;
 #macro WORLD_GRAV 1

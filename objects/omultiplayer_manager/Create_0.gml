@@ -70,6 +70,7 @@ if ( global.test_enabled ) {
 } else if ( !rollback_join_game() ) {
 	game_has_started = false;
 } else {
+	ICD(0,0,-500,oclo);
 	game_has_started = true;
 	with ( obutton ) {
 		IDD();

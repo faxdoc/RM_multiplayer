@@ -388,6 +388,7 @@ switch( attack_state ) {
 					// var y_ = y;
 					fnc_general_explode( 0.75, 0.75 );
 					
+					move_timer = min(move_timer,130 + 30 );
 					var charge_ = 0.2 + ( ( move_timer - 70 ) / 60 );
 					audio_play_sound_pitch( snd_ameli_activate,    RR(0.8,0.9)*min(1,charge_*2), RR(0.95,1.1), 1, 0.7 );
 					audio_play_sound_pitch( snd_ameli_explotion_1, RR(0.8,0.9)*min(1,charge_*2), RR(0.9,1.00)*0.95, 1, 0.7 );
@@ -764,8 +765,8 @@ switch( attack_state ) {
 						var dr__ = point_direction(x, y, parent.x, parent.y-22);
 						image_xscale = 2.5;
 						image_yscale = 2.5;
-						var ii = 32; while ( gen_col(x,y+1) && ii-- ) {
-							x += LDX( 5, dr__ );
+						var ii = 128; while ( gen_col(x,y+1) && ii-- ) {
+							x -= parent.draw_xscale*8;
 							y += LDY( 2, dr__ );
 						}
 						image_xscale = 2;

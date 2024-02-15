@@ -10,14 +10,14 @@
   "bitRate": 128,
   "compression": 1,
   "conversionMode": 0,
-  "duration": 2.5385,
+  "duration": 5.20737,
   "parent": {
     "name": "temp_unimport",
     "path": "folders/Sounds/sound/gameplay/temp_unimport.yy",
   },
   "preload": false,
   "sampleRate": 44100,
-  "soundFile": "snd_victory.wav",
+  "soundFile": "snd_victory.ogg",
   "type": 0,
-  "volume": 0.5,
+  "volume": 0.45,
 }
