@@ -307,10 +307,27 @@ switch(current_weapon) {
 	#region sniper 
 	case e_gun.sniper:
 		if ( gun_charge ) {
+			RELOAD[current_weapon] = 170;
 			var max_charge = 60;
 			var pre_charge = gun_charge;
-			gun_charge += 1.15;
-			gun_charge = min(gun_charge,max_charge);
+			gun_charge += 1.12;
+			gun_charge = min( gun_charge, max_charge );
+			if ( gun_charge == max_charge ) {
+				overcharge++;
+				if ( overcharge >= 180 ) {
+					gun_charge = -1;
+					RELOAD[cg] = 210;
+					audio_play_sound_pitch(snd_shoot_0, 0.95, (1.05+random_fixed(0.1))*0.7, 1 );
+					audio_play_sound_pitch(snd_shoot_2,  0.4, (0.95+random_fixed(0.1))*0.7, 1 );
+					gun_general( 50, 90, 2 );
+					if ( charge_sound != -1 ) {
+						audio_stop_sound(charge_sound);
+						charge_sound = -1;
+					}
+				}
+			} else {
+				overcharge = 0;
+			}
 			if ( gun_charge == max_charge && pre_charge != max_charge ) {
 				audio_play_sound_pitch( snd_reload_1,			0.9, 0.85, 0 );
 				audio_play_sound_pitch( snd_railgun_charge_done,  1, 0.9,  0 );
@@ -322,8 +339,8 @@ switch(current_weapon) {
 				//audio_play_sound_pitch(snd_reload_1,.6,.9,0);
 				SHAKE += 2;
 				repeat(7) {
-					var spd = 3+random_fixed(1);
-					var _dir = random_fixed(360);
+					var spd = 3+random_fixed( 1 );
+					var _dir = random_fixed( 360 );
 					var	fx = create_fx( x + hsp, y + vsp -20, sdot_wave, .6+random_fixed(.7), 0, -110 );
 					fx.image_blend = merge_color(dark_col,choose_fixed(c_blue,c_aqua),.2+random_fixed(.2));
 					fx.hsp = LDX(spd,_dir);
@@ -334,7 +351,7 @@ switch(current_weapon) {
 			if ( gun_charge < max_charge )&& random_fixed(1) < max( .1, gun_charge/140 ) {
 				var dr = random_fixed(360);
 				var ld_ = id;
-				with ICD( x+LDX(20+gun_charge,dr), y-20+LDY(20+gun_charge,dr), depth+RR(-1,1), ocharge_fx ) {
+				with( ICD( x+LDX(20+gun_charge,dr), y-20+LDY(20+gun_charge,dr), depth+RR(-1,1), ocharge_fx ) ){
 					image_blend = choose_fixed(c_ltgray,c_aqua);
 					target_offset_y = -16;
 					target = ld_;
@@ -346,11 +363,11 @@ switch(current_weapon) {
 				hsp *= .84;
 			}
 			
-			if ( !K1 ) {
+			if ( !K1 && gun_charge > 0 ) {
 				gun_len = 50;
 				effect_general(3,12,6);
 				gun_general(50,90,2);
-				var cmult = gun_fully_charged ? 1.1 : 0.85;
+				var cmult = gun_fully_charged ? 1.0 : 0.85;
 				var b = bullet_general(gun_charge*0.85*cmult,49*0.7,bullet_sprites[0],0,, 0.96 );
 				b.duration		= 30/0.75;
 				b.image_xscale  = ( (gun_charge*0.7) + 15 ) / 12 * cmult;
@@ -369,7 +386,7 @@ switch(current_weapon) {
 				
 				bullet_effects_general(undefined);
 				gun_charge = -1;
-				RELOAD[cg] = 135;
+				RELOAD[cg] = 190;
 				audio_play_sound_pitch(snd_shoot_0,0.95, 1.05+random_fixed(.1), 1 );
 				audio_play_sound_pitch(snd_shoot_2, 0.4,  .95+random_fixed(.1), 1 );
 				if ( charge_sound != -1 ) {
@@ -378,7 +395,7 @@ switch(current_weapon) {
 				}
 				
 			}
-			RELOAD[current_weapon] = 135;
+			
 		} else {
 			//var needed_ = sniper_cost;
 			//if ( !k1_ && !SHOOT_BUFFER ) exit; 

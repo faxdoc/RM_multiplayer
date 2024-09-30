@@ -8,6 +8,7 @@ event_inherited();
 emote_pressed = false;
 emote_state = 0;
 emote_timer = 0;
+overcharge = 0;
 
 update_cooldown = 120;
 victory_voice_played = false;
