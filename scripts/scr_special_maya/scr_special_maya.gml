@@ -2,7 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_special_maya(){
     #region Maya parry
-		player_unactive_general(false);
+		player_unactive_general( false );
 		
 		if ( active_timer == 0 ) {
 			audio_play_sound_pitch( snd_blob_hit_wall, 0.3, 0.4, 0 );
@@ -37,7 +37,7 @@ function scr_special_maya(){
 				}
 				
 				if ( t && ds_ < 5 ) {
-					if instance_exists(own_grapple ) {
+					if( instance_exists(own_grapple ) ){
 						with ( own_grapple ) {
 							state = 2;
 						}

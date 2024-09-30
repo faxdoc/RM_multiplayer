@@ -352,13 +352,22 @@ if ( player_local ) {
 				var rl_val_ = 0;
 				var pw_val_ = 0;
 				var i = 0;
-				draw_sprite_ext( smaya_abilities_icons, i, xx - 1 + ( i * ds_ )+4, yy+4, 1, 1, 0, c_white, amult );
-			
+				// draw_sprite_ext( smaya_abilities_icons, i, xx - 1 + ( i * ds_ )+4, yy+4, 1, 1, 0, c_white, amult );
+				if ( alt_clip == 0 ) {
+						draw_sprite_ext( smaya_abilites_fill,   1, xx - 0 + ( i * ds_ )+4, yy+5+11, 1, pw_val_, 0, merge_colour(c_gray, c_red, 0.6 ), amult*0.8 );
+						draw_sprite_ext( smaya_abilities_icons, i, xx - 1 + ( i * ds_ )+4, yy+4, 1, 1, 0, c_dkgray, amult );
+					} else if ( rl_val_ > 0 ) {
+						draw_sprite_ext( smaya_abilites_fill,   1, xx - 0 + ( i * ds_ )+4, yy+5+11, 1, pw_val_, 0, c_aqua, amult*0.7 );
+						draw_sprite_ext( smaya_abilities_icons, i, xx - 1 + ( i * ds_ )+4, yy+4, 1, 1, 0, c_ltgray, amult );
+					} else {
+						draw_sprite_ext( smaya_abilites_fill,   0, xx - 0 + ( i * ds_ )+4, yy+4+12, 1, 1, 0, c_gray, amult );
+						draw_sprite_ext( smaya_abilities_icons, i, xx - 1 + ( i * ds_ )+4, yy+4, 1, 1, 0, c_ltgray,  amult );
+				}
 				i = 1; repeat( 5 ) {
 					nnm_ = nms_[i];
 					rl_val_ = RELOAD[nnm_];
 					pw_val_ = ( 480 - rl_val_ ) / 480;
-					if ( WEP_DATA[ nnm_ ].found ) {
+					// if ( WEP_DATA[ nnm_ ].found ) {
 						if ( CLIP[nnm_] == 0 ) {
 							draw_sprite_ext( smaya_abilites_fill,   1, xx - 0 + ( i * ds_ )+4, yy+5+11, 1, pw_val_, 0, merge_colour(c_gray, c_red, 0.6 ), amult*0.8 );
 							draw_sprite_ext( smaya_abilities_icons, i, xx - 1 + ( i * ds_ )+4, yy+4, 1, 1, 0, c_dkgray, amult );
@@ -369,13 +378,13 @@ if ( player_local ) {
 							draw_sprite_ext( smaya_abilites_fill,   0, xx - 0 + ( i * ds_ )+4, yy+4+12, 1, 1, 0, c_gray, amult );
 							draw_sprite_ext( smaya_abilities_icons, i, xx - 1 + ( i * ds_ )+4, yy+4, 1, 1, 0, c_ltgray,  amult );
 						}
-					} else {
-						draw_sprite_ext( smaya_abilities_icons, i, xx - 1 + ( i * ds_ )+4, yy+4, 1, 1, 0, c_black, amult );
-					}
+					// } else {
+					// 	draw_sprite_ext( smaya_abilities_icons, i, xx - 1 + ( i * ds_ )+4, yy+4, 1, 1, 0, c_black, amult );
+					// }
 					i++;
 				}
 				
-				var alt_col_ = CLIP[current_weapon] != 0 || current_weapon == 0;
+				var alt_col_ = CLIP[current_weapon] != 0 || (current_weapon == 0 && alt_clip == 0 );
 				if ( alt_col_ ) {
 					draw_sprite_ext( smaya_abilities_bar, 1, xx, yy, 1, 1, 0, c_gray, amult );
 				} else {

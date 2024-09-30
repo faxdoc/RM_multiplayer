@@ -18,6 +18,11 @@ var i = 1; repeat( 5 ) {
 	}
 	i++;
 }
+if ( alt_clip != 3 ) {
+	if ( !alt_reload-- ) {
+		alt_clip = 3;
+	}
+}
 var on_ground_ = gen_col( x, y+1 );
 	
 #endregion

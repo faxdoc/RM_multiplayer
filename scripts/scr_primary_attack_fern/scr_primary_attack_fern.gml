@@ -336,7 +336,7 @@ switch(current_weapon) {
 					audio_stop_sound(charge_sound);
 					charge_sound = -1;
 				}
-				//audio_play_sound_pitch(snd_reload_1,.6,.9,0);
+				
 				SHAKE += 2;
 				repeat(7) {
 					var spd = 3+random_fixed( 1 );
@@ -348,7 +348,7 @@ switch(current_weapon) {
 					fx.frc = .9;
 				}
 			}
-			if ( gun_charge < max_charge )&& random_fixed(1) < max( .1, gun_charge/140 ) {
+			if ( gun_charge < max_charge )&& random_fixed(1) < max( 0.1, gun_charge/140 ) {
 				var dr = random_fixed(360);
 				var ld_ = id;
 				with( ICD( x+LDX(20+gun_charge,dr), y-20+LDY(20+gun_charge,dr), depth+RR(-1,1), ocharge_fx ) ){
@@ -387,8 +387,8 @@ switch(current_weapon) {
 				bullet_effects_general(undefined);
 				gun_charge = -1;
 				RELOAD[cg] = 190;
-				audio_play_sound_pitch(snd_shoot_0,0.95, 1.05+random_fixed(.1), 1 );
-				audio_play_sound_pitch(snd_shoot_2, 0.4,  .95+random_fixed(.1), 1 );
+				audio_play_sound_pitch(snd_shoot_0,0.95, 1.05+random_fixed(0.1), 1 );
+				audio_play_sound_pitch(snd_shoot_2, 0.4, 0.95+random_fixed(0.1), 1 );
 				if ( charge_sound != -1 ) {
 					audio_stop_sound(charge_sound);
 					charge_sound = -1;

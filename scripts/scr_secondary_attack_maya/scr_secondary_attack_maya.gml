@@ -22,8 +22,14 @@ function scr_secondary_attack_maya(){
 					//long swing?
 					if( current_weapon == e_gun.sniper )CLIP[e_gun.sniper] = min(CLIP[e_gun.sniper],1);
 					
+				} else {
+					if ( alt_clip == 3 ) {
+						alt_reload = 140;
+					}
+					alt_clip--;
+					
 				}
-				knife_timer = min(floor(maya_grenade_charge),5);
+				knife_timer = min( floor( maya_grenade_charge ), 5 );
 				//maya_grenade_charge *= 0.3;
 				audio_play_sound_pitch( snd_voice_maya_swing_1,	 RR( 0.9, 1.0 ) * 0.9, 1, 1 );
 				
@@ -121,9 +127,9 @@ function scr_secondary_attack_maya(){
 						t.duration = 62;
 						t.angle_spin = ( 2 + random( 4 ) ) * choose( -1, 1 );
 						t.draw_angle = random( 360 );
-						t.dmg =  17 * 1 * dmg_mult * lerp( 0.7, 1.25, charge_level);
+						t.dmg =  18 * 1 * dmg_mult * lerp( 0.7, 1.25, charge_level);
 						t.size_mult =  1.4 * (0.7+(charge_level*0.6));
-						t.knockback *= 2.5;
+						t.knockback *= 2.6;
 						t.lag_add 	*= 4;
 						t.shake_add	*= 3;
 						t.is_bullet = false;
@@ -133,7 +139,7 @@ function scr_secondary_attack_maya(){
 						t.can_be_knocked = true;
 						//t.dmg *= ;
 						t.parent = id;
-						t.stun_mult = 0.2;
+						t.stun_mult = 0.25;
 						
 						
 						
